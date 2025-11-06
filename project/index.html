@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Quillty Project | Jaqweal Holit</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* === Reset & Base === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Montserrat", sans-serif;
+      background-color: #1e1e1e;
+      color: #fff;
+      line-height: 1.8;
+      min-height: 100vh;
+      padding-top: 85px; /* nav height */
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADElEQVQIW2NgYGBgAAAABAABJzQnCgAAAABJRU5ErkJggg=='); /* subtle grain */
+      scroll-behavior: smooth;
+    }
+    a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+
+    /* === Navbar === */
+    nav {
+      background: rgba(0,0,0,0.6);
+      height: 85px;
+      display: flex;
+      align-items: center;
+      padding-left: 40px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+    nav ul li a {
+      color: #e6f7ff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav ul li a.active,
+    nav ul li a:hover { color: #4cc3ff; }
+
+    /* === Header === */
+    header {
+      text-align: center;
+      padding: 80px 20px 40px; /* same as homepage */
+    }
+    header h1 { font-size: 3rem; margin-bottom: 0.5rem; margin-top: 0.5em; }
+    header p { font-size: 1.25rem; color: #c7c9ce; }
+
+    /* === Main Content === */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      padding-bottom: 120px; /* ensures footer spacing */
+    }
+    section { margin-bottom: 60px; }
+    section h2 { font-size: 2rem; margin-bottom: 20px; color: #4cc3ff; }
+    section p { font-size: 1.1rem; color: #c7c9ce; margin-bottom: 1.5em; }
+
+    /* === Feature List === */
+    #features ul { list-style: disc; padding-left: 20px; }
+    #features li { margin-bottom: 10px; }
+
+    /* === CTA Button === */
+    .cta-button {
+      display: inline-block;
+      padding: 18px 25px;
+      background: #4996bd;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 6px;
+      text-align: center;
+      margin-top: 40px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .cta-button:hover { background: #2fa7e0; transform: translateY(-2px); }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
+      margin-top: auto;
+      padding: 30px 0;
+      font-size: 0.95rem;
+      color: #888;
+      border-top: 1px solid #222;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      section h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="project/" class="active">The Quillty Project</a></li>
+    <li><a href="resume/">Resume</a></li>
+    </ul>
+  </nav>
+
+  <!-- Project Header -->
+  <header>
+    <h1>The Quillty Project</h1>
+    <p>A human-focused word document processor for personal and professional use.</p>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Introduction -->
+    <section id="intro">
+      <h2>Why One Project?</h2>
+      <p>
+        You can ask that...and you can also say that there is really nothing to judge my technical knowledge or design other than what's shown visually. Yet sometimes, and for those with the skill, <strong>"the pen is mightier than the sword"</strong> — or in this case, the flash of what you typically see on a project portfolio. Let's dive into the mind of <em>me</em>, as you may be surprised by what you find.
+      </p>
+    </section>
+
+    <!-- Story -->
+    <section id="story">
+      <h2>What’s the Backstory?</h2>
+      <p style="margin-bottom: 1.5em;">
+        The idea, the thought, or even invention of Quillty came one night out of frustration at having too many applications that did very specific things. We all use different software daily for various functions, both personal and professional.
+      </p>
+      <p style="margin-bottom: 1.5em;">
+        Many of these come with so much unnecessary "stuff," when all we need is one simple tool. And often, highly requested features are locked behind monetization models that leave you feeling drained.
+      </p>
+      <p style="margin-bottom: 1.5em;">
+        This is real for many of us in a digital age — myself included. When it comes to writing in its truest, purest, and most authentic form, why has it become a commodity when it should be free and accessible?
+      </p>
+      <p style="margin-bottom: 1.5em;">
+        Writing is a basic human right, and taking it away diminishes the ability to communicate and build civilization.
+      </p>
+      <p style="margin-bottom: 1.5em;">
+        Okay, a bit hyperbolic, but it’s true to the extent that we deserve a simple, human-centered tool. Quillty is designed to strip away distractions and provide just the essentials — making writing approachable, intuitive, and enjoyable again.
+      </p>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+      <h2>What Does It Solve?</h2>
+      <ul>
+        <li>Reduces the clutter and distraction common in other writing tools.</li>
+        <li>Provides core functionality for free, without unnecessary monetization barriers.</li>
+        <li>Focuses on human-centered design to make writing intuitive and enjoyable.</li>
+        <li>Offers a conceptual approach to word processing with scalability for personal and professional use.</li>
+      </ul>
+    </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Jaqweal Holit. All rights reserved.
+  </footer>
+
+</body>
+</html>
