@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume | Jaqweal Holit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Montserrat", sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-top: 85px; /* navbar height */
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+
+    /* Navbar */
+    nav {
+      background: rgba(0,0,0,0.6);
+      height: 85px;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 35px;
+    }
+    nav ul li a {
+      color: #e6f7ff;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    nav ul li a.active,
+    nav ul li a:hover { color: #4cc3ff; }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin: 40px 20px 40px;
+    }
+    header h1 { font-size: 3rem; margin-bottom: 0.25em; }
+    header p { font-size: 1.5rem; color: #cfcfcf; }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .left-column, .right-column { flex: 1 1 400px; }
+    .left-column { max-width: 300px; border-left: 10px solid #00b3ff; padding-left: 25px; }
+    .profile-pic { width: 200px; height: 210px; border-radius: 50%; margin-bottom: 20px; border: 3px solid #00b3ff; }
+
+    h2 { color: #00b3ff; margin-bottom: 10px; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    h3 { margin-top: 15px; font-size: 1.1rem; color: #e0e0e0; }
+    p { margin-bottom: 10px; }
+    ul { margin-left: 20px; margin-bottom: 10px; }
+    li { margin-bottom: 5px; color: #cfcfcf; }
+    hr { border: 0; border-top: 1px solid #333; margin: 15px 0; }
+
+    /* Did you know */
+    .highlight { color: #ff4c4c; font-weight: bold; display: block; margin-bottom: 10px; }
+    .did-you-know { margin-top: 40px; line-height: 1.8; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 0.95rem;
+      color: #888;
+      border-top: 1px solid #222;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      main { flex-direction: column; align-items: center; padding: 10px; }
+      .left-column { max-width: 100%; border-left: none; border-top: 6px solid #00b3ff; padding-top: 20px; padding-left: 0; }
+      .profile-pic { width: 120px; height: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../project/project.html">The Quillty Project</a></li>
+      <li><a href="./resume.html" class="active">Resume</a></li>
+      <li><a href="../blog/index.html">Blog</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>Jaqweal Holit</h1>
+    <p>“Jack” (For Short)</p>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Left Column -->
+    <div class="left-column">
+      <img src="/images/headshot.jpeg" alt="Jaqweal Holit" class="profile-pic">
+      <section>
+        <h2>Contact & Location</h2>
+        <p>📞 508-818-6639</p>
+        <p>✉ hire.jholit@gmail.com</p>
+        <p>📍 Rockland, Massachusetts, USA</p>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <ul>
+          <li><strong>Design & Front-End</strong>
+            <ul><li>HTML, CSS, Bootstrap 4/5, Responsive Design</li></ul>
+          </li>
+          <li><strong>UI/UX Foundations</strong>
+            <ul><li>Wireframing, Layout Design, User Empathy, Accessibility</li></ul>
+          </li>
+          <li><strong>Soft Skills</strong>
+            <ul><li>Strong Communicator, Detail-Oriented, Customer-Focused, Eager Learner</li></ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Languages</h2>
+        <p>English - Native</p>
+      </section>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+      <section>
+        <h2>Who Am I?</h2>
+        <p>
+          I’m an aspiring UI/UX and Front-End Designer focused on creating clean, responsive, and user-centered designs.
+          My foundation in HTML, CSS, and Bootstrap allows me to bring structure and style to the web, while my growing UI/UX knowledge helps me design with empathy and intention.
+          I’m currently expanding my skill set through hands-on projects and continuous learning with Zero to Mastery and W3Schools.
+        </p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>Career Experience</h2>
+        <h3>Target Corporation</h3>
+        <p>Guest Advocate | Aug 2025 – Sep 2025</p>
+        <p>Delivered an excellent guest experience by identifying needs, resolving issues, and maintaining strong attention to visual detail and presentation — skills I now apply in designing accessible and user-friendly digital experiences.</p>
+
+        <h3>Walgreens Corporation</h3>
+        <p>Customer Service Associate | Oct 2024 – Jan 2025</p>
+        <p>Supported customer satisfaction and product engagement through clear communication and problem-solving, building empathy and user understanding — essential qualities for UI/UX design.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>Educational Background</h2>
+        <h3>Zero to Mastery</h3>
+        <p>Certifications | May 2025 - In Progress</p>
+        <h3>W3Schools</h3>
+        <p>Certifications | Jan 2025 - In Progress</p>
+      </section>
+
+      <hr>
+
+      <div class="did-you-know">
+        <span class="highlight">Did you know?</span>
+        <p>Jack once spent nearly 30 days eating just tomato soup after oral surgery — a small story of commitment and perseverance that still applies to how he learns and grows.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Jaqweal Holit. All rights reserved.
+  </footer>
+</body>
+</html>
+
+<!-- Add Socials Section -->
+<!-- Add LinkedIn link -->
+<!-- Remove profile picture -->
