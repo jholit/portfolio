@@ -1,58 +1,64 @@
-# 🌐 Jaqweal Holit | Portfolio Website
+🧭 Structure
+==================================
 
-Welcome to my personal portfolio — a growing collection of design, development, and writing projects that reflect my ongoing journey from **UI/UX Designer** to **Front-End Developer**, and beyond into **Full-Stack Product Engineering**.
+==================================
 
-This website serves as both a showcase of my work and a narrative of progress — balancing visual storytelling, simplicity, and human-centered design.
+🎨 Design & Development Philosophy
 
----
+- Human-Focused Design: Every page crafted with empathy and usability.
 
-## 🧭 Structure
+- Consistency & Simplicity: Clean dark aesthetic with blue accents.
 
+- Responsive & Lightweight: Fully responsive layouts with HTML & CSS — no unnecessary frameworks.
 
----
+- Transparency: Imperfections remain to tell a story of growth.
 
-## 🎨 Design & Development Philosophy
+==================================
 
-- **Human-Focused Design:** Every page is crafted with empathy and usability at its core.  
-- **Consistency & Simplicity:** A clean, dark aesthetic anchored by blue accents for clarity and modernity.  
-- **Responsive & Lightweight:** Fully responsive layouts built with pure HTML and CSS — no unnecessary frameworks.  
-- **Transparency:** I keep the imperfections, because they tell a story of progress and persistence.
+==================================
 
----
+🛠️ Built With
 
-## 🛠️ Built With
+- HTML5 & CSS3
 
-- **HTML5** & **CSS3**
-- **Google Fonts (Montserrat)**
-- **Vanilla Structure** — no external JS libraries
-- **Deployed via GitHub Pages**
+- Google Fonts (Montserrat)
 
----
+- Vanilla Structure — no external JS libraries
 
-## 📚 Notable Projects
+- Deployed via GitHub Pages
 
-- **The Quillty Project:**  
-  A concept for a human-centered word processing app designed to simplify digital writing tools.
+- Human–AI Collaboration — all design and structure directed, refined, and finalised by the author
 
-- **Lessons Learned:**  
-  A reflective article detailing the challenges and revelations of building this portfolio, balancing aesthetics and structure.
+==================================
 
----
+==================================
 
-## 🚀 Deployment
+📚 Notable Projects
 
-Hosted freely on **GitHub Pages**.  
-👉 [Visit Live Site](https://yourusername.github.io/portfolio-site)
+- The Quillty Project: A concept for a human-centered word processor.
 
----
+- Lessons Learned: Reflections on building this portfolio, balancing aesthetics and structure.
 
-## 🧩 Future Additions
+==================================
 
-- Interactive JS-based UI experiments  
-- Expanding article series documenting the path to Full-Stack Product Engineer  
-- Enhanced accessibility features & visual refinements  
+==================================
 
----
+🚀 Deployment
 
-> “Perfection isn’t the goal — progress is.”  
-> — *Jaqweal Holit*
+Hosted freely on GitHub Pages.
+👉 Visit Live Site
+
+==================================
+
+==================================
+
+🧩 Future Additions
+
+- Interactive JS-based UI experiments
+
+- Expanded article series on Full-Stack Product Engineering
+
+- Enhanced accessibility and visual refinements
+
+“Perfection isn’t the goal — progress is.”
+— Jaqweal Holit
