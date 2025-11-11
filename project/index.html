@@ -17,8 +17,8 @@
       color: #fff;
       line-height: 1.8;
       min-height: 100vh;
-      padding-top: 85px; /* nav height */
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADElEQVQIW2NgYGBgAAAABAABJzQnCgAAAABJRU5ErkJggg=='); /* subtle grain */
+      padding-top: 85px;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADElEQVQIW2NgYGBgAAAABAABJzQnCgAAAABJRU5ErkJggg==');
       scroll-behavior: smooth;
     }
     a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
@@ -53,18 +53,18 @@
 
     /* === Header === */
     header {
-      text-align: center;
-      padding: 80px 20px 40px; /* same as homepage */
+      text-align: left;
+      padding: 80px 20px 40px 40px;
     }
     header h1 { font-size: 3rem; margin-bottom: 0.5rem; margin-top: 0.5em; }
     header p { font-size: 1.25rem; color: #c7c9ce; }
 
     /* === Main Content === */
     main {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
-      padding-bottom: 120px; /* ensures footer spacing */
+      padding-bottom: 120px;
     }
     section { margin-bottom: 60px; }
     section h2 { font-size: 2rem; margin-bottom: 20px; color: #4cc3ff; }
@@ -74,21 +74,89 @@
     #features ul { list-style: disc; padding-left: 20px; }
     #features li { margin-bottom: 10px; }
 
-    /* === CTA Button === */
-    .cta-button {
-      display: inline-block;
-      padding: 18px 25px;
-      background: #4996bd;
-      color: #fff;
-      font-weight: 600;
-      border-radius: 6px;
-      text-align: center;
-      margin-top: 40px;
-      transition: background 0.3s ease, transform 0.2s ease;
+    /* === Card Gallery (2x2 large cards) === */
+    #quillty-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+      justify-items: center;
+      margin: 50px 0;
     }
-    .cta-button:hover { background: #2fa7e0; transform: translateY(-2px); }
+    .slide-card {
+      width: 100%;
+      max-width: 450px;
+      border: 1px solid #fff;
+      border-radius: 12px;
+      background: #1c1f26;
+      text-align: center;
+      padding: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .slide-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .slide-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(76, 195, 255, 0.3);
+    }
 
-    /* === Footer === */
+    /* === Card Panel (popup for each card) === */
+    .card-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(5px);
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      transition: opacity 0.5s ease;
+    }
+    .card-overlay.active { display: flex; }
+
+    .card-panel {
+      background-color: #1c1f26;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 1200px;
+      padding: 40px;
+      display: flex;
+      gap: 30px;
+      transform: scale(1);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    .card-panel.active {
+      transform: scale(1.5);
+      opacity: 1;
+    }
+    .card-panel img {
+      width: 50%;
+      border-radius: 12px;
+    }
+    .card-panel .panel-text {
+      width: 50%;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      section h2 { font-size: 1.5rem; }
+      .slide-card { max-width: 80%; }
+      .card-panel {
+        flex-direction: column;
+        width: 90%;
+      }
+      .card-panel img, .card-panel .panel-text { width: 100%; }
+    }
+
+    /* Footer */
     footer {
       text-align: center;
       margin-top: auto;
@@ -97,11 +165,6 @@
       color: #888;
       border-top: 1px solid #222;
     }
-
-    @media (max-width: 768px) {
-      header h1 { font-size: 2rem; }
-      section h2 { font-size: 1.5rem; }
-    }
   </style>
 </head>
 <body>
@@ -109,9 +172,10 @@
   <!-- Navigation -->
   <nav>
     <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../project/" class="active">The Quillty Project</a></li>
-    <li><a href="../resume/">Resume</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../project/" class="active">The Quillty Project</a></li>
+      <li><a href="../resume/">Resume</a></li>
+      <li><a href="../blog/">Blog</a></li>
     </ul>
   </nav>
 
@@ -123,37 +187,96 @@
 
   <!-- Main Content -->
   <main>
-    <!-- Introduction -->
-    <section id="intro">
-      <h2>Why One Project?</h2>
-      <p>
-        You can ask that...and you can also say that there is really nothing to judge my technical knowledge or design other than what's shown visually. Yet sometimes, and for those with the skill, <strong>"the pen is mightier than the sword"</strong> — or in this case, the flash of what you typically see on a project portfolio. Let's dive into the mind of <em>me</em>, as you may be surprised by what you find.
-      </p>
-    </section>
 
-    <!-- Story -->
+    <!-- Card Gallery -->
+    <div id="quillty-gallery">
+      <div class="slide-card" data-panel="panel1">
+        <img src="../images/inspiration.png" alt="Quillty Early Concept">
+        <h3>1. Early Concept/Sketching</h3>
+        <p>Initial sketches and ideas for Quillty's interface.</p>
+      </div>
+      <div class="slide-card" data-panel="panel2">
+        <img src="../images/low_fidelity.png" alt="Quillty Interface Prototype">
+        <h3>2. Low-Fidelity Layout</h3>
+        <p>Basic layout and visual mockup of Quillty's interface.</p>
+      </div>
+      <div class="slide-card" data-panel="panel3">
+        <img src="../images/refined.png" alt="Quillty Beta Layout">
+        <h3>3. Refined Layout</h3>
+        <p>Refined interface with more detailed elements.</p>
+      </div>
+      <div class="slide-card" data-panel="panel4">
+        <img src="../images/polished.png" alt="Quillty Current Design">
+        <h3>4. Semi-Mid Fidelity Design</h3>
+        <p>Near-final interface incorporating previous feedback.</p>
+      </div>
+    </div>
+
+    <!-- Card Overlay Panels -->
+    <div class="card-overlay" id="panel1">
+      <div class="card-panel">
+        <img src="../images/inspiration.png" alt="Early Concept">
+        <div class="panel-text">
+          <h2>Early Concept / Sketching</h2>
+          <p>
+            My early design inspiration came from Microsoft Word, Google Docs, and Framer. Each had strengths and weaknesses, and I wanted Quillty to declutter, organize, and feel intuitive. 
+            
+            <br><br>
+            
+            Key ideas included:
+          </p>
+          <ul>
+            <li style="margin: 20px 0px 10px 0px;">Streamlining document tools so everything has a clear, dedicated place.</li>
+            <li style="margin-bottom: 10px;">Starting with the basics and building up gradually, keeping flexibility for future features.</li>
+            <li>Modernizing the interface to feel cleaner and more approachable than many traditional tools, while exploring subtleties that often get overlooked.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-overlay" id="panel2">
+      <div class="card-panel">
+        <img src="../images/low_fidelity.png" alt="Low-Fidelity Prototype">
+        <div class="panel-text">
+          <h2>Low-Fidelity Layout</h2>
+          <p>
+            The low-fidelity mockup set the stage for Quillty's structure. It established the main workspace, the document hierarchy panel on the left, and the tools panel on the right. I made deliberate choices about how users would interact with these areas to keep things intuitive. This stage also gave me early insight into how small design decisions could simplify workflows in ways that aren’t immediately obvious.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-overlay" id="panel3">
+      <div class="card-panel">
+        <img src="../images/refined.png" alt="Refined Layout">
+        <div class="panel-text">
+          <h2>Refined Layout</h2>
+          <p>Detailing improvements and refinements from the previous stage, including visual adjustments and workflow.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-overlay" id="panel4">
+      <div class="card-panel">
+        <img src="../images/polished.png" alt="Semi-Mid Fidelity Design">
+        <div class="panel-text">
+          <h2>Semi-Mid Fidelity Design</h2>
+          <p>Combining feedback from earlier stages to approach the near-final interface design.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Details -->
     <section id="story">
       <h2>What’s the Backstory?</h2>
-      <p style="margin-bottom: 1.5em;">
-        The idea, the thought, or even invention of Quillty came one night out of frustration at having too many applications that did very specific things. We all use different software daily for various functions, both personal and professional.
-      </p>
-      <p style="margin-bottom: 1.5em;">
-        Many of these come with so much unnecessary "stuff," when all we need is one simple tool. And often, highly requested features are locked behind monetization models that leave you feeling drained.
-      </p>
-      <p style="margin-bottom: 1.5em;">
-        This is real for many of us in a digital age — myself included. When it comes to writing in its truest, purest, and most authentic form, why has it become a commodity when it should be free and accessible?
-      </p>
-      <p style="margin-bottom: 1.5em;">
-        Writing is a basic human right, and taking it away diminishes the ability to communicate and build civilization.
-      </p>
-      <p style="margin-bottom: 1.5em;">
-        Okay, a bit hyperbolic, but it’s true to the extent that we deserve a simple, human-centered tool. Quillty is designed to strip away distractions and provide just the essentials — making writing approachable, intuitive, and enjoyable again.
-      </p>
+      <p>The idea of Quillty came one night out of frustration at having too many applications that did very specific things. We all use different software daily for various functions, both personal and professional.</p>
+      <p>Many of these come with so much unnecessary "stuff," when all we need is one simple tool. And often, highly requested features are locked behind monetization models that leave you feeling drained.</p>
+      <p>This is real for many of us in a digital age — myself included. When it comes to writing in its truest, purest, and most authentic form, why has it become a commodity when it should be free and accessible?</p>
+      <p>Writing is a basic human right, and taking it away diminishes the ability to communicate and build civilization. We deserve a simple, human-owned and centered tool. Quillty is designed to strip away distractions and provide just the essentials — making writing approachable, intuitive, and enjoyable again.</p>
     </section>
 
-    <!-- Features -->
     <section id="features">
-      <h2>What Does It Solve?</h2>
+      <h2>What Will It Solve?</h2>
       <ul>
         <li>Reduces the clutter and distraction common in other writing tools.</li>
         <li>Provides core functionality for free, without unnecessary monetization barriers.</li>
@@ -162,10 +285,44 @@
       </ul>
     </section>
 
+    <section id="intro">
+      <h2>Why This One Project?</h2>
+      <p>You can ask that...and you can also say that there is really nothing to judge my technical knowledge or design other than what's shown visually. Yet sometimes, and for those with the skill, <strong>"the pen is mightier than the sword"</strong> — or in this case, the flash of what you typically see on a project portfolio. Let's dive into the mind of <em>me</em>, as you may be surprised by what you find.</p>
+    </section>
+
+  </main>
+
   <!-- Footer -->
   <footer>
     &copy; 2025 Jaqweal Holit. All rights reserved.
   </footer>
+
+  <script>
+    // Card click to open panel
+    const cards = document.querySelectorAll('.slide-card');
+    const overlays = document.querySelectorAll('.card-overlay');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const panelId = card.getAttribute('data-panel');
+        const overlay = document.getElementById(panelId);
+        overlay.classList.add('active');
+        const panel = overlay.querySelector('.card-panel');
+        setTimeout(() => panel.classList.add('active'), 10);
+      });
+    });
+
+    // Click outside panel to close
+    overlays.forEach(overlay => {
+      overlay.addEventListener('click', e => {
+        if (e.target === overlay) {
+          const panel = overlay.querySelector('.card-panel');
+          panel.classList.remove('active');
+          setTimeout(() => overlay.classList.remove('active'), 500);
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
