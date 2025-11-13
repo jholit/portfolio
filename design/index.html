@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Logic — Skills & Traits Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Montserrat", sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-top: 85px;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+
+    nav {
+      background: rgba(0,0,0,0.6);
+      height: 85px;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 35px;
+    }
+    nav ul li a {
+      color: #e6f7ff;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    nav ul li a.active,
+    nav ul li a:hover { color: #4cc3ff; }
+
+    header {
+      text-align: center;
+      margin: 40px 20px 40px;
+    }
+    header h1 { font-size: 3rem; color: #ffffff; margin-bottom: 0.25em; }
+    header p { font-size: 1.4rem; color: #cfcfcf; }
+
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 50px 0 30px;
+      color: #00b3ff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .skills-grid, .traits-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 6px solid #00b3ff;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0, 179, 255, 0.25);
+    }
+
+    .card h3 {
+      color: #00b3ff;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: #cfcfcf;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 0.95rem;
+      color: #888;
+      border-top: 1px solid #222;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .section-title { font-size: 1.5rem; }
+      main { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../project/">The Quillty Project</a></li>
+      <li><a href="../design/" class="active">Design Logic</a></li>
+      <li><a href="../blog/">Blog</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Design Logic Showcase</h1>
+    <p>It's not enough to know how to make look good. The "thought behind the design" is also just as important if not more. Down below demonstrates core skills and natural traits shaping my personal design philosophy in simple terms with demonstrations where applicable.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="section-title">Fundamentals</h2>
+      <div class="skills-grid">
+        <div class="card">
+          <h3>Systemic Thinking</h3>
+          <p>Understanding systems and patterns to create holistic, interconnected design solutions that scale naturally.</p>
+        </div>
+        <div class="card">
+          <h3>Heuristics Engineering</h3>
+          <p>Turning intuition and design experience into repeatable rules that guide better product decisions.</p>
+        </div>
+        <div class="card">
+          <h3>Cognitive UX Research</h3>
+          <p>Applying behavioural insights to create flows that mirror real human decision-making and minimize cognitive friction.</p>
+        </div>
+        <div class="card">
+          <h3>Design Systems Leadership</h3>
+          <p>Establishing scalable design languages that empower consistency and foster engineering collaboration.</p>
+        </div>
+        <div class="card">
+          <h3>Data-Informed Visualization</h3>
+          <p>Translating data into meaningful narratives — simplifying complexity with deliberate visual storytelling.</p>
+        </div>
+        <div class="card">
+          <h3>Interaction & Motion Logic</h3>
+          <p>Designing fluid, logical transitions and interactions that enhance comprehension and delight.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Intrinsic Skills</h2>
+      <div class="traits-list">
+        <div class="card">
+          <h3>Constraint Crafting</h3>
+          <p>Defining creative boundaries that sharpen focus and amplify innovation rather than limiting it.</p>
+        </div>
+        <div class="card">
+          <h3>Cross-domain Translation</h3>
+          <p>Bridging gaps between design, engineering, and product by turning complex requirements into shared understanding.</p>
+        </div>
+        <div class="card">
+          <h3>Reliability Bias Mitigation</h3>
+          <p>Anticipating edge cases and designing safe defaults to ensure consistency across unexpected scenarios.</p>
+        </div>
+        <div class="card">
+          <h3>Heuristic Intuition</h3>
+          <p>Developing rapid, pattern-based insight to foresee user friction and guide smoother experiences.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Jaqweal Holit. Designed with clarity, intention, and modern design logic.</p>
+  </footer>
+</body>
+</html>
