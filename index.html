@@ -1,193 +1,607 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Home | Jack Holit</title>
-
-  <!-- Fonts & Libraries -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Designer – Portfolio Landing</title>
+  <meta
+    name="description"
+    content="Product designer focused on clear flows, thoughtful systems, and calm interfaces."
+  />
 
   <style>
-    /* === Reset & Base === */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* -------------------------------------------------
+       ROOT + GLOBAL
+    ------------------------------------------------- */
+    :root {
+      --bg: #050816;
+      --bg-soft: #080b16;
+      --accent: #5cc9ff;
+      --text-main: #f5f6ff;
+      --text-muted: #a4a8c5;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+      --max-width: 1040px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: "Montserrat", sans-serif;
-      background-color: #1e1e1e;
-      color: #fff;
-      line-height: 1.8;
+      font-family: system-ui, -apple-system, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #141a3b 0, #02020b 52%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-top: 85px; /* unified nav height */
     }
-    a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
 
-    /* === Navbar === */
-    nav {
-      background: rgba(0,0,0,0.6);
-      height: 85px;
-      display: flex;
-      align-items: center; /* vertical centering */
-      padding-left: 40px;
-      position: fixed;
-      top: 0;
+    .shell {
       width: 100%;
-      z-index: 1000;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 35px;
-      align-items: center;
-    }
-    nav ul li a {
-      color: #e6f7ff;
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    nav ul li a.active,
-    nav ul li a:hover { color: #4cc3ff; }
 
-    /* === Header === */
+    /* -------------------------------------------------
+       HEADER + NAV
+    ------------------------------------------------- */
     header {
-      text-align: center;
-      padding: 80px 20px 40px;
-      background: linear-gradient(-45deg, #242830, #32404f, #29313f, #405769, #2a2f38, #3a4150);
-      background-size: 600% 600%;
-      animation: heroGradient 22s ease infinite;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 4, 15, 0.96),
+        rgba(2, 4, 15, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
-    @keyframes heroGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    header h1 { font-size: 3rem; margin-bottom: 0.5rem; }
-    header p { font-size: 1.25rem; color: #c7c9ce; }
 
-    /* === Main === */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at 20% 0%, #9be7ff, #326dff);
+      color: #050816;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 18px rgba(151, 219, 255, 0.7);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .brand-text span:first-child {
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #9be7ff, #5cc9ff);
+      border-radius: 999px;
+      transition: 0.18s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* -------------------------------------------------
+       MAIN / SECTIONS
+    ------------------------------------------------- */
     main {
       flex: 1;
-      max-width: 900px;
+      padding: 4.5rem 0;
+    }
+
+    section {
+      padding: 3.2rem 0;
+    }
+
+    .section-heading {
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .section-intro {
+      max-width: 34rem;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      margin-bottom: 2rem;
+    }
+
+    /* -------------------------------------------------
+       HERO
+    ------------------------------------------------- */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 760px;
+      padding-top: 1rem;
       margin: 0 auto;
-      padding: 20px;
-      padding-bottom: 120px; /* ensures footer spacing */
-      background-color: #1e1e1e;
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADElEQVQIW2NgYGBgAAAABAABJzQnCgAAAABJRU5ErkJggg=='); /* subtle grain */
-    }
-    section { margin-bottom: 60px; }
-    section h2 { font-size: 2rem; margin-bottom: 20px; color: #4cc3ff; }
-    section p { font-size: 1.1rem; color: #c7c9ce; margin-bottom: 1.5em; }
-
-    /* === Project Preview === */
-    .projects-preview { margin-top: 30px; }
-    .project-preview-card {
-      background: #1c1f26;
-      border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-      padding: 15px;
-      margin-bottom: 20px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .project-preview-card img {
-      width: 100%;
-      height: auto;
-      max-height: 200px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-    .project-preview-card h3 {
-      margin: 10px 0;
-      color: #4cc3ff;
-      font-size: 1.2rem;
-    }
-    .project-preview-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 10px 30px rgba(76, 195, 255, 0.25);
     }
 
-    /* === CTA Button === */
-    .cta-button {
-      display: inline-block;
-      padding: 18px 25px;
-      background: #4996bd;
-      color: #fff;
-      font-weight: 600;
-      border-radius: 6px;
-      text-align: center;
-      margin-top: 20px;
-      transition: background 0.3s ease, transform 0.2s ease;
+    .hero h1 {
+      font-size: clamp(2.3rem, 3.4vw, 3.2rem);
+      line-height: 1.12;
+      margin-bottom: 1.2rem;
     }
-    .cta-button:hover {
-      background: #2fa7e0;
+
+    .hero h1 span {
+      background: linear-gradient(120deg, #9be7ff, #ffffff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    /* -------------------------------------------------
+      BUTTONS (Enhanced)
+    ------------------------------------------------- */
+    .btn-primary,
+    .btn-ghost {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease,
+        border-color 0.18s ease;
+    }
+
+    /* PRIMARY BUTTON */
+    .btn-primary {
+      background: linear-gradient(135deg, #5cc9ff, #9be7ff);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #02111e;
+      box-shadow: 0 12px 28px rgba(92, 201, 255, 0.32);
+    }
+
+    .btn-primary:hover {
       transform: translateY(-2px);
+      background: linear-gradient(135deg, #78d6ff, #c9f1ff);
+      box-shadow: 0 18px 40px rgba(92, 201, 255, 0.45);
     }
 
-    /* === Footer === */
+    .btn-primary:active {
+      transform: translateY(0px);
+      box-shadow: 0 8px 20px rgba(92, 201, 255, 0.25);
+    }
+
+    /* GHOST BUTTON — now with more life */
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+      box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 8px 26px rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-ghost:active {
+      transform: translateY(0px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-1px);
+    }
+
+    /* -------------------------------------------------
+       GRID + CARDS
+    ------------------------------------------------- */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.1rem;
+    }
+
+    .card {
+      padding: 1.4rem 1.5rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-soft);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    ul.clean {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    ul.clean li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 0.4rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .pill {
+      padding: 0.2rem 0.7rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* -------------------------------------------------
+       CONTACT
+    ------------------------------------------------- */
+    .contact-block {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      padding: 1.9rem 1.7rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, #131a36, #050816);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-text {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 28rem;
+    }
+
+    .contact-meta {
+      margin-top: 0.4rem;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* -------------------------------------------------
+      FOOTER (Improved spacing)
+    ------------------------------------------------- */
     footer {
-      text-align: center;
-      margin-top: auto;
-      padding: 40px 0;
-      font-size: 0.95rem;
-      color: #888;
-      border-top: 1px solid #222;
+      padding: 2.2rem 0 2.8rem;
+      margin-top: 2.4rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
-    @media (max-width: 768px) {
-      header h1 { font-size: 2rem; }
-      section h2 { font-size: 1.5rem; }
+    footer .shell {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 0.5rem;
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+
+    /* -------------------------------------------------
+       RESPONSIVE
+    ------------------------------------------------- */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding-top: 1.8rem;
+      }
+
+      section {
+        padding: 2rem 0;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-block {
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="project/">The Quillty Project</a></li>
-      <li><a href="designconcepts/">Design Logic</a></li>
-      <li><a href="blog/">Blog</a></li>
-    </ul>
-  </nav>
+  <div class="page">
 
-  <header>
-    <h1>Jaqweal Holit</h1>
-    <p>Web & UI/UX Designer</p>
-  </header>
+    <!-- NAVBAR -->
+    <header>
+      <div class="shell">
+        <nav class="nav">
+          <a href="#top" class="brand">
+            <div class="brand-mark">JH</div>
+            <div class="brand-text">
+              <span>Jaqweal Holit</span>
+              <span>Product Designer</span>
+            </div>
+          </a>
 
-  <main>
-    <section id="about">
-      <h2>A Bit About Me...</h2>
-      <p>
-        I began with front-end development, earning certifications in HTML and CSS, then expanding into Bootstrap 4 to learn how structure and design create responsive, intuitive layouts.
-      </p>
-      <p>
-        UI/UX Design followed, helping me understand how users experience and interact with interfaces. I’m still focused on mastering the fundamentals before tackling advanced development.
-      </p>
-      <p>
-        My goal is to become a Full-Stack Product Engineer — blending thoughtful design with solid technical foundations through steady, deliberate growth.
-      </p>
-    </section>
-
-    <section id="projects-preview">
-      <h2>An Intriguing Project</h2>
-      <div class="project-preview-card">
-        <img src="images/quillty.png" alt="Quillty Wireframe Sketches" />
-        <h3>Quillty</h3>
+          <div class="nav-links">
+            <a href="#work">Case Studies</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
       </div>
-      <p>Quillty is a conceptual and work-in-progress human-focused word document processor free (with donations) for personal and professional use.</p>
-      <a href="project/" class="cta-button">Learn more about Quillty →</a>
-    </section>
-  </main>
+    </header>
 
-  <footer>
-    &copy; 2025 Jaqweal Holit. All rights reserved.
-  </footer>
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="shell">
+
+        <!-- HERO -->
+        <section class="hero" aria-labelledby="hero-title">
+          <h1 id="hero-title">
+            Creating easier design systems
+            <span>with a user-first approach.</span>
+          </h1>
+
+          <p class="hero-sub">
+            Seeing things from the ground up provides a more logically designed end-to-end product experience — ensuring that clear structures, thoughtful interaction patterns, and a strong emphasis on how people *really* move through a flow accomplish the product’s main goal, not just how a screen looks.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/404.html" class="btn-ghost" target="_blank">Download resume</a>
+          </div>
+        </section>
+
+        <!-- WORK -->
+        <section id="work">
+          <div class="section-heading">Case Studies</div>
+          <h2 class="section-title">TennaJam – Dedicated Game-Server Hosting Application</h2>
+
+          <p class="section-intro">
+            A product design case study focused on making server setup and management feel straightforward, guided, and forgiving — even for people who don’t speak “DevOps,” including myself.
+          </p>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>Problem & Approach</h3>
+
+              <p class="muted">
+                Server tools assume deep technical knowledge and scatter actions across complex dashboards. The goal was to design a clearer, human-centered flow for:
+              </p>
+
+              <ul class="clean">
+                <li>Creating and naming new servers</li>
+                <li>Choosing regions and core settings confidently</li>
+                <li>Surfacing advanced options without overwhelming</li>
+                <li>Managing servers from a simple, structured overview</li>
+              </ul>
+
+              <p class="muted">
+                This became an end-to-end flow design problem: mapping intent, placing decisions logically, and designing a UI that keeps users oriented start-to-finish.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>What I Focused On</h3>
+
+              <ul class="clean">
+                <li>Clarifying setup steps and labels</li>
+                <li>Defining a “Server Management” hub</li>
+                <li>Designing low-fi wireframes for key screens</li>
+                <li>Balancing flexibility with sensible defaults</li>
+                <li>Documenting design trade-offs and rationale</li>
+              </ul>
+
+              <p class="muted">
+                The full case study explores the hosting flow, management dashboard, and details view — each designed for clarity and future scalability.
+              </p>
+
+              <div style="margin-top: 0.9rem; display: flex; gap: 0.7rem;">
+                <a href="/tennajam/" class="btn-ghost" target="_blank">View the case-study</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+          <div class="section-heading">About</div>
+          <h2 class="section-title">Me, The Product Designer</hh2>
+
+          <p class="section-intro">
+            Someone who cares deeply about how systems behave, how things feel, and how people actually use web applications without needless complexity. The experience matters as much — if not more — than aesthetics.
+          </p>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>The Working Method</h3>
+              <ul class="clean">
+                <li>Start by clarifying the problem & constraints</li>
+                <li>Map the flow before worrying about visuals</li>
+                <li>Use low-fi wireframes to explore options early</li>
+                <li>Refine layouts with the entire journey in mind</li>
+                <li>Document reasoning and trade-offs</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3>Skills & Tools</h3>
+
+              <p class="muted">
+                I enjoy structuring flows and web interfaces, and I’m continually growing in visual refinement and front-end alignment.
+              </p>
+
+              <ul class="clean">
+                <li>Design fundamentals — flows, wireframes, concepts</li>
+                <li>UX principles — clarity, affordance, hierarchy</li>
+                <li>UI layout — spacing, readable structures</li>
+                <li>HTML (strong) & CSS (developing)</li>
+                <li>Figma — layouts & wireframes</li>
+              </ul>
+
+              <div class="pill-row">
+                <span class="pill">User flows</span>
+                <span class="pill">Wireframing</span>
+                <span class="pill">UX principles</span>
+                <span class="pill">UI layout</span>
+                <span class="pill">Figma</span>
+                <span class="pill">HTML</span>
+                <span class="pill">CSS</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+          <div class="section-heading">Contact</div>
+          <h2 class="section-title">Let’s talk...</h2>
+
+          <p class="section-intro">
+            If something here sparked curiosity — whether the case study, approach, or design philosophy — I’d be happy to talk more.
+          </p>
+
+          <div class="contact-block">
+            <div>
+              <p class="contact-text">
+                Looking to reach out?  
+                Email is the best way to contact me.
+              </p>
+
+              <p class="contact-meta">
+                Based in <strong>Rockland, Massachusetts</strong>
+              </p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <a href="/404.html" class="btn-primary">Email me</a>
+              <a href="https://www.linkedin.com/in/jholit/" class="btn-ghost" target="_blank">
+                View LinkedIn profile
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="shell">
+        © <span id="year"></span> Jaqweal Holit – Product Designer
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>

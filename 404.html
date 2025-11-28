@@ -2,71 +2,102 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Page Not Found | Jack Holit</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 – Page Not Found</title>
 
   <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #080b16;
+      --accent: #5cc9ff;
+      --text-main: #f5f6ff;
+      --text-muted: #a4a8c5;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --max-width: 1040px;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: "Montserrat", sans-serif;
-      background-color: #1e1e1e;
-      color: #fff;
+      font-family: system-ui, -apple-system, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #141a3b 0, #02020b 52%, #000 100%);
+      color: var(--text-main);
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
+      -webkit-font-smoothing: antialiased;
+      padding: 2rem;
+    }
+
+    .wrap {
       text-align: center;
-      padding: 20px;
+      max-width: 480px;
+      padding: 2rem 2.4rem;
+      background: var(--bg-soft);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
     }
 
-    h1 {
-      font-size: 6rem;
-      color: #ff4c4c;
-      margin-bottom: 20px;
+    .code {
+      font-size: clamp(3.2rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+      background: linear-gradient(135deg, #5cc9ff, #9be7ff);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    h2 {
-      font-size: 2rem;
-      color: #4cc3ff;
-      margin-bottom: 15px;
+    .title {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-main);
     }
 
-    p {
-      font-size: 1.2rem;
-      color: #c7c9ce;
-      margin-bottom: 30px;
+    .desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
     }
 
-    .cta-button {
-      display: inline-block;
-      padding: 15px 25px;
-      background: #4996bd;
-      color: #fff;
-      font-weight: 600;
-      border-radius: 6px;
+    a.btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.65rem 1.5rem;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #5cc9ff, #9be7ff);
+      color: #02111e;
+      font-size: 0.9rem;
+      font-weight: 500;
       text-decoration: none;
-      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 10px 28px rgba(92, 201, 255, 0.33);
+      transition: 0.2s ease;
     }
 
-    .cta-button:hover {
-      background: #2fa7e0;
+    a.btn:hover {
       transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(92, 201, 255, 0.45);
     }
 
-    @media (max-width: 768px) {
-      h1 { font-size: 4rem; }
-      h2 { font-size: 1.5rem; }
-      p { font-size: 1rem; }
-    }
   </style>
 </head>
 <body>
-  <h1>404</h1>
-  <h2>Page Not Found</h2>
-  <p>This page is a work in progress. Check back soon for updates!</p>
-  <a href="index.html" class="cta-button">Return Home</a>
+
+  <div class="wrap">
+    <div class="code">404</div>
+    <div class="title">Page Not Found</div>
+    <p class="desc">
+      The page you're looking for doesn't exist — or it's currently being created as we speak!<br>
+      Let’s take you back home safely.
+    </p>
+    <a href="/index.html" class="btn">Return Home</a>
+  </div>
+
 </body>
 </html>

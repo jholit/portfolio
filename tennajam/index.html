@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TennaJam – Designing a calmer game-server panel | Jaqweal Holit Blog</title>
+  <meta name="description" content="A product design case study on TennaJam, a calmer, flow-first approach to dedicated game-server hosting." />
+
+  <style>
+    /* ============================================================
+       ROOT & GLOBAL STYLES
+    ============================================================ */
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --bg-soft: #080b16;
+      --bg-elevated: #0c1224;
+
+      --accent: #5cc9ff;
+      --accent-soft: rgba(92, 201, 255, 0.16);
+
+      --text-main: #f5f6ff;
+      --text-muted: #a4a8c5;
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-soft: rgba(255, 255, 255, 0.05);
+
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+      --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.55);
+
+      --max-width: 1040px;
+      --content-width: 780px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111630 0, #040515 52%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ============================================================
+       NAVIGATION HEADER
+    ============================================================ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(4, 7, 20, 0.97),
+        rgba(4, 7, 20, 0.88),
+        rgba(4, 7, 20, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0%, #9be7ff, #326dff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #050816;
+      box-shadow: 0 0 18px rgba(151, 219, 255, 0.6);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .brand-text span:first-child {
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #9be7ff, #5cc9ff);
+      transition: width 0.18s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ============================================================
+       MAIN CONTENT LAYOUT
+    ============================================================ */
+    main {
+      flex: 1;
+      padding: 3.4rem 0 4.5rem;
+    }
+
+    .article {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       ARTICLE HEADER
+    ============================================================ */
+    .article-header {
+      margin-bottom: 3rem;
+      padding: 1.6rem 1.5rem 1.8rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background:
+        radial-gradient(circle at top left, rgba(92, 201, 255, 0.14), transparent 55%),
+        var(--bg-soft);
+      box-shadow: var(--shadow-card);
+      position: static; /* ready to toggle to sticky later */
+      z-index: 8;
+    }
+
+    .article-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .article-title {
+      font-size: clamp(2.15rem, 3.2vw, 2.7rem);
+      line-height: 1.12;
+      margin-bottom: 0.6rem;
+    }
+
+    .article-subtitle {
+      font-size: 0.98rem;
+      max-width: 44rem;
+      margin-bottom: 1.3rem;
+      color: var(--text-muted);
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      align-items: center;
+    }
+
+    .article-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .article-meta span::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      opacity: 0.8;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+    }
+
+    .pill {
+      padding: 0.18rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       SECTION STYLES
+    ============================================================ */
+    section {
+      padding-top: 2.3rem;
+    }
+
+    .section-heading {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.24rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+    }
+
+    .section-index {
+      font-size: 0.9rem;
+      color: var(--accent);
+      opacity: 0.7;
+      font-weight: 500;
+    }
+
+    .article p {
+      font-size: 0.95rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .article p.muted {
+      color: var(--text-muted);
+    }
+
+    ul.clean {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.35rem 0 1rem;
+      display: grid;
+      gap: 0.4rem;
+      font-size: 0.93rem;
+      color: var(--text-muted);
+    }
+
+    ul.clean li {
+      position: relative;
+      padding-left: 1.1rem;
+    }
+
+    ul.clean li::before {
+      content: "";
+      position: absolute;
+      top: 0.55em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(92, 201, 255, 0.12);
+    }
+
+    .inline-strong {
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       CARD BLOCKS
+    ============================================================ */
+    .card-block {
+      margin: 0.9rem 0;
+      padding: 1.25rem 1.35rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, rgba(92, 201, 255, 0.06), rgba(12, 17, 38, 0.94));
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.7);
+    }
+
+    .card-block h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .card-block p {
+      font-size: 0.92rem;
+    }
+
+    /* ============================================================
+       CONTACT BLOCK
+    ============================================================ */
+    .contact-block {
+      margin-top: 1.6rem;
+      padding: 1.6rem 1.5rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, #131a36, #050816);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.7rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.86rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.15s ease-out;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #5cc9ff, #9be7ff);
+      color: #02111e;
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 12px 30px rgba(92, 201, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 17px 42px rgba(92, 201, 255, 0.42);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-1px);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      margin-top: auto;
+      padding: 1.7rem 0 2.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer .shell {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .article-header {
+        padding: 1.4rem 1.3rem 1.6rem;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding-top: 2.4rem;
+      }
+
+      section {
+        padding-top: 1.9rem;
+      }
+
+      .article-header {
+        margin-bottom: 2.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="shell">
+        <nav class="nav">
+          <a href="index.html" class="brand">
+            <div class="brand-mark">JH</div>
+            <div class="brand-text">
+              <span>Jaqweal Holit</span>
+              <span>Product Designer</span>
+            </div>
+          </a>
+          <div class="nav-links">
+            <a href="/index.html">Back to Homepage</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="shell">
+        <article class="article">
+
+          <!-- ============================================================
+               ARTICLE HEADER
+          ============================================================ -->
+          <header class="article-header">
+            <div class="article-kicker"><span>Case Study</span></div>
+
+            <h1 class="article-title">TennaJam – Dedicated Game-Server Hosting Application</h1>
+
+            <p class="article-subtitle">
+              TennaJam is a product design exploration focused on simplifying dedicated game-server setup and management.
+              The work prioritizes clear flows, consistent structure, and user confidence over surface-level visual polish.
+            </p>
+
+            <div class="pill-row">
+              <span class="pill">Server Management</span>
+              <span class="pill">User Flows</span>
+              <span class="pill">Wireframing</span>
+              <span class="pill">Information Architecture</span>
+            </div>
+
+            <div class="article-meta">
+              <span>Approx. 8 min read</span>
+            </div>
+          </header>
+
+          <!-- ============================================================
+               CONTENT SECTIONS
+          ============================================================ -->
+          <section id="overview">
+            <div class="section-heading">01 — Overview</div>
+            <h2 class="section-title"><span class="section-index">1.</span> Project Summary</h2>
+
+            <p>TennaJam started from a simple observation: despite years of evolution in consumer applications, the
+              experience of configuring and managing dedicated game servers still feels unnecessarily complex and
+              fragile.</p>
+
+            <p>This case study focuses on the structure behind an approachable hosting experience. Instead of pushing
+              high-fidelity visuals, the work emphasizes:</p>
+
+            <ul class="clean">
+              <li>Predictable flow structure across the product.</li>
+              <li>Clear separation between overviews and detailed views.</li>
+              <li>Guided setup for new servers with reasonable defaults.</li>
+              <li>Consistent terminology for states and key actions.</li>
+            </ul>
+          </section>
+
+          <!-- PROBLEM -->
+          <section id="problem">
+            <div class="section-heading">02 — Problem Space</div>
+            <h2 class="section-title"><span class="section-index">2.</span> Problem and Goal</h2>
+
+            <p>In many hosting panels, core information and controls are fragmented across multiple screens and tabs.
+              Tables are dense, server states unclear, and high-impact actions poorly differentiated.</p>
+
+            <ul class="clean">
+              <li>Users hesitate to make changes because outcomes are unclear.</li>
+              <li>Non-technical users struggle to complete setup without guidance.</li>
+              <li>Advanced settings often appear either buried or overwhelming.</li>
+            </ul>
+
+            <p>The goal of TennaJam is to design a hosting and management experience that reduces cognitive load while
+              preserving advanced control.</p>
+          </section>
+
+          <!-- ROLE -->
+          <section id="role">
+            <div class="section-heading">03 — Role & Scope</div>
+            <h2 class="section-title"><span class="section-index">3.</span> Role, Responsibilities, and Constraints</h2>
+
+            <p>This was a solo case study, intended to demonstrate how a Product Designer approaches a technical problem
+              space through structure and flows rather than visuals alone.</p>
+
+            <div class="card-block">
+              <h3>Responsibilities</h3>
+              <ul class="clean">
+                <li>Define the problem and desired outcomes.</li>
+                <li>Map primary user journeys and key states.</li>
+                <li>Design the information architecture.</li>
+                <li>Create low-fidelity wireframes.</li>
+                <li>Document decisions and trade-offs.</li>
+              </ul>
+            </div>
+
+            <p class="muted">Infrastructure implementation details, pricing, and branding are treated as out of scope.</p>
+          </section>
+
+          <!-- RESEARCH -->
+          <section id="research">
+            <div class="section-heading">04 — Research</div>
+            <h2 class="section-title"><span class="section-index">4.</span> Research Summary</h2>
+
+            <p>Reviewing existing hosting panels revealed recurring UX issues:</p>
+
+            <ul class="clean">
+              <li>Dense dashboards with weak hierarchy.</li>
+              <li>Inconsistent naming for server states/options.</li>
+              <li>Critical actions distributed across tabs.</li>
+              <li>No single “home of truth” for a server’s status.</li>
+            </ul>
+
+            <p>These findings informed TennaJam’s guiding principles:</p>
+
+            <ul class="clean">
+              <li>Establish a central Server Management hub.</li>
+              <li>Represent server states consistently.</li>
+              <li>Expose only relevant information at each stage.</li>
+              <li>Keep navigation shallow.</li>
+            </ul>
+          </section>
+
+          <!-- FLOWS -->
+          <section id="flows">
+            <div class="section-heading">05 — Flows</div>
+            <h2 class="section-title"><span class="section-index">5.</span> Core User Flows</h2>
+
+            <p>TennaJam is structured around a focused set of narrow but deep flows addressing the most common scenarios.</p>
+
+            <div class="card-block">
+              <h3>Primary flow: Day-to-day management</h3>
+              <p class="muted">Routine checks and interventions:</p>
+
+              <ul class="clean">
+                <li><span class="inline-strong">Home → Server Management → Server Details → Action</span></li>
+              </ul>
+
+              <p class="muted">Users begin at an overview, identify a server, inspect its details, and act (start/stop/restart).</p>
+            </div>
+
+            <div class="card-block">
+              <h3>Secondary flow: Hosting a new server</h3>
+              <p class="muted">A guided linear setup flow:</p>
+
+              <ul class="clean">
+                <li>Select name, game, region.</li>
+                <li>Review recommended defaults.</li>
+                <li>Enable advanced settings if needed.</li>
+                <li>Confirm summary and launch.</li>
+              </ul>
+
+              <p class="muted">Each step answers one focused question at a time.</p>
+            </div>
+          </section>
+
+          <!-- ARCHITECTURE -->
+          <section id="architecture">
+            <div class="section-heading">06 — Screen Architecture</div>
+            <h2 class="section-title"><span class="section-index">6.</span> Wireframe-Level Overview</h2>
+
+            <div class="card-block">
+              <h3>Key Screens</h3>
+              <ul class="clean">
+                <li><span class="inline-strong">Home:</span> Overview, recent activity, entry to Server Management.</li>
+                <li><span class="inline-strong">Server Management:</span> Sortable list of servers + state visibility.</li>
+                <li><span class="inline-strong">Server Details:</span> Region, uptime, stats, logs, actions.</li>
+                <li><span class="inline-strong">Hosting Flow:</span> Guided configuration for launching new servers.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- PATTERNS -->
+          <section id="patterns">
+            <div class="section-heading">07 — Patterns</div>
+            <h2 class="section-title"><span class="section-index">7.</span> Design Patterns and Decisions</h2>
+
+            <div class="card-block">
+              <h3>Navigation & Structure</h3>
+              <ul class="clean">
+                <li>Keep navigation shallow.</li>
+                <li>Separate “scan whole system” from “act on one server”.</li>
+                <li>Provide one trustworthy details page per server.</li>
+              </ul>
+            </div>
+
+            <div class="card-block">
+              <h3>States & Actions</h3>
+              <ul class="clean">
+                <li>Use consistent naming for states.</li>
+                <li>Place key actions in predictable locations.</li>
+                <li>Confirm all destructive/disruptive actions.</li>
+              </ul>
+            </div>
+
+            <div class="card-block">
+              <h3>Advanced Controls</h3>
+              <ul class="clean">
+                <li>Group advanced options rather than scattering them.</li>
+                <li>Keep advanced controls available without overwhelming novices.</li>
+                <li>Ensure the setup flow can expand without breaking structure.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- LEARNINGS -->
+          <section id="learnings">
+            <div class="section-heading">08 — Learnings</div>
+            <h2 class="section-title"><span class="section-index">8.</span> Key Outcomes and Learnings</h2>
+
+            <p>Flow-first thinking leads to calmer tools with fewer reactive fixes. Aligning interface structure with user
+              mental models makes complex actions feel simpler and safer.</p>
+
+            <p>Clarity and control aren’t opposites—consistent grouping, predictable actions, and well-placed confirmations
+              allow advanced users to thrive without overwhelming beginners.</p>
+          </section>
+
+          <!-- TOOLS -->
+          <section id="tools">
+            <div class="section-heading">09 — Tools & Contact</div>
+            <h2 class="section-title"><span class="section-index">9.</span> Tooling and Contact</h2>
+
+            <div class="card-block">
+              <h3>Toolstack</h3>
+              <p class="muted">Designed entirely in Figma using user flows, wireframes, and interaction structure exploration.</p>
+            </div>
+
+            <div class="contact-block">
+              <p class="muted">For questions or collaboration, feel free to reach out.</p>
+
+              <div class="contact-links">
+                <a href="../404.html" class="btn-primary">Email Jaqweal</a>
+                <a href="https://www.linkedin.com/in/jholit/" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+                  View LinkedIn profile
+                </a>
+              </div>
+            </div>
+          </section>
+
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <div class="shell">
+        <span>© <span id="year"></span> Jaqweal Holit – Product Designer.</span>
+        <a href="/index.html">Back to Homepage</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
