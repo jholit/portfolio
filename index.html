@@ -165,7 +165,7 @@
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--text-muted);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
     }
 
     .section-title {
@@ -177,7 +177,7 @@
       max-width: 34rem;
       color: var(--text-muted);
       font-size: 0.96rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.2rem;
     }
 
     /* -------------------------------------------------
@@ -186,7 +186,7 @@
     .hero {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
       max-width: 760px;
       padding-top: 1rem;
       margin: 0 auto;
@@ -208,7 +208,7 @@
       font-size: 0.98rem;
       color: var(--text-muted);
       max-width: 36rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.4rem;
     }
 
     .hero-actions {
@@ -227,9 +227,9 @@
       justify-content: center;
       align-items: center;
       gap: 0.45rem;
-      padding: 0.6rem 1.4rem;
+      padding: 0.7rem 1.5rem;
       border-radius: var(--radius-pill);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       cursor: pointer;
       white-space: nowrap;
       transition:
@@ -237,50 +237,32 @@
         box-shadow 0.22s ease,
         background 0.22s ease,
         border-color 0.18s ease;
+      font-weight: 500;
     }
 
-    /* PRIMARY BUTTON */
     .btn-primary {
-      background: linear-gradient(135deg, #5cc9ff, #9be7ff);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(135deg, #6dd6ff, #b0ecff);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #02111e;
-      box-shadow: 0 12px 28px rgba(92, 201, 255, 0.32);
+      box-shadow: 0 12px 30px rgba(92, 201, 255, 0.45);
+      font-weight: 600;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      background: linear-gradient(135deg, #78d6ff, #c9f1ff);
-      box-shadow: 0 18px 40px rgba(92, 201, 255, 0.45);
+      box-shadow: 0 18px 45px rgba(92, 201, 255, 0.55);
     }
 
-    .btn-primary:active {
-      transform: translateY(0px);
-      box-shadow: 0 8px 20px rgba(92, 201, 255, 0.25);
-    }
-
-    /* GHOST BUTTON — now with more life */
     .btn-ghost {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       color: var(--text-main);
-      box-shadow: 0 0 0 rgba(255, 255, 255, 0);
     }
 
     .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
       transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.06);
-      box-shadow: 0 8px 26px rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.25);
-    }
-
-    .btn-ghost:active {
-      transform: translateY(0px);
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.04);
-      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.28);
     }
 
     /* -------------------------------------------------
@@ -298,6 +280,10 @@
       border: 1px solid var(--border-subtle);
       background: var(--bg-soft);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+    }
+
+    .card h3 {
+      margin-bottom: 0.75rem;
     }
 
     .muted {
@@ -343,7 +329,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1.6rem;
-      padding: 1.9rem 1.7rem;
+      padding: 2.2rem 1.9rem;
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
       background: radial-gradient(circle at top left, #131a36, #050816);
@@ -366,8 +352,8 @@
       FOOTER (Improved spacing)
     ------------------------------------------------- */
     footer {
-      padding: 2.2rem 0 2.8rem;
-      margin-top: 2.4rem;
+      padding: 2.4rem 0 2.8rem;
+      margin-top: 2.6rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -378,6 +364,7 @@
       align-items: center;
       flex-wrap: nowrap;
       gap: 0.5rem;
+      padding-top: 1rem;
     }
 
     footer a {
@@ -468,6 +455,19 @@
 
           <div class="grid-2">
             <div class="card">
+
+              <!-- NEW CASE STUDY THUMBNAIL -->
+              <img 
+                src="/images/tennajam_card.png"
+                alt="TennaJam case study thumbnail"
+                style="
+                  width: 100%;
+                  border-radius: 12px;
+                  margin-bottom: 1.2rem;
+                  border: 1px solid rgba(255,255,255,0.06);
+                "
+              >
+
               <h3>Problem & Approach</h3>
 
               <p class="muted">
@@ -575,6 +575,11 @@
 
               <p class="contact-meta">
                 Based in <strong>Rockland, Massachusetts</strong>
+              </p>
+
+              <!-- NEW REMOTE-OPEN BLURB -->
+              <p class="contact-meta">
+                Open to fully remote Product Design roles across U.S. time zones.
               </p>
             </div>
 
