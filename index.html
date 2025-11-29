@@ -441,7 +441,7 @@
           </p>
 
           <div class="hero-actions">
-            <a href="404.html" class="btn-ghost" target="_self">Download resume</a>
+            <a href="assets/jaqweal_holit_resume.pdf" download class="btn-ghost" target="_self">Download resume</a>
           </div>
         </section>
 
@@ -457,17 +457,29 @@
           <div class="grid-2">
             <div class="card">
 
-              <!-- NEW CASE STUDY THUMBNAIL -->
-              <img 
-                src="images/tennajam_card.png"
-                alt="TennaJam case study thumbnail"
-                style="
-                  width: 100%;
-                  border-radius: 12px;
-                  margin-bottom: 1.2rem;
-                  border: 1px solid rgba(255,255,255,0.06);
-                "
-              >
+              <!-- NEW CASE STUDY THUMBNAIL (NOW CLICKABLE) -->
+              <a href="tennajam/" target="_self">
+                <img 
+                  src="images/tennajam_card.png"
+                  alt="TennaJam case study thumbnail"
+                  style="
+                    width: 100%;
+                    border-radius: 12px;
+                    margin-bottom: 1.2rem;
+                    border: 1px solid rgba(255,255,255,0.06);
+                    cursor: pointer;
+                  "
+                >
+              </a>
+                            <p style="
+                font-size: 0.82rem;
+                color: var(--text-muted);
+                margin-bottom: 1.2rem;
+                text-align: center;
+                opacity: 0.8;
+              ">
+                Click the image to view the full case study
+              </p>
 
               <h3>Problem & Approach</h3>
 
@@ -501,10 +513,6 @@
               <p class="muted">
                 The full case study explores the hosting flow, management dashboard, and details view — each designed for clarity and future scalability.
               </p>
-
-              <div style="margin-top: 0.9rem; display: flex; gap: 0.7rem;">
-                <a href="tennajam/" class="btn-ghost" target="_self">View the case-study</a>
-              </div>
             </div>
           </div>
         </section>
@@ -587,7 +595,7 @@
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-              <a href="404.html" class="btn-primary">Email me</a>
+              <a href="mailto:jholit@protonmail.com?subject=Inquiry" class="btn-primary">Email me</a>
               <a href="https://www.linkedin.com/in/jholit/" class="btn-ghost" target="_blank">
                 View LinkedIn profile
               </a>
