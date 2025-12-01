@@ -70,7 +70,7 @@ a {
 }
 
 /* ============================================================
-   NAVIGATION HEADER
+   NAVIGATION HEADER (Unified)
 ============================================================ */
 header {
   position: static;
@@ -160,7 +160,7 @@ header {
 }
 
 /* ============================================================
-   MAIN CONTENT LAYOUT
+   MAIN CONTENT
 ============================================================ */
 main {
   flex: 1;
@@ -173,13 +173,13 @@ main {
 }
 
 /* ============================================================
-   ARTICLE HEADER
+   ARTICLE HEADER (Unified)
 ============================================================ */
 .article-header {
   margin-bottom: 3.3rem;
   padding: 1.6rem 1.5rem 1.8rem;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--text-muted); /* Unified border */
   background:
     radial-gradient(circle at top left, rgba(92, 201, 255, 0.14), transparent 55%),
     var(--bg-soft);
@@ -271,7 +271,6 @@ section {
   margin-bottom: 1.15rem;
 }
 
-/* Lists */
 ul.clean {
   list-style: none;
   padding-left: 0;
@@ -299,10 +298,6 @@ ul.clean li::before {
   box-shadow: 0 0 0 4px rgba(92, 201, 255, 0.12);
 }
 
-ul.clean + p {
-  margin-top: 0.2rem;
-}
-
 /* ============================================================
    CARD BLOCK
 ============================================================ */
@@ -326,71 +321,7 @@ ul.clean + p {
 }
 
 /* ============================================================
-   CONTACT BLOCK
-============================================================ */
-.contact-block {
-  margin-top: 2rem;
-  padding: 1.8rem 1.6rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-subtle);
-  background: radial-gradient(circle at top left, #131a36, #050816);
-  box-shadow: var(--shadow-soft);
-}
-
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  margin-top: 0.7rem;
-}
-
-/* ============================================================
-   BUTTONS — FIXED + RESTORED
-============================================================ */
-.btn-primary,
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  padding: 0.6rem 1.4rem;
-  border-radius: var(--radius-pill);
-  font-size: 0.86rem;
-  border: 1px solid transparent;
-  cursor: pointer;
-  white-space: nowrap;
-  transition:
-    transform 0.12s ease-out,
-    box-shadow 0.12s ease-out,
-    background 0.15s ease-out,
-    border-color 0.15s ease-out;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #5cc9ff, #9be7ff);
-  color: #02111e;
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 12px 30px rgba(92, 201, 255, 0.35);
-}
-
-.btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 17px 42px rgba(92, 201, 255, 0.42);
-}
-
-.btn-ghost {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.14);
-  color: var(--text-main);
-}
-
-.btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.04);
-  transform: translateY(-1px);
-}
-
-/* ============================================================
-   FOOTER
+   FOOTER (Unified)
 ============================================================ */
 footer {
   margin-top: auto;
@@ -412,34 +343,6 @@ footer a {
   color: var(--accent);
 }
 
-/* ============================================================
-   RESPONSIVE
-============================================================ */
-@media (max-width: 900px) {
-  .article-header {
-    padding: 1.4rem 1.3rem 1.6rem;
-  }
-}
-
-@media (max-width: 800px) {
-  .nav-links {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
-  main {
-    padding-top: 2.4rem;
-  }
-
-  section {
-    padding-top: 1.9rem;
-  }
-
-  .article-header {
-    margin-bottom: 2.4rem;
-  }
-}
   </style>
 </head>
 
@@ -486,13 +389,14 @@ footer a {
             </div>
           </header>
 
-          <!-- SECTIONS (unchanged) -->
           <!-- OVERVIEW -->
           <section id="overview">
             <div class="section-heading">01 — Overview</div>
             <h2 class="section-title"><span class="section-index">1.</span> Project Summary</h2>
+
             <p>TennaJam started from a simple observation: despite years of evolution in consumer applications, the
               experience of configuring and managing dedicated game servers still feels unnecessarily complex and fragile.</p>
+
             <p>This case study focuses on the structure behind an approachable hosting experience. Instead of pushing
               high-fidelity visuals, the work emphasizes:</p>
 
@@ -504,7 +408,7 @@ footer a {
             </ul>
           </section>
 
-          <!-- PROBLEM -->
+          <!-- PROBLEM SPACE -->
           <section id="problem">
             <div class="section-heading">02 — Problem Space</div>
             <h2 class="section-title"><span class="section-index">2.</span> Problem and Goal</h2>
@@ -532,6 +436,7 @@ footer a {
 
             <div class="card-block">
               <h3>Responsibilities</h3>
+
               <ul class="clean">
                 <li>Define the problem and desired outcomes.</li>
                 <li>Map primary user journeys and key states.</li>
@@ -580,7 +485,7 @@ footer a {
               <p class="muted">Routine checks and interventions:</p>
 
               <ul class="clean">
-                <li><span class="inline-strong">Home → Server Management → Server Details → Action</span></li>
+                <li>Home → Server Management → Server Details → Action</li>
               </ul>
 
               <p class="muted">Users begin at an overview, identify a server, inspect its details, and act (start/stop/restart).</p>
@@ -588,6 +493,7 @@ footer a {
 
             <div class="card-block">
               <h3>Secondary flow: Hosting a new server</h3>
+
               <p class="muted">A guided linear setup flow:</p>
 
               <ul class="clean">
@@ -608,11 +514,12 @@ footer a {
 
             <div class="card-block">
               <h3>Key Screens</h3>
+
               <ul class="clean">
-                <li><span class="inline-strong">Home:</span> Overview, recent activity, entry to Server Management.</li>
-                <li><span class="inline-strong">Server Management:</span> Sortable list of servers + state visibility.</li>
-                <li><span class="inline-strong">Server Details:</span> Region, uptime, stats, logs, actions.</li>
-                <li><span class="inline-strong">Hosting Flow:</span> Guided configuration for launching new servers.</li>
+                <li><strong>Home:</strong> Overview, recent activity, entry to Server Management.</li>
+                <li><strong>Server Management:</strong> Sortable list of servers + state visibility.</li>
+                <li><strong>Server Details:</strong> Region, uptime, stats, logs, actions.</li>
+                <li><strong>Hosting Flow:</strong> Guided configuration for launching new servers.</li>
               </ul>
             </div>
           </section>
@@ -624,6 +531,7 @@ footer a {
 
             <div class="card-block">
               <h3>Navigation & Structure</h3>
+
               <ul class="clean">
                 <li>Keep navigation shallow.</li>
                 <li>Separate “scan whole system” from “act on one server”.</li>
@@ -633,6 +541,7 @@ footer a {
 
             <div class="card-block">
               <h3>States & Actions</h3>
+
               <ul class="clean">
                 <li>Use consistent naming for states.</li>
                 <li>Place key actions in predictable locations.</li>
@@ -642,6 +551,7 @@ footer a {
 
             <div class="card-block">
               <h3>Advanced Controls</h3>
+
               <ul class="clean">
                 <li>Group advanced options rather than scattering them.</li>
                 <li>Keep advanced controls available without overwhelming novices.</li>
@@ -670,17 +580,6 @@ footer a {
             <div class="card-block">
               <h3>Toolstack</h3>
               <p class="muted">Designed entirely in Figma using user flows, wireframes, and interaction structure exploration.</p>
-            </div>
-
-            <div class="contact-block">
-              <p class="muted">For questions or collaboration, feel free to reach out.</p>
-
-              <div class="contact-links">
-                <a href="mailto:jholit@protonmail.com?subject=Inquiry" class="btn-primary">Email me</a>
-                <a href="https://www.linkedin.com/in/jholit/" target="_blank" rel="noopener noreferrer" class="btn-ghost">
-                  View LinkedIn profile
-                </a>
-              </div>
             </div>
           </section>
 

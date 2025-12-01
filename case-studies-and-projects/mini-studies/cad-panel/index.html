@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAD Panel Case Study | Jaqweal Holit</title>
+  <link rel="icon" type="image/x-icon" href="../site_favicon.png">
+  
+  <style>
+/* ============================================================
+   ROOT & GLOBAL STYLES
+============================================================ */
+:root {
+  --bg: #050816;
+  --bg-alt: #0b1020;
+  --bg-soft: #080b16;
+  --bg-elevated: #0c1224;
+
+  --accent: #5cc9ff;
+  --accent-soft: rgba(92, 201, 255, 0.16);
+
+  --text-main: #f5f6ff;
+  --text-muted: #a4a8c5;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.05);
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+  --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.55);
+
+  --max-width: 1040px;
+  --content-width: 780px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #111630 0, #040515 52%, #000 100%);
+  color: var(--text-main);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ============================================================
+   NAVIGATION HEADER (Unified)
+============================================================ */
+header {
+  position: static;
+  backdrop-filter: blur(14px);
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 7, 20, 0.97),
+    rgba(4, 7, 20, 0.88),
+    rgba(4, 7, 20, 0.7),
+    transparent
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: radial-gradient(circle at 20% 0%, #9be7ff, #326dff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #050816;
+  box-shadow: 0 0 18px rgba(151, 219, 255, 0.6);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.brand-text span:first-child {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brand-text span:last-child {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.nav-links a {
+  position: relative;
+  padding-bottom: 0.1rem;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #9be7ff, #5cc9ff);
+  transition: width 0.18s ease-out;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ============================================================
+   MAIN CONTENT
+============================================================ */
+main {
+  flex: 1;
+  padding: 3.4rem 0 4.5rem;
+}
+
+.article {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+/* ============================================================
+   ARTICLE HEADER (Unified)
+============================================================ */
+.article-header {
+  margin-bottom: 3.3rem;
+  padding: 1.6rem 1.5rem 1.8rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--text-muted); /* Unified border */
+  background:
+    radial-gradient(circle at top left, rgba(92, 201, 255, 0.14), transparent 55%),
+    var(--bg-soft);
+  box-shadow: var(--shadow-card);
+}
+
+.article-kicker {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.article-title {
+  font-size: clamp(2.15rem, 3.2vw, 2.7rem);
+  line-height: 1.12;
+  margin-bottom: 0.8rem;
+}
+
+.article-subtitle {
+  font-size: 0.98rem;
+  max-width: 44rem;
+  margin-bottom: 1.6rem;
+  color: var(--text-muted);
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  align-items: center;
+}
+
+.article-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.article-meta span::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  opacity: 0.8;
+}
+
+/* ============================================================
+   SECTION STYLES
+============================================================ */
+section {
+  padding-top: 2.6rem;
+}
+
+.section-heading {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 0.55rem;
+}
+
+.section-title {
+  font-size: 1.24rem;
+  margin-bottom: 0.75rem;
+  margin-top: 0.2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.section-index {
+  font-size: 0.9rem;
+  color: var(--accent);
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+.article p {
+  font-size: 0.95rem;
+  margin-bottom: 1.05rem;
+}
+
+.article p.muted {
+  margin-bottom: 1.15rem;
+}
+
+ul.clean {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 1.15rem;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.93rem;
+  color: var(--text-muted);
+}
+
+ul.clean li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+ul.clean li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(92, 201, 255, 0.12);
+}
+
+/* ============================================================
+   CARD BLOCK
+============================================================ */
+.card-block {
+  margin: 1.25rem 0;
+  padding: 1.35rem 1.45rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: linear-gradient(135deg, rgba(92, 201, 255, 0.06), rgba(12, 17, 38, 0.94));
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.7);
+}
+
+.card-block h3 {
+  font-size: 0.98rem;
+  margin-bottom: 0.65rem;
+}
+
+.card-block p {
+  font-size: 0.92rem;
+  margin-bottom: 1.05rem;
+}
+
+/* ============================================================
+   FOOTER (Unified)
+============================================================ */
+footer {
+  margin-top: auto;
+  padding: 2rem 0 2.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+footer .shell {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+footer a {
+  color: var(--accent);
+}
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header>
+      <div class="shell">
+        <nav class="nav">
+          <a href="/portfolio/" class="brand">
+            <div class="brand-mark">JH</div>
+            <div class="brand-text">
+              <span>Jaqweal Holit</span>
+              <span>Product Designer</span>
+            </div>
+          </a>
+
+          <div class="nav-links">
+            <a href="/portfolio/">Back to Homepage</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <div class="shell">
+        <article class="article">
+
+          <!-- ARTICLE HEADER -->
+          <header class="article-header">
+            <div class="article-kicker">Case Study</div>
+
+            <h1 class="article-title">Simplifying a CAD Parameter Panel</h1>
+
+            <p class="article-subtitle">
+              A compact UX exploration into reorganizing a dense parameter interface commonly found in CAD and engineering software.
+              The focus is on clarity, organization, and cognitive load reduction for both beginners and expert users.
+            </p>
+
+            <div class="article-meta">
+              <span>Approx. 4 min read</span>
+            </div>
+          </header>
+
+          <!-- 01 — OVERVIEW -->
+          <section id="overview">
+            <div class="section-heading">01 — Overview</div>
+            <h2 class="section-title"><span class="section-index">1.</span> Project Summary</h2>
+
+            <p>This project examines how to simplify a cluttered parameter sidebar inspired by CAD tools. These interfaces often overwhelm users with long, unstructured lists of controls, lacking logical grouping or visual hierarchy.</p>
+
+            <p>The goal was to transform this environment into a structured, predictable interface that feels approachable while retaining technical precision.</p>
+
+            <ul class="clean">
+              <li>Introduce hierarchy and logical grouping.</li>
+              <li>Reduce cognitive load through collapsible sections.</li>
+              <li>Support experts without overwhelming beginners.</li>
+              <li>Clarify labels and reduce ambiguity.</li>
+            </ul>
+          </section>
+
+          <!-- 02 — PROBLEM -->
+          <section id="problem">
+            <div class="section-heading">02 — Problem Space</div>
+            <h2 class="section-title"><span class="section-index">2.</span> The Problem</h2>
+
+            <p>Technical UIs struggle when structure fails. This CAD-like panel showed four major issues:</p>
+
+            <ul class="clean">
+              <li>No meaningful hierarchy across parameters.</li>
+              <li>Controls scattered without functional grouping.</li>
+              <li>High cognitive load for novices.</li>
+              <li>Experts slowed by unnecessary clutter.</li>
+            </ul>
+
+            <p>The challenge: create a cleaner, more efficient way to browse and edit parameters without removing technical capabilities.</p>
+          </section>
+
+          <!-- 03 — ROLE & SCOPE -->
+          <section id="role">
+            <div class="section-heading">03 — Role & Scope</div>
+            <h2 class="section-title"><span class="section-index">3.</span> My Role & Responsibilities</h2>
+
+            <p>This was a solo UX exercise focused on information architecture, flow clarity, and reducing cognitive load while respecting technical workflows.</p>
+
+            <div class="card-block">
+              <h3>Responsibilities</h3>
+              <ul class="clean">
+                <li>Analyze existing UI issues.</li>
+                <li>Identify natural parameter categories.</li>
+                <li>Design collapsible hierarchy.</li>
+                <li>Rewrite labels for clarity.</li>
+                <li>Explore alternate navigation structures.</li>
+              </ul>
+            </div>
+
+            <p class="muted">This project focuses strictly on structure and usability — not visual polish or brand identity.</p>
+          </section>
+
+          <!-- 04 — APPROACH -->
+          <section id="approach">
+            <div class="section-heading">04 — Approach</div>
+            <h2 class="section-title"><span class="section-index">4.</span> Design Approach</h2>
+
+            <p>The redesign followed a structured breakdown of the interface's issues and rebuilt the panel around predictable, task-based groupings.</p>
+
+            <div class="card-block">
+              <h3>Key Structural Improvements</h3>
+              <ul class="clean">
+                <li><strong>Functional Grouping:</strong> Geometry, Dimensions, Materials, Constraints, Display.</li>
+                <li><strong>Collapsible Sections:</strong> Reduce clutter while supporting advanced navigation.</li>
+                <li><strong>Hierarchy & Rhythm:</strong> Improved spacing and labeling for predictable scanning.</li>
+                <li><strong>Sidebar Concept:</strong> An optional left-navigation variant for expert users.</li>
+                <li><strong>Plain-Language Labels:</strong> Reduce engineering jargon while staying precise.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 05 — SOLUTION -->
+          <section id="solution">
+            <div class="section-heading">05 — Solution</div>
+            <h2 class="section-title"><span class="section-index">5.</span> Final Solution</h2>
+
+            <p>The redesigned CAD parameter panel features structured clusters, collapsible content, cleaner labels, and optional sidebar navigation. This reduces overwhelm and strengthens workflows for both new and experienced users.</p>
+          </section>
+
+          <!-- 06 — OUTCOMES -->
+          <section id="outcomes">
+            <div class="section-heading">06 — Outcomes</div>
+            <h2 class="section-title"><span class="section-index">6.</span> Key Outcomes</h2>
+
+            <ul class="clean">
+              <li>~50% faster scanning for common parameters.</li>
+              <li>Lower cognitive load for beginners.</li>
+              <li>Experts can collapse irrelevant groups for focus.</li>
+              <li>Improved clarity and consistency across controls.</li>
+            </ul>
+          </section>
+
+          <!-- 07 — WHY THIS MATTERS -->
+          <section id="importance">
+            <div class="section-heading">07 — Importance</div>
+            <h2 class="section-title"><span class="section-index">7.</span> Why This Matters</h2>
+
+            <p>Engineering-focused companies benefit from designers who can simplify dense, high-information interfaces without removing the power users depend on. This project demonstrates the ability to bring clarity to complexity — an essential skill for CAD, simulation, and modeling environments.</p>
+          </section>
+
+          <!-- 08 — LEARNINGS -->
+          <section id="learnings">
+            <div class="section-heading">08 — Learnings</div>
+            <h2 class="section-title"><span class="section-index">8.</span> Key Learnings</h2>
+
+            <p>Hierarchy, grouping, and collapsible structure dramatically improve usability in technical tools. Clean information architecture reduces the need for visual polish and allows users to think more clearly while navigating complex systems.</p>
+          </section>
+
+        </article>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="shell">
+        <span>© <span id="year"></span> Jaqweal Holit – Product Designer.</span>
+        <a href="/portfolio/">Back to Homepage</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

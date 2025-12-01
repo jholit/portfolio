@@ -7,7 +7,7 @@
   <link rel="icon" type="image/x-icon" href="site_favicon.png">
   <meta
     name="description"
-    content="Jaqweal Holit | Focuses on clear flows, thoughtful systems, and calm interfaces."
+    content="Jaqweal Holit | A clear flow, thoughtful systems, and calm interface focused product design."
   />
 
   <style>
@@ -220,7 +220,7 @@
     }
 
     /* -------------------------------------------------
-      BUTTONS (Enhanced)
+      BUTTONS
     ------------------------------------------------- */
     .btn-primary,
     .btn-ghost {
@@ -306,6 +306,21 @@
       margin-right: 0.4rem;
     }
 
+    /* -------------------------------------------------
+       🌟 NEW SPACING FIXES (ONLY INSIDE CARDS)
+    ------------------------------------------------- */
+    .card p {
+      margin-bottom: 1.1rem;
+    }
+
+    .card ul.clean li {
+      margin-bottom: 0.45rem;
+    }
+
+    .card ul.clean {
+      margin-bottom: 1.2rem;
+    }
+
     .pill-row {
       display: flex;
       flex-wrap: wrap;
@@ -350,7 +365,7 @@
     }
 
     /* -------------------------------------------------
-      FOOTER (Improved spacing)
+      FOOTER
     ------------------------------------------------- */
     footer {
       padding: 2.4rem 0 2.8rem;
@@ -417,7 +432,7 @@
           </a>
 
           <div class="nav-links">
-            <a href="#work">Case Studies</a>
+            <a href="#work">Case Studies & Projects</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
@@ -447,21 +462,22 @@
 
         <!-- WORK -->
         <section id="work">
-          <div class="section-heading">Case Studies</div>
-          <h2 class="section-title">TennaJam – Dedicated Game-Server Hosting Application</h2>
+          <div class="section-heading">Case Studies & Projects</div>
+
+          <!-- MEMORY ENGINE BLOCK -->
+          <h2 class="section-title">The Memory Engine – Cognitive Architecture</h2>
 
           <p class="section-intro">
-            A product design case study focused on making server setup and management feel straightforward, guided, and forgiving — even for people who don’t speak “DevOps,” including myself.
+            A deep dive into my way of thinking when it comes to systems-exploration and long-term AI memory continuity - combining bio-inspired cognitive and technological design built to solve the fragmentation problems me and others face with modern language models. Note this is a WIP.
           </p>
 
           <div class="grid-2">
             <div class="card">
 
-              <!-- NEW CASE STUDY THUMBNAIL (NOW CLICKABLE) -->
-              <a href="tennajam/" target="_self">
-                <img 
-                  src="images/tennajam_card.png"
-                  alt="TennaJam case study thumbnail"
+              <a href="case-studies-and-projects/major-studies/memory-engine/" target="_self">
+                <img
+                  src="images/memory_engine_card.png"
+                  alt="Memory Engine case study thumbnail"
                   style="
                     width: 100%;
                     border-radius: 12px;
@@ -471,7 +487,8 @@
                   "
                 >
               </a>
-                            <p style="
+
+              <p style="
                 font-size: 0.82rem;
                 color: var(--text-muted);
                 margin-bottom: 1.2rem;
@@ -484,7 +501,73 @@
               <h3>Problem & Approach</h3>
 
               <p class="muted">
-                Server tools assume deep technical knowledge and scatter actions across complex dashboards. The goal was to design a clearer, human-centered flow for:
+                One of the core struggles of todays AI is long-term continuity - especially when use it on a more personal level than those would like to admit. This study introduces a biological, ecosystem-like model for memory.
+              </p>
+
+              <ul class="clean">
+                <li>Memory as a dynamic ecosystem</li>
+                <li>Nodes that evolve, merge, and decay</li>
+                <li>Knowledge, experience, and visual anchors</li>
+                <li>Global arbitration for weighting & relevance</li>
+              </ul>
+
+            </div>
+
+            <div class="card">
+              <h3>What I Focused On</h3>
+
+              <ul class="clean">
+                <li>Defining the memory problem space</li>
+                <li>Mapping ecosystem-based node behavior</li>
+                <li>Identifying long-term continuity constraints</li>
+                <li>Formalizing retention logic & decay rules</li>
+                <li>Documenting philosophical and practical implications</li>
+              </ul>
+
+              <p class="muted">
+                This is a theoretical foundation for future AI systems to turn them into VI's - consistent, persistent, and relationship-like entities that'll reference information across months — not minutes.
+              </p>
+            </div>
+          </div>
+
+          <!-- TENNAJAM BLOCK -->
+          <h2 class="section-title" style="margin-top: 4rem;">TennaJam – Dedicated Game-Server Hosting Application</h2>
+
+          <p class="section-intro">
+            A project close to my heart, it is also a case study examining server setup and management feeling more straightforward, guided, and forgiving — even for people who don’t speak “DevOps,” including myself.
+          </p>
+
+          <div class="grid-2">
+            <div class="card">
+
+              <a href="case-studies-and-projects/projects/personal/tennajam/" target="_self">
+                <img 
+                  src="images/tennajam_card.png"
+                  alt="TennaJam case study thumbnail"
+                  style="
+                    width: 100%;
+                    border-radius: 12px;
+                    margin-bottom: 1.2rem;
+                    border: 1px solid rgba(255,255,255,0.06);
+                    cursor: pointer;
+                  "
+                >
+              </a>
+
+              <p style="
+                font-size: 0.82rem;
+                color: var(--text-muted);
+                margin-bottom: 1.2rem;
+                text-align: center;
+                opacity: 0.8;
+              ">
+                Click the image to view the full case study
+              </p>
+
+              <h3>Problem & Approach</h3>
+
+              <p class="muted">
+                The tech world cannot and never assume users have deep technical knowledge in order to use technology for what they wish to use it for. The goal, at least for TennaJam, is to design a clearer, human-centered flow for:
               </p>
 
               <ul class="clean">
@@ -493,10 +576,6 @@
                 <li>Surfacing advanced options without overwhelming</li>
                 <li>Managing servers from a simple, structured overview</li>
               </ul>
-
-              <p class="muted">
-                This became an end-to-end flow design problem: mapping intent, placing decisions logically, and designing a UI that keeps users oriented start-to-finish.
-              </p>
             </div>
 
             <div class="card">
@@ -511,7 +590,7 @@
               </ul>
 
               <p class="muted">
-                The full case study explores the hosting flow, management dashboard, and details view — each designed for clarity and future scalability.
+                In this explores the hosting flow, management dashboard, and details view — each designed for clarity and future scalability.
               </p>
             </div>
           </div>
@@ -520,7 +599,7 @@
         <!-- ABOUT -->
         <section id="about">
           <div class="section-heading">About</div>
-          <h2 class="section-title">Me, The Product Designer</hh2>
+          <h2 class="section-title">Me, The Product Designer</h2>
 
           <p class="section-intro">
             Someone who cares deeply about how systems behave, how things feel, and how people actually use web applications without needless complexity. The experience matters as much — if not more — than aesthetics.
@@ -588,7 +667,6 @@
 
               <br />
 
-              <!-- NEW REMOTE-OPEN BLURB -->
               <p class="contact-meta">
                 <b>Open to fully remote Product Design roles across U.S. time zones.</b>
               </p>

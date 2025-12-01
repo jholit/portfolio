@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Memory Engine | Jaqweal Holit</title>
+  <link rel="icon" type="image/x-icon" href="../site_favicon.png">
+  <meta name="description" content="A cognitive systems case study exploring a bio-inspired memory architecture designed for long-term AI continuity." />
+
+  <style>
+    /* ============================================================
+       ROOT & GLOBAL STYLES
+    ============================================================ */
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --bg-soft: #080b16;
+      --bg-elevated: #0c1224;
+
+      --accent: #5cc9ff;
+      --accent-soft: rgba(92, 201, 255, 0.16);
+
+      --text-main: #f5f6ff;
+      --text-muted: #a4a8c5;
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-soft: rgba(255, 255, 255, 0.05);
+
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+      --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.55);
+
+      --max-width: 1040px;
+      --content-width: 780px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111630 0, #040515 52%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+
+    .shell {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    header {
+      position: static;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(4, 7, 20, 0.97),
+        rgba(4, 7, 20, 0.88),
+        rgba(4, 7, 20, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0%, #9be7ff, #326dff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #050816;
+      box-shadow: 0 0 18px rgba(151, 219, 255, 0.6);
+    }
+
+    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+    .brand-text span:first-child { font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .brand-text span:last-child { font-size: 0.8rem; color: var(--text-muted); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #9be7ff, #5cc9ff);
+      transition: width 0.18s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ============================================================
+       MAIN
+    ============================================================ */
+    main { flex: 1; padding: 3.4rem 0 4.5rem; }
+    .article { max-width: var(--content-width); margin: 0 auto; }
+
+    /* ============================================================
+       ARTICLE HEADER
+    ============================================================ */
+    .article-header {
+      margin-bottom: 3.3rem;
+      padding: 1.6rem 1.5rem 1.8rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--text-muted);
+      background:
+        radial-gradient(circle at top left, rgba(92, 201, 255, 0.14), transparent 55%),
+        var(--bg-soft);
+      box-shadow: var(--shadow-card);
+    }
+
+    .article-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .article-title {
+      font-size: clamp(2.15rem, 3.2vw, 2.7rem);
+      line-height: 1.12;
+      margin-bottom: 0.8rem;
+    }
+
+    .article-subtitle {
+      font-size: 0.98rem;
+      max-width: 44rem;
+      margin-bottom: 1.2rem;
+      color: var(--text-muted);
+    }
+
+    /* WIP TAG */
+    .wip-tag {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      border: 1px solid rgba(92, 201, 255, 0.5);
+      background: rgba(92, 201, 255, 0.08);
+      box-shadow: 0 0 22px rgba(92, 201, 255, 0.15);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ============================================================
+       SECTIONS
+    ============================================================ */
+    section { padding-top: 2.6rem; }
+
+    .section-heading {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-bottom: 0.55rem;
+    }
+
+    .section-title {
+      font-size: 1.24rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+    }
+
+    .section-index {
+      font-size: 0.9rem;
+      color: var(--accent);
+      opacity: 0.7;
+      font-weight: 500;
+    }
+
+    .article p { font-size: 0.95rem; margin-bottom: 1.05rem; }
+
+    ul.clean {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.5rem 0 1.15rem;
+      display: grid;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+    }
+
+    ul.clean li {
+      position: relative;
+      padding-left: 1.1rem;
+    }
+
+    ul.clean li::before {
+      content: "";
+      position: absolute;
+      top: 0.55em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(92, 201, 255, 0.12);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      margin-top: auto;
+      padding: 2rem 0 2.4rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer .shell {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    footer a { color: var(--accent); }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header>
+      <div class="shell">
+        <nav class="nav">
+          <a href="/portfolio/" class="brand">
+            <div class="brand-mark">JH</div>
+            <div class="brand-text">
+              <span>Jaqweal Holit</span>
+              <span>Product Designer</span>
+            </div>
+          </a>
+
+          <div class="nav-links">
+            <a href="/portfolio/">Back to Homepage</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <div class="shell">
+        <article class="article">
+
+          <!-- HEADER -->
+          <header class="article-header">
+            <div class="article-kicker">Case Study</div>
+
+            <h1 class="article-title">The Memory Engine – A Bio-Inspired Cognitive Architecture</h1>
+
+            <p class="article-subtitle">
+              A systems-level exploration of how AI memory can evolve beyond short-term context windows and toward durable,
+              ecosystem-based continuity across long-term, multi-session interaction.
+            </p>
+
+            <p class="article-subtitle" style="font-size: 0.85rem; color: var(--text-muted);">
+              This framework is entirely self-developed — built from my own lived experience, observations, 
+              and the way I naturally think through systems and continuity.
+            </p>
+
+            <!-- WIP TAG INSERTED HERE -->
+            <span class="wip-tag">Work in Progress — Actively Being Developed</span>
+
+            <div class="article-meta">
+              <span>Approx. 10 min read</span>
+            </div>
+          </header>
+
+
+          <!-- 01 — Motivation -->
+          <section id="motivation">
+            <div class="section-heading">01 — Motivation</div>
+            <h2 class="section-title"><span class="section-index">1.</span> Why This Project Exists</h2>
+
+            <p>The Memory Engine began not as a theoretical pursuit, but as a response to pressure. Across roughly three
+            weeks, over 200,000 messages of high-intensity interaction revealed a structural limitation in current AI memory:
+            it is inherently short-term, fragile, and unable to sustain coherent continuity across sessions.</p>
+
+            <p>Context repeatedly collapsed. Nuance vanished. Multi-day reasoning threads fragmented. The system demonstrated
+            no durable retention, no mechanism for evolving knowledge, and no ability to preserve 
+            the long-form arcs that complex work demands.</p>
+
+            <p>This raised a fundamental question: <strong>What would a memory system look like if it were designed for real
+            continuity — not minutes of context, but weeks, months, and long-horizon collaboration?</strong></p>
+
+            <p>The Memory Engine is an attempt to answer that question through a bio-inspired approach that treats memory
+            as an evolving ecosystem rather than a static buffer.</p>
+          </section>
+
+
+          <!-- 02 — Executive Summary -->
+          <section id="executive-summary">
+            <div class="section-heading">02 — Executive Summary</div>
+            <h2 class="section-title"><span class="section-index">2.</span> High-Level Overview</h2>
+
+            <p>The Memory Engine proposes a rethinking of AI memory: moving from temporary context windows toward a stable,
+            adaptive, ecosystem-based architecture. Instead of treating memory as isolated logs, the system frames each
+            memory as a structured, dynamic node capable of growth, decay, reinforcement, and interaction with other memories.</p>
+
+            <p>It organizes memory into three foundational pillars: Knowledge (stable anchors), Experiences (weighted
+            significance), and Visuals (symbolic fast-recall cues). A global arbitration layer determines how each memory
+            evolves — which become long-term, which merge, and which naturally decay.</p>
+
+            <p>The goal is not human replication. It is to create the underlying <strong>conditions</strong> for continuity:
+            weighted retention, contextual evolution, symbolic grounding, and emergent structure across long-form workflows.</p>
+          </section>
+
+
+          <!-- 03 — Problem Space -->
+          <section id="problem-space">
+            <div class="section-heading">03 — Problem Space</div>
+            <h2 class="section-title"><span class="section-index">3.</span> Where Current AI Memory Fails</h2>
+
+            <p>Modern AI excels at short-term language generation but cannot maintain coherent memory across time. Several
+            limitations define the gap:</p>
+
+            <ul class="clean">
+              <li><strong>Session-bound context:</strong> memory resets when context windows expire or chats close.</li>
+              <li><strong>No evolving memory:</strong> models cannot restructure or refine stored information.</li>
+              <li><strong>No weighting:</strong> all details are treated equally with no sense of significance.</li>
+              <li><strong>Fragmented workflows:</strong> users must repeatedly rebuild long-term context themselves.</li>
+              <li><strong>Static retention:</strong> logs and vector stores cannot manage growth or natural decay.</li>
+              <li><strong>No structural relationships:</strong> memory lacks interconnected, ecosystem-like behavior.</li>
+            </ul>
+
+            <p>Together, these limitations prevent AI from supporting durable, multi-session continuity — a requirement for
+            writing, design, engineering, planning, and deep collaborative work.</p>
+          </section>
+
+        </article>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="shell">
+        <span>© <span id="year"></span> Jaqweal Holit – Product Designer.</span>
+        <a href="/portfolio/">Back to Homepage</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
