@@ -4,16 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home – Jaqweal Holit</title>
+
   <link rel="icon" type="image/x-icon" href="site_favicon.png">
-  <meta
-    name="description"
-    content="Jaqweal Holit | A clear flow, thoughtful systems, and calm interface focused product design."
-  />
+  <meta name="description"
+        content="Jaqweal Holit | A clear flow, thoughtful systems, and calm interface focused product design." />
 
   <style>
     /* -------------------------------------------------
        ROOT + GLOBAL
-    ------------------------------------------------- */
+    --------------------------------------------------*/
     :root {
       --bg: #050816;
       --bg-soft: #080b16;
@@ -61,7 +60,7 @@
 
     /* -------------------------------------------------
        HEADER + NAV
-    ------------------------------------------------- */
+    --------------------------------------------------*/
     header {
       position: sticky;
       top: 0;
@@ -149,9 +148,10 @@
       width: 100%;
     }
 
+    
     /* -------------------------------------------------
        MAIN / SECTIONS
-    ------------------------------------------------- */
+    --------------------------------------------------*/
     main {
       flex: 1;
       padding: 4.5rem 0;
@@ -169,11 +169,6 @@
       margin-bottom: 0.6rem;
     }
 
-    .section-title {
-      font-size: 1.45rem;
-      margin-bottom: 0.7rem;
-    }
-
     .section-intro {
       max-width: 34rem;
       color: var(--text-muted);
@@ -182,8 +177,80 @@
     }
 
     /* -------------------------------------------------
+       PROJECT CAROUSEL
+    --------------------------------------------------*/
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 2rem;
+      padding: 1rem 0;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-card {
+      flex: 0 0 40%;
+      min-width: 360px;
+    }
+
+    .carousel-img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+    }
+
+    .carousel-clickmsg {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .carousel-arrow {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .carousel-arrow:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .carousel-arrow.left {
+      margin-right: 1rem;
+    }
+
+    .carousel-arrow.right {
+      margin-left: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .carousel-card {
+        min-width: 85%;
+      }
+    }
+
+    /* -------------------------------------------------
        HERO
-    ------------------------------------------------- */
+    --------------------------------------------------*/
     .hero {
       display: flex;
       flex-direction: column;
@@ -220,8 +287,8 @@
     }
 
     /* -------------------------------------------------
-      BUTTONS
-    ------------------------------------------------- */
+       BUTTONS
+    --------------------------------------------------*/
     .btn-primary,
     .btn-ghost {
       display: inline-flex;
@@ -246,7 +313,6 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #02111e;
       box-shadow: 0 12px 30px rgba(92, 201, 255, 0.45);
-      font-weight: 600;
     }
 
     .btn-primary:hover {
@@ -268,7 +334,7 @@
 
     /* -------------------------------------------------
        GRID + CARDS
-    ------------------------------------------------- */
+    --------------------------------------------------*/
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -280,7 +346,7 @@
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
       background: var(--bg-soft);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+      box-shadow: var(--shadow-soft);
     }
 
     .card h3 {
@@ -306,123 +372,64 @@
       margin-right: 0.4rem;
     }
 
-    /* -------------------------------------------------
-       🌟 NEW SPACING FIXES (ONLY INSIDE CARDS)
-    ------------------------------------------------- */
-    .card p {
-      margin-bottom: 1.1rem;
-    }
-
-    .card ul.clean li {
-      margin-bottom: 0.45rem;
-    }
-
-    .card ul.clean {
-      margin-bottom: 1.2rem;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.6rem;
-    }
-
-    .pill {
-      padding: 0.2rem 0.7rem;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text-muted);
-      font-size: 0.8rem;
-    }
+    .card p { margin-bottom: 1.1rem; }
+    .card ul.clean { margin-bottom: 1.2rem; }
 
     /* -------------------------------------------------
-       CONTACT
-    ------------------------------------------------- */
-    .contact-block {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.6rem;
-      padding: 2.2rem 1.9rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      background: radial-gradient(circle at top left, #131a36, #050816);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .contact-text {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      max-width: 28rem;
-    }
-
-    .contact-meta {
-      margin-top: 0.4rem;
-      font-size: 0.84rem;
-      color: var(--text-muted);
-    }
-
-    /* -------------------------------------------------
-      FOOTER
-    ------------------------------------------------- */
+       FOOTER
+    --------------------------------------------------*/
     footer {
-      padding: 2.4rem 0 2.8rem;
-      margin-top: 2.6rem;
+      padding: 2.6rem 0 3.2rem;
+      margin-top: 3rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       font-size: 0.8rem;
       color: var(--text-muted);
     }
 
-    footer .shell {
+    .footer-contact {
       display: flex;
-      align-items: center;
-      flex-wrap: nowrap;
-      gap: 0.5rem;
-      padding-top: 1rem;
+      flex-direction: column;
+      gap: 1.3rem;
     }
 
-    footer a {
-      color: var(--accent);
+    .contact-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 520px) {
+      .contact-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
     }
 
     /* -------------------------------------------------
        RESPONSIVE
-    ------------------------------------------------- */
+    --------------------------------------------------*/
     @media (max-width: 800px) {
-      .nav-links {
-        display: none;
-      }
+      .nav-links { display: none; }
     }
 
     @media (max-width: 640px) {
-      main {
-        padding-top: 1.8rem;
-      }
-
-      section {
-        padding: 2rem 0;
-      }
-
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-block {
-        align-items: flex-start;
-      }
+      main { padding-top: 1.8rem; }
+      section { padding: 2rem 0; }
+      .grid-2 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
   <div class="page">
 
-    <!-- NAVBAR -->
+    <!-- ========================= -->
+    <!--         NAVBAR            -->
+    <!-- ========================= -->
     <header>
       <div class="shell">
         <nav class="nav">
+
           <a href="/portfolio/" class="brand">
             <div class="brand-mark">JH</div>
             <div class="brand-text">
@@ -436,15 +443,21 @@
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
+
         </nav>
       </div>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- ========================= -->
+    <!--         MAIN BODY         -->
+    <!-- ========================= -->
     <main>
       <div class="shell">
 
-        <!-- HERO -->
+
+        <!-- ========================= -->
+        <!--           HERO            -->
+        <!-- ========================= -->
         <section class="hero" aria-labelledby="hero-title">
           <h1 id="hero-title">
             Creating easier design systems
@@ -456,156 +469,163 @@
           </p>
 
           <div class="hero-actions">
-            <a href="assets/jaqweal_holit_resume.pdf" download class="btn-ghost" target="_self">Download resume</a>
+            <a href="assets/jaqweal_holit_resume.pdf"
+               download
+               class="btn-ghost"
+               target="_self">
+              Download resume
+            </a>
           </div>
         </section>
 
-        <!-- WORK -->
+
+
+        <!-- ========================= -->
+        <!--   CASE STUDIES & PROJECTS -->
+        <!-- ========================= -->
         <section id="work">
+
           <div class="section-heading">Case Studies & Projects</div>
+          <h2 class="section-title">My Work & Thought Process...</h2>
 
-          <!-- MEMORY ENGINE BLOCK -->
-          <h2 class="section-title">The Memory Engine – Cognitive Architecture</h2>
-
-          <p class="section-intro">
-            A deep dive into my way of thinking when it comes to systems-exploration and long-term AI memory continuity - combining bio-inspired cognitive and technological design built to solve the fragmentation problems me and others face with modern language models. Note this is a WIP.
+          <p class="section-intro" style="margin-bottom: 2.4rem;">
+            A collection of my most important studies and product explorations built around clarity,
+            system-structure, and human-centered flow.
           </p>
 
-          <div class="grid-2">
-            <div class="card">
 
-              <a href="case-studies-and-projects/major-studies/memory-engine/" target="_self">
-                <img
-                  src="images/memory_engine_card.png"
-                  alt="Memory Engine case study thumbnail"
-                  style="
-                    width: 100%;
-                    border-radius: 12px;
-                    margin-bottom: 1.2rem;
-                    border: 1px solid rgba(255,255,255,0.06);
-                    cursor: pointer;
-                  "
-                >
-              </a>
+          <!-- ====== CAROUSEL ====== -->
+          <div class="carousel-container">
 
-              <p style="
-                font-size: 0.82rem;
-                color: var(--text-muted);
-                margin-bottom: 1.2rem;
-                text-align: center;
-                opacity: 0.8;
-              ">
-                Click the image to view the full case study
-              </p>
+            <!-- Left Arrow -->
+            <button class="carousel-arrow left" aria-label="Scroll left">←</button>
 
-              <h3>Problem & Approach</h3>
+            <!-- Track -->
+            <div class="carousel-track">
 
-              <p class="muted">
-                One of the core struggles of todays AI is long-term continuity - especially when use it on a more personal level than those would like to admit. This study introduces a biological, ecosystem-like model for memory.
-              </p>
 
-              <ul class="clean">
-                <li>Memory as a dynamic ecosystem</li>
-                <li>Nodes that evolve, merge, and decay</li>
-                <li>Knowledge, experience, and visual anchors</li>
-                <li>Global arbitration for weighting & relevance</li>
-              </ul>
+              <!-- MEMORY MACHINE -->
+              <div class="card carousel-card">
+                <a href="case-studies-and-projects/major-studies/memory-engine/" target="_self">
+                  <img src="images/memory_engine_card.png"
+                       alt="Memory Machine study thumbnail"
+                       class="carousel-img">
+                </a>
+
+                <p class="carousel-clickmsg">Click the image to view the study</p>
+
+                <h3>Memory Machine – Cognitive Architecture</h3>
+
+                <p class="muted">
+                  A biological and structural approach to long-term AI memory, exploring continuity,
+                  weighting, decay, and cognitive behavior within a natural system–inspired model.
+                </p>
+
+                <ul class="clean">
+                  <li>Ecosystem-like memory nodes</li>
+                  <li>Retention logic & decay behaviors</li>
+                  <li>Context weighting and arbitration</li>
+                  <li>Long-term continuity constraints</li>
+                </ul>
+              </div>
+
+
+              <!-- TENNAJAM -->
+              <div class="card carousel-card">
+                <a href="case-studies-and-projects/projects/personal/tennajam/" target="_self">
+                  <img src="images/tennajam_card.png"
+                       alt="TennaJam project thumbnail"
+                       class="carousel-img">
+                </a>
+
+                <p class="carousel-clickmsg">Click the image to view the project</p>
+
+                <h3>TennaJam – Server Hosting UX</h3>
+
+                <p class="muted">
+                  A rethinking of server setup and management for non-DevOps users, focusing on
+                  confidence-building flows, system clarity, and human-centered choices.
+                </p>
+
+                <ul class="clean">
+                  <li>Simplified server creation flows</li>
+                  <li>Region & setting clarity</li>
+                  <li>Soft-surfacing advanced options</li>
+                  <li>Clean management dashboard</li>
+                </ul>
+              </div>
+
+
+              <!-- QUILLTY -->
+              <div class="card carousel-card">
+                <a href="404.html" target="_self">
+                  <img src="images/quillty_card.png"
+                       alt="Quillty project thumbnail"
+                       class="carousel-img">
+                </a>
+
+                <p class="carousel-clickmsg">Click the image to view the project</p>
+
+                <h3>Quillty – Minimal Writing Platform</h3>
+
+                <p class="muted">
+                  A lightweight writing platform focused on reducing cognitive friction through a
+                  calm structure, thoughtful typography, and clear drafting flows.
+                </p>
+
+                <ul class="clean">
+                  <li>Distraction-minimal UI</li>
+                  <li>Soft, readable typography</li>
+                  <li>Simple drafting workflows</li>
+                  <li>Foundational structure for future expansion</li>
+                </ul>
+              </div>
 
             </div>
 
-            <div class="card">
-              <h3>What I Focused On</h3>
+            <!-- Right Arrow -->
+            <button class="carousel-arrow right" aria-label="Scroll right">→</button>
 
-              <ul class="clean">
-                <li>Defining the memory problem space</li>
-                <li>Mapping ecosystem-based node behavior</li>
-                <li>Identifying long-term continuity constraints</li>
-                <li>Formalizing retention logic & decay rules</li>
-                <li>Documenting philosophical and practical implications</li>
-              </ul>
-
-              <p class="muted">
-                This is a theoretical foundation for future AI systems to turn them into VI's - consistent, persistent, and relationship-like entities that'll reference information across months — not minutes.
-              </p>
-            </div>
           </div>
 
-          <!-- TENNAJAM BLOCK -->
-          <h2 class="section-title" style="margin-top: 4rem;">TennaJam – Dedicated Game-Server Hosting Application</h2>
 
-          <p class="section-intro">
-            A project close to my heart, it is also a case study examining server setup and management feeling more straightforward, guided, and forgiving — even for people who don’t speak “DevOps,” including myself.
+
+          <!-- ====== MINI STUDIES ====== -->
+
+          <p class="section-intro" style="margin-top: 3rem;">
+            Small-scale UX explorations and focused design tests.
           </p>
 
-          <div class="grid-2">
-            <div class="card">
-
-              <a href="case-studies-and-projects/projects/personal/tennajam/" target="_self">
-                <img 
-                  src="images/tennajam_card.png"
-                  alt="TennaJam case study thumbnail"
-                  style="
-                    width: 100%;
-                    border-radius: 12px;
-                    margin-bottom: 1.2rem;
-                    border: 1px solid rgba(255,255,255,0.06);
-                    cursor: pointer;
-                  "
-                >
+          <ul class="clean" style="margin-top: 1rem;">
+            <li style="list-style: none; margin-left: 0;">
+              <a href="case-studies-and-projects/mini-studies/cad-panel/"
+                 style="color: var(--text-main); display: inline-flex; align-items: center; gap: 0.3rem;">
+                CAD Panel Case Study
+                <span style="opacity: 0.75;">→</span>
               </a>
+            </li>
+          </ul>
 
-              <p style="
-                font-size: 0.82rem;
-                color: var(--text-muted);
-                margin-bottom: 1.2rem;
-                text-align: center;
-                opacity: 0.8;
-              ">
-                Click the image to view the full case study
-              </p>
-
-              <h3>Problem & Approach</h3>
-
-              <p class="muted">
-                The tech world cannot and never assume users have deep technical knowledge in order to use technology for what they wish to use it for. The goal, at least for TennaJam, is to design a clearer, human-centered flow for:
-              </p>
-
-              <ul class="clean">
-                <li>Creating and naming new servers</li>
-                <li>Choosing regions and core settings confidently</li>
-                <li>Surfacing advanced options without overwhelming</li>
-                <li>Managing servers from a simple, structured overview</li>
-              </ul>
-            </div>
-
-            <div class="card">
-              <h3>What I Focused On</h3>
-
-              <ul class="clean">
-                <li>Clarifying setup steps and labels</li>
-                <li>Defining a “Server Management” hub</li>
-                <li>Designing low-fi wireframes for key screens</li>
-                <li>Balancing flexibility with sensible defaults</li>
-                <li>Documenting design trade-offs and rationale</li>
-              </ul>
-
-              <p class="muted">
-                In this explores the hosting flow, management dashboard, and details view — each designed for clarity and future scalability.
-              </p>
-            </div>
-          </div>
         </section>
 
-        <!-- ABOUT -->
+
+
+        <!-- ========================= -->
+        <!--           ABOUT           -->
+        <!-- ========================= -->
         <section id="about">
+
           <div class="section-heading">About</div>
           <h2 class="section-title">Me, The Product Designer</h2>
 
           <p class="section-intro">
-            Someone who cares deeply about how systems behave, how things feel, and how people actually use web applications without needless complexity. The experience matters as much — if not more — than aesthetics.
+            Someone who cares deeply about how systems behave, how things feel,
+            and how people actually use web applications without needless complexity.
+            The experience matters as much — if not more — than aesthetics.
           </p>
 
           <div class="grid-2">
+
             <div class="card">
               <h3>The Working Method</h3>
               <ul class="clean">
@@ -621,7 +641,8 @@
               <h3>Skills & Tools</h3>
 
               <p class="muted">
-                I enjoy structuring flows and web interfaces, and I’m continually growing in visual refinement and front-end alignment.
+                I enjoy structuring flows and web interfaces, and I’m continually
+                growing in visual refinement and front-end alignment.
               </p>
 
               <ul class="clean">
@@ -642,59 +663,100 @@
                 <span class="pill">CSS</span>
               </div>
             </div>
+
           </div>
-        </section>
 
-        <!-- CONTACT -->
-        <section id="contact">
-          <div class="section-heading">Contact</div>
-          <h2 class="section-title">Let’s talk...</h2>
-
-          <p class="section-intro">
-            If something here sparked curiosity — whether the case study, approach, or design philosophy — I’d be happy to talk more.
-          </p>
-
-          <div class="contact-block">
-            <div>
-              <p class="contact-text">
-                Looking to reach out?  
-                Email is the best way to contact me.
-              </p>
-
-              <p class="contact-meta">
-                Based in <strong>Rockland, Massachusetts</strong>
-              </p>
-
-              <br />
-
-              <p class="contact-meta">
-                <b>Open to fully remote Product Design roles across U.S. time zones.</b>
-              </p>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-              <a href="mailto:jholit@protonmail.com?subject=Inquiry" class="btn-primary">Email me</a>
-              <a href="https://www.linkedin.com/in/jholit/" class="btn-ghost" target="_blank">
-                View LinkedIn profile
-              </a>
-            </div>
-          </div>
         </section>
 
       </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="shell">
-        © <span id="year"></span> Jaqweal Holit – Product Designer
+
+
+    <!-- ========================= -->
+    <!--          FOOTER           -->
+    <!-- ========================= -->
+    <footer id="footer-contact">
+      <div class="shell footer-contact">
+
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          Contact me if something piqued your interest:
+        </div>
+
+        <div class="contact-buttons">
+
+          <!-- Outlook -->
+          <a href="mailto:jholit@protonmail.com"
+             class="btn-primary"
+             style="display: inline-flex; align-items: center; gap: 0.45rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 stroke="#02111e" stroke-width="1.8" stroke-linecap="round"
+                 stroke-linejoin="round">
+              <rect x="3" y="4" width="14" height="16" rx="2" />
+              <path d="M3 7l7 5 7-5" />
+            </svg>
+            Outlook
+          </a>
+
+          <!-- Gmail -->
+          <a href="mailto:jholit@protonmail.com"
+             class="btn-ghost"
+             style="display: inline-flex; align-items: center; gap: 0.45rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 stroke="#f5f6ff" stroke-width="1.8" stroke-linecap="round"
+                 stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="M3 7l9 6 9-6" />
+            </svg>
+            Gmail
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/in/YOUR-USERNAME"
+             target="_blank"
+             class="btn-ghost"
+             style="display: inline-flex; align-items: center; gap: 0.45rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 stroke="#f5f6ff" stroke-width="1.8" stroke-linecap="round"
+                 stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M8 10v7M8 7.01v.01M16 17v-3a2 2 0 00-2-2h-1" />
+            </svg>
+            LinkedIn
+          </a>
+
+        </div>
+
+        <div>
+          © <span id="year"></span> Jaqweal Holit – Product Designer
+        </div>
+
       </div>
     </footer>
 
-  </div>
 
+  </div> <!-- END .page -->
+
+
+  <!-- ========================= -->
+  <!--           JS              -->
+  <!-- ========================= -->
   <script>
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Carousel Logic
+    const track = document.querySelector(".carousel-track");
+    const btnLeft = document.querySelector(".carousel-arrow.left");
+    const btnRight = document.querySelector(".carousel-arrow.right");
+
+    btnLeft.addEventListener("click", () => {
+      track.scrollBy({ left: -400, behavior: "smooth" });
+    });
+
+    btnRight.addEventListener("click", () => {
+      track.scrollBy({ left: 400, behavior: "smooth" });
+    });
   </script>
 
 </body>
