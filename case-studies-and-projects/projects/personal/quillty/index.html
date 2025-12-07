@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quillty | Jaqweal Holit</title>
+  <link rel="icon" type="image/x-icon" href="../site_favicon.png">
+  <meta name="description" content="A product design case study on Quillty, a human-centered, modern writing environment." />
+
+  <style>
+/* ============================================================
+   ROOT & GLOBAL (TennaJam Base)
+============================================================ */
+:root {
+  --bg: #050816;
+  --bg-alt: #0b1020;
+  --bg-soft: #080b16;
+  --bg-elevated: #0c1224;
+
+  --accent: #5cc9ff;
+  --accent-soft: rgba(92, 201, 255, 0.16);
+
+  --text-main: #f5f6ff;
+  --text-muted: #a4a8c5;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.05);
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+  --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.55);
+
+  --max-width: 1040px;
+  --content-width: 780px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #111630 0, #040515 52%, #000 100%);
+  color: var(--text-main);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ============================================================
+   NAVIGATION (TennaJam Unified)
+============================================================ */
+header {
+  position: static;
+  backdrop-filter: blur(14px);
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 7, 20, 0.97),
+    rgba(4, 7, 20, 0.88),
+    rgba(4, 7, 20, 0.7),
+    transparent
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: radial-gradient(circle at 20% 0%, #9be7ff, #326dff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #050816;
+  box-shadow: 0 0 18px rgba(151, 219, 255, 0.6);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.brand-text span:first-child {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brand-text span:last-child {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.nav-links a {
+  position: relative;
+  padding-bottom: 0.1rem;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #9be7ff, #5cc9ff);
+  transition: width 0.18s ease-out;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+
+/* ============================================================
+   HERO — QUILLTY
+============================================================ */
+.hero-block {
+  padding: 3rem 0 2rem;
+}
+
+.hero-shell {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 4vw, 3rem);
+  margin-bottom: 0.4rem;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.hero-wip-note {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+/* ============================================================
+   PROJECT SECTIONS — QUILLTY
+============================================================ */
+
+.project-section {
+  padding: 3.2rem 0 3.4rem;
+}
+
+.project-section .article {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-title {
+  font-size: 1.28rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.section-index {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent);
+  opacity: 0.75;
+}
+
+.project-section p {
+  font-size: 0.95rem;
+  margin-bottom: 1.15rem;
+  line-height: 1.75;
+  color: var(--text-main);
+}
+
+.project-section p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Soft divider for visual rhythm */
+.project-section + .project-section {
+  border-top: 1px solid var(--border-soft);
+  margin-top: 2.8rem;
+  padding-top: 3rem;
+}
+
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+  margin-top: auto;
+  padding: 2rem 0 2.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+footer .shell {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+footer a { color: var(--accent); }
+
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- ============================================================
+         NAV BAR
+    ============================================================ -->
+    <header>
+      <div class="shell">
+        <nav class="nav">
+          <a href="/portfolio/" class="brand">
+            <div class="brand-mark">JH</div>
+            <div class="brand-text">
+              <span>Jaqweal Holit</span>
+              <span>Product Designer</span>
+            </div>
+          </a>
+
+          <div class="nav-links">
+            <a href="/portfolio/">Back to Homepage</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         HERO SECTION — QUILLTY
+    ============================================================ -->
+    <main>
+      <section class="hero-block">
+        <div class="hero-shell">
+          <h1 class="hero-title">Quillty</hh1>
+          <p class="hero-subtitle">A modern, human-centered writing application</p>
+
+          <div class="hero-image">
+            <img src="../../../../images/quilty_hero_image.png" alt="Quillty Editor Preview" />
+          </div>
+
+          <p class="hero-wip-note">
+            Please note that this project is currently a work-in-progress, and any material shown is subject to change at any given time. Thank you!
+          </p>
+        </div>
+      </section>
+    </main>
+
+<!-- ============================================================
+     01 — PROJECT SNAPSHOT
+============================================================ -->
+<section class="project-section" id="snapshot">
+  <div class="article">
+    <h2 class="section-title">
+      <span class="section-index">01</span>
+      Project Snapshot
+    </h2>
+
+    <p>
+      Quillty was born out of a frustrating but inspired night of bouncing between different writing
+      applications that couldn’t synchronize, couldn’t unify their purpose, and couldn’t support the
+      way writers actually think. Modern writing tools have become bloated, monetized, and detached
+      from the human-centered foundation of writing itself. Writing is a civilizational skill—so why
+      should we have to pay subscription fees just to express ideas?
+    </p>
+
+    <p>
+      Quillty challenges that by combining the broadest purpose of writing with a unified, distraction-free
+      environment. It helps people write professionally or creatively without feeling like the software is
+      doing the work for them—jumpstarting flow while keeping the writer in control.
+    </p>
+
+    <p>
+      The vision is simple: bring writing into the digital age by removing bloat, rebuilding the experience
+      from the ground up, and creating a modern, minimal, visually appealing environment that still feels
+      powerful.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     02 — MY ROLE & CONSTRAINTS
+============================================================ -->
+<section class="project-section" id="role">
+  <div class="article">
+    <h2 class="section-title">
+      <span class="section-index">02</span>
+      My Role & Constraints
+    </h2>
+
+    <p>
+      My role in Quillty wasn’t just to design a UI—it was to think like a writer. Too many tools are built
+      from a top-down perspective, shaped by corporate priorities rather than the needs of real people. Writing
+      is bottom-up by nature: anyone can place words on a page, but not every environment supports the writer’s
+      focus, clarity, or flow.
+    </p>
+
+    <p>
+      Every decision I made for Quillty centered on this question: “Can the environment help the writer do what
+      they do best?” This meant building with a writer’s mindset, shaping space, silence, and focus instead of
+      adding friction or noise.
+    </p>
+
+    <p>
+      The first version of Quillty is intentionally mid-fidelity. It explores how a modern alternative to traditional
+      word processors could look and feel—without diving into full prototyping yet. Many people rightfully complain
+      that Word, Google Docs, and similar tools still lack intuitive features that should exist by default.
+    </p>
+
+    <p>
+      This version isn’t meant to be final. It’s a foundation for future prototypes as my technical experience grows.
+      It shows that you can still build something visually compelling while designing logic and workflows that solve
+      long-standing problems in writing tools that haven’t evolved with the times.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     03 — DESIGN PHILOSOPHY & UI STRUCTURE
+============================================================ -->
+<section class="project-section" id="design-philosophy">
+  <div class="article">
+    <h2 class="section-title">
+      <span class="section-index">03</span>
+      Design Philosophy & UI Structure
+    </h2>
+
+    <!-- Design Philosophy -->
+    <h3 class="subheading">Design Philosophy</h3>
+    <p>
+      My design philosophy didn’t begin with Quillty—Quillty simply became the canvas where it finally clicked.
+      I’ve learned that many visual designers start by polishing surfaces without fully understanding what truly
+      matters first, or why. My mind works differently. When I design, the entire system starts running through my
+      head at a rapid pace, zeroing in on the most frustrating or structurally important problems. Those become
+      my starting point.
+    </p>
+
+    <p>
+      The principle is simple: <strong>fix the hardest problems first.</strong> If you solve those early, the rest
+      of the project falls into place—from user flows, to sitemaps, to the prototypes themselves. I also tend to
+      “know” what the product wants to become even before the sketching stage. Instead of trying to figure out
+      what’s needed from scratch, I build progressively toward a vision that already exists mentally.
+    </p>
+
+    <p>
+      I take real-world tools, strip them down to their most basic function, and rebuild them in a way that is
+      more cohesive, more organized, and more structurally sound for the user. Quillty isn’t just a product—it’s
+      an embodiment of that philosophy.
+    </p>
+
+    <!-- UI Structure -->
+    <h3 class="subheading">UI Structure</h3>
+    <p>
+      Quillty’s interface is influenced by four major tools: Microsoft Word, Google Drive, Adobe Reader, and Framer.
+      The last two may seem like unexpected choices, but they revealed insights traditional writing tools have ignored
+      for years.
+    </p>
+
+    <p>
+      Microsoft Word is powerful, but overwhelmingly cluttered. It presents so many controls up front that many users
+      need tutorials or a long adjustment period before they can even begin writing. Quillty takes the opposite
+      approach: the interface is intentionally calm, allowing writers to start immediately instead of navigating complexity.
+    </p>
+
+    <p>
+      The structure itself is guided by clarity. The header removes inherited noise and focuses solely on document-level
+      actions and management. No styling tools live there—keeping the mental model clean and predictable.
+    </p>
+
+    <p>
+      The left-hand panel takes light inspiration from Adobe Reader—not its styling, but its practicality for navigating
+      documents in a grounded, familiar way. I wanted something visually appealing that helped users orient themselves
+      inside longer texts without overwhelming them. Its deeper value is explored later in the case study.
+    </p>
+
+    <p>
+      Framer became the surprising influence for the right-hand styling panel. It helped strip away the bloat of traditional
+      word processors and reframe styling as a dedicated, well-organized space. Despite being a design tool, Framer’s clean
+      hierarchy and restraint highlight how much visual noise writing software still carries. Quillty adopts that clarity,
+      offering powerful styling options without clutter.
+    </p>
+
+    <p>
+      Every panel in Quillty is collapsible. Writers need space, silence, and freedom—not menu bars shouting for attention.
+      The interface can disappear entirely, leaving nothing but the document. Panels can be hidden manually or revealed only
+      when the user intentionally moves toward them, supporting uninterrupted writing flow.
+    </p>
+
+    <p>
+      The navigation will eventually support user-defined “quick actions,” enabling people to tailor their workflow instead
+      of being forced into a predetermined one.
+    </p>
+
+    <p>
+      Overall, the entirety of Quillty’s UI is built around reducing cognitive load. The central writing area is sacred. The left panel
+      anchors document structure. The right panel handles styling. Nothing overlaps, nothing competes, and nothing demands
+      attention when it shouldn’t. No one should have to spend 15 minutes learning how to use a writing tool—they should be
+      writing from the moment the page loads.
+    </p>
+  </div>
+</section>
+
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer>
+      <div class="shell">
+        <span>© <span id="year"></span> Jaqweal Holit – Product Designer.</span>
+        <a href="/portfolio/">Back to Homepage</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
