@@ -6,423 +6,19 @@
   <title>Home – Jaqweal Holit</title>
 
   <link rel="icon" type="image/x-icon" href="site_favicon.png">
-  <meta name="description"
-        content="Jaqweal Holit | A clear flowed, thoughtful systems, and calm interface product designer with foundational front-end logic skills." />
+  <meta name="description" content="Jaqweal Holit | 
+  A clear flowed, thoughtful systems, and calming interface product designer 
+  with foundational front-end logic skills." />
 
-  <style>
-    /* -------------------------------------------------
-       ROOT + GLOBAL
-    --------------------------------------------------*/
-    :root {
-      --bg: #050816;
-      --bg-soft: #080b16;
-      --accent: #5cc9ff;
-      --text-main: #f5f6ff;
-      --text-muted: #a4a8c5;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --radius-lg: 18px;
-      --radius-pill: 999px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
-      --max-width: 1040px;
-    }
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, "SF Pro Text", "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #141a3b 0, #02020b 52%, #000 100%);
-      color: var(--text-main);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .shell {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* -------------------------------------------------
-       HEADER + NAV
-    --------------------------------------------------*/
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to bottom,
-        rgba(2, 4, 15, 0.96),
-        rgba(2, 4, 15, 0.7),
-        transparent
-      );
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.9rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: radial-gradient(circle at 20% 0%, #9be7ff, #326dff);
-      color: #050816;
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      box-shadow: 0 0 18px rgba(151, 219, 255, 0.7);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
-
-    .brand-text span:first-child {
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .brand-text span:last-child {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.4rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 0.1rem;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #9be7ff, #5cc9ff);
-      border-radius: 999px;
-      transition: 0.18s ease-out;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    
-    /* -------------------------------------------------
-       MAIN / SECTIONS
-    --------------------------------------------------*/
-    main {
-      flex: 1;
-      padding: 4.5rem 0;
-    }
-
-    section {
-      padding: 3.2rem 0;
-    }
-
-    .section-heading {
-      font-size: 0.84rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .section-intro {
-      max-width: 34rem;
-      color: var(--text-muted);
-      font-size: 0.96rem;
-      margin-bottom: 2.2rem;
-    }
-
-    /* -------------------------------------------------
-       PROJECT CAROUSEL
-    --------------------------------------------------*/
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      display: flex;
-      align-items: center;
-    }
-
-    .carousel-track {
-      display: flex;
-      gap: 2rem;
-      padding: 1rem 0;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-    }
-
-    .carousel-track::-webkit-scrollbar {
-      display: none;
-    }
-
-    .carousel-card {
-      flex: 0 0 40%;
-      min-width: 360px;
-    }
-
-    .carousel-img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 1.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      cursor: pointer;
-    }
-
-    .carousel-clickmsg {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-      text-align: center;
-      opacity: 0.8;
-    }
-
-    .carousel-arrow {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: var(--text-main);
-      padding: 0.6rem 0.9rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .carousel-arrow:hover {
-      background: rgba(255,255,255,0.12);
-    }
-
-    .carousel-arrow.left {
-      margin-right: 1rem;
-    }
-
-    .carousel-arrow.right {
-      margin-left: 1rem;
-    }
-
-    @media (max-width: 640px) {
-      .carousel-card {
-        min-width: 85%;
-      }
-    }
-
-    /* -------------------------------------------------
-       HERO
-    --------------------------------------------------*/
-    .hero {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      max-width: 760px;
-      padding-top: 1rem;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.3rem, 3.4vw, 3.2rem);
-      line-height: 1.12;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(120deg, #9be7ff, #ffffff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-sub {
-      font-size: 0.98rem;
-      color: var(--text-muted);
-      max-width: 36rem;
-      margin-bottom: 2.4rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.4rem;
-    }
-
-    /* -------------------------------------------------
-       BUTTONS
-    --------------------------------------------------*/
-    .btn-primary,
-    .btn-ghost {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.7rem 1.5rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.95rem;
-      cursor: pointer;
-      white-space: nowrap;
-      transition:
-        transform 0.18s ease,
-        box-shadow 0.22s ease,
-        background 0.22s ease,
-        border-color 0.18s ease;
-      font-weight: 500;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #6dd6ff, #b0ecff);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #02111e;
-      box-shadow: 0 12px 30px rgba(92, 201, 255, 0.45);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 45px rgba(92, 201, 255, 0.55);
-    }
-
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: var(--text-main);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.28);
-    }
-
-    /* -------------------------------------------------
-       GRID + CARDS
-    --------------------------------------------------*/
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2.1rem;
-    }
-
-    .card {
-      padding: 1.4rem 1.5rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-soft);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .card h3 {
-      margin-bottom: 0.75rem;
-    }
-
-    .muted {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    ul.clean {
-      list-style: none;
-      display: grid;
-      gap: 0.4rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    ul.clean li::before {
-      content: "•";
-      color: var(--accent);
-      margin-right: 0.4rem;
-    }
-
-    .card p { margin-bottom: 1.1rem; }
-    .card ul.clean { margin-bottom: 1.2rem; }
-
-    /* -------------------------------------------------
-       FOOTER
-    --------------------------------------------------*/
-    footer {
-      padding: 2.6rem 0 3.2rem;
-      margin-top: 3rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .footer-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 1.3rem;
-    }
-
-    .contact-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 520px) {
-      .contact-buttons {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8rem;
-      }
-    }
-
-    /* -------------------------------------------------
-       RESPONSIVE
-    --------------------------------------------------*/
-    @media (max-width: 800px) {
-      .nav-links { display: none; }
-    }
-
-    @media (max-width: 640px) {
-      main { padding-top: 1.8rem; }
-      section { padding: 2rem 0; }
-      .grid-2 { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
   <div class="page">
 
+  
     <!-- ========================= -->
     <!--         NAVBAR            -->
     <!-- ========================= -->
@@ -471,108 +67,152 @@
         </section>
 
 
+<!-- ========================= -->
+<!--   CASE STUDIES & PROJECTS -->
+<!-- ========================= -->
+<section id="work">
 
-        <!-- ========================= -->
-        <!--   CASE STUDIES & PROJECTS -->
-        <!-- ========================= -->
-        <section id="work">
+  <div class="section-heading">Projects & Studies</div>
+  <h2 class="section-title">My Work & Thought Process...</h2>
 
-          <div class="section-heading">Projects & Studies</div>
-          <h2 class="section-title">My Work & Thought Process...</h2>
+  <p class="section-intro" style="margin-bottom: 2.4rem;">
+    A collection of my most important studies and product explorations built around clarity,
+    system-structure, and human-centered flow.
+  </p>
 
-          <p class="section-intro" style="margin-bottom: 2.4rem;">
-            A collection of my most important studies and product explorations built around clarity,
-            system-structure, and human-centered flow.
-          </p>
+  <!-- ====== PROJECTS ROW ====== -->
+  <div class="project-row">
 
+    <!-- MEMORY MACHINE -->
+    <div class="card">
+      <a href="case-studies-and-projects/major-studies/memory-engine/" target="_self">
+        <img
+          src="images/memory_engine_card.png"
+          alt="Memory Machine study thumbnail"
+          class="project-image"
+        />
+      </a>
 
-          <!-- ====== CAROUSEL ====== -->
-          <div class="carousel-container">
+      <a href="case-studies-and-projects/major-studies/memory-engine/" target="_self">
+        <h3>Memory Machine – Cognitive Architecture for AI</h3>
+      </a>
 
-            <!-- Left Arrow -->
-            <button class="carousel-arrow left" aria-label="Scroll left">←</button>
+      <p class="muted">
+        A deep dive into my way of thinking that explores long-term AI memory
+        continuity—combining bio-inspired cognitive and technological design
+        to address fragmentation in modern language models. This study is
+        personal and exploratory.
+      </p>
 
-            <!-- Track -->
-            <div class="carousel-track">
+      <ul class="clean">
+        <li>Ecosystem-like memory nodes</li>
+        <li>Retention logic & decay behaviors</li>
+        <li>Context weighting and arbitration</li>
+        <li>Long-term continuity constraints</li>
+      </ul>
 
+      <span class="wip-tag">Status - Writing in Progress</span>
 
-              <!-- MEMORY MACHINE -->
-              <div class="card carousel-card">
-                <a href="case-studies-and-projects/major-studies/memory-engine/" target="_self">
-                  <img src="images/memory_engine_card.png"
-                       alt="Memory Machine study thumbnail"
-                       class="carousel-img">
-                </a>
+    </div>
 
-                <a href="case-studies-and-projects/major-studies/memory-engine/" target="_self"><h3>Memory Machine - Cognative Architecture for AI</h3></a>
+    <!-- TENNAJAM -->
+    <div class="card">
+      <a href="case-studies-and-projects/projects/personal/tennajam/" target="_self">
+        <img
+          src="images/tennajam_card.png"
+          alt="TennaJam project thumbnail"
+          class="project-image"/>
+      </a>
 
-                <p class="muted">
-                  A deep dive into my way of thinking that explores long-term AI memory continuity - combining bio-inspired cognitive and technological design built to solve the fragmentation problems others and I face with modern language models, and a topic more personal than one would like to admit... Note this is a WIP.
-                </p>
+      <a href="case-studies-and-projects/projects/personal/tennajam/" target="_self">
+        <h3>TennaJam – Game Server & Management Application</h3>
+      </a>
 
-                <ul class="clean">
-                  <li>Ecosystem-like memory nodes</li>
-                  <li>Retention logic & decay behaviors</li>
-                  <li>Context weighting and arbitration</li>
-                  <li>Long-term continuity constraints</li>
-                </ul>
-              </div>
+      <p class="muted">
+        A project close to my heart focused on making game server setup and
+        management more approachable, guided, and forgiving—even for users
+        who don’t speak “DevOps.” This is how dedicated gaming servers should
+        feel in the modern era.
+      </p>
 
+      <ul class="clean">
+        <li>Simplified server creation flows</li>
+        <li>Region & setting clarity</li>
+        <li>Soft-surfaced advanced options</li>
+        <li>Clean management dashboard</li>
+      </ul>
 
-              <!-- TENNAJAM -->
-              <div class="card carousel-card">
-                <a href="case-studies-and-projects/projects/personal/tennajam/" target="_self">
-                  <img src="images/tennajam_card.png"
-                       alt="TennaJam project thumbnail"
-                       class="carousel-img">
-                </a>
+      <span class="wip-tag">Status - Design in Progress</span>
 
-                <a href="case-studies-and-projects/projects/personal/tennajam/" target="_self"><h3>TennaJam - Game Server & Management Application</h3></a>
+    </div>
 
-                <p class="muted">
-                   A project close to my heart that'll help gaming server setup and management feeling more straightforward, guided, and forgiving — even for people who don’t speak “DevOps,” including myself. This application is how dedicated gaming servers should be in the modern era instead of being a "relical" beast from the past.
-                </p>
+    <!-- QUILLTY -->
+    <div class="card">
+      <a href="case-studies-and-projects/projects/personal/quillty/" target="_self">
+        <img
+          src="images/quillty_card.png"
+          alt="Quillty project thumbnail"
+          class="project-image"/>
+      </a>
 
-                <ul class="clean">
-                  <li>Simplified server creation flows</li>
-                  <li>Region & setting clarity</li>
-                  <li>Soft-surfacing advanced options</li>
-                  <li>Clean management dashboard</li>
-                </ul>
-              </div>
+      <a href="case-studies-and-projects/projects/personal/quillty/" target="_self">
+        <h3>Quillty – Writing & Notetaking Application</h3>
+      </a>
 
+      <p class="muted">
+        A writing space designed to reduce cognitive friction through calm
+        structure, thoughtful typography, and clear drafting flows. Built
+        for both everyday and professional writing, with room to grow.
+      </p>
 
-              <!-- QUILLTY -->
-              <div class="card carousel-card">
-                <a href="case-studies-and-projects/projects/personal/quillty/" target="_self">
-                  <img src="images/quillty_card.png"
-                       alt="Quillty project thumbnail"
-                       class="carousel-img">
-                </a>
+      <ul class="clean">
+        <li>Distraction-minimal UI</li>
+        <li>Soft, readable typography</li>
+        <li>Simple drafting workflows</li>
+        <li>Foundational structure for future expansion</li>
+      </ul>
 
-                <a href="case-studies-and-projects/projects/personal/quillty/" target="_self"><h3>Quillty – Writing & Notetaking Application</h3></a>
+      <span class="wip-tag">Status - Design in Progress</span>
+    </div>
 
-                <p class="muted">
-                  A project that means more to those including myself than it looks. A writing space focused on reducing cognitive friction through a calm structure, thoughtful typography, and clear drafting flows and much more? A very interesting application that could one day be what people use for everyday and professional writing.
-                </p>
+  </div> <!-- ✅ END .project-row -->
 
-                <ul class="clean">
-                  <li>Distraction-minimal UI</li>
-                  <li>Soft, readable typography</li>
-                  <li>Simple drafting workflows</li>
-                  <li>Foundational structure for future expansion</li>
-                </ul>
-              </div>
+  <!-- =========================================================
+      INDEX CARDLET – PRODUCT CLARITY WORK
+  ========================================================= -->
+  <section class="index-cardlet">
+    <div class="index-cardlet__content">
+      <h3 class="index-cardlet__title">
+        Homepage Redesign – Renegade Game Studios
+      </h3>
 
-            </div>
+      <p class="index-cardlet__subtitle">
+        Personal Product Audit, Clarity, & Low-Fidelity Restructuring
+      </p>
 
-            <!-- Right Arrow -->
-            <button class="carousel-arrow right" aria-label="Scroll right">→</button>
+      <p class="index-cardlet__description">
+        A focused redesign of Renegade Game Studios’ homepage. Currently it tries
+        to do too much at once, which makes it harder for users to understand what
+        the site is actually for. When users can quickly orient themselves and act
+        with confidence, the experience improves — and they’re far more likely to return.
+        If you want, check their
+        <a style="color: rgb(85, 171, 211)" href="https://renegadegamestudios.com/">website</a>
+        for comparison.
+      </p>
 
-          </div>
-        </section>
+      <span class="wip-tag">Status - Design in Progress</span>
+    </div>
 
+    <div class="index-cardlet__media">
+      <img
+        src="images/rgs_homepage_redesign_sketch.png"
+        alt="Renegade Game Studios homepage redesign sketch"
+        class="index-cardlet__image"
+      />
+    </div>
+  </section>
 
+</section>
 
         <!-- ========================= -->
         <!--           ABOUT           -->
@@ -620,7 +260,6 @@
       </div>
     </main>
 
-
     <!-- ========================= -->
     <!--          FOOTER           -->
     <!-- ========================= -->
@@ -660,7 +299,7 @@
           </a>
 
           <!-- LinkedIn -->
-          <a href="https://linkedin.com/in/YOUR-USERNAME"
+          <a href="https://www.linkedin.com/in/jholit/"
             target="_blank"
             class="btn-ghost"
             style="display: inline-flex; align-items: center; gap: 0.45rem;">
@@ -691,23 +330,14 @@
   <!-- ========================= -->
   <!--           JS              -->
   <!-- ========================= -->
-  <script>
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Carousel Logic
-    const track = document.querySelector(".carousel-track");
-    const btnLeft = document.querySelector(".carousel-arrow.left");
-    const btnRight = document.querySelector(".carousel-arrow.right");
 
-    btnLeft.addEventListener("click", () => {
-      track.scrollBy({ left: -400, behavior: "smooth" });
-    });
-
-    btnRight.addEventListener("click", () => {
-      track.scrollBy({ left: 400, behavior: "smooth" });
-    });
-  </script>
+<script>
+  // --------------------------------------------------
+  // Footer year
+  // --------------------------------------------------
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>

@@ -1,0 +1,307 @@
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-links {
+  display: flex;
+  gap: 1.4rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.nav-links a {
+  position: relative;
+  padding-bottom: 0.1rem;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #9be7ff, #5cc9ff);
+  border-radius: 999px;
+  transition: 0.18s ease-out;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* =========================================================
+   CARDS + LISTS
+========================================================= */
+
+.card {
+  padding: 1.4rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-soft);
+  box-shadow: var(--shadow-soft);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  margin-bottom: 0.75rem;
+}
+
+.card p {
+  margin-bottom: 1.1rem;
+}
+
+ul.clean {
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+ul.clean li::before {
+  content: "•";
+  color: var(--accent);
+  margin-right: 0.4rem;
+}
+
+.card ul.clean {
+  margin-bottom: 1.2rem;
+}
+
+/* =========================================================
+   PROJECT ROW (FINAL, NO CAROUSEL)
+========================================================= */
+
+.project-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.4rem;
+  margin-top: 2.4rem;
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  object-fit: cover;
+}
+
+
+@media (max-width: 1024px) {
+  .project-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .project-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   INDEX CARDLET
+========================================================= */
+
+.index-cardlet {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2.5rem;
+  margin: 4rem 0;
+  padding: 2.5rem;
+  background: var(--bg);
+  border-radius: 12px;
+}
+
+.index-cardlet__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.index-cardlet__subtitle {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  color: var(--text-muted);
+}
+
+.index-cardlet__description {
+  margin: 0;
+  max-width: 65ch;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.index-cardlet__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.index-cardlet__image {
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* =========================================================
+   WIP TAG
+========================================================= */
+
+.wip-tag {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent);
+  border: 1px solid rgba(92, 201, 255, 0.5);
+  background: rgba(92, 201, 255, 0.08);
+  box-shadow: 0 0 22px rgba(92, 201, 255, 0.15);
+  margin-top: 2rem;
+}
+
+/* =========================================================
+   INDEX CARDLET RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  .index-cardlet {
+    grid-template-columns: 1fr;
+  }
+
+  .index-cardlet__image {
+    max-height: 180px;
+  }
+}
+
+/* =========================================================
+   PAGE + SHELL
+========================================================= */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* =========================================================
+   HEADER + NAV
+========================================================= */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(
+    to bottom,
+    rgba(2, 4, 15, 0.96),
+    rgba(2, 4, 15, 0.7),
+    transparent
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 0;
+}
+
+/* =========================================================
+   MAIN + SECTIONS (LAYOUT RHYTHM)
+========================================================= */
+
+main {
+  flex: 1;
+  padding: 4.5rem 0;
+}
+
+section {
+  padding: 3.2rem 0;
+}
+
+/* =========================================================
+   GRID SYSTEM
+========================================================= */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.1rem;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+  padding: 2.6rem 0 3.2rem;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   RESPONSIVE (LAYOUT-LEVEL ONLY)
+========================================================= */
+
+@media (max-width: 800px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    padding-top: 1.8rem;
+  }
+
+  section {
+    padding: 2rem 0;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .contact-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}
+

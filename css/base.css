@@ -1,0 +1,42 @@
+/* =========================================================
+   ROOT + GLOBAL
+========================================================= */
+
+:root {
+  --bg: #050816;
+  --bg-soft: #080b16;
+  --accent: #5cc9ff;
+  --text-main: #f5f6ff;
+  --text-muted: #a4a8c5;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+  --max-width: 1040px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "SF Pro Text", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #141a3b 0, #02020b 52%, #000 100%);
+  color: var(--text-main);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
