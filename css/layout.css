@@ -167,7 +167,7 @@ ul.clean li::before {
   border: 1px solid rgba(92, 201, 255, 0.5);
   background: rgba(92, 201, 255, 0.08);
   box-shadow: 0 0 22px rgba(92, 201, 255, 0.15);
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 /* =========================================================
@@ -255,7 +255,7 @@ section {
 
 footer {
   padding: 2.6rem 0 3.2rem;
-  margin-top: 3rem;
+  margin-top: 4rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   font-size: 0.8rem;
   color: var(--text-muted);
@@ -264,7 +264,7 @@ footer {
 .footer-contact {
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
+  gap: 2.7rem;
 }
 
 .contact-buttons {

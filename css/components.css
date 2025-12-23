@@ -141,3 +141,84 @@ section {
   color: var(--text-muted);
   margin-bottom: 2.2rem;
 }
+
+/* =========================================
+   Zoomable Image
+========================================= */
+
+.is-zoomable {
+  cursor: zoom-in;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.is-zoomable.is-zoomed {
+  transform: scale(2.7);
+  cursor: zoom-out;
+  z-index: 20;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.800);
+}
+
+/* =========================================
+   Zoom Backdrop
+========================================= */
+
+.zoom-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.800);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 15;
+}
+
+.zoom-backdrop.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================
+    PROJECT CARDS
+=========================================== */
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card .wip-tag {
+  margin-top: auto;
+}
+
+
+/* ==========================================
+    MEDIA QUERIES
+=========================================== */
+
+@media (max-width: 640px) {
+  .project-card {
+    padding: 1.2rem;
+  }
+
+  .project-card > * + * {
+    margin-top: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-card .project-image {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-card .project-image {
+    aspect-ratio: auto;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
