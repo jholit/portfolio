@@ -214,9 +214,16 @@ ul.clean li::before {
 
 .home header {
   position: relative;
-  backdrop-filter: none;
-  background: #0a0e25;
-
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 4, 15, 0.96),
+        rgba(2, 4, 15, 0.7),
+        transparent
+      );
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.03);
 }
 
 /* =========================================================
