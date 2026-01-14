@@ -167,7 +167,7 @@ ul.clean li::before {
   border: 1px solid rgba(92, 201, 255, 0.5);
   background: rgba(92, 201, 255, 0.08);
   box-shadow: 0 0 22px rgba(92, 201, 255, 0.15);
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 /* =========================================================

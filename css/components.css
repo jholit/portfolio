@@ -202,9 +202,28 @@ section {
 }
 
 .project-card .wip-tag {
-  margin-top: auto;
+  display: inline-block;
+  margin-top: 0.35rem;
+  margin-bottom: 1.1rem;
 }
 
+/* Product Design Tag */
+
+.wip-product {
+  color: var(--accent);
+  border: 1px solid rgba(92, 201, 255, 0.5);
+  background: rgba(92, 201, 255, 0.08);
+  box-shadow: 0 0 22px rgba(92, 201, 255, 0.15);
+}
+
+/* Case Study & UX Research Tag */
+
+.wip-articles {
+  color: rgba(245, 246, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(41, 38, 38, 0.06);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
+}
 
 /* ==========================================
     MEDIA QUERIES
