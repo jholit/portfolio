@@ -94,6 +94,28 @@ section {
   margin-bottom: 1.25rem;
 }
 
+/* =========================================
+   Article Figures (TennaJam)
+========================================= */
+
+.article-figure {
+  margin: 2.2rem auto;
+  max-width: 680px; /* keeps images secondary to text */
+}
+
+.article-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+
+  border-radius: 10px;
+
+  /* soft visual containment */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+
 /* ------------------------------------------------------------
    Typography
 ------------------------------------------------------------ */
@@ -163,4 +185,12 @@ footer .shell {
 footer a {
   color: #5cc9ff;
   text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+  .article-figure {
+    max-width: 100%;
+    margin: 1.6rem 0;
+  }
 }
