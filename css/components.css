@@ -196,10 +196,18 @@ section {
     PROJECT CARDS
 =========================================== */
 
-.project-card {
-  display: flex;
-  flex-direction: column;
+.project-card{ width: 100%; max-width: none; }
+
+.project-card:hover {
+  transform: translateY(-4px);
 }
+
+
+/* ================================= */
+/* PROJECT IMAGE SIZE INCREASE */
+/* ================================= */
+
+.project-image{ width: 100%; display: block; }
 
 .project-card .wip-tag {
   display: inline-block;
@@ -229,82 +237,12 @@ section {
     MEDIA QUERIES
 =========================================== */
 
-@media (max-width: 1024px) and (min-width: 641px) {
-  .is-zoomable.is-zoomed {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.0);
-    max-width: 80vw;
-    max-height: 80vh;
-  }
+.project-row{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:2rem; }
+
+@media (max-width: 1100px){
+  .project-row{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-.is-zoomable {
-  cursor: zoom-in;
-  position: relative;
-  z-index: 1;
-
-  transform: scale(1);
-
-  transition:
-    transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.2s ease;
-
-  will-change: transform;
-  touch-action: manipulation;
+@media (max-width: 640px){
+  .project-row{ grid-template-columns: 1fr; }
 }
-
-
-@media (max-width: 640px) {
-  .is-zoomable.is-zoomed {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
-    max-width: 90vw;
-    max-height: 85vh;
-    object-fit: contain;
-  }
-}
-
-/* =========================================
-   iPad Air — Landscape Zoom Behavior
-========================================= */
-
-@media 
-  (min-width: 820px) 
-  and (max-width: 1180px) 
-  and (orientation: landscape) {
-
-  .is-zoomable.is-zoomed {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    max-width: 75vw;
-    max-height: 80vh;
-    object-fit: contain;
-  }
-}
-
-/* =========================================
-   iPad Pro — Landscape Zoom Behavior
-========================================= */
-
-@media 
-  (min-width: 1024px) 
-  and (max-width: 1366px) 
-  and (orientation: landscape) {
-
-  .is-zoomable.is-zoomed {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    max-width: 70vw;
-    max-height: 80vh;
-    object-fit: contain;
-  }
-}
-

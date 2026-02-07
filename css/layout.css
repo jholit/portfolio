@@ -75,11 +75,13 @@ ul.clean li::before {
    PROJECT ROW (FINAL, NO CAROUSEL)
 ========================================================= */
 
-.project-row {
+.project-row{
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2.4rem;
-  margin-top: 2.4rem;
+  gap: 2rem;
+
+  /* This prevents overflow/cutoff while still being stable */
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  align-items: start;
 }
 
 .project-image {
@@ -194,11 +196,9 @@ ul.clean li::before {
   flex-direction: column;
 }
 
-.shell {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
+.shell{
+  width: min(1200px, 100% - 3rem);
+  margin-inline: auto;
 }
 
 /* =========================================================
