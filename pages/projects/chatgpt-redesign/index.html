@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ChatGPT Redesign | Jaqweal Holit</title>
+  <meta
+    name="description"
+    content="TBA"
+  />
+
+  <!-- Assets -->
+  <link rel="icon" type="image/x-icon" href="../../../site_favicon.png" />
+  <!-- Reuse existing article styling until you swap in a dedicated stylesheet -->
+  <link rel="stylesheet" href="../../../css/pages/tennajam.css" />
+</head>
+
+<body id="chatgpt-redesign">
+  <div class="page">
+
+    <!-- ========================= -->
+    <!--           MAIN            -->
+    <!-- ========================= -->
+     
+    <main>
+      <div class="shell">
+        <article class="article">
+
+          <!-- ========================= -->
+          <!--           HEADING         -->
+          <!-- ========================= -->
+
+          <header class="article-header">
+            <div class="article-kicker">Product Design</div>
+
+            <h1 class="article-title">
+              ChatGPT — Redesigning Interface Clarity, Conversation, and Navigation Roles
+            </h1>
+
+            <p class="article-subtitle">
+              A structural redesign that separates conversation and navigation to reduce cognitive friction and create a calmer, more focused communication experience.
+            </p>
+          </header>
+
+          <figure class="article-figure">
+              <img
+                src="../../../images/chatgpt_project.png"
+                alt="Bookmark side panel variants: Original, Variant 1, Variant 1.2, Variant 1.3"
+              />
+          </figure>
+
+          <!-- ========================= -->
+          <!--       01 — PROBLEM        -->
+          <!-- ========================= -->
+
+          <section id="context">
+            <div class="section-heading">01 — Problem</div>
+
+            <p>
+              ChatGPT's interface mixed conversation, navigation, and system controls into the same visual functional space.
+            </p>
+
+            <p>
+              The main conversation area - the products core feature - was frequently interrupted by navigation elements, projects folders, and structural controls. 
+              These elements behaved more like a file system than a communication interface.
+            </p>
+
+            <p>
+              As a result, users had to divide their attention between talking and managing the system. Simple actions like switching conversations or locating previous 
+              chats required unnecessary effort and broke conversation flow. 
+            </p>
+
+            <p>
+              The interface was structurally logical from a system standpoint, but it did not align with how users naturally think about conversations.
+            </p>
+          </section>
+
+          <!-- ========================= -->
+          <!--       02 — WHY            -->
+          <!-- ========================= -->
+
+          <section id="goals">
+            <div class="section-heading">02 — Why It Mattered</div>
+
+            <p>
+              ChatGPT is fundamentally a conversation-driven product. The conversation area is the primary workspace.
+            </p>
+
+            <p>
+              When users must think about where conversations are stored, organized, or accessed, the interface introduced cognitive overhead that distracts from the its main task: communicating.
+            </p>
+            <p>
+              This creates three usability problems:
+            </p>
+
+            <ul class="clean">
+              <li>Reduced focus due to competing interface elements</li>
+              <li>Slower task flow when switching or managing conversations</li>
+              <li>Increased cognitive load from system-oriented structure</li>
+            </ul>
+
+            <p>
+              Over time, this makes the product feel more complex and less intuitive, even when functionality is technically correct. 
+            </p>
+
+            <p>
+              For a tool designed to assist thinking, any friction in conversation management directly undermines its effectiveness.
+            </p>
+          </section>
+
+          <!-- ========================= -->
+          <!--      03 — DECISION       -->
+          <!-- ========================= -->
+
+          <section id="variants">
+            <div class="section-heading">03 — Decision</div>
+
+            <p>
+              I organized the interfaced based on human mental models rather than system structure. 
+            </p>
+
+            <p>
+              The main conversation area was preserved as a dedicated, uninterrupted space exclusively preserved for communication.
+            </p>
+
+            <p>
+              All navigation, conversation management, and organization controls were consolidated into the left-panel. This established a single, consistent location for all navigation actions.
+            </p>
+
+            <p>
+              This separation created clear functional boundaries:
+            </p>
+
+            <ul class="clean">
+              <li>Left panel: navigation and conversation management</li>
+              <li>Center panel: conversation only</li>
+            </ul>
+          </section>
+
+          <p>This decision reinforced spatial consistency and reduced the need for users to shift content while interacting with the product.</p>
+
+          <!-- ============================= -->
+          <!--   04 — REASONS FOR APPROACH   -->
+          <!-- ============================= -->
+
+          <section id="decisions">
+            <div class="section-heading">04 — Why This Approach Worked</div>
+
+            <p>
+              This structure aligns with established user expectations across modern applications, where navigation exists independently from the primary workspace.
+            </p>
+
+            <p>
+              By assigning each area a single responsibility, the interface becomes:
+            </p>
+
+            <ul class="clean">
+              <li>Easier to learn</li>
+              <li>Easier to predict</li>
+              <li>Easier to use</li>
+            </ul>
+
+            <p>
+              Users no longer need to interpret or manage system structure while conversing.
+            </p>
+
+            <p>
+              The interface supports the users goal instead of exposing the systems internal organization.
+            </p>
+          </section>
+
+          <!-- ========================= -->
+          <!--      05 — OUTCOME         -->
+          <!-- ========================= -->
+
+          <section id="outcome">
+            <div class="section-heading">05 — Outcome</div>
+
+            <p>
+              The redesigned layout improved usability by reducing cognitive friction and clarifying interface roles.
+            </p>
+
+            <p>
+              Users can now:
+            </p>
+
+            <ul class="clean">
+              <li>Switch conversations quickly without disrupting their workflow</li>
+              <li>Maintain focus on the active conversation</li>
+              <li>Understand where navigation and controls are located without searching</li>
+            </ul>
+
+            <p>
+              The interface feels calmer, more intentional, and easier to operate because each section serves a clear and consistent purpose.
+            </p>
+
+            <p>
+              This change improves usability immediate while also providing scalable foundation for future features.
+            </p>
+          </section>
+
+          <!-- ========================= -->
+          <!--      DESIGN PRINCIPLE    -->
+          <!-- ========================= -->
+          <section id="next">
+            <div class="section-heading">Insight</div>
+
+            <p>
+              <i><b>"Design the interface around how users thing, not how systems store information."</b></i>
+            </p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <!-- ========================= -->
+    <!--          FOOTER           -->
+    <!-- ========================= -->
+    <footer>
+      <div class="shell">
+        <span>
+          © <span id="year"></span> Jaqweal Holit — Product Designer
+        </span>
+        <a href="/portfolio/">Back to Homepage</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ========================= -->
+  <!--           JS              -->
+  <!-- ========================= -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
