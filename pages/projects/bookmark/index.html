@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Bookmark Side Panel | Jaqweal Holit</title>
+  <meta
+    name="description"
+    content="A high-fidelity UI iteration refining a bookmark side panel through clearer hierarchy, reduced visual noise, and improved scan speed."
+  />
+
+  <!-- Assets -->
+  <link rel="stylesheet" href="../../../css/css_pages/projects.css" />
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- ================= MAIN ================= -->
+    <main>
+      <div class="shell">
+        <article class="article">
+
+          <!-- INTRO -->
+          <header class="article-header">
+            <p class="article-kicker">Product Design</p>
+
+            <h1 class="article-title">
+              Bookmark Side Panel — Improving Structure, Hierarchy, and Scan Speed
+            </h1>
+
+            <p class="article-subtitle">
+              A focused high-fidelity iteration exploring how a bookmark panel can feel
+              calmer and easier to manage through clearer grouping, softer visual emphasis,
+              and stronger “at-a-glance” recognition — without changing the feature set.
+            </p>
+          </header>
+
+          <figure class="article-figure">
+            <img
+              src="../../../images/bookmark/main.png"
+              alt="Bookmark side panel showing hierarchy refinements and variant evolution"
+              loading="lazy"
+            />
+          </figure>
+
+          <!-- 01 — CONTEXT -->
+          <section id="context">
+            <h2 class="section-heading">01 — Context</h2>
+
+            <p>
+              Bookmark panels are “small UI,” but they get used constantly. Small frictions
+              compound quickly: scanning slows down, lists feel noisy, and organization becomes
+              something users avoid instead of rely on.
+            </p>
+
+            <p>This mini-project focuses on a single question:</p>
+
+            <p>
+              <strong>
+                How do we preserve familiarity while improving structure, scanning speed,
+                and long-session comfort?
+              </strong>
+            </p>
+          </section>
+
+          <!-- 02 — GOALS -->
+          <section id="goals">
+            <h2 class="section-heading">02 — Goals</h2>
+
+            <ul class="clean">
+              <li>Make categories instantly recognizable</li>
+              <li>Reduce visual noise without losing clarity</li>
+              <li>Preserve user mental maps (no “where did it go?”)</li>
+              <li>Improve scan comfort with softer emphasis</li>
+              <li>Support future sub-organization (folders) cleanly</li>
+            </ul>
+          </section>
+
+          <!-- 03 — VARIANTS -->
+          <section id="variants">
+            <h2 class="section-heading">03 — Variants</h2>
+
+            <p>
+              The panel evolved through quick, high-fidelity variants to test the balance
+              between structure and visual simplicity.
+            </p>
+
+            <h3>Key changes across variants</h3>
+
+            <ul class="clean">
+              <li><strong>Original:</strong> folder icons everywhere; clear but visually heavier to scan</li>
+              <li><strong>Variant 1:</strong> removed category folder icons; cleaner structure, more modern</li>
+              <li><strong>Variant 1.2:</strong> differentiated bookmarked items vs categories for faster recognition</li>
+              <li><strong>Variant 1.3:</strong> restored category folders, subtler bookmark icons, and subfolders (Core/Favorites/Most Visited)</li>
+            </ul>
+          </section>
+
+          <!-- 04 — DECISIONS -->
+          <section id="decisions">
+            <h2 class="section-heading">04 — Decisions</h2>
+
+            <ul class="clean">
+              <li><strong>Hierarchy:</strong> categories remain primary, links remain secondary</li>
+              <li><strong>Recognition:</strong> icons reinforce “saved link” without dominating the list</li>
+              <li><strong>Comfort:</strong> reduced harsh contrast to lower eye fatigue during repeated use</li>
+              <li><strong>Scalability:</strong> folders enable finer organization later without redesigning the panel</li>
+            </ul>
+          </section>
+
+          <!-- 05 — OUTCOME -->
+          <section id="outcome">
+            <h2 class="section-heading">05 — Outcome</h2>
+
+            <p>
+              The final structure preserves familiarity while improving scan speed and readability.
+              Users can quickly locate a category, then a link, without the panel feeling visually overwhelming.
+            </p>
+          </section>
+
+          <!-- 06 — NEXT -->
+          <section id="next">
+            <h2 class="section-heading">06 — Next</h2>
+
+            <ul class="clean">
+              <li>Add an “active / recent” indicator without reordering the user’s structure</li>
+              <li>Optional: collapse/expand per category when lists grow long</li>
+              <li>Optional: quick actions on hover (open in new tab, edit, remove)</li>
+            </ul>
+
+            <p class="muted">
+              Note: This is a UI/UX structure exploration. Engineering implementation and storage behavior are out of scope.
+            </p>
+          </section>
+
+        </article>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="shell">
+        <span>
+          © <span id="year"></span> Jaqweal Holit — UX Systems Designer
+        </span>
+        <a href="/portfolio/">Back to Homepage</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>

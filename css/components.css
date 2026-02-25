@@ -5,6 +5,7 @@
 .brand {
   display: flex;
   align-items: center;
+  margin-top: 1.5rem;
   gap: 0.8rem;
 }
 
@@ -12,12 +13,10 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: none; /* logo already carries the visual weight */
+  background: none;
 }
 
 .brand-mark img {
@@ -34,14 +33,46 @@
 }
 
 .brand-text span:first-child {
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 .brand-text span:last-child {
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-links {
+  display: flex;
+  gap: 1.4rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.nav-links a {
+  position: relative;
+  padding-bottom: 0.1rem;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #9be7ff, #5cc9ff);
+  border-radius: 999px;
+  transition: 0.18s ease-out;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 /* =========================================================
@@ -84,6 +115,25 @@
 }
 
 /* =========================================================
+   SECTION UTILITIES
+========================================================= */
+
+.section-heading {
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.section-intro {
+  max-width: 34rem;
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  margin-bottom: 2.2rem;
+}
+
+/* =========================================================
    BUTTONS
 ========================================================= */
 
@@ -99,8 +149,11 @@
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.22s ease,
-    background 0.22s ease, border-color 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease,
+    border-color 0.18s ease;
 }
 
 .btn-primary {
@@ -127,95 +180,86 @@
   border-color: rgba(255, 255, 255, 0.28);
 }
 
-section {
-  padding: 3.2rem 0;
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+  padding: 1.4rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-soft);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
 }
 
-.section-heading {
-  font-size: 0.84rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--text-muted);
-  margin-bottom: 0.6rem;
+.card h3 {
+  margin-bottom: 0.75rem;
 }
 
-.section-intro {
-  max-width: 34rem;
-  font-size: 0.96rem;
-  color: var(--text-muted);
-  margin-bottom: 2.2rem;
+.card p {
+  margin-bottom: 1.1rem;
 }
 
-/* =========================================
-   Zoomable Image
-========================================= */
-
-.is-zoomable {
-  cursor: zoom-in;
-  position: relative;
-  z-index: 1;
-
-  transform: scale(1);
-
-  transition:
-    transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.2s ease;
-
-  will-change: transform;
-  touch-action: manipulation;
+.project-card {
+  width: 100%;
+  max-width: none;
 }
-
-.is-zoomable.is-zoomed {
-  cursor: zoom-out;
-  z-index: 20;
-  transform: scale(2.7);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-}
-
-
-/* =========================================
-   Zoom Backdrop
-========================================= */
-
-.zoom-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.800);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-  z-index: 15;
-}
-
-.zoom-backdrop.is-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* ==========================================
-    PROJECT CARDS
-=========================================== */
-
-.project-card{ width: 100%; max-width: none; }
 
 .project-card:hover {
   transform: translateY(-4px);
 }
 
+.project-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  object-fit: cover;
+}
 
-/* ================================= */
-/* PROJECT IMAGE SIZE INCREASE */
-/* ================================= */
+/* =========================================================
+   LIST UTILITY
+========================================================= */
 
-.project-image{ width: 100%; display: block; }
+ul.clean {
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+ul.clean li::before {
+  content: "•";
+  color: var(--accent);
+  margin-right: 0.4rem;
+}
+
+.card ul.clean {
+  margin-bottom: 1.2rem;
+}
+
+/* =========================================================
+   TAGS
+========================================================= */
+
+.wip-tag {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+}
 
 .project-card .wip-tag {
-  display: inline-block;
   margin-top: 0.35rem;
   margin-bottom: 1.1rem;
 }
-
-/* Product Design Tag */
 
 .wip-product {
   color: var(--accent);
@@ -224,25 +268,9 @@ section {
   box-shadow: 0 0 22px rgba(92, 201, 255, 0.15);
 }
 
-/* Case Study & UX Research Tag */
-
 .wip-articles {
   color: rgba(245, 246, 255, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.35);
   background: rgba(41, 38, 38, 0.06);
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
-}
-
-/* ==========================================
-    MEDIA QUERIES
-=========================================== */
-
-.project-row{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:2rem; }
-
-@media (max-width: 1100px){
-  .project-row{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 640px){
-  .project-row{ grid-template-columns: 1fr; }
 }

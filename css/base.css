@@ -1,5 +1,5 @@
 /* =========================================================
-   ROOT + GLOBAL
+   1. DESIGN TOKENS
 ========================================================= */
 
 :root {
@@ -9,11 +9,19 @@
   --text-main: #f5f6ff;
   --text-muted: #a4a8c5;
   --border-subtle: rgba(255, 255, 255, 0.08);
+
   --radius-lg: 18px;
   --radius-pill: 999px;
+
   --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+
   --max-width: 1040px;
 }
+
+
+/* =========================================================
+   2. RESET
+========================================================= */
 
 *,
 *::before,
@@ -22,6 +30,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+/* =========================================================
+   3. GLOBAL ELEMENT DEFAULTS
+========================================================= */
 
 body {
   font-family: system-ui, -apple-system, "SF Pro Text", "Segoe UI", sans-serif;
@@ -35,6 +48,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+
+/* =========================================================
+   4. GLOBAL UTILITIES
+========================================================= */
 
 .muted {
   color: var(--text-muted);

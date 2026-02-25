@@ -4,11 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>404 | Page Not Found</title>
-  <link rel="icon" type="image/x-icon" href="site_favicon.png">
+  <link rel="icon" type="image/x-icon" href="site_favicon.png" />
 
   <style>
     :root {
-      --bg: #050816;
       --bg-soft: #080b16;
       --accent: #5cc9ff;
       --text-main: #f5f6ff;
@@ -16,14 +15,17 @@
       --radius-lg: 18px;
       --radius-pill: 999px;
       --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
-      --max-width: 1040px;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: system-ui, -apple-system, "SF Pro Text", "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #141a3b 0, #02020b 52%, #000 100%);
+      background: radial-gradient(circle at top, #141a3b 0%, #02020b 52%, #000 100%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
@@ -38,7 +40,7 @@
       max-width: 480px;
       padding: 2rem 2.4rem;
       background: var(--bg-soft);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-soft);
     }
@@ -48,7 +50,7 @@
       font-weight: 700;
       letter-spacing: 0.06em;
       margin-bottom: 0.6rem;
-      background: linear-gradient(135deg, #5cc9ff, #9be7ff);
+      background: linear-gradient(135deg, var(--accent), #9be7ff);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -56,7 +58,6 @@
     .title {
       font-size: 1.3rem;
       margin-bottom: 1.5rem;
-      color: var(--text-main);
     }
 
     .desc {
@@ -66,42 +67,41 @@
       line-height: 1.6;
     }
 
-    a.btn {
+    .btn {
       display: inline-flex;
       justify-content: center;
       align-items: center;
       padding: 0.65rem 1.5rem;
       border-radius: var(--radius-pill);
-      background: linear-gradient(135deg, #5cc9ff, #9be7ff);
+      background: linear-gradient(135deg, var(--accent), #9be7ff);
       color: #02111e;
       font-size: 0.9rem;
       font-weight: 500;
       text-decoration: none;
       box-shadow: 0 10px 28px rgba(92, 201, 255, 0.33);
-      transition: 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    a.btn:hover {
+    .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 14px 40px rgba(92, 201, 255, 0.45);
     }
-
   </style>
 </head>
+
 <body>
+  <main class="wrap" role="main">
+    <h1 class="code">404</h1>
+    <p class="title">Page Not Available — Yet!</p>
 
-  <div class="wrap">
-    <div class="code">404</div>
-    <div class="title">Page Not Available - Yet!</div>
     <p class="desc">
-      The page you're looking for doesn't exist — or it's currently being created as we speak. Check back later for any updates.
-      
-      <br><br>
-      
-      Let’s take you back home safely...
+      The page you're looking for doesn't exist or is currently being created.
+      Check back later for updates.
+      <br /><br />
+      Let’s take you back home safely.
     </p>
-    <a href="/portfolio/" class="btn">Return Home</a>
-  </div>
 
+    <a href="/portfolio/" class="btn">Return Home</a>
+  </main>
 </body>
 </html>
