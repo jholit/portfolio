@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Case Study: Chat Navigation Obstruction (Tablet UI) | Jaqweal Holit</title>
+  <meta
+    name="description"
+    content="A product design case study examining how a floating primary action obstructs chat navigation on tablet UI, creating friction in a high-frequency interaction zone."
+  />
+
+  <link rel="stylesheet" href="../../../css/css_pages/projects.css" />
+</head>
+
+<body>
+  <div class="page">
+    <main>
+      <div class="shell">
+        <article class="article" aria-labelledby="case-study-title">
+          <header class="article-header">
+            <p class="article-kicker">Product Design Case Study</p>
+
+            <h1 id="case-study-title" class="article-title">
+              Chat Navigation Obstruction (Tablet UI)
+            </h1>
+
+            <p class="article-subtitle">
+              A structural UI issue where a floating primary action interferes with
+              navigation, reducing clarity, increasing friction, and weakening usability
+              on tablet.
+            </p>
+          </header>
+
+          <figure class="article-figure">
+            <img
+              src="../../../images/casestudy/main.png"
+              alt="Tablet chat interface showing a floating create button overlapping the chat navigation list"
+              loading="lazy"
+            />
+            <figcaption>
+              Floating primary action overlapping a high-frequency navigation area.
+            </figcaption>
+          </figure>
+
+          <section id="context" aria-labelledby="context-heading">
+            <h2 id="context-heading" class="section-heading">Context</h2>
+            <p>
+              While using ChatGPT on a tablet device, I observed a navigation issue in
+              which a primary action element interferes with core user functionality.
+            </p>
+          </section>
+
+          <section id="problem" aria-labelledby="problem-heading">
+            <h2 id="problem-heading" class="section-heading">Problem</h2>
+            <p>
+              The <strong>Create New Chat</strong> floating button is positioned on top
+              of the existing chat list, causing:
+            </p>
+
+            <ul class="clean">
+              <li>Obstruction of visible chat items</li>
+              <li>Reduced accessibility to navigation content</li>
+              <li>Increased chance of misclicks</li>
+              <li>Disruption to scanning and selection flow</li>
+            </ul>
+
+            <p>
+              This creates friction in a <strong>high-frequency interaction zone</strong>.
+            </p>
+          </section>
+
+          <section id="why-it-matters" aria-labelledby="why-it-matters-heading">
+            <h2 id="why-it-matters-heading" class="section-heading">Why This Matters</h2>
+            <p>
+              This is not purely a visual issue. It is a
+              <strong>structural UI problem affecting UX and system interaction</strong>.
+            </p>
+
+            <ul class="clean">
+              <li>Chat list = <strong>primary navigation</strong></li>
+              <li>Create button = <strong>primary action</strong></li>
+            </ul>
+
+            <p>When both occupy the same space, UI hierarchy breaks and creates cognitive conflict.</p>
+          </section>
+
+          <section id="impact" aria-labelledby="impact-heading">
+            <h2 id="impact-heading" class="section-heading">Impact on User Experience</h2>
+            <ul class="clean">
+              <li>Users must visually work around interface elements</li>
+              <li>Navigation becomes less efficient</li>
+              <li>Interaction errors become more likely</li>
+              <li>System behavior feels less clear and less reliable</li>
+            </ul>
+
+            <p>System logic may still function correctly, but usability degrades when UI structure fails.</p>
+          </section>
+
+          <section id="root-cause" aria-labelledby="root-cause-heading">
+            <h2 id="root-cause-heading" class="section-heading">Root Cause</h2>
+            <ul class="clean">
+              <li>Mobile-first floating action pattern applied to tablet</li>
+              <li>Insufficient layout adaptation for larger screens</li>
+              <li>Missing separation between navigation and action layers</li>
+            </ul>
+          </section>
+
+          <section id="solution-analysis" aria-labelledby="solution-analysis-heading">
+            <h2 id="solution-analysis-heading" class="section-heading">Solution Analysis</h2>
+
+            <figure class="article-figure">
+              <img
+                src="../../../images/casestudy/solutions.png"
+                alt="Tablet chat interface showing solution directions for resolving the obstructing create chat button"
+                loading="lazy"
+              />
+              <figcaption>
+                Solutions explored for addressing the primary navigation issue.
+              </figcaption>
+            </figure>
+
+            <section id="solution-analysis" aria-labelledby="solution-analysis-heading">
+              <h2 id="solution-analysis-heading" class="section-heading">Solution Analysis</h2>
+
+              <h3>No-Change Option (Solution 1)</h3>
+              <p><strong>Relies on unstable user behavior.</strong></p>
+              <p>
+                Leaving the design unchanged avoids functional disruption, but assumes users won’t create many chats with long titles.
+                Over time, this becomes unreliable as usage increases.
+              </p>
+
+              <h3>Bottom Placement (Solution 2)</h3>
+              <p><strong>Removes obstruction, adds friction.</strong></p>
+              <p>
+                Moving the action to the bottom resolves overlap, but forces users to scroll for a high-frequency action.
+                The tradeoff introduces more friction than it removes.
+              </p>
+
+              <h3>Dedicated Placement (Solution 3)</h3>
+              <p><strong>Resolves structure and improves access.</strong></p>
+              <p>
+                Positioning the button outside the chat list—between quick actions and the conversation area—keeps it always accessible
+                without interfering with navigation.
+              </p>
+              <p>
+                This aligns the action with the panel hierarchy, placing it where its role makes logical sense.
+              </p>
+
+              <h3>Final Refinement</h3>
+              <p><strong>Removes unnecessary visual signaling.</strong></p>
+              <p>
+                The green color implies completion or progress, but ChatGPT has no defined end state.
+                Creating a new chat is a default behavior, not an achievement.
+              </p>
+              <p>
+                Normalizing the color reduces visual noise and improves consistency without harming usability.
+              </p>
+              <p>
+                However, this remains a component-level fix. A broader panel redesign would better address deeper structural issues.
+              </p>
+            </section>
+
+          <section id="expected-outcome" aria-labelledby="expected-outcome-heading">
+            <h2 id="expected-outcome-heading" class="section-heading">Expected Outcome</h2>
+            <ul class="clean">
+              <li>Clear navigation visibility</li>
+              <li>Reduced interaction friction</li>
+              <li>Improved user confidence and flow</li>
+              <li>Stronger alignment between UI, UX, and system logic</li>
+            </ul>
+          </section>
+
+          <section id="takeaway" aria-labelledby="takeaway-heading">
+            <h2 id="takeaway-heading" class="section-heading">Key Takeaway</h2>
+
+            <p>UI is the interaction layer between user and system.</p>
+
+            <p>If the UI structure fails:</p>
+
+            <ul class="clean">
+              <li>UX suffers</li>
+              <li>System usability weakens</li>
+            </ul>
+
+            <p>That remains true even when the underlying functionality works correctly.</p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <div class="shell">
+        <p>
+          © <span id="year"></span> Jaqweal Holit — Product Designer
+        </p>
+        <a href="/portfolio/">Back to Homepage</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const yearElement = document.getElementById("year");
+
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>
