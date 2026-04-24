@@ -1,0 +1,84 @@
+/* =========================================================
+   CORE CONTAINER
+========================================================= */
+
+.shell {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 2.5rem;
+  padding: 0 1.5rem;
+}
+
+/* =========================================================
+   GLOBAL SECTION SPACING
+========================================================= */
+
+section {
+  padding: 3.2rem 0;
+}
+
+/* =========================================================
+   GRID LAYOUT HELPERS
+========================================================= */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   PROJECT GRID STRUCTURE
+========================================================= */
+
+.project-row {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .project-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .project-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   FOOTER STRUCTURE
+========================================================= */
+
+footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 2.5rem 0;
+  margin-top: 4rem;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-meta {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
