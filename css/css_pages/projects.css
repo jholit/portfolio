@@ -145,32 +145,107 @@ section {
    7. LISTS
 ============================================================ */
 
-ul.clean {
-  list-style: none;
-  margin: 0 0 1.4rem 0;
-  padding: 0;
-
-  display: grid;
-  gap: 0.6rem;
+.clean {
   max-width: 66ch;
 }
 
-ul.clean li {
+ul.clean,
+ol.clean {
+  margin: 0 0 1.4rem 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+ul.clean {
+  list-style: none;
+}
+
+ul.clean li,
+ol.clean li {
   position: relative;
-  padding-left: 1.2rem;
   line-height: 1.6;
+  color: rgba(245, 246, 255, 0.92);
+}
+
+ul.clean li {
+  padding-left: 1.25rem;
 }
 
 ul.clean li::before {
-  content: "•";
+  content: "";
   position: absolute;
   left: 0;
-  opacity: 0.6;
+  top: 0.72em;
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 999px;
+  background: #5cc9ff;
+  box-shadow: 0 0 18px rgba(92, 201, 255, 0.45);
+}
+
+ol.clean {
+  list-style: none;
+  counter-reset: decision;
+}
+
+ol.clean li {
+  counter-increment: decision;
+  padding: 1rem 1.1rem 1rem 3.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.055),
+    rgba(255, 255, 255, 0.025)
+  );
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
+}
+
+ol.clean li::before {
+  content: counter(decision);
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #060a1d;
+  background: #5cc9ff;
+  box-shadow: 0 0 22px rgba(92, 201, 255, 0.35);
 }
 
 
 /* ============================================================
-   8. FOOTER
+   8. DIVIDERS
+============================================================ */
+
+.section-divider {
+  max-width: 720px;
+  height: 2px;
+  margin: 4rem auto 0;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(92, 201, 255, 0.12),
+    rgba(255, 255, 255, 0.18),
+    rgba(92, 201, 255, 0.12),
+    transparent
+  );
+}
+
+.section-divider + section {
+  margin-top: 4rem;
+}
+
+
+/* ============================================================
+   9. FOOTER
 ============================================================ */
 
 footer {
@@ -194,12 +269,24 @@ footer a {
 
 
 /* ============================================================
-   9. RESPONSIVE
+   10. RESPONSIVE
 ============================================================ */
 
 @media (max-width: 768px) {
   .article-figure {
     max-width: 100%;
     margin: 1.6rem 0;
+  }
+
+  ol.clean li {
+    padding: 0.95rem 1rem 0.95rem 3.1rem;
+  }
+
+  ol.clean li::before {
+    left: 0.9rem;
+  }
+
+  .section-divider {
+    margin-top: 3rem;
   }
 }
