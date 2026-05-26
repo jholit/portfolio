@@ -41,84 +41,103 @@
           </h2>
 
           <p>
-            I redesigned the active desktop workspace of ChatGPT, reducing cognitive load and making core actions easier to find. This new design ensures "user-intent" while separating user spaces from system tools, and gives clearer visual hierarchy especially the primary action of GPT. The result? A cleaner, scalable, and better workspace for all users.
+            I redesigned the active desktop workspace of ChatGPT, to prove a product shouldn’t force users to adapt to its internal structure just to use it comfortably. The result? A cleaner, scalable, and better workspace for all users using AI for personal or professional reasons.
           </p>
 
           <p class="muted">
-            <b>Note:</b> This project, a WIP, currently focuses on the active chat workspace only. Additional areas may be added.
+            <b>Note:</b> This project is currently being worked on. All content is subject to change at any time. 
+          </p>
+
+          <p>
+            <a href="#design-file" class="article-skip-link">Jump to design file</a>
           </p>
         </section>
 
         <hr class="section-divider" />
 
-        <!-- HIRING / DESIGN TEAM -->
-        <section aria-labelledby="hiring-design-title">
-          <div class="section-heading">Deeper Insights for the Design Team</div>
+          <!-- HIRING / DESIGN TEAM -->
+          <section aria-labelledby="hiring-design-title">
+            <div class="section-heading">Deeper Insights for the Design Team</div>
 
-          <h2 id="hiring-design-title" class="section-title">
-            The Design Process
-          </h2>
+            <h2 id="hiring-design-title" class="section-title">
+              The Design Process
+            </h2>
 
-          <h3 class="section-subtitle">Problem</h3>
+            <h3 class="section-subtitle">The Problem</h3>
 
-          <p>
-            ChatGPT is one of the most widely used generative AI chatbots, but its active workspace still presents opportunities for refinement. This isn't visual. I focused on how the interface organizes key actions, how users move through the workspace, and how much cognitive effort is required to understand what to do next.
-          </p>
+            <p>
+              ChatGPT is one of the most widely used generative AI products, but its active workspace still has opportunities for refinement. The current experience can feel more organized around product features than user intent, making it harder for new, casual, and everyday users to understand where to go, what to do, and how to make the workspace their own.
+            </p>
 
-          <p>Below are the main issues ChatGPT usually has in any given interface revision:</p>
+            <p>
+              The redesign focuses on four core issues that impact how users engage with ChatGPT as a product:
+            </p>
 
             <ul class="clean">
-              <li>ChatGPT includes multiple sidebar and workspace actions that create unnecessary redundancy.</li>
-              <li>The navigation feels more feature-led than user intent-led, making the interface feel organized around system capabilities rather than user goals.</li>
-              <li>User-oriented spaces and system tools are not clearly separated from a structural interface perspective.</li>
-              <li>Too many contextual actions compete for attention, which makes the workspace harder to scan and understand quickly.</li>
+              <li>
+                The current workspace feels feature-led instead of user-intent-led, requiring users to understand product-specific terms before certain areas feel meaningful.
+              </li>
+
+              <li>
+                The sidebar has redundancy and weak hierarchy, with limited distinction between personal workspace areas, system tools, and product features.
+              </li>
+
+              <li>
+                Key controls are disconnected from the user’s moment of action. For example, starting a chat or generation is one of ChatGPT’s core actions, so it should feel like a primary action rather than another navigation item.
+              </li>
+
+              <li>
+                Advanced AI options are not explained clearly enough, which can leave users guessing what models, GPTs, or tools are best suited for their task.
+              </li>
             </ul>
 
-          <p>
-            While there are other areas that could be improved (which were but not mentioned), I prioritized these issues due to having the strongest impact on how users understand the workspace, locate key actions, and decide where to go next.
-          </p>
+            <p>
+              While other areas could continue to evolve, these four issues had the strongest impact on workspace clarity, navigation, and user confidence.
+            </p>
 
-          <h3 class="section-subtitle">Solution</h3>
+            <h3 class="section-subtitle">The Solution</h3>
 
-          <p>
-            I treated the sidebar as ChatGPT’s main workspace hub and redesigned it from there to ensure it revolved user intent. Instead of presenting everything the system can do at once, the sidebar is structured around the actions users are most likely trying or using GPT for to take.
-          </p>
+            <p>
+              The solution was to redesign ChatGPT’s active workspace around user intent rather than product feature exposure. I restructured the sidebar, prompt area, and model controls so users can more easily understand where to go, what to do, and how to configure ChatGPT at the moment they are ready to engage.
+            </p>
 
-          <p>These are the decisions made to ensure the design meets user intent:</p>
+            <p>
+              The redesign supports user intent through the following decisions:
+            </p>
 
-          <ol class="clean">
-            <li>
-              I reorganized the sidebar into clearer groups: user spaces and system capabilities. This keeps ChatGPT’s core functions visible and easy to find while preventing the sidebar from feeling overloaded.
-            </li>
+            <ol class="clean">
+              <li>
+                I reorganized the sidebar around user intent, separating personal workspace areas, custom GPTs, and system-level tools so the interface feels easier to scan and navigate.
+              </li>
 
-            <li>
-              I treated additional functions as secondary or tertiary actions, since many users primarily use ChatGPT for conversations, quick answers, and content generation. If more options are added over time, they should be placed behind an ellipsis menu within their relevant sections.
-            </li>
+              <li>
+                I reduced redundant entry points and gave the sidebar a clearer hierarchy, making it function more like a workspace hub instead of a list of competing product features.
+              </li>
 
-            <li>
-              I made starting a new conversation or generation a primary CTA rather than another menu item. Since this is one of ChatGPT’s core actions, it needs a clear visual anchor that users can quickly recognize and return to.
-            </li>
+              <li>
+                I moved model configuration closer to the prompt field so users can choose how ChatGPT should respond at the moment they are preparing to type or generate.
+              </li>
 
-            <li>
-              I simplified labels into everyday language so users can understand each function without relying on technical or trend-driven terminology.
-            </li>
-          </ol>
+              <li>
+                I created a compact design system and interaction-state frames to show the redesigned workspace, reusable components, and key behavior patterns without turning the project into a full end-to-end product rebuild.
+              </li>
+            </ol>
 
-          <h3 class="section-subtitle">Outcome</h3>
+            <h3 class="section-subtitle">The Outcome</h3>
 
-          <p>
-            The redesign makes the active workspace easier to scan, easier to understand, and more predictable to use. By separating user spaces from system capabilities, reducing competing actions, and giving primary actions clearer hierarchy, the interface becomes more usable for everyday, power, and professional users.
-          </p>
+            <p>
+              The redesigned active workspace better supports a user-intent-led experience. By reorganizing the sidebar, reducing redundancy, and moving model controls closer to the prompt field, the interface becomes easier to understand, easier to navigate, and faster to engage with.
+            </p>
 
-          <p>
-            Overall, the redesign creates cleaner information architecture, reduces cognitive load, and provides a more scalable foundation for future product functionality.
-          </p>
+            <p>
+              The final design file supports this direction through a compact design system, before-and-after workspace frames, and key interaction states. Together, these artifacts show how the redesign improves clarity without needing to rebuild ChatGPT as a full end-to-end product.
+            </p>
         </section>
 
         <hr class="section-divider" />
 
         <!-- HAND-OFF / DESIGN FILE -->
-        <section aria-labelledby="handoff-title">
+        <section id="design-file" aria-labelledby="handoff-title">
           <div class="section-heading">The Design File / Hand-off</div>
 
           <h2 id="handoff-title" class="section-title">
@@ -139,17 +158,25 @@
 
           <figure class="article-figure">
             <img
-              src="../../images/chatgpt/gpt_before_interface.jpg"
+              src="../../images/chatgpt/gpt_interface_before.jpg"
               loading="lazy"
-              alt="ChatGPT hifi before interface"
+              alt="ChatGPT hifi interface design before"
             />
           </figure>
 
           <figure class="article-figure">
             <img
-              src="../../images/chatgpt/gpt_after_interface.jpg"
+              src="../../images/chatgpt/gpt_interface_after.jpg"
               loading="lazy"
-              alt="ChatGPT hifi after interface"
+              alt="ChatGPT hifi interface design after"
+            />
+          </figure>
+
+                    <figure class="article-figure">
+            <img
+              src="../../images/chatgpt/gpt_interface_interactive.png"
+              loading="lazy"
+              alt="ChatGPT interaction design"
             />
           </figure>
         </section>
@@ -163,6 +190,25 @@
     <div class="shell">
       <a href="../../">Back to Portfolio</a>
     </div>
+
+      <script>
+        const designFileLink = document.querySelector('a[href="#design-file"]');
+
+        if (designFileLink) {
+          designFileLink.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const designFileSection = document.querySelector("#design-file");
+
+            if (designFileSection) {
+              designFileSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+              });
+            }
+          });
+        }
+      </script>
   </footer>
 </body>
 </html>

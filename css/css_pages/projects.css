@@ -290,3 +290,59 @@ footer a {
     margin-top: 3rem;
   }
 }
+
+/* ============================================================
+   RECRUITER SKIP LINK
+============================================================ */
+
+.article-skip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  margin-top: 0.25rem;
+  padding: 0.65rem 0.9rem;
+
+  border: 1px solid rgba(92, 201, 255, 0.28);
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(92, 201, 255, 0.1),
+    rgba(255, 255, 255, 0.035)
+  );
+
+  color: #5cc9ff;
+  font-size: 0.88rem;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.article-skip-link::after {
+  content: "↓";
+  font-size: 0.85rem;
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.article-skip-link:hover {
+  border-color: rgba(92, 201, 255, 0.48);
+  background: rgba(92, 201, 255, 0.14);
+  color: #f5f6ff;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+}
+
+.article-skip-link:focus-visible {
+  outline: 2px solid rgba(92, 201, 255, 0.65);
+  outline-offset: 4px;
+}

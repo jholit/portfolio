@@ -189,7 +189,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 
-  max-width: 880px; /* prevents full-width stretch */
+  max-width: 880px;
   margin: 2.5rem auto 0;
 
   padding: 1.6rem;
@@ -223,8 +223,12 @@
   margin-bottom: 0.6rem;
 }
 
+.project-content ul.clean {
+  margin-bottom: 0.4rem;
+}
+
 .project-content .btn-primary {
-  margin-top: 0.8rem;
+  margin-top: 1rem;
   align-self: flex-start;
 }
 
