@@ -6,14 +6,20 @@
   --bg: #050816;
   --bg-soft: #080b16;
   --accent: #5cc9ff;
+  --accent-soft: rgba(92, 201, 255, 0.12);
+
   --text-main: #f5f6ff;
   --text-muted: #a4a8c5;
-  --border-subtle: rgba(255, 255, 255, 0.08);
 
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  --radius-md: 12px;
   --radius-lg: 18px;
   --radius-pill: 999px;
 
   --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+  --focus-ring: rgba(92, 201, 255, 0.85);
 
   --max-width: 1040px;
 }
@@ -26,9 +32,25 @@
 *,
 *::before,
 *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, "SF Pro Text", "Segoe UI", sans-serif;
+  color: var(--text-main);
+  line-height: 1.7;
+  background: radial-gradient(circle at top, #141a3b 0, #02020b 52%, #000 100%);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 
@@ -36,17 +58,42 @@
    3. GLOBAL ELEMENT DEFAULTS
 ========================================================= */
 
-body {
-  font-family: system-ui, -apple-system, "SF Pro Text", "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #141a3b 0, #02020b 52%, #000 100%);
-  color: var(--text-main);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
+main {
+  display: block;
+}
+
+img,
+svg,
+picture {
+  display: block;
+  max-width: 100%;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+strong {
+  color: var(--text-main);
+  font-weight: 650;
+}
+
+::selection {
+  color: #02111e;
+  background: var(--accent);
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
 }
 
 
@@ -57,4 +104,43 @@ a {
 .muted {
   color: var(--text-muted);
   font-size: 0.9rem;
+}
+
+.skip-link {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
+  transform: translateY(-150%);
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-pill);
+  color: #02111e;
+  background: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 650;
+  transition: transform 0.18s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   5. MOTION PREFERENCES
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

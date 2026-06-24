@@ -8,6 +8,14 @@
 
   <link rel="icon" type="image/x-icon" href="site_favicon.png" />
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@200;400;700&family=Palanquin+Dark:wght@700&display=swap"
+    rel="stylesheet"
+  />
+
   <meta
     name="description"
     content="Jaqweal Holit | Product Designer focused on user experiences, systems thinking, and reducing complexity in user-facing tools."
@@ -20,41 +28,85 @@
 </head>
 
 <body class="home">
-  <div class="page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- ================= PORTFOLIO V3 ANNOUNCEMENT MODAL ================= -->
+<div
+  class="portfolio-announcement"
+  id="portfolio-announcement"
+  aria-hidden="true"
+  hidden
+>
+  <section
+    class="portfolio-announcement__modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="portfolio-announcement-title"
+    aria-describedby="portfolio-announcement-description"
+  >
+    <button
+      class="portfolio-announcement__close"
+      type="button"
+      aria-label="Close Portfolio 3.0 announcement"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <div class="portfolio-announcement__content">
+      <div class="portfolio-announcement__header">
+        <p class="portfolio-announcement__eyebrow">
+          Portfolio 3.0
+        </p>
+
+        <h2 id="portfolio-announcement-title" class="portfolio-announcement__title">
+          Is in Active Design / Development
+        </h2>
+      </div>
+
+      <div class="portfolio-announcement__body">
+        <p id="portfolio-announcement-description" class="portfolio-announcement__description">
+          A redesigned version of this portfolio is currently underway, with improved case study presentation, interaction design, and visual polish. The current site remains fully available in the meantime.
+        </p>
+
+        <p class="portfolio-announcement__signature">
+          ~JH
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
 
     <!-- ================= NAVBAR ================= -->
-    <header>
+    <header class="site-header">
       <div class="shell">
         <nav class="nav" aria-label="Primary navigation">
-          <a href="/portfolio/" class="brand">
-            <div class="brand-mark">
+          <a href="/portfolio/" class="brand" aria-label="Jaqweal Holit home">
+            <span class="brand-mark">
               <img
                 src="images/website/site_favicon.png"
                 alt="Jaqweal Holit brand mark"
               />
-            </div>
+            </span>
 
-            <div class="brand-text">
+            <span class="brand-text">
               <span>Jaqweal Holit</span>
               <span>Product Designer</span>
-            </div>
+            </span>
           </a>
         </nav>
       </div>
     </header>
 
-
     <!-- ================= MAIN ================= -->
-    <main>
+    <main id="main-content">
       <div class="shell">
-
         <!-- HERO -->
-          <section class="hero" aria-labelledby="hero-title">
-            <h1 id="hero-title">
-              Designing clear, usable product systems
-              <span>for complex workflows and real-world constraints.</span>
-            </h1>
-          </section>
+        <section class="hero site-section" aria-labelledby="hero-title">
+          <h1 id="hero-title">
+            Designing clear, usable product systems
+            <span>for complex workflows and real-world constraints.</span>
+          </h1>
 
           <div class="hero-actions">
             <a
@@ -67,9 +119,12 @@
           </div>
         </section>
 
-
         <!-- FEATURED PROJECT -->
-        <section id="featured-work" aria-labelledby="featured-work-title">
+        <section
+          id="featured-work"
+          class="site-section"
+          aria-labelledby="featured-work-title"
+        >
           <div class="section-heading">Featured Project</div>
 
           <h2 id="featured-work-title" class="section-title">
@@ -81,11 +136,17 @@
           </p>
 
           <div class="project-feature">
-            <a href="pages/chatgpt/">
+            <a
+              href="pages/chatgpt/"
+              class="project-media"
+              aria-label="View ChatGPT — Active Workspace Redesign project"
+            >
               <img
                 src="images/cards/chatgpt_card.jpg"
                 alt="ChatGPT active workspace redesign preview"
                 class="project-image-feature"
+                loading="lazy"
+                decoding="async"
               />
             </a>
 
@@ -103,12 +164,14 @@
           </div>
         </section>
 
-
         <!-- SECONDARY PROJECTS -->
-        <section id="secondary-work" aria-labelledby="secondary-work-title">
+        <section
+          id="secondary-work"
+          class="site-section"
+          aria-labelledby="secondary-work-title"
+        >
           <div class="section-heading">Workflow Project</div>
 
-          <!-- TennaJam -->
           <h2 id="secondary-work-title" class="section-title">
             TennaJam — Game Server Setup Flow
           </h2>
@@ -118,11 +181,17 @@
           </p>
 
           <div class="project-feature">
-            <a href="pages/tennajam/">
+            <a
+              href="pages/tennajam/"
+              class="project-media"
+              aria-label="View TennaJam — Game Server Setup Flow project"
+            >
               <img
                 src="images/cards/tennajam_card.jpg"
                 alt="TennaJam dedicated game server setup flow preview"
                 class="project-image-feature"
+                loading="lazy"
+                decoding="async"
               />
             </a>
 
@@ -140,33 +209,34 @@
           </div>
         </section>
 
-
         <!-- ABOUT -->
-        <section id="about" aria-labelledby="about-title">
+        <section id="about" class="site-section" aria-labelledby="about-title">
           <div class="section-heading">About</div>
 
           <h2 id="about-title" class="section-title">
             Jaqweal Holit
           </h2>
 
-            <p class="section-intro">
-              As a Product Designer with a systems-level approach, I focus on making complex products clear, intuitive, and easy to use from end to end. By aligning user needs, UI structure, and product logic, I reduce friction, simplify workflows, and create scalable solutions within real product constraints.
-            </p>
+          <p class="section-intro">
+            As a Product Designer with a systems-level approach, I focus on making complex products clear, intuitive, and easy to use from end to end. By aligning user needs, UI structure, and product logic, I reduce friction, simplify workflows, and create scalable solutions within real product constraints.
+          </p>
 
           <div class="grid-2">
             <div class="card">
               <h3>How I Work</h3>
 
               <ul class="clean">
-              <li>Define the problem, user goal, and product constraints upfront</li>
+                <li>Define the problem, user goal, and product constraints upfront</li>
                 <li>Map user flows before moving into interface design</li>
                 <li>Simplify complex workflows into clearer steps and decisions</li>
                 <li>Use wireframes, prototypes, and states to communicate behavior</li>
-                <li>Refine designs through documentation, review, and implementation validation</li> 
-              </div>
+                <li>Refine designs through documentation, review, and implementation validation</li>
+              </ul>
+            </div>
 
             <div class="card">
               <h3>Tools & Skills</h3>
+
               <ul class="clean">
                 <li><strong>Product & UX Design</strong> — User flows, IA, wireframing, usability</li>
                 <li><strong>UI Design</strong> — Layout systems, hierarchy, spacing, responsive design</li>
@@ -178,17 +248,15 @@
             </div>
           </div>
         </section>
-
       </div>
     </main>
 
-
     <!-- ================= FOOTER ================= -->
-    <footer>
+    <footer class="site-footer">
       <div class="shell footer-contact">
-        <div class="contact-intro">
+        <p class="contact-intro">
           Reach out if something piques your interest:
-        </div>
+        </p>
 
         <div class="contact-buttons">
           <a href="mailto:jholit@protonmail.com" class="btn-ghost">
@@ -209,18 +277,93 @@
           </a>
         </div>
 
-        <div class="footer-meta">
+        <p class="footer-meta">
           © <span id="year"></span> Jaqweal Holit — Product Designer
-        </div>
+        </p>
       </div>
     </footer>
-
   </div>
 
-
   <!-- Scripts -->
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<!-- Scripts -->
+<!-- Scripts -->
+<!-- Scripts -->
+<script>
+  const yearElement = document.getElementById("year");
+
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  const announcement = document.getElementById("portfolio-announcement");
+  const announcementCloseButton = announcement?.querySelector(".portfolio-announcement__close");
+  const pageContent = document.querySelectorAll(".site-header, main, .site-footer");
+
+  const announcementStorageKey = "portfolioAnnouncementLastClosed";
+  const announcementCooldown = 4 * 24 * 60 * 60 * 1000;
+
+  const setPageInertState = (isInert) => {
+    pageContent.forEach((element) => {
+      element.inert = isInert;
+    });
+  };
+
+  const getLastClosedTime = () => {
+    const storedValue = localStorage.getItem(announcementStorageKey);
+    return storedValue ? Number(storedValue) : 0;
+  };
+
+  const shouldShowAnnouncement = () => {
+    const lastClosedTime = getLastClosedTime();
+    return Date.now() - lastClosedTime > announcementCooldown;
+  };
+
+  const openAnnouncement = () => {
+    if (!announcement) return;
+
+    announcement.hidden = false;
+    announcement.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-is-open");
+    setPageInertState(true);
+
+    requestAnimationFrame(() => {
+      announcement.classList.add("is-visible");
+    });
+  };
+
+  const closeAnnouncement = () => {
+    if (!announcement) return;
+
+    localStorage.setItem(announcementStorageKey, String(Date.now()));
+    announcement.classList.remove("is-visible");
+    announcement.classList.add("is-closing");
+    document.body.classList.remove("modal-is-open");
+    setPageInertState(false);
+
+    window.setTimeout(() => {
+      announcement.classList.remove("is-closing");
+      announcement.setAttribute("aria-hidden", "true");
+      announcement.hidden = true;
+    }, 280);
+  };
+
+  if (announcement && shouldShowAnnouncement()) {
+    openAnnouncement();
+  }
+
+  announcementCloseButton?.addEventListener("click", closeAnnouncement);
+
+  announcement?.addEventListener("click", (event) => {
+    if (event.target === announcement) {
+      closeAnnouncement();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && announcement?.classList.contains("is-visible")) {
+      closeAnnouncement();
+    }
+  });
+</script>
 </body>
 </html>
