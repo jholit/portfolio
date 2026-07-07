@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Homepage hero
+   ========================================================================== */
+
+.homepage {
+  width: min(calc(100% - (var(--site-gutter-inline) * 2)), 1230px);
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  min-height: calc(100svh - var(--header-height) - var(--footer-height));
+  margin: 0 auto;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.homepage-hero {
+  width: fit-content;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(24px, 3vw, 40px);
+  color: var(--color-white);
+  transform: translateY(-35px);
+}
+
+.homepage-hero__side {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.homepage-hero__side--left {
+  flex: 0 0 209px;
+  justify-content: center;
+}
+
+.homepage-hero__side--right {
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.homepage-hero__name,
+.homepage-hero__eyebrow,
+.homepage-hero__statement {
+  margin: 0;
+  color: var(--color-white);
+}
+
+.homepage-hero__name {
+  width: 209px;
+  min-height: 116px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.homepage-hero__name span,
+.homepage-hero__eyebrow span,
+.homepage-hero__eyebrow strong,
+.homepage-hero__statement span {
+  display: block;
+}
+
+.homepage-hero__eyebrow {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 200;
+  line-height: 1.35;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.homepage-hero__eyebrow strong {
+  font-weight: 800;
+}
+
+.homepage-hero__eyebrow span strong {
+  display: inline;
+}
+
+.homepage-hero__statement {
+  width: max-content;
+  max-width: 100%;
+  font-family: var(--font-primary);
+  font-size: 17px;
+  font-weight: 200;
+  line-height: 1.35;
+}
+
+.homepage-hero__statement strong {
+  color: #CDECFF;
+  font-weight: 800;
+}
+
+.homepage-hero__divider {
+  width: 1px;
+  height: 250px;
+  margin: 0;
+  flex: 0 0 auto;
+  border: 0;
+  background-color: var(--color-white);
+}
+
+/* ==========================================================================
+   Homepage responsive
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .homepage {
+    padding: 80px 0;
+    justify-content: center;
+  }
+
+  .homepage-hero {
+    width: min(100%, 520px);
+    flex-direction: column;
+    transform: none;
+  }
+
+  .homepage-hero__side--left,
+  .homepage-hero__side--right {
+    flex: 1 1 auto;
+  }
+
+  .homepage-hero__side--right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .homepage-hero__statement {
+    width: auto;
+  }
+
+  .homepage-hero__eyebrow,
+  .homepage-hero__statement {
+    text-align: center;
+  }
+
+  .homepage-hero__divider {
+    width: 250px;
+    max-width: 100%;
+    height: 1px;
+  }
+}
+
+@media (max-width: 600px) {
+  .homepage-hero__name {
+    width: 100%;
+    max-width: 209px;
+    min-height: auto;
+    font-size: 48px;
+  }
+
+  .homepage-hero__eyebrow {
+    font-size: 18px;
+  }
+
+  .homepage-hero__statement {
+    font-size: 15px;
+  }
+}

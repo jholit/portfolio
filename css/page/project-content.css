@@ -1,0 +1,299 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@700&display=swap");
+
+/* ==========================================================================
+   Project Content Pages
+   ========================================================================== */
+
+/*
+  This file controls project/case-study page content only.
+  Do not place sitewide header, footer, navigation, or global background rules here.
+*/
+
+/* ==========================================================================
+   Shared Project Page Structure
+   ========================================================================== */
+
+:root {
+  --font-project-heading: "Lexend", sans-serif;
+  --hlm-page-width: 1580px;
+  --hlm-content-width: 500px;
+  --hlm-summary-width: 800px;
+  --hlm-visual-text-width: 950px;
+}
+
+.project-page {
+  width: min(calc(100% - (var(--site-gutter-inline) * 2)), 1230px);
+  margin: 0 auto;
+  padding: 80px 0;
+}
+
+.project-page.hlm-project {
+  width: min(calc(100% - (var(--site-gutter-inline) * 2)), var(--hlm-page-width));
+}
+
+.hlm-project {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, var(--hlm-content-width)));
+  justify-content: space-between;
+  row-gap: 80px;
+  column-gap: 40px;
+}
+
+.hlm-project__intro {
+  grid-column: 1 / -1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hlm-project__section {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hlm-project__visuals {
+  grid-column: 1 / -1;
+  gap: 0;
+}
+
+/* ==========================================================================
+   Content Margin Reset
+   ========================================================================== */
+
+.hlm-project__heading,
+.hlm-project__subheading,
+.hlm-project__paragraph,
+.hlm-project__list,
+.hlm-project__ordered-list,
+.hlm-project__download,
+.hlm-project__download-text {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+.hlm-project__heading,
+.hlm-project__subheading {
+  font-family: var(--font-project-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.hlm-project__heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 35px;
+}
+
+.hlm-project__heading-line {
+  display: block;
+}
+
+.hlm-project__subheading {
+  font-size: 22px;
+  white-space: nowrap;
+}
+
+.hlm-project__paragraph,
+.hlm-project__list,
+.hlm-project__ordered-list {
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 200;
+  line-height: 1.75;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.hlm-project__intro > .hlm-project__subheading + .hlm-project__paragraph {
+  width: var(--hlm-summary-width);
+  max-width: 100%;
+}
+
+.hlm-project__download-text {
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.hlm-project__download-link {
+  box-sizing: border-box;
+  width: 245px;
+  min-height: 45px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-white);
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.0588);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2392);
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.hlm-project__download-link:hover,
+.hlm-project__download-link:focus-visible {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.hlm-project__download-link:active {
+  transform: translateY(0);
+}
+
+.hlm-project__download-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   Intro
+   ========================================================================== */
+
+.hlm-project__intro > .hlm-project__heading + .hlm-project__subheading {
+  margin-top: 40px;
+}
+
+.hlm-project__intro > .hlm-project__subheading + .hlm-project__paragraph {
+  margin-top: 15px;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+.hlm-project__list,
+.hlm-project__ordered-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hlm-project__ordered-list {
+  padding-left: 0;
+  counter-reset: hlm-ordered-list;
+  list-style: none;
+}
+
+.hlm-project__solutions-list {
+  gap: 20px;
+}
+
+.hlm-project__ordered-list-item {
+  position: relative;
+  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  isolation: isolate;
+  border-radius: 5px 0 0 5px;
+  list-style: none;
+  counter-increment: hlm-ordered-list;
+}
+
+.hlm-project__ordered-list-item::before {
+  content: counter(hlm-ordered-list);
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  flex: 0 0 24px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-black);
+  background:
+    linear-gradient(
+      0deg,
+      rgba(174, 212, 223, 0.3),
+      rgba(174, 212, 223, 0.3)
+    ),
+    var(--color-white);
+}
+
+.hlm-project__ordered-list-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 208, 255, 0.4) 29%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Visuals
+   ========================================================================== */
+
+.hlm-project__visuals > .hlm-project__subheading + .hlm-project__paragraph {
+  margin-top: 15px;
+  width: var(--hlm-visual-text-width);
+  max-width: 100%;
+}
+
+.hlm-project__download {
+  margin-top: 20px;
+  min-height: 160px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* ==========================================================================
+   Responsive Rules
+   ========================================================================== */
+
+@media (max-width: 1120px) {
+  .hlm-project {
+    grid-template-columns: 1fr;
+  }
+
+  .hlm-project__intro,
+  .hlm-project__visuals {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .project-page {
+    padding-block: 64px;
+  }
+}
+
+@media (max-width: 380px) {
+  .project-page {
+    padding-block: 56px;
+  }
+}

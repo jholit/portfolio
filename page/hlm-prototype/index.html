@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HLM AI | Interactive Prototype</title>
+
+  <meta
+    name="description"
+    content="An interactive HLM AI prototype demonstrating a focused workspace, clearer conversation flow, and prompt controls designed by Jaqweal Holit."
+  >
+  <meta name="author" content="Jaqweal Holit">
+
+  <link rel="stylesheet" href="../../css/page/hlm-content.css">
+
+  <link rel="icon" href="../../image/asset/favicon.png" type="image/png">
+</head>
+
+<body>
+  <div class="prototype-shell">
+    <aside id="workspaceSidebar" class="sidebar-panel" aria-label="User workspace panel">
+      <div class="profile-block">
+        <img
+          class="profile-image"
+          src="../../image/hlm/portrait_demo.jpg"
+          alt="Portrait of Leonardo"
+        >
+
+        <div class="profile-details">
+          <h2 class="profile-name">Leonardo Debruz</h2>
+          <p class="profile-type">Plus Member</p>
+        </div>
+
+        <button
+          class="sidebar-collapse-btn"
+          type="button"
+          aria-label="Collapse sidebar"
+          aria-controls="workspaceSidebar"
+          aria-expanded="true"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M15 6L9 12L15 18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <hr class="sidebar-divider">
+
+      <header class="welcome-block">
+        <h1 class="welcome-title">Good morning, Leonardo!</h1>
+        <p class="welcome-copy">What would you like to do today?</p>
+      </header>
+
+      <form class="search-wrap" role="search">
+        <label for="workspaceSearch" class="visually-hidden">Search</label>
+
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M21 21L16.65 16.65M18.5 11.25C18.5 15.2541 15.2541 18.5 11.25 18.5C7.24594 18.5 4 15.2541 4 11.25C4 7.24594 7.24594 4 11.25 4C15.2541 4 18.5 7.24594 18.5 11.25Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <input
+          id="workspaceSearch"
+          class="search-input"
+          type="search"
+          placeholder="Search for..."
+        >
+      </form>
+
+      <button class="primary-cta" type="button">
+        Chat / Generate
+      </button>
+
+      <section class="sidebar-section" aria-labelledby="customHlmsTitle">
+        <h2 id="customHlmsTitle" class="section-title">Custom HLMs</h2>
+
+        <ul class="section-list">
+          <li>
+            <button class="section-item" type="button">
+              <svg class="section-item-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 3L20 7.5V16.5L12 21L4 16.5V7.5L12 3Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 12L20 7.5M12 12L4 7.5M12 12V21"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <span>Create HLM AI</span>
+            </button>
+          </li>
+
+          <li>
+            <button class="section-item" type="button">
+              <span>Browse Custom HLMs</span>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="sidebar-section" aria-labelledby="workspaceTitle">
+        <div class="section-heading">
+          <h2 id="workspaceTitle" class="section-title">Your Workspace</h2>
+
+          <button class="section-menu-btn" type="button" aria-label="Workspace options">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5 12H5.01M12 12H12.01M19 12H19.01"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <ul class="section-list">
+          <li>
+            <button class="section-item" type="button">
+              <svg class="section-item-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M3 6.5C3 5.67157 3.67157 5 4.5 5H9L11 7H19.5C20.3284 7 21 7.67157 21 8.5V17.5C21 18.3284 20.3284 19 19.5 19H4.5C3.67157 19 3 18.3284 3 17.5V6.5Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <span>My Projects</span>
+            </button>
+          </li>
+
+          <li>
+            <button class="section-item" type="button">
+              <svg class="section-item-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M5 4H9C10.1046 4 11 4.89543 11 6V20C11 18.8954 10.1046 18 9 18H5V4Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M19 4H15C13.8954 4 13 4.89543 13 6V20C13 18.8954 13.8954 18 15 18H19V4Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <span>File Library</span>
+            </button>
+          </li>
+
+          <li>
+            <button class="section-item" type="button">
+              <svg class="section-item-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M9 18L3 12L9 6M15 6L21 12L15 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <span>Coding Assistance</span>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="sidebar-section" aria-labelledby="chatGenerationsTitle">
+        <h2 id="chatGenerationsTitle" class="section-title">Chats &amp; Generations</h2>
+
+        <ul class="section-list">
+          <li>
+            <button class="section-item is-active" type="button" aria-current="page">
+              <svg class="section-item-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M5 6.5C5 5.67157 5.67157 5 6.5 5H17.5C18.3284 5 19 5.67157 19 6.5V14.5C19 15.3284 18.3284 16 17.5 16H10L6 19V16H6.5C5.67157 16 5 15.3284 5 14.5V6.5Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <span>General</span>
+            </button>
+          </li>
+        </ul>
+      </section>
+    </aside>
+
+    <main class="workspace-stage" aria-label="Main workspace">
+      <section class="chat-workspace" aria-label="Chat workspace">
+        <header class="workspace-toolbar" aria-label="Project navigation">
+          <a
+            class="share-action"
+            href="../../page/hlm-project/"
+            aria-label="Return to the project page in the portfolio"
+          >
+            <span class="share-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M19 12H5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M11 6L5 12L11 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+
+            <span>Return to project page</span>
+          </a>
+        </header>
+
+        <div class="chat-thread" aria-label="Simulated chat conversation">
+          <article class="message-row user-message">
+            <img
+              class="message-avatar"
+              src="../../image/hlm/portrait_demo.jpg"
+              alt="Portrait of Leonardo"
+            >
+
+            <div class="message-content">
+              <p class="message-author">Leonardo Debruz</p>
+              <p class="user-text">
+                So, what exactly am I looking at here? Give me the clean version, because I do not want this feeling like another overbuilt dashboard.
+              </p>
+              <p class="message-timestamp">7/05/2026 - 10:42 AM</p>
+            </div>
+          </article>
+
+          <article class="message-row hlm-message">
+            <div class="message-content">
+              <p class="message-author">HLM AI</p>
+
+              <div class="message-bubble hlm-response">
+                <p>
+                  You’re looking at a focused AI workspace concept. The idea is simple: keep the tools people reach for close by, keep the active conversation obvious, and reduce the amount of visual noise competing for attention.
+                </p>
+
+                <p>
+                  It is not trying to reinvent the entire product. It is showing how the interface could feel calmer, clearer, and easier to understand when a user is already in the middle of working.
+                </p>
+
+                <p class="message-timestamp">7/05/2026 - 10:43 AM</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="message-row user-message">
+            <img
+              class="message-avatar"
+              src="../../image/hlm/portrait_demo.jpg"
+              alt="Portrait of Leonardo"
+            >
+
+            <div class="message-content">
+              <p class="message-author">Leonardo Debruz</p>
+              <p class="user-text">
+                Right, because the point is not pretending this whole thing is fully functional. It is still a prototype, but it should show the direction clearly.
+              </p>
+              <p class="message-timestamp">7/05/2026 - 10:44 AM</p>
+            </div>
+          </article>
+
+          <article class="message-row hlm-message">
+            <div class="message-content">
+              <p class="message-author">HLM AI</p>
+
+              <div class="message-bubble hlm-response">
+                <p>
+                  Exactly. The limited interactivity is intentional. This prototype is meant to communicate structure, layout, hierarchy, and interaction intent without needing to behave like a finished production app.
+                </p>
+
+                <p>
+                  The sidebar sections, active chat state, composer, and message flow are there to make the concept believable enough for review while keeping the build focused on the design problem.
+                </p>
+
+                <p class="message-timestamp">7/05/2026 - 10:45 AM</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="message-row user-message">
+            <img
+              class="message-avatar"
+              src="../../image/hlm/portrait_demo.jpg"
+              alt="Portrait of Leonardo"
+            >
+
+            <div class="message-content">
+              <p class="message-author">Leonardo Debruz</p>
+              <p class="user-text">
+                I also want it to explain why this was made without sounding like a case study paragraph got shoved into a chat bubble.
+              </p>
+              <p class="message-timestamp">7/05/2026 - 10:47 AM</p>
+            </div>
+          </article>
+
+          <article class="message-row hlm-message">
+            <div class="message-content">
+              <p class="message-author">HLM AI</p>
+
+              <div class="message-bubble hlm-response">
+                <p>
+                  Fair. The real answer is that this was made to explore a practical product problem: how an AI workspace can feel organized without becoming sterile or overloaded.
+                </p>
+
+                <p>
+                  It also shows the design process behind the build. The interface is designer-led, but AI helped support the front-end development and iteration. That combination is the point: using AI as a working partner while the designer still owns the decisions, direction, and final experience.
+                </p>
+
+                <p class="message-timestamp">7/05/2026 - 10:48 AM</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="message-row user-message">
+            <img
+              class="message-avatar"
+              src="../../image/hlm/portrait_demo.jpg"
+              alt="Portrait of Leonardo"
+            >
+
+            <div class="message-content">
+              <p class="message-author">Leonardo Debruz</p>
+              <p class="user-text">
+                So the goal is basically to show designer iteration, AI-assisted development, and a cleaner solution to a real interface problem?
+              </p>
+              <p class="message-timestamp">7/05/2026 - 10:51 AM</p>
+            </div>
+          </article>
+
+          <article class="message-row hlm-message">
+            <div class="message-content">
+              <p class="message-author">HLM AI</p>
+
+              <div class="message-bubble hlm-response">
+                <p>
+                  That’s the heart of it. This prototype is meant to show that thoughtful design still leads the work, even when AI is part of the development process.
+                </p>
+
+                <p>
+                  The result is a smaller, more focused concept: a workspace where active chats, generated content, project tools, and support actions feel easier to find without overwhelming the user the second they open the page.
+                </p>
+
+                <p class="message-timestamp">7/05/2026 - 10:52 AM</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="composer-area is-at-bottom">
+          <form class="chat-composer" novalidate>
+            <button
+              class="composer-expand-btn"
+              type="button"
+              aria-label="Expand prompt"
+              aria-controls="chatInput"
+              aria-expanded="false"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M7 14L12 9L17 14"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <label for="chatInput" class="visually-hidden">Type a message</label>
+
+            <input
+              id="chatUpload"
+              class="visually-hidden"
+              type="file"
+              aria-label="Upload a file"
+            >
+
+            <div class="chat-input-wrap">
+              <button
+                class="composer-icon-btn composer-upload-btn"
+                type="button"
+                aria-label="Upload a file"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 5V19M5 12H19"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+
+              <textarea
+                id="chatInput"
+                class="chat-input"
+                rows="1"
+                placeholder="Type a message..."
+              ></textarea>
+
+              <button
+                class="composer-icon-btn composer-mic-btn"
+                type="button"
+                aria-label="Use microphone"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 14C10.3431 14 9 12.6569 9 11V6C9 4.34315 10.3431 3 12 3C13.6569 3 15 4.34315 15 6V11C15 12.6569 13.6569 14 12 14Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M5 11C5 14.866 8.13401 18 12 18M12 18C15.866 18 19 14.866 19 11M12 18V21M9 21H15"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <div class="composer-model-settings" aria-label="Current model settings">
+            <div class="current-model-info">
+              <div class="model-select">
+                <button
+                  class="model-select-trigger"
+                  type="button"
+                  aria-expanded="false"
+                  aria-haspopup="menu"
+                  aria-controls="modelMenu"
+                >
+                  <span class="current-model-name">HLM 5</span>
+
+                  <svg class="model-select-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M15 6L9 12L15 18"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+
+                <div id="modelMenu" class="model-menu" role="menu" aria-label="Choose model">
+                  <button
+                    class="model-menu-item is-selected"
+                    type="button"
+                    role="menuitemradio"
+                    aria-checked="true"
+                    data-model="HLM 5"
+                  >
+                    <span class="model-menu-name">HLM 5</span>
+                    <span class="model-menu-note">latest model</span>
+                  </button>
+
+                  <button
+                    class="model-menu-item"
+                    type="button"
+                    role="menuitemradio"
+                    aria-checked="false"
+                    data-model="HLM 4"
+                  >
+                    <span class="model-menu-name">HLM 4</span>
+                  </button>
+
+                  <button
+                    class="model-menu-item"
+                    type="button"
+                    role="menuitemradio"
+                    aria-checked="false"
+                    data-model="HLM 3"
+                  >
+                    <span class="model-menu-name">HLM 3</span>
+                  </button>
+                </div>
+              </div>
+
+              <span class="current-model-divider" aria-hidden="true">|</span>
+              <span class="current-model-label">Current Model</span>
+            </div>
+
+            <div
+              class="model-mode-toggle"
+              role="radiogroup"
+              aria-label="Response style"
+              data-active="talkative"
+            >
+              <button
+                class="model-mode-option"
+                type="button"
+                role="radio"
+                aria-checked="true"
+                data-mode="talkative"
+              >
+                Talkative
+              </button>
+
+              <button
+                class="model-mode-option"
+                type="button"
+                role="radio"
+                aria-checked="false"
+                data-mode="contemplative"
+              >
+                Contemplative
+              </button>
+
+              <button
+                class="model-mode-option"
+                type="button"
+                role="radio"
+                aria-checked="false"
+                data-mode="thinking"
+              >
+                Thinking
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <section class="small-screen-notice" aria-label="Small screen notice">
+    <p>
+      Please view this project on 1080p screens or larger because the prototype is a contained work in progress. Small devices will be supported in future portfolio updates.
+    </p>
+  </section>
+
+<script src="../../js/hlm.js" defer></script>
+
+</body>
+</html>
