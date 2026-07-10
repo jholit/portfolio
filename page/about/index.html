@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../css/site.css">
 
   <!-- Webpage content styling -->
-  <link rel="stylesheet" href="../../css/page/about-content.css">
+  <link rel="stylesheet" href="../../css/page/about-content.css" data-page-stylesheet>
 
   <link rel="icon" href="../../image/asset/favicon.png" type="image/png">
 
@@ -91,6 +91,7 @@
           <div
             class="site-header__submenu"
             id="projects-submenu"
+            role="group"
             aria-labelledby="projects-submenu-trigger"
           >
             <ul class="site-header__submenu-list">
@@ -377,12 +378,13 @@
 
       <ul class="site-footer__contact-list">
         <li class="site-footer__contact-item">
-          <a
-            class="site-footer__contact-link"
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=jholit%40protonmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Email Jaqweal Holit using Gmail"
+          <button
+            class="site-footer__contact-link site-footer__email-trigger"
+            type="button"
+            data-email-address="jholit@protonmail.com"
+            aria-label="Send an email to Jaqweal Holit"
+            aria-haspopup="dialog"
+            aria-controls="email-confirmation-modal"
           >
             <span class="site-footer__contact-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false">
@@ -391,29 +393,9 @@
             </span>
 
             <span class="site-footer__contact-text">
-              Gmail
+              Email
             </span>
-          </a>
-        </li>
-
-        <li class="site-footer__contact-item">
-          <a
-            class="site-footer__contact-link"
-            href="https://outlook.live.com/mail/0/deeplink/compose?to=jholit%40protonmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Email Jaqweal Holit using Outlook"
-          >
-            <span class="site-footer__contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M3 5.5 14 3v18L3 18.5v-13Zm13 1.1h5c.55 0 1 .45 1 1v8.8c0 .55-.45 1-1 1h-5v-2h4V8.6h-4v-2ZM8.65 9.25c-1.74 0-3.05 1.46-3.05 3.25s1.31 3.25 3.05 3.25 3.05-1.46 3.05-3.25-1.31-3.25-3.05-3.25Zm0 1.45c.82 0 1.45.78 1.45 1.8s-.63 1.8-1.45 1.8-1.45-.78-1.45-1.8.63-1.8 1.45-1.8Z"/>
-              </svg>
-            </span>
-
-            <span class="site-footer__contact-text">
-              Outlook
-            </span>
-          </a>
+          </button>
         </li>
 
         <li class="site-footer__contact-item">

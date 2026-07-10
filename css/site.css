@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jost:wght@100..900&family=Palanquin+Dark:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jost:wght@100..900&family=Lexend:wght@300;700&family=Palanquin+Dark:wght@700&display=swap");
 
 :root {
   --color-white: #ffffff;
@@ -27,6 +27,9 @@
   --radius-submenu: 4px;
   --transition-fast: 160ms ease;
 
+  --page-transition-duration: 380ms;
+  --page-transition-easing: ease;
+
   --site-background-image-opacity: 0.5;
 }
 
@@ -42,6 +45,7 @@
 
 html {
   min-height: 100%;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -56,7 +60,8 @@ body {
   background-color: var(--color-black);
 }
 
-body.has-mobile-menu-open {
+body.has-mobile-menu-open,
+body.has-email-modal-open {
   overflow: hidden;
 }
 
@@ -128,11 +133,17 @@ button {
   text-decoration: none;
 }
 
+main[tabindex="-1"]:focus {
+  outline: none;
+}
+
 .site-header__logo:focus-visible,
 .site-header__menu-toggle:focus-visible,
 .site-header__nav-link:focus-visible,
 .site-header__submenu-link:focus-visible,
-.site-footer__contact-link:focus-visible {
+.site-footer__contact-link:focus-visible,
+.email-modal__close:focus-visible,
+.email-modal__option:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 4px;
 }
@@ -397,6 +408,61 @@ button {
 }
 
 /* ==========================================================================
+   Page transitions
+   ========================================================================== */
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pageFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 961px) {
+  body:not(.page-motion-exit-fade) > .site-header,
+  body:not(.page-motion-exit-fade) > main,
+  body:not(.page-motion-exit-fade) > .site-footer {
+    animation: pageFadeIn var(--page-transition-duration) var(--page-transition-easing) both;
+  }
+
+  body.page-motion-exit-fade > .site-header,
+  body.page-motion-exit-fade > main,
+  body.page-motion-exit-fade > .site-footer {
+    animation: pageFadeOut var(--page-transition-duration) var(--page-transition-easing) both;
+  }
+
+  body:not(.page-motion-exit-fade) > .site-header,
+  body:not(.page-motion-exit-fade) > main,
+  body:not(.page-motion-exit-fade) > .site-footer,
+  body.page-motion-exit-fade > .site-header,
+  body.page-motion-exit-fade > main,
+  body.page-motion-exit-fade > .site-footer {
+    will-change: opacity;
+  }
+
+  body.page-motion-exit-fade {
+    pointer-events: none;
+  }
+
+  body.is-page-transitioning {
+    cursor: progress;
+  }
+}
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 
@@ -492,6 +558,8 @@ button {
   position: relative;
   min-height: 40px;
   padding: 0 15px;
+  border: 0;
+  border-radius: var(--radius-sm);
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -504,21 +572,20 @@ button {
   color: var(--color-footer-text);
   text-align: left;
   text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
   transition: color var(--transition-fast);
 }
 
 .site-footer__contact-link::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset: 0;
   z-index: -1;
-  width: 87px;
-  height: 40px;
-  border-radius: var(--radius-sm);
+  border-radius: inherit;
   background-color: var(--color-footer-contact-hover);
   opacity: 0;
-  transform: translate(-50%, -50%);
   pointer-events: none;
   transition: opacity var(--transition-fast);
 }
@@ -552,6 +619,188 @@ button {
   height: 100%;
   display: block;
   fill: currentColor;
+}
+
+/* ==========================================================================
+   Email service modal
+   ========================================================================== */
+
+.email-modal {
+  --email-modal-optical-offset: -24px;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--transition-fast),
+    visibility var(--transition-fast);
+}
+
+.email-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.email-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.76);
+  backdrop-filter: blur(8px);
+}
+
+.email-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 560px);
+  max-height: calc(100dvh - 48px);
+  padding: 30px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  color: var(--color-white);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(23, 23, 23, 0.99) 0%,
+      rgba(0, 0, 0, 0.98) 100%
+    );
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+  transform: translateY(calc(var(--email-modal-optical-offset) + 8px)) scale(0.98);
+  transition: transform var(--transition-fast);
+}
+
+.email-modal.is-open .email-modal__dialog {
+  transform: translateY(var(--email-modal-optical-offset)) scale(1);
+}
+
+.email-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-footer-text);
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.email-modal__close:hover,
+.email-modal__close:focus-visible {
+  color: var(--color-white);
+  background-color: var(--color-footer-contact-hover);
+}
+
+.email-modal__close svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: currentColor;
+}
+
+.email-modal__title {
+  max-width: calc(100% - 44px);
+  margin: 0 0 14px;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-white);
+}
+
+.email-modal__text {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-footer-text);
+}
+
+.email-modal__choice-label {
+  margin: 22px 0 10px;
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-white);
+}
+
+.email-modal__services {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.email-modal__option {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  appearance: none;
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.email-modal__option:hover,
+.email-modal__option:focus-visible {
+  border-color: rgba(255, 255, 255, 0.34);
+  background-color: var(--color-footer-contact-hover);
+}
+
+.email-modal__option:active {
+  transform: translateY(1px);
+}
+
+.email-modal__option-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: block;
+  fill: currentColor;
+}
+
+.email-modal__status {
+  min-height: 1.4em;
+  margin: 10px 0 0;
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-footer-text);
 }
 
 /* ==========================================================================
@@ -874,10 +1123,30 @@ button {
     gap: 10px;
   }
 
+  .email-modal {
+    --email-modal-optical-offset: -18px;
+    padding: 20px;
+  }
+
+  .email-modal__dialog {
+    max-height: calc(100dvh - 40px);
+    padding: 26px 22px 22px;
+  }
+
   .site-footer__contact-list {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+  }
+}
+
+@media (max-width: 460px) {
+  .email-modal__services {
+    flex-direction: column;
+  }
+
+  .email-modal__option {
+    width: 100%;
   }
 }
 
@@ -913,5 +1182,15 @@ button {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  body:not(.page-motion-exit-fade) > .site-header,
+  body:not(.page-motion-exit-fade) > main,
+  body:not(.page-motion-exit-fade) > .site-footer,
+  body.page-motion-exit-fade > .site-header,
+  body.page-motion-exit-fade > main,
+  body.page-motion-exit-fade > .site-footer {
+    opacity: 1 !important;
+    animation: none !important;
   }
 }

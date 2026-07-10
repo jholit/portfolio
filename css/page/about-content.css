@@ -14,6 +14,7 @@
 
   width: min(calc(100% - (var(--site-gutter-inline) * 2)), 1230px);
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  min-height: calc(100svh - var(--header-height) - var(--footer-height));
   margin: 0 auto;
   padding: 80px 0;
   display: flex;
@@ -41,6 +42,22 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+/* Desktop-only non-scroll layout */
+
+@media (min-width: 901px) {
+  .about-page {
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+    height: calc(100svh - var(--header-height) - var(--footer-height));
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .about-page__inner {
+    max-height: 100%;
+  }
 }
 
 /* Intro / portrait section */
