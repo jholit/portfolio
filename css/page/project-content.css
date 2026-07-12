@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@700&display=swap");
-
 /* ==========================================================================
    Project Content Pages
    ========================================================================== */
@@ -28,7 +26,10 @@
 }
 
 .project-page.hlm-project {
-  width: min(calc(100% - (var(--site-gutter-inline) * 2)), var(--hlm-page-width));
+  width: min(
+    calc(100% - (var(--site-gutter-inline) * 2)),
+    var(--hlm-page-width)
+  );
 }
 
 .hlm-project {
@@ -227,11 +228,7 @@
   line-height: 1;
   color: var(--color-black);
   background:
-    linear-gradient(
-      0deg,
-      rgba(174, 212, 223, 0.3),
-      rgba(174, 212, 223, 0.3)
-    ),
+    linear-gradient(0deg, rgba(174, 212, 223, 0.3), rgba(174, 212, 223, 0.3)),
     var(--color-white);
 }
 

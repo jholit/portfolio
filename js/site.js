@@ -1,7 +1,8 @@
 // site.js
 
 (() => {
-  const MOBILE_NAV_QUERY = "(max-width: 960px)";
+  const MOBILE_NAV_QUERY =
+    "(max-width: 960px), (min-width: 961px) and (max-width: 1366px) and (hover: none) and (pointer: coarse)";
   const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
   const MENU_TRANSITION_DURATION = 180;
   const PAGE_STYLESHEET_SELECTOR = "link[data-page-stylesheet]";
@@ -11,11 +12,21 @@
   const siteHeader = document.querySelector(".site-header");
   const menuToggle = document.querySelector(".site-header__menu-toggle");
   const primaryNavigation = document.querySelector("#primary-navigation");
-  const navigationLinks = Array.from(document.querySelectorAll(".site-header__nav-link[href]"));
-  const submenuItems = Array.from(document.querySelectorAll(".site-header__nav-item--has-submenu"));
-  const submenuTriggers = Array.from(document.querySelectorAll(".site-header__nav-link--submenu-trigger"));
-  const submenuLinks = Array.from(document.querySelectorAll(".site-header__submenu-link"));
-  const emailTriggers = Array.from(document.querySelectorAll(".site-footer__email-trigger"));
+  const navigationLinks = Array.from(
+    document.querySelectorAll(".site-header__nav-link[href]"),
+  );
+  const submenuItems = Array.from(
+    document.querySelectorAll(".site-header__nav-item--has-submenu"),
+  );
+  const submenuTriggers = Array.from(
+    document.querySelectorAll(".site-header__nav-link--submenu-trigger"),
+  );
+  const submenuLinks = Array.from(
+    document.querySelectorAll(".site-header__submenu-link"),
+  );
+  const emailTriggers = Array.from(
+    document.querySelectorAll(".site-footer__email-trigger"),
+  );
   const mobileMediaQuery = window.matchMedia(MOBILE_NAV_QUERY);
   const reducedMotionMediaQuery = window.matchMedia(REDUCED_MOTION_QUERY);
 
@@ -51,9 +62,7 @@
   };
 
   const getNormalizedPath = (url) => {
-    return url.pathname
-      .replace(/\/index\.html$/i, "")
-      .replace(/\/+$/i, "");
+    return url.pathname.replace(/\/index\.html$/i, "").replace(/\/+$/i, "");
   };
 
   const getMainPageUrls = () => {
@@ -72,9 +81,11 @@
     const normalizedPath = getNormalizedPath(url);
     const mainPageUrls = getMainPageUrls();
 
-    return Object.entries(mainPageUrls).find(([, pageUrl]) => {
-      return getNormalizedPath(pageUrl) === normalizedPath;
-    })?.[0] ?? null;
+    return (
+      Object.entries(mainPageUrls).find(([, pageUrl]) => {
+        return getNormalizedPath(pageUrl) === normalizedPath;
+      })?.[0] ?? null
+    );
   };
 
   const getPageContentCssUrl = (pageType) => {
@@ -131,10 +142,12 @@
 
     return Array.from(
       container.querySelectorAll(
-        'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      )
+        'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
     ).filter((element) => {
-      return element instanceof HTMLElement && element.getClientRects().length > 0;
+      return (
+        element instanceof HTMLElement && element.getClientRects().length > 0
+      );
     });
   };
 
@@ -152,7 +165,7 @@
     emailModal.setAttribute("aria-labelledby", "email-modal-title");
     emailModal.setAttribute(
       "aria-describedby",
-      "email-modal-description email-modal-choice-label"
+      "email-modal-description email-modal-choice-label",
     );
 
     emailModal.innerHTML = `
@@ -263,15 +276,17 @@
 
     const encodedEmailAddress = encodeURIComponent(emailAddress);
     const gmailLink = emailModal.querySelector('[data-email-service="gmail"]');
-    const outlookLink = emailModal.querySelector('[data-email-service="outlook"]');
+    const outlookLink = emailModal.querySelector(
+      '[data-email-service="outlook"]',
+    );
 
     gmailLink?.setAttribute(
       "href",
-      `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedEmailAddress}`
+      `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedEmailAddress}`,
     );
     outlookLink?.setAttribute(
       "href",
-      `https://outlook.office.com/mail/deeplink/compose?to=${encodedEmailAddress}`
+      `https://outlook.office.com/mail/deeplink/compose?to=${encodedEmailAddress}`,
     );
   };
 
@@ -425,7 +440,8 @@
 
     const focusableElements = getFocusableElements(emailModal);
     const firstFocusableElement = focusableElements[0];
-    const lastFocusableElement = focusableElements[focusableElements.length - 1];
+    const lastFocusableElement =
+      focusableElements[focusableElements.length - 1];
 
     if (!firstFocusableElement || !lastFocusableElement) {
       event.preventDefault();
@@ -504,7 +520,13 @@
   };
 
   const isModifiedNavigationClick = (event) => {
-    return event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+    return (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    );
   };
 
   const getPortfolioPageRequestUrl = (url) => {
@@ -530,7 +552,9 @@
           const contentType = response.headers.get("content-type") ?? "";
 
           if (!response.ok || !contentType.includes("text/html")) {
-            throw new Error(`Unable to load portfolio page: ${response.status}`);
+            throw new Error(
+              `Unable to load portfolio page: ${response.status}`,
+            );
           }
 
           return response.text();
@@ -550,8 +574,13 @@
     const markup = await getPortfolioPageMarkup(url);
     const pageDocument = new DOMParser().parseFromString(markup, "text/html");
 
-    if (!pageDocument.querySelector("main") || !pageDocument.querySelector(PAGE_STYLESHEET_SELECTOR)) {
-      throw new Error("The requested portfolio page is missing required content.");
+    if (
+      !pageDocument.querySelector("main") ||
+      !pageDocument.querySelector(PAGE_STYLESHEET_SELECTOR)
+    ) {
+      throw new Error(
+        "The requested portfolio page is missing required content.",
+      );
     }
 
     return pageDocument;
@@ -582,13 +611,15 @@
       return;
     }
 
-    container.querySelectorAll("[href], [src], [action], [poster]").forEach((element) => {
-      ["href", "src", "action", "poster"].forEach((attributeName) => {
-        if (element.hasAttribute(attributeName)) {
-          makeUrlAttributeAbsolute(element, attributeName, baseUrl);
-        }
+    container
+      .querySelectorAll("[href], [src], [action], [poster]")
+      .forEach((element) => {
+        ["href", "src", "action", "poster"].forEach((attributeName) => {
+          if (element.hasAttribute(attributeName)) {
+            makeUrlAttributeAbsolute(element, attributeName, baseUrl);
+          }
+        });
       });
-    });
   };
 
   const makePersistentUrlsAbsolute = () => {
@@ -603,7 +634,9 @@
   };
 
   const getHistoryState = () => {
-    return history.state && typeof history.state === "object" ? history.state : {};
+    return history.state && typeof history.state === "object"
+      ? history.state
+      : {};
   };
 
   const saveCurrentScrollPosition = () => {
@@ -616,7 +649,7 @@
         scrollY: window.scrollY,
       },
       "",
-      window.location.href
+      window.location.href,
     );
   };
 
@@ -648,14 +681,19 @@
         scrollY: window.scrollY,
       },
       "",
-      window.location.href
+      window.location.href,
     );
   };
 
   const preparePageStylesheet = (pageDocument, destination) => {
-    const stylesheetTemplate = pageDocument.querySelector(PAGE_STYLESHEET_SELECTOR);
+    const stylesheetTemplate = pageDocument.querySelector(
+      PAGE_STYLESHEET_SELECTOR,
+    );
     const currentStylesheet = document.querySelector(PAGE_STYLESHEET_SELECTOR);
-    const stylesheetHref = new URL(stylesheetTemplate.getAttribute("href"), destination.href).href;
+    const stylesheetHref = new URL(
+      stylesheetTemplate.getAttribute("href"),
+      destination.href,
+    ).href;
 
     if (currentStylesheet?.href === stylesheetHref) {
       return Promise.resolve({
@@ -683,7 +721,7 @@
             previousStylesheet: currentStylesheet,
           });
         },
-        { once: true }
+        { once: true },
       );
 
       nextStylesheet.addEventListener(
@@ -692,7 +730,7 @@
           nextStylesheet.remove();
           reject(new Error("Unable to load the page stylesheet."));
         },
-        { once: true }
+        { once: true },
       );
 
       document.head.append(nextStylesheet);
@@ -704,7 +742,9 @@
       element.remove();
     });
 
-    const supportElements = Array.from(pageDocument.body.querySelectorAll(PAGE_SUPPORT_SELECTOR));
+    const supportElements = Array.from(
+      pageDocument.body.querySelectorAll(PAGE_SUPPORT_SELECTOR),
+    );
 
     supportElements.forEach((supportElement) => {
       const importedSupportElement = document.importNode(supportElement, true);
@@ -715,13 +755,20 @@
   };
 
   const updatePageMetadata = (pageDocument) => {
-    const nextDescription = pageDocument.querySelector('meta[name="description"]');
-    const currentDescription = document.querySelector('meta[name="description"]');
+    const nextDescription = pageDocument.querySelector(
+      'meta[name="description"]',
+    );
+    const currentDescription = document.querySelector(
+      'meta[name="description"]',
+    );
 
     document.title = pageDocument.title;
 
     if (nextDescription && currentDescription) {
-      currentDescription.setAttribute("content", nextDescription.getAttribute("content") ?? "");
+      currentDescription.setAttribute(
+        "content",
+        nextDescription.getAttribute("content") ?? "",
+      );
     }
   };
 
@@ -735,12 +782,19 @@
     });
 
     if (pageType === "home") {
-      siteHeader.querySelector(".site-header__logo")?.setAttribute("aria-current", "page");
+      siteHeader
+        .querySelector(".site-header__logo")
+        ?.setAttribute("aria-current", "page");
       return;
     }
 
-    const currentPageLink = Array.from(siteHeader.querySelectorAll("a[href]")).find((link) => {
-      return getPortfolioPageType(new URL(link.href, window.location.href)) === pageType;
+    const currentPageLink = Array.from(
+      siteHeader.querySelectorAll("a[href]"),
+    ).find((link) => {
+      return (
+        getPortfolioPageType(new URL(link.href, window.location.href)) ===
+        pageType
+      );
     });
 
     currentPageLink?.setAttribute("aria-current", "page");
@@ -751,7 +805,9 @@
     const nextMainTemplate = pageDocument.querySelector("main");
 
     if (!currentMain || !nextMainTemplate) {
-      throw new Error("The requested portfolio page cannot replace the current content.");
+      throw new Error(
+        "The requested portfolio page cannot replace the current content.",
+      );
     }
 
     const nextMain = document.importNode(nextMainTemplate, true);
@@ -786,7 +842,10 @@
   };
 
   const shouldHandlePageNavigation = (event, link) => {
-    if (!(link instanceof HTMLAnchorElement) || isModifiedNavigationClick(event)) {
+    if (
+      !(link instanceof HTMLAnchorElement) ||
+      isModifiedNavigationClick(event)
+    ) {
       return false;
     }
 
@@ -800,18 +859,25 @@
 
     const destination = new URL(link.href, window.location.href);
 
-    if (destination.origin !== window.location.origin || isSamePageHashLink(destination)) {
+    if (
+      destination.origin !== window.location.origin ||
+      isSamePageHashLink(destination)
+    ) {
       return false;
     }
 
     const destinationPageType = getPortfolioPageType(destination);
 
-    return Boolean(activePageType && destinationPageType && activePageType !== destinationPageType);
+    return Boolean(
+      activePageType &&
+        destinationPageType &&
+        activePageType !== destinationPageType,
+    );
   };
 
   const navigateToPortfolioPage = async (
     destination,
-    { historyMode = "push", scrollPosition = { x: 0, y: 0 } } = {}
+    { historyMode = "push", scrollPosition = { x: 0, y: 0 } } = {},
   ) => {
     const destinationPageType = getPortfolioPageType(destination);
 
@@ -861,11 +927,15 @@
             scrollY: 0,
           },
           "",
-          destination.href
+          destination.href,
         );
       }
 
-      const nextMain = replacePageContent(pageDocument, destination, destinationPageType);
+      const nextMain = replacePageContent(
+        pageDocument,
+        destination,
+        destinationPageType,
+      );
 
       stylesheetChange.previousStylesheet?.remove();
       activePageType = destinationPageType;
@@ -894,7 +964,8 @@
   };
 
   const handlePageNavigationClick = (event) => {
-    const link = event.target instanceof Element ? event.target.closest("a") : null;
+    const link =
+      event.target instanceof Element ? event.target.closest("a") : null;
 
     if (!shouldHandlePageNavigation(event, link)) {
       return;
@@ -920,7 +991,8 @@
       return;
     }
 
-    const link = event.target instanceof Element ? event.target.closest("a") : null;
+    const link =
+      event.target instanceof Element ? event.target.closest("a") : null;
 
     if (!(link instanceof HTMLAnchorElement)) {
       return;
@@ -958,8 +1030,14 @@
     siteHeader.classList.toggle("is-menu-open", shouldOpen);
     body.classList.toggle("has-mobile-menu-open", shouldOpen);
     menuToggle.setAttribute("aria-expanded", String(shouldOpen));
-    menuToggle.setAttribute("aria-label", shouldOpen ? "Close navigation menu" : "Open navigation menu");
-    primaryNavigation.setAttribute("aria-hidden", String(isMobileNavigation() && !shouldOpen));
+    menuToggle.setAttribute(
+      "aria-label",
+      shouldOpen ? "Close navigation menu" : "Open navigation menu",
+    );
+    primaryNavigation.setAttribute(
+      "aria-hidden",
+      String(isMobileNavigation() && !shouldOpen),
+    );
 
     if (!shouldOpen) {
       closeAllSubmenus();
@@ -971,7 +1049,9 @@
       return;
     }
 
-    const submenuTrigger = submenuItem.querySelector(".site-header__nav-link--submenu-trigger");
+    const submenuTrigger = submenuItem.querySelector(
+      ".site-header__nav-link--submenu-trigger",
+    );
     const submenu = submenuItem.querySelector(".site-header__submenu");
 
     submenuItem.classList.toggle("is-submenu-open", shouldOpen);
@@ -1036,7 +1116,8 @@
       body.classList.remove("page-motion-exit-fade", "is-page-transitioning");
     }
 
-    const state = event.state && typeof event.state === "object" ? event.state : {};
+    const state =
+      event.state && typeof event.state === "object" ? event.state : {};
     const scrollPosition = {
       x: Number.isFinite(state.scrollX) ? state.scrollX : 0,
       y: Number.isFinite(state.scrollY) ? state.scrollY : 0,
@@ -1073,7 +1154,9 @@
   });
 
   submenuTriggers.forEach((submenuTrigger) => {
-    const submenuItem = submenuTrigger.closest(".site-header__nav-item--has-submenu");
+    const submenuItem = submenuTrigger.closest(
+      ".site-header__nav-item--has-submenu",
+    );
 
     submenuTrigger.addEventListener("click", (event) => {
       event.preventDefault();
@@ -1113,7 +1196,10 @@
 
     submenuItem.addEventListener("focusout", () => {
       window.requestAnimationFrame(() => {
-        if (isMobileNavigation() || submenuItem.contains(document.activeElement)) {
+        if (
+          isMobileNavigation() ||
+          submenuItem.contains(document.activeElement)
+        ) {
           return;
         }
 
@@ -1134,7 +1220,9 @@
 
   document.addEventListener("pointerenter", handlePageTransitionPrefetch, true);
   document.addEventListener("focusin", handlePageTransitionPrefetch);
-  document.addEventListener("touchstart", handlePageTransitionPrefetch, { passive: true });
+  document.addEventListener("touchstart", handlePageTransitionPrefetch, {
+    passive: true,
+  });
   document.addEventListener("click", handlePageNavigationClick);
   document.addEventListener("click", handleEmailModalClick);
   document.addEventListener("keydown", handleEmailModalKeydown);
@@ -1181,7 +1269,9 @@
 
   window.addEventListener("popstate", handleHistoryNavigation);
   window.addEventListener("pageshow", resetTransientPageState);
-  window.addEventListener("scroll", scheduleScrollPositionSave, { passive: true });
+  window.addEventListener("scroll", scheduleScrollPositionSave, {
+    passive: true,
+  });
 
   makePersistentUrlsAbsolute();
   activePageType = getPortfolioPageType(new URL(window.location.href));

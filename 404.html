@@ -1,467 +1,479 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta
-    name="description"
-    content="The requested page could not be found. Return to the Jaqweal Holit portfolio homepage."
-  >
-  <meta name="author" content="Jaqweal Holit">
+    <meta
+      name="description"
+      content="The requested page could not be found. Return to the Jaqweal Holit portfolio homepage."
+    />
+    <meta name="author" content="Jaqweal Holit" />
 
-  <link rel="icon" href="image/asset/favicon.png" type="image/png">
+    <link rel="icon" href="image/asset/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Jost:wght@100..900&amp;family=Palanquin+Dark:wght@700&amp;display=swap"
+    />
 
-  <title>404 Page Not Found | JH</title>
+    <title>JH | 404</title>
 
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jost:wght@100..900&family=Palanquin+Dark:wght@700&display=swap");
+    <style>
+      :root {
+        --color-white: #ffffff;
+        --color-black: #000000;
+        --color-footer-bg: #171717;
+        --color-footer-text: #d1d1d1;
+        --color-footer-divider: rgba(255, 255, 255, 0.3);
+        --color-project-background-overlay: rgba(140, 190, 255, 0.08);
 
-    :root {
-      --color-white: #ffffff;
-      --color-black: #000000;
-      --color-footer-bg: #171717;
-      --color-footer-text: #d1d1d1;
-      --color-footer-divider: rgba(255, 255, 255, 0.3);
-      --color-project-background-overlay: rgba(140, 190, 255, 0.08);
+        --font-primary: "Inter", sans-serif;
+        --font-display: "Jost", sans-serif;
+        --font-logo: "Palanquin Dark", sans-serif;
 
-      --font-primary: "Inter", sans-serif;
-      --font-display: "Jost", sans-serif;
-      --font-logo: "Palanquin Dark", sans-serif;
+        --header-height: 80px;
+        --footer-height: 170px;
 
-      --header-height: 80px;
-      --footer-height: 170px;
+        --site-gutter-inline: clamp(24px, 4vw, 40px);
 
-      --site-gutter-inline: clamp(24px, 4vw, 40px);
+        --radius-sm: 5px;
+        --transition-fast: 160ms ease;
 
-      --radius-sm: 5px;
-      --transition-fast: 160ms ease;
+        --site-background-image-opacity: 0.5;
+      }
 
-      --site-background-image-opacity: 0.5;
-    }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
+      html {
+        min-height: 100%;
+      }
 
-    html {
-      min-height: 100%;
-    }
+      body {
+        position: relative;
+        min-height: 100vh;
+        min-height: 100svh;
+        margin: 0;
+        overflow-x: hidden;
+        isolation: isolate;
+        font-family: var(--font-primary);
+        color: var(--color-white);
+        background-color: var(--color-black);
+      }
 
-    body {
-      position: relative;
-      min-height: 100vh;
-      min-height: 100svh;
-      margin: 0;
-      overflow-x: hidden;
-      isolation: isolate;
-      font-family: var(--font-primary);
-      color: var(--color-white);
-      background-color: var(--color-black);
-    }
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+      }
 
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-    }
+      body::before {
+        z-index: -2;
+        background-image: url("./image/asset/bg.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        opacity: var(--site-background-image-opacity);
+        transform: scaleX(1);
+        transform-origin: center;
+      }
 
-    body::before {
-      z-index: -2;
-      background-image: url("./image/asset/bg.jpg");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      background-attachment: fixed;
-      opacity: var(--site-background-image-opacity);
-      transform: scaleX(1);
-      transform-origin: center;
-    }
+      body::after {
+        z-index: -1;
+        background-color: var(--color-project-background-overlay);
+      }
 
-    body::after {
-      z-index: -1;
-      background-color: var(--color-project-background-overlay);
-    }
+      a {
+        color: inherit;
+      }
 
-    a {
-      color: inherit;
-    }
+      .skip-link {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        border: 0;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+      }
 
-    .skip-link {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      padding: 0;
-      overflow: hidden;
-      white-space: nowrap;
-      border: 0;
-      clip: rect(0 0 0 0);
-      clip-path: inset(50%);
-    }
+      .skip-link:focus,
+      .skip-link:focus-visible {
+        top: 16px;
+        left: 16px;
+        z-index: 100;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 8px 12px;
+        overflow: visible;
+        clip: auto;
+        clip-path: none;
+        border-radius: var(--radius-sm);
+        color: var(--color-black);
+        background-color: var(--color-white);
+        text-decoration: none;
+      }
 
-    .skip-link:focus,
-    .skip-link:focus-visible {
-      top: 16px;
-      left: 16px;
-      z-index: 100;
-      width: auto;
-      height: auto;
-      margin: 0;
-      padding: 8px 12px;
-      overflow: visible;
-      clip: auto;
-      clip-path: none;
-      border-radius: var(--radius-sm);
-      color: var(--color-black);
-      background-color: var(--color-white);
-      text-decoration: none;
-    }
+      .site-header__logo:focus-visible,
+      .error-page__button:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 4px;
+      }
 
-    .site-header__logo:focus-visible,
-    .error-page__button:focus-visible {
-      outline: 2px solid currentColor;
-      outline-offset: 4px;
-    }
-
-    /* ==========================================================================
+      /* ==========================================================================
        Header
        ========================================================================== */
 
-    .site-header {
-      position: relative;
-      z-index: 30;
-      width: min(800px, 100%);
-      height: var(--header-height);
-      padding: 0 20px 0 var(--site-gutter-inline);
-      display: flex;
-      align-items: center;
-      gap: clamp(20px, 3vw, 30px);
-      background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 1) 7%,
-        rgba(23, 23, 23, 0) 100%
-      );
-    }
+      .site-header {
+        position: relative;
+        z-index: 30;
+        width: min(800px, 100%);
+        height: var(--header-height);
+        padding: 0 20px 0 var(--site-gutter-inline);
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 3vw, 30px);
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 1) 7%,
+          rgba(23, 23, 23, 0) 100%
+        );
+      }
 
-    .site-header__logo {
-      font-family: var(--font-logo);
-      font-size: 40px;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--color-white);
-      text-align: left;
-      text-decoration: none;
-    }
+      .site-header__logo {
+        font-family: var(--font-logo);
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--color-white);
+        text-align: left;
+        text-decoration: none;
+      }
 
-    /* ==========================================================================
+      /* ==========================================================================
        404 Content
        ========================================================================== */
 
-    .error-page {
-      width: min(calc(100% - (var(--site-gutter-inline) * 2)), 1230px);
-      min-height: calc(100vh - var(--header-height) - var(--footer-height));
-      min-height: calc(100svh - var(--header-height) - var(--footer-height));
-      margin: 0 auto;
-      padding: 80px 0;
-      display: grid;
-      place-items: center;
-    }
-
-    .error-page__card {
-      width: min(100%, 760px);
-      padding: clamp(36px, 6vw, 64px);
-      border-radius: 24px;
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255, 255, 255, 0.105),
-          rgba(255, 255, 255, 0.035)
-        ),
-        rgba(0, 0, 0, 0.32);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.18),
-        0 24px 80px rgba(0, 0, 0, 0.28);
-      text-align: center;
-      backdrop-filter: blur(10px);
-    }
-
-    .error-page__eyebrow {
-      margin: 0 0 18px;
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1;
-      color: #D3F6F2;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .error-page__title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: clamp(40px, 7vw, 30px);
-      font-weight: 700;
-      line-height: 1.05;
-      color: var(--color-white);
-      letter-spacing: -0.04em;
-    }
-
-    .error-page__copy {
-      width: min(100%, 560px);
-      margin: 24px auto 0;
-      font-family: var(--font-primary);
-      font-size: 16px;
-      font-weight: 200;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, 0.86);
-    }
-
-    .error-page__actions {
-      margin-top: 34px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .error-page__button {
-      width: 190px;
-      min-height: 45px;
-      padding: 0 20px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      font-family: var(--font-primary);
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1;
-      color: var(--color-white);
-      text-decoration: none;
-      background-color: rgba(96, 172, 180, 0.26);
-      box-shadow: 0 0 0 1px rgba(198, 251, 191, 0.28);
-      transition:
-        background-color var(--transition-fast),
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast);
-    }
-
-    .error-page__button:hover,
-    .error-page__button:focus-visible {
-      background-color: rgba(96, 172, 180, 0.36);
-      transform: translateY(-1px);
-    }
-
-    .error-page__button:active {
-      transform: translateY(0);
-    }
-
-    /* ==========================================================================
-       Footer
-       ========================================================================== */
-
-    .site-footer {
-      position: relative;
-      width: 100%;
-      min-height: var(--footer-height);
-      margin: 0;
-      padding: 0 var(--site-gutter-inline);
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      color: var(--color-white);
-      background-color: var(--color-footer-bg);
-    }
-
-    .site-footer::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      right: 0;
-      left: 0;
-      height: 1px;
-      background-color: var(--color-footer-divider);
-      pointer-events: none;
-    }
-
-    .site-footer__legal {
-      max-width: 900px;
-      display: flex;
-      flex: 1 1 auto;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .site-footer__credit,
-    .site-footer__copyright-notice,
-    .site-footer__usage-notice,
-    .site-footer__copyright {
-      margin: 0;
-      font-family: var(--font-primary);
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--color-footer-text);
-      text-align: left;
-    }
-
-    .site-footer__legal strong {
-      font-weight: 700;
-    }
-
-    /* ==========================================================================
-       Responsive
-       ========================================================================== */
-
-    @media (max-width: 960px) {
-      .site-header {
-        width: 100%;
-        height: var(--header-height);
-        min-height: var(--header-height);
-        padding: 0 var(--site-gutter-inline);
-      }
-
-      .site-footer {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-      }
-
-      .site-footer__legal {
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .error-page__card {
-        border-radius: 18px;
-      }
-
-      .error-page__button {
-        width: min(100%, 240px);
-      }
-    }
-
-    @media (max-width: 520px) {
-      :root {
-        --site-gutter-inline: 20px;
-      }
-
       .error-page {
-        padding: 64px 0;
+        width: min(calc(100% - (var(--site-gutter-inline) * 2)), 1230px);
+        min-height: calc(100vh - var(--header-height) - var(--footer-height));
+        min-height: calc(100svh - var(--header-height) - var(--footer-height));
+        margin: 0 auto;
+        padding: 80px 0;
+        display: grid;
+        place-items: center;
+      }
+
+      .error-page__card {
+        width: min(100%, 760px);
+        padding: clamp(36px, 6vw, 64px);
+        border-radius: 24px;
+        background:
+          linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.105),
+            rgba(255, 255, 255, 0.035)
+          ),
+          rgba(0, 0, 0, 0.32);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+          0 24px 80px rgba(0, 0, 0, 0.28);
+        text-align: center;
+        backdrop-filter: blur(10px);
+      }
+
+      .error-page__eyebrow {
+        margin: 0 0 18px;
+        font-family: var(--font-display);
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 1;
+        color: #d3f6f2;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .error-page__title {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(40px, 7vw, 30px);
+        font-weight: 700;
+        line-height: 1.05;
+        color: var(--color-white);
+        letter-spacing: -0.04em;
       }
 
       .error-page__copy {
-        font-size: 15px;
+        width: min(100%, 560px);
+        margin: 24px auto 0;
+        font-family: var(--font-primary);
+        font-size: 16px;
+        font-weight: 200;
+        line-height: 1.75;
+        color: rgba(255, 255, 255, 0.86);
       }
 
+      .error-page__actions {
+        margin-top: 34px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .error-page__button {
+        width: 190px;
+        min-height: 45px;
+        padding: 0 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        font-family: var(--font-primary);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        color: var(--color-white);
+        text-decoration: none;
+        background-color: rgba(96, 172, 180, 0.26);
+        box-shadow: 0 0 0 1px rgba(198, 251, 191, 0.28);
+        transition:
+          background-color var(--transition-fast),
+          transform var(--transition-fast),
+          box-shadow var(--transition-fast);
+      }
+
+      .error-page__button:hover,
+      .error-page__button:focus-visible {
+        background-color: rgba(96, 172, 180, 0.36);
+        transform: translateY(-1px);
+      }
+
+      .error-page__button:active {
+        transform: translateY(0);
+      }
+
+      /* ==========================================================================
+       Footer
+       ========================================================================== */
+
       .site-footer {
-        padding-top: 36px;
-        padding-bottom: 36px;
+        position: relative;
+        width: 100%;
+        min-height: var(--footer-height);
+        margin: 0;
+        padding: 0 var(--site-gutter-inline);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: var(--color-white);
+        background-color: var(--color-footer-bg);
+      }
+
+      .site-footer::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: 0;
+        left: 0;
+        height: 1px;
+        background-color: var(--color-footer-divider);
+        pointer-events: none;
       }
 
       .site-footer__legal {
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      :root {
-        --site-gutter-inline: 16px;
-      }
-
-      .error-page {
-        padding: 56px 0;
-      }
-
-      .site-footer {
-        padding-top: 32px;
-        padding-bottom: 32px;
+        max-width: 900px;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 12px;
       }
 
       .site-footer__credit,
       .site-footer__copyright-notice,
       .site-footer__usage-notice,
       .site-footer__copyright {
-        font-size: 11.5px;
+        margin: 0;
+        font-family: var(--font-primary);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--color-footer-text);
+        text-align: left;
       }
-    }
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
+      .site-footer__legal strong {
+        font-weight: 700;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <a class="skip-link" href="#main-content">
-    Skip to main content
-  </a>
+      /* ==========================================================================
+       Responsive
+       ========================================================================== */
 
-  <header class="site-header">
-    <a
-      class="site-header__logo"
-      href="./"
-      aria-label="Jaqweal Holit homepage"
-    >
-      JH
-    </a>
-  </header>
+      @media (max-width: 960px),
+        (min-width: 961px) and (max-width: 1366px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+        body::before,
+        body::after {
+          bottom: auto;
+          width: 100%;
+          height: 100vh;
+          height: 100lvh;
+        }
 
-  <main class="error-page" id="main-content">
-    <section class="error-page__card" aria-labelledby="error-page-title">
-      <p class="error-page__eyebrow">
-        404 Error
-      </p>
+        .site-header {
+          width: 100%;
+          height: var(--header-height);
+          min-height: var(--header-height);
+          padding: 0 var(--site-gutter-inline);
+        }
 
-      <h1 class="error-page__title" id="error-page-title">
-        Page Not Found
-      </h1>
+        .site-footer {
+          padding-top: 40px;
+          padding-bottom: 40px;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+        }
 
-      <p class="error-page__copy">
-        The page you are looking for may have been moved, removed, or is temporarily unavailable. Please return to the project to continue exploring the portfolio.
-      </p>
+        .site-footer__legal {
+          max-width: 100%;
+        }
+      }
 
-      <div class="error-page__actions">
-        <a class="error-page__button" href="page/hlm-project/">
-          Return to project
-        </a>
+      @media (max-width: 700px) {
+        .error-page__card {
+          border-radius: 18px;
+        }
+
+        .error-page__button {
+          width: min(100%, 240px);
+        }
+      }
+
+      @media (max-width: 520px) {
+        :root {
+          --site-gutter-inline: 20px;
+        }
+
+        .error-page {
+          padding: 64px 0;
+        }
+
+        .error-page__copy {
+          font-size: 15px;
+        }
+
+        .site-footer {
+          padding-top: 36px;
+          padding-bottom: 36px;
+        }
+
+        .site-footer__legal {
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        :root {
+          --site-gutter-inline: 16px;
+        }
+
+        .error-page {
+          padding: 56px 0;
+        }
+
+        .site-footer {
+          padding-top: 32px;
+          padding-bottom: 32px;
+        }
+
+        .site-footer__credit,
+        .site-footer__copyright-notice,
+        .site-footer__usage-notice,
+        .site-footer__copyright {
+          font-size: 11.5px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content"> Skip to main content </a>
+
+    <header class="site-header">
+      <a
+        class="site-header__logo"
+        href="./"
+        aria-label="Jaqweal Holit homepage"
+      >
+        JH
+      </a>
+    </header>
+
+    <main class="error-page" id="main-content">
+      <section class="error-page__card" aria-labelledby="error-page-title">
+        <p class="error-page__eyebrow">404 Error</p>
+
+        <h1 class="error-page__title" id="error-page-title">Page Not Found</h1>
+
+        <p class="error-page__copy">
+          The page you are looking for may have been moved, removed, or is
+          temporarily unavailable. Please return to the project to continue
+          exploring the portfolio.
+        </p>
+
+        <div class="error-page__actions">
+          <a class="error-page__button" href="page/hlm-project/">
+            Return to project
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__legal">
+        <p class="site-footer__credit">
+          Designed by <strong>J. Holit</strong> | Developed with
+          <strong>AI assistance</strong>
+        </p>
+
+        <p class="site-footer__copyright-notice">
+          All content, designs, and interactions on this site are the
+          intellectual property of Jaqweal Holit unless otherwise stated.
+        </p>
+
+        <p class="site-footer__usage-notice">
+          Unauthorized use, reproduction, or distribution is strictly prohibited
+          except for professional review, employment consideration, or direct
+          inquiries.
+        </p>
+
+        <p class="site-footer__copyright">
+          &copy; 2026 Jaqweal Holit | All rights reserved.
+        </p>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="site-footer__legal">
-      <p class="site-footer__credit">
-        Designed by <strong>J. Holit</strong> | Developed with <strong>AI assistance</strong>
-      </p>
-
-      <p class="site-footer__copyright-notice">
-        All content, designs, and interactions on this site are the intellectual property of Jaqweal Holit unless otherwise stated.
-      </p>
-
-      <p class="site-footer__usage-notice">
-        Unauthorized use, reproduction, or distribution is strictly prohibited except for professional review, employment consideration, or direct inquiries.
-      </p>
-
-      <p class="site-footer__copyright">
-        &copy; 2026 Jaqweal Holit | All rights reserved.
-      </p>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>

@@ -1,427 +1,484 @@
 <!-- page/about/index.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta
-    name="description"
-    content="Learn more about Jaqweal Holit, a product designer focused on clear workflows, usable systems, and accessible digital product experiences."
-  >
-  <meta name="author" content="Jaqweal Holit">
+    <meta
+      name="description"
+      content="Learn more about Jaqweal Holit, a product designer focused on clear workflows, usable systems, and accessible digital product experiences."
+    />
+    <meta name="author" content="Jaqweal Holit" />
 
-  <!-- Overall webpage styling -->
-  <link rel="stylesheet" href="../../css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Jost:wght@100..900&amp;family=Lexend:wght@300;700&amp;family=Palanquin+Dark:wght@700&amp;display=swap"
+    />
 
-  <!-- Webpage content styling -->
-  <link rel="stylesheet" href="../../css/page/about-content.css" data-page-stylesheet>
+    <!-- Overall webpage styling -->
+    <link rel="stylesheet" href="../../css/site.css" />
 
-  <link rel="icon" href="../../image/asset/favicon.png" type="image/png">
+    <!-- Webpage content styling -->
+    <link
+      rel="stylesheet"
+      href="../../css/page/about-content.css"
+      data-page-stylesheet
+    />
 
-  <title>JH | Who is He?</title>
-</head>
+    <link rel="icon" href="../../image/asset/favicon.png" type="image/png" />
 
-<body>
-  <a class="skip-link" href="#main-content">
-    Skip to main content
-  </a>
+    <title>JH | About</title>
+  </head>
 
-  <header class="site-header">
-    <a
-      class="site-header__logo"
-      href="../../"
-      aria-label="Jaqweal Holit homepage"
-    >
-      JH
-    </a>
+  <body>
+    <a class="skip-link" href="#main-content"> Skip to main content </a>
 
-    <button
-      class="site-header__menu-toggle"
-      type="button"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-      aria-controls="primary-navigation"
-    >
-      <span class="site-header__menu-toggle-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" focusable="false">
-          <path class="site-header__menu-icon-line site-header__menu-icon-line--top" d="M4 7h16"/>
-          <path class="site-header__menu-icon-line site-header__menu-icon-line--middle" d="M4 12h16"/>
-          <path class="site-header__menu-icon-line site-header__menu-icon-line--bottom" d="M4 17h16"/>
-        </svg>
-      </span>
-    </button>
+    <header class="site-header">
+      <a
+        class="site-header__logo"
+        href="../../"
+        aria-label="Jaqweal Holit homepage"
+      >
+        JH
+      </a>
 
-    <nav class="site-header__nav" id="primary-navigation" aria-label="Primary navigation">
-      <ul class="site-header__nav-list">
-        <li class="site-header__nav-item">
-          <a
-            class="site-header__nav-link"
-            href="../../page/about/"
-            aria-current="page"
-          >
-            Who is Jaqweal Holit?
-          </a>
-        </li>
+      <button
+        class="site-header__menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+      >
+        <span class="site-header__menu-toggle-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path
+              class="site-header__menu-icon-line site-header__menu-icon-line--top"
+              d="M4 7h16"
+            />
+            <path
+              class="site-header__menu-icon-line site-header__menu-icon-line--middle"
+              d="M4 12h16"
+            />
+            <path
+              class="site-header__menu-icon-line site-header__menu-icon-line--bottom"
+              d="M4 17h16"
+            />
+          </svg>
+        </span>
+      </button>
 
-        <li class="site-header__nav-item">
-          <a class="site-header__nav-link" href="../../page/career/">
-            Education / Career Experience
-          </a>
-        </li>
+      <nav
+        class="site-header__nav"
+        id="primary-navigation"
+        aria-label="Primary navigation"
+      >
+        <ul class="site-header__nav-list">
+          <li class="site-header__nav-item">
+            <a
+              class="site-header__nav-link"
+              href="../../page/about/"
+              aria-current="page"
+            >
+              Who's Jack Holit?
+            </a>
+          </li>
 
-        <li class="site-header__nav-item site-header__nav-item--has-submenu">
-          <button
-            class="site-header__nav-link site-header__nav-link--submenu-trigger"
-            id="projects-submenu-trigger"
-            type="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-            aria-controls="projects-submenu"
-          >
-            <span>Projects &amp; Case Studies</span>
+          <li class="site-header__nav-item">
+            <a class="site-header__nav-link" href="../../page/career/">
+              Education &amp; Career
+            </a>
+          </li>
 
-            <span class="site-header__nav-link-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M6.2 8.8 12 14.6l5.8-5.8 1.4 1.4L12 17.4 4.8 10.2l1.4-1.4Z"/>
-              </svg>
-            </span>
-          </button>
+          <li class="site-header__nav-item site-header__nav-item--has-submenu">
+            <button
+              class="site-header__nav-link site-header__nav-link--submenu-trigger"
+              id="projects-submenu-trigger"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="projects-submenu"
+            >
+              <span>Projects / Case Studies</span>
 
-          <div
-            class="site-header__submenu"
-            id="projects-submenu"
-            role="group"
-            aria-labelledby="projects-submenu-trigger"
-          >
-            <ul class="site-header__submenu-list">
-              <li class="site-header__submenu-item">
-                <a class="site-header__submenu-link" href="../../page/hlm-project/">
-                  <strong>HLM AI</strong>
-                  <span>An AI Workspace Concept</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </header>
+              <span class="site-header__nav-link-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M6.2 8.8 12 14.6l5.8-5.8 1.4 1.4L12 17.4 4.8 10.2l1.4-1.4Z"
+                  />
+                </svg>
+              </span>
+            </button>
 
-  <main id="main-content" class="about-page">
-    <div class="about-page__inner">
-      <div class="about-page__content">
-        <section class="about-glance" aria-labelledby="about-glance-title">
-          <div class="about-glance__inner">
-            <div class="about-glance__column about-glance__column--primary">
-              <header class="about-glance__header">
-                <h1 class="about-glance__title" id="about-glance-title">
-                  At a Glance
-                </h1>
+            <div
+              class="site-header__submenu"
+              id="projects-submenu"
+              role="group"
+              aria-labelledby="projects-submenu-trigger"
+            >
+              <ul class="site-header__submenu-list">
+                <li class="site-header__submenu-item">
+                  <a
+                    class="site-header__submenu-link"
+                    href="../../page/hlm-project/"
+                  >
+                    <strong>HLM AI</strong>
+                    <span>An AI Workspace Concept</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content" class="about-page">
+      <div class="about-page__inner">
+        <div class="about-page__content">
+          <section class="about-glance" aria-labelledby="about-glance-title">
+            <div class="about-glance__inner">
+              <div class="about-glance__column about-glance__column--primary">
+                <header class="about-glance__header">
+                  <h1 class="about-glance__title" id="about-glance-title">
+                    At a Glance
+                  </h1>
+                </header>
+
+                <article class="about-glance__item">
+                  <span class="about-glance__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M4 20H20" />
+                      <path
+                        d="M7 17L17.75 6.25C18.44 5.56 19.56 5.56 20.25 6.25C20.94 6.94 20.94 8.06 20.25 8.75L9.5 19.5L5 20L5.5 15.5Z"
+                      />
+                    </svg>
+                  </span>
+
+                  <div class="about-glance__item-copy">
+                    <h2 class="about-glance__item-title">Product Designer</h2>
+
+                    <p class="about-glance__item-text">UI / UX / Interaction</p>
+                  </div>
+                </article>
+
+                <article class="about-glance__item">
+                  <span class="about-glance__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path
+                        d="M12 21C12 21 18 15.6 18 9.75C18 6.44 15.31 3.75 12 3.75C8.69 3.75 6 6.44 6 9.75C6 15.6 12 21 12 21Z"
+                      />
+                      <path
+                        d="M12 12C13.24 12 14.25 10.99 14.25 9.75C14.25 8.51 13.24 7.5 12 7.5C10.76 7.5 9.75 8.51 9.75 9.75C9.75 10.99 10.76 12 12 12Z"
+                      />
+                    </svg>
+                  </span>
+
+                  <div class="about-glance__item-copy">
+                    <h2 class="about-glance__item-title">Based in:</h2>
+
+                    <p class="about-glance__item-text">
+                      Eastern United States (ET)
+                    </p>
+                  </div>
+                </article>
+
+                <article class="about-glance__item">
+                  <span class="about-glance__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path
+                        d="M9 7V6C9 4.9 9.9 4 11 4H13C14.1 4 15 4.9 15 6V7"
+                      />
+                      <path
+                        d="M4 9C4 7.9 4.9 7 6 7H18C19.1 7 20 7.9 20 9V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V9Z"
+                      />
+                      <path d="M4 12H20" />
+                    </svg>
+                  </span>
+
+                  <div class="about-glance__item-copy">
+                    <h2 class="about-glance__item-title">Open to:</h2>
+
+                    <p class="about-glance__item-text">Remote Opportunities</p>
+                  </div>
+                </article>
+              </div>
+
+              <div class="about-glance__column about-glance__column--secondary">
+                <article class="about-glance__item">
+                  <span class="about-glance__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path
+                        d="M8.5 11C10.16 11 11.5 9.66 11.5 8C11.5 6.34 10.16 5 8.5 5C6.84 5 5.5 6.34 5.5 8C5.5 9.66 6.84 11 8.5 11Z"
+                      />
+                      <path
+                        d="M15.5 12C16.88 12 18 10.88 18 9.5C18 8.12 16.88 7 15.5 7C14.12 7 13 8.12 13 9.5C13 10.88 14.12 12 15.5 12Z"
+                      />
+                      <path
+                        d="M3.75 19C4.22 15.98 6.02 14.25 8.5 14.25C10.98 14.25 12.78 15.98 13.25 19"
+                      />
+                      <path
+                        d="M12.75 18.75C13.2 16.58 14.58 15.35 16.35 15.35C18.26 15.35 19.64 16.77 20.25 19"
+                      />
+                    </svg>
+                  </span>
+
+                  <div class="about-glance__item-copy">
+                    <h2 class="about-glance__item-title">
+                      Collaborative,<br class="about-glance__tablet-break" />
+                      Detail-Oriented
+                    </h2>
+                  </div>
+                </article>
+
+                <article class="about-glance__item">
+                  <span class="about-glance__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M5 6H9V10H5V6Z" />
+                      <path d="M15 4H19V8H15V4Z" />
+                      <path d="M15 16H19V20H15V16Z" />
+                      <path d="M9 8H12C13.66 8 15 6.66 15 5" />
+                      <path d="M9 8H11.5C13.43 8 15 9.57 15 11.5V18" />
+                    </svg>
+                  </span>
+
+                  <div class="about-glance__item-copy">
+                    <h2 class="about-glance__item-title">
+                      Simplifies Complex<br
+                        class="about-glance__tablet-break"
+                      />
+                      Workflows
+                    </h2>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="about-toolkit" aria-labelledby="about-toolkit-title">
+            <div class="about-toolkit__inner">
+              <header class="about-toolkit__header">
+                <h2 class="about-toolkit__title" id="about-toolkit-title">
+                  Toolkit / Workflow
+                </h2>
               </header>
 
-              <article class="about-glance__item">
-                <span class="about-glance__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path d="M4 20H20"/>
-                    <path d="M7 17L17.75 6.25C18.44 5.56 19.56 5.56 20.25 6.25C20.94 6.94 20.94 8.06 20.25 8.75L9.5 19.5L5 20L5.5 15.5Z"/>
-                  </svg>
-                </span>
+              <div class="about-toolkit__grid">
+                <article class="about-toolkit__item">
+                  <h3 class="about-toolkit__item-title">
+                    <span class="about-toolkit__icon" aria-hidden="true">
+                      <img
+                        src="https://api.iconify.design/devicon:figma.svg"
+                        alt=""
+                        decoding="async"
+                      />
+                    </span>
 
-                <div class="about-glance__item-copy">
-                  <h2 class="about-glance__item-title">
-                    Product Designer
-                  </h2>
+                    <span class="about-toolkit__item-name"> Figma </span>
+                  </h3>
 
-                  <p class="about-glance__item-text">
-                    UI / UX / Interaction
-                  </p>
-                </div>
-              </article>
+                  <p class="about-toolkit__item-text">Design Platform</p>
+                </article>
 
-              <article class="about-glance__item">
-                <span class="about-glance__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path d="M12 21C12 21 18 15.6 18 9.75C18 6.44 15.31 3.75 12 3.75C8.69 3.75 6 6.44 6 9.75C6 15.6 12 21 12 21Z"/>
-                    <path d="M12 12C13.24 12 14.25 10.99 14.25 9.75C14.25 8.51 13.24 7.5 12 7.5C10.76 7.5 9.75 8.51 9.75 9.75C9.75 10.99 10.76 12 12 12Z"/>
-                  </svg>
-                </span>
+                <article class="about-toolkit__item">
+                  <h3 class="about-toolkit__item-title">
+                    <span
+                      class="about-toolkit__icon about-toolkit__icon--chatgpt"
+                      aria-hidden="true"
+                    >
+                      <img
+                        src="https://api.iconify.design/logos:openai-icon.svg"
+                        alt=""
+                        decoding="async"
+                      />
+                    </span>
 
-                <div class="about-glance__item-copy">
-                  <h2 class="about-glance__item-title">
-                    Based in:
-                  </h2>
+                    <span class="about-toolkit__item-name"> ChatGPT </span>
+                  </h3>
 
-                  <p class="about-glance__item-text">
-                    Eastern United States (ET)
-                  </p>
-                </div>
-              </article>
+                  <p class="about-toolkit__item-text">Assistive Development</p>
+                </article>
 
-              <article class="about-glance__item">
-                <span class="about-glance__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path d="M9 7V6C9 4.9 9.9 4 11 4H13C14.1 4 15 4.9 15 6V7"/>
-                    <path d="M4 9C4 7.9 4.9 7 6 7H18C19.1 7 20 7.9 20 9V17C20 18.1 19.1 19 18 19H6C4.9 19 4 18.1 4 17V9Z"/>
-                    <path d="M4 12H20"/>
-                  </svg>
-                </span>
+                <article class="about-toolkit__item">
+                  <h3 class="about-toolkit__item-title">
+                    <span
+                      class="about-toolkit__icon about-toolkit__icon--pair"
+                      aria-hidden="true"
+                    >
+                      <img
+                        src="https://api.iconify.design/devicon:html5.svg"
+                        alt=""
+                        decoding="async"
+                      />
 
-                <div class="about-glance__item-copy">
-                  <h2 class="about-glance__item-title">
-                    Open to:
-                  </h2>
+                      <img
+                        src="https://api.iconify.design/devicon:css3.svg"
+                        alt=""
+                        decoding="async"
+                      />
+                    </span>
 
-                  <p class="about-glance__item-text">
-                    Remote opportunities
-                  </p>
-                </div>
-              </article>
+                    <span class="about-toolkit__item-name"> HTML / CSS </span>
+                  </h3>
+
+                  <p class="about-toolkit__item-text">Languages</p>
+                </article>
+
+                <article class="about-toolkit__item">
+                  <h3 class="about-toolkit__item-title">
+                    <span class="about-toolkit__icon" aria-hidden="true">
+                      <img
+                        src="https://api.iconify.design/devicon:bootstrap.svg"
+                        alt=""
+                        decoding="async"
+                      />
+                    </span>
+
+                    <span
+                      class="about-toolkit__item-name about-toolkit__item-name--stack"
+                    >
+                      <span>Bootstrap</span>
+                      <span class="about-toolkit__item-version">4 / 5</span>
+                    </span>
+                  </h3>
+
+                  <p class="about-toolkit__item-text">Prototyping</p>
+                </article>
+              </div>
             </div>
+          </section>
+        </div>
 
-            <div class="about-glance__column about-glance__column--secondary">
-              <article class="about-glance__item">
-                <span class="about-glance__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path d="M8.5 11C10.16 11 11.5 9.66 11.5 8C11.5 6.34 10.16 5 8.5 5C6.84 5 5.5 6.34 5.5 8C5.5 9.66 6.84 11 8.5 11Z"/>
-                    <path d="M15.5 12C16.88 12 18 10.88 18 9.5C18 8.12 16.88 7 15.5 7C14.12 7 13 8.12 13 9.5C13 10.88 14.12 12 15.5 12Z"/>
-                    <path d="M3.75 19C4.22 15.98 6.02 14.25 8.5 14.25C10.98 14.25 12.78 15.98 13.25 19"/>
-                    <path d="M12.75 18.75C13.2 16.58 14.58 15.35 16.35 15.35C18.26 15.35 19.64 16.77 20.25 19"/>
-                  </svg>
-                </span>
+        <section class="about-intro" aria-labelledby="about-intro-title">
+          <div class="about-intro__inner">
+            <figure class="about-intro__figure">
+              <img
+                class="about-intro__image"
+                src="../../image/asset/portrait.jpg"
+                alt="Portrait of Jack"
+                width="277"
+                height="370"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
 
-                <div class="about-glance__item-copy">
-                  <h2 class="about-glance__item-title">
-                    Collaborative, Detail-Oriented
-                  </h2>
-                </div>
-              </article>
-
-              <article class="about-glance__item">
-                <span class="about-glance__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path d="M5 6H9V10H5V6Z"/>
-                    <path d="M15 4H19V8H15V4Z"/>
-                    <path d="M15 16H19V20H15V16Z"/>
-                    <path d="M9 8H12C13.66 8 15 6.66 15 5"/>
-                    <path d="M9 8H11.5C13.43 8 15 9.57 15 11.5V18"/>
-                  </svg>
-                </span>
-
-                <div class="about-glance__item-copy">
-                  <h2 class="about-glance__item-title">
-                    Simplifies Complex Workflows
-                  </h2>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="about-toolkit" aria-labelledby="about-toolkit-title">
-          <div class="about-toolkit__inner">
-            <header class="about-toolkit__header">
-              <h2 class="about-toolkit__title" id="about-toolkit-title">
-                Toolkit / Workflow
+            <div class="about-intro__content">
+              <h2
+                class="about-intro__title"
+                id="about-intro-title"
+                data-text="HELLO, JACK HERE!"
+              >
+                Hello, Jack here!
               </h2>
-            </header>
 
-            <div class="about-toolkit__grid">
-              <article class="about-toolkit__item">
-                <h3 class="about-toolkit__item-title">
-                  <span class="about-toolkit__icon" aria-hidden="true">
-                    <img
-                      src="https://api.iconify.design/devicon:figma.svg"
-                      alt=""
-                      decoding="async"
-                    >
-                  </span>
+              <p class="about-intro__text">
+                As a <strong>Product Designer</strong> I believe the
+                <strong
+                  >best products are ones users don’t remember being complicated
+                  to use.</strong
+                >
+                My goal in a digital world is to
+                <strong
+                  >reduce frustration, create clear system processes, and help
+                  people reach the end result of the tech products used in
+                  everyday life.</strong
+                >
+                Did I mention this also means straightforward terminology that
+                we all understand?
+              </p>
 
-                  <span class="about-toolkit__item-name">
-                    Figma
-                  </span>
-                </h3>
-
-                <p class="about-toolkit__item-text">
-                  Design Platform
-                </p>
-              </article>
-
-              <article class="about-toolkit__item">
-                <h3 class="about-toolkit__item-title">
-                  <span class="about-toolkit__icon about-toolkit__icon--chatgpt" aria-hidden="true">
-                    <img
-                      src="https://api.iconify.design/logos:openai-icon.svg"
-                      alt=""
-                      decoding="async"
-                    >
-                  </span>
-
-                  <span class="about-toolkit__item-name">
-                    ChatGPT
-                  </span>
-                </h3>
-
-                <p class="about-toolkit__item-text">
-                  Iteration / Refinement
-                </p>
-              </article>
-
-              <article class="about-toolkit__item">
-                <h3 class="about-toolkit__item-title">
-                  <span class="about-toolkit__icon about-toolkit__icon--pair" aria-hidden="true">
-                    <img
-                      src="https://api.iconify.design/devicon:html5.svg"
-                      alt=""
-                      decoding="async"
-                    >
-
-                    <img
-                      src="https://api.iconify.design/devicon:css3.svg"
-                      alt=""
-                      decoding="async"
-                    >
-                  </span>
-
-                  <span class="about-toolkit__item-name">
-                    HTML / CSS
-                  </span>
-                </h3>
-
-                <p class="about-toolkit__item-text">
-                  Languages
-                </p>
-              </article>
-
-              <article class="about-toolkit__item">
-                <h3 class="about-toolkit__item-title">
-                  <span class="about-toolkit__icon" aria-hidden="true">
-                    <img
-                      src="https://api.iconify.design/devicon:bootstrap.svg"
-                      alt=""
-                      decoding="async"
-                    >
-                  </span>
-
-                  <span class="about-toolkit__item-name about-toolkit__item-name--stack">
-                    <span>Bootstrap</span>
-                    <span class="about-toolkit__item-version">4 / 5</span>
-                  </span>
-                </h3>
-
-                <p class="about-toolkit__item-text">
-                  Prototyping
-                </p>
-              </article>
+              <p class="about-intro__text">
+                <em
+                  >Beyond designing, I am a PC video gamer at heart - 18 years
+                  and going strong and a world-builder because...honestly...I no
+                  idea! What I know though is that both relate to how I think
+                  about systems, interactions, and experiences.</em
+                >
+              </p>
             </div>
           </div>
         </section>
       </div>
+    </main>
 
-      <section class="about-intro" aria-labelledby="about-intro-title">
-        <div class="about-intro__inner">
-          <figure class="about-intro__figure">
-            <img
-              class="about-intro__image"
-              src="../../image/asset/portrait.jpg"
-              alt="Portrait of Jack"
-              loading="lazy"
-              decoding="async"
+    <footer class="site-footer">
+      <div class="site-footer__legal">
+        <p class="site-footer__credit">
+          Designed by <strong>J. Holit</strong> | Developed with
+          <strong>AI assistance</strong>
+        </p>
+
+        <p class="site-footer__copyright-notice">
+          All content, designs, and interactions on this site are the
+          intellectual property of Jaqweal Holit unless otherwise stated.
+        </p>
+
+        <p class="site-footer__usage-notice">
+          Unauthorized use, reproduction, or distribution is strictly prohibited
+          except for professional review, employment consideration, or direct
+          inquiries.
+        </p>
+
+        <p class="site-footer__copyright">
+          &copy; 2026 Jaqweal Holit | All rights reserved.
+        </p>
+      </div>
+
+      <nav
+        class="site-footer__contact"
+        aria-label="Contact and social accounts"
+      >
+        <h2 class="site-footer__contact-heading">Contact / Socials</h2>
+
+        <ul class="site-footer__contact-list">
+          <li class="site-footer__contact-item">
+            <button
+              class="site-footer__contact-link site-footer__email-trigger"
+              type="button"
+              data-email-address="jholit@protonmail.com"
+              aria-label="Send an email to Jaqweal Holit"
+              aria-haspopup="dialog"
+              aria-controls="email-confirmation-modal"
             >
-          </figure>
+              <span class="site-footer__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M4 5h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2Zm0 3.2V17h16V8.2l-8 5.2-8-5.2Zm1.4-1.2 6.6 4.3L18.6 7H5.4Z"
+                  />
+                </svg>
+              </span>
 
-          <div class="about-intro__content">
-            <h2
-              class="about-intro__title"
-              id="about-intro-title"
-              data-text="HELLO, JACK HERE!"
+              <span class="site-footer__contact-text"> Email </span>
+            </button>
+          </li>
+
+          <li class="site-footer__contact-item">
+            <a
+              class="site-footer__contact-link"
+              href="https://www.linkedin.com/in/jholit/"
+              target="_blank"
+              rel="me noopener noreferrer"
+              aria-label="Visit Jaqweal Holit's LinkedIn profile"
             >
-              Hello, Jack here!
-            </h2>
+              <span class="site-footer__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M5.35 8.75h3.15V19H5.35V8.75Zm1.57-4.85c1 0 1.8.78 1.8 1.75s-.8 1.75-1.8 1.75-1.8-.78-1.8-1.75.8-1.75 1.8-1.75ZM10.4 8.75h3.02v1.4h.04c.42-.8 1.45-1.65 2.99-1.65 3.2 0 3.79 2.1 3.79 4.84V19h-3.15v-5c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.91 1.29-1.91 2.63V19H10.4V8.75Z"
+                  />
+                </svg>
+              </span>
 
-            <p class="about-intro__text">
-              As a <strong>Product Designer</strong> I believe the <strong>best products are ones users don’t remember being complicated to use.</strong> My goal in a digital world is to <strong>reduce frustration, create clear system processes, and help people reach the end result of the tech products used in everyday life.</strong> Did I mention this also means straightforward terminology that we all understand?
-            </p>
+              <span class="site-footer__contact-text"> LinkedIn </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
 
-            <p class="about-intro__text">
-              <em>Beyond this, I enjoy writing, worldbuilding, and most importantly video gaming (PC to be exact) - hobbies that surprisingly relate to how I think about systems, interactions, and experiences.</em>
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="site-footer__legal">
-      <p class="site-footer__credit">
-        Designed by <strong>J. Holit</strong> | Developed with <strong>AI assistance</strong>
-      </p>
-
-      <p class="site-footer__copyright-notice">
-        All content, designs, and interactions on this site are the intellectual property of Jaqweal Holit unless otherwise stated.
-      </p>
-
-      <p class="site-footer__usage-notice">
-        Unauthorized use, reproduction, or distribution is strictly prohibited except for professional review, employment consideration, or direct inquiries.
-      </p>
-
-      <p class="site-footer__copyright">
-        &copy; 2026 Jaqweal Holit | All rights reserved.
-      </p>
-    </div>
-
-    <nav class="site-footer__contact" aria-label="Contact and social accounts">
-      <h2 class="site-footer__contact-heading">
-        Contact / Socials
-      </h2>
-
-      <ul class="site-footer__contact-list">
-        <li class="site-footer__contact-item">
-          <button
-            class="site-footer__contact-link site-footer__email-trigger"
-            type="button"
-            data-email-address="jholit@protonmail.com"
-            aria-label="Send an email to Jaqweal Holit"
-            aria-haspopup="dialog"
-            aria-controls="email-confirmation-modal"
-          >
-            <span class="site-footer__contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M4 5h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2Zm0 3.2V17h16V8.2l-8 5.2-8-5.2Zm1.4-1.2 6.6 4.3L18.6 7H5.4Z"/>
-              </svg>
-            </span>
-
-            <span class="site-footer__contact-text">
-              Email
-            </span>
-          </button>
-        </li>
-
-        <li class="site-footer__contact-item">
-          <a
-            class="site-footer__contact-link"
-            href="https://www.linkedin.com/in/jholit/"
-            target="_blank"
-            rel="me noopener noreferrer"
-            aria-label="Visit Jaqweal Holit's LinkedIn profile"
-          >
-            <span class="site-footer__contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M5.35 8.75h3.15V19H5.35V8.75Zm1.57-4.85c1 0 1.8.78 1.8 1.75s-.8 1.75-1.8 1.75-1.8-.78-1.8-1.75.8-1.75 1.8-1.75ZM10.4 8.75h3.02v1.4h.04c.42-.8 1.45-1.65 2.99-1.65 3.2 0 3.79 2.1 3.79 4.84V19h-3.15v-5c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.91 1.29-1.91 2.63V19H10.4V8.75Z"/>
-              </svg>
-            </span>
-
-            <span class="site-footer__contact-text">
-              LinkedIn
-            </span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </footer>
-
-  <!-- Controls website logic -->
-  <script src="../../js/site.js" defer></script>
-</body>
+    <!-- Controls website logic -->
+    <script src="../../js/site.js" defer></script>
+  </body>
 </html>

@@ -11,19 +11,25 @@
   const chatThread = document.querySelector(".chat-thread");
   const composerArea = document.querySelector(".composer-area");
   const chatComposer = document.querySelector(".chat-composer");
-  const composerModelSettings = document.querySelector(".composer-model-settings");
+  const composerModelSettings = document.querySelector(
+    ".composer-model-settings",
+  );
   const chatInput = document.querySelector("#chatInput");
   const chatUpload = document.querySelector("#chatUpload");
   const uploadButton = document.querySelector(".composer-upload-btn");
   const expandButton = document.querySelector(".composer-expand-btn");
 
   const modelModeToggle = document.querySelector(".model-mode-toggle");
-  const modelModeOptions = Array.from(document.querySelectorAll(".model-mode-option"));
+  const modelModeOptions = Array.from(
+    document.querySelectorAll(".model-mode-option"),
+  );
 
   const modelSelect = document.querySelector(".model-select");
   const modelSelectTrigger = document.querySelector(".model-select-trigger");
   const currentModelName = document.querySelector(".current-model-name");
-  const modelMenuItems = Array.from(document.querySelectorAll(".model-menu-item"));
+  const modelMenuItems = Array.from(
+    document.querySelectorAll(".model-menu-item"),
+  );
 
   let chatScrollTimer;
   const activeComposerHoverZones = new Set();
@@ -44,7 +50,10 @@
       return;
     }
 
-    chatWorkspace.style.setProperty("--composer-height", `${composerArea.offsetHeight}px`);
+    chatWorkspace.style.setProperty(
+      "--composer-height",
+      `${composerArea.offsetHeight}px`,
+    );
   };
 
   const updateComposerActivityState = () => {
@@ -64,7 +73,10 @@
   };
 
   const updateComposerHoverState = () => {
-    composerArea?.classList.toggle("is-control-hovered", activeComposerHoverZones.size > 0);
+    composerArea?.classList.toggle(
+      "is-control-hovered",
+      activeComposerHoverZones.size > 0,
+    );
   };
 
   const registerComposerHoverZone = (zone) => {
@@ -93,10 +105,14 @@
     const inputStyles = window.getComputedStyle(chatInput);
     const minHeight = Number.parseFloat(inputStyles.minHeight) || 60;
     const maxHeight = Number.parseFloat(inputStyles.maxHeight) || 156;
-    const nextHeight = Math.min(Math.max(chatInput.scrollHeight, minHeight), maxHeight);
+    const nextHeight = Math.min(
+      Math.max(chatInput.scrollHeight, minHeight),
+      maxHeight,
+    );
 
     chatInput.style.height = `${nextHeight}px`;
-    chatInput.style.overflowY = chatInput.scrollHeight > maxHeight ? "auto" : "hidden";
+    chatInput.style.overflowY =
+      chatInput.scrollHeight > maxHeight ? "auto" : "hidden";
 
     syncComposerState();
   };
@@ -108,7 +124,10 @@
 
     composerArea.classList.toggle("is-expanded", shouldExpand);
     expandButton.setAttribute("aria-expanded", String(shouldExpand));
-    expandButton.setAttribute("aria-label", shouldExpand ? "Collapse prompt" : "Expand prompt");
+    expandButton.setAttribute(
+      "aria-label",
+      shouldExpand ? "Collapse prompt" : "Expand prompt",
+    );
 
     requestAnimationFrame(() => {
       resizeChatInput();
@@ -160,23 +179,26 @@
     }
 
     if (direction === "next") {
-      nextIndex = currentIndex >= 0 ? (currentIndex + 1) % modelMenuItems.length : 0;
+      nextIndex =
+        currentIndex >= 0 ? (currentIndex + 1) % modelMenuItems.length : 0;
     }
 
     if (direction === "previous") {
-      nextIndex = currentIndex > 0 ? currentIndex - 1 : modelMenuItems.length - 1;
+      nextIndex =
+        currentIndex > 0 ? currentIndex - 1 : modelMenuItems.length - 1;
     }
 
     modelMenuItems[nextIndex]?.focus();
   };
 
   const handleSidebarToggle = () => {
-    const isCollapsed = prototypeShell?.classList.toggle("is-sidebar-collapsed") ?? false;
+    const isCollapsed =
+      prototypeShell?.classList.toggle("is-sidebar-collapsed") ?? false;
 
     sidebarCollapseButton?.setAttribute("aria-expanded", String(!isCollapsed));
     sidebarCollapseButton?.setAttribute(
       "aria-label",
-      isCollapsed ? "Expand sidebar" : "Collapse sidebar"
+      isCollapsed ? "Expand sidebar" : "Collapse sidebar",
     );
   };
 
@@ -202,8 +224,47 @@
     modelModeToggle?.setAttribute("data-active", activeMode);
 
     modelModeOptions.forEach((option) => {
-      option.setAttribute("aria-checked", String(option === selectedOption));
+      const isSelected = option === selectedOption;
+
+      option.setAttribute("aria-checked", String(isSelected));
+      option.tabIndex = isSelected ? 0 : -1;
     });
+  };
+
+  const handleModeKeydown = (event, currentOption) => {
+    const supportedKeys = [
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown",
+      "Home",
+      "End",
+    ];
+
+    if (!supportedKeys.includes(event.key)) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const currentIndex = modelModeOptions.indexOf(currentOption);
+    const lastIndex = modelModeOptions.length - 1;
+    let nextIndex;
+
+    if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = lastIndex;
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      nextIndex = currentIndex > 0 ? currentIndex - 1 : lastIndex;
+    } else {
+      nextIndex = currentIndex < lastIndex ? currentIndex + 1 : 0;
+    }
+
+    const nextOption = modelModeOptions[nextIndex];
+
+    handleModeSelection(nextOption);
+    nextOption?.focus();
   };
 
   const handleModelSelection = (selectedItem) => {
@@ -235,7 +296,10 @@
 
   composerArea?.addEventListener("focusout", () => {
     requestAnimationFrame(() => {
-      composerArea.classList.toggle("is-control-focused", composerArea.contains(document.activeElement));
+      composerArea.classList.toggle(
+        "is-control-focused",
+        composerArea.contains(document.activeElement),
+      );
     });
   });
 
@@ -259,7 +323,8 @@
   });
 
   chatInput?.addEventListener("keydown", (event) => {
-    const shouldSubmit = event.key === "Enter" && (event.ctrlKey || event.metaKey);
+    const shouldSubmit =
+      event.key === "Enter" && (event.ctrlKey || event.metaKey);
 
     if (!shouldSubmit) {
       return;
@@ -282,6 +347,10 @@
   modelModeOptions.forEach((option) => {
     option.addEventListener("click", () => {
       handleModeSelection(option);
+    });
+
+    option.addEventListener("keydown", (event) => {
+      handleModeKeydown(event, option);
     });
   });
 

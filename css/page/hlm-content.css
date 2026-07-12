@@ -540,8 +540,16 @@ img {
   min-height: 0;
   padding: 36px 0 36px clamp(32px, 4vw, 96px);
   background:
-    radial-gradient(circle at top left, rgba(0, 208, 255, 0.08), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.045), transparent 34%),
+    radial-gradient(
+      circle at top left,
+      rgba(0, 208, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 255, 255, 0.045),
+      transparent 34%
+    ),
     var(--workspace-bg);
   display: flex;
   flex: 1;
@@ -806,14 +814,13 @@ img {
   inset: 0 0 -36px;
   z-index: 0;
   opacity: 0.68;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(7, 8, 10, 0) 0%,
-      rgba(7, 8, 10, 0.42) 38%,
-      rgba(7, 8, 10, 0.88) 70%,
-      var(--workspace-bg) 100%
-    );
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 8, 10, 0) 0%,
+    rgba(7, 8, 10, 0.42) 38%,
+    rgba(7, 8, 10, 0.88) 70%,
+    var(--workspace-bg) 100%
+  );
   pointer-events: none;
   transition: opacity 220ms ease;
 }
@@ -823,12 +830,20 @@ img {
   filter: saturate(0.94);
 }
 
-.composer-area.is-thread-scrolling:not(.is-control-hovered):not(.is-control-focused):not(.is-input-active):not(.has-text):not(.is-expanded):not(.is-model-menu-open) {
+.composer-area.is-thread-scrolling:not(.is-control-hovered):not(
+    .is-control-focused
+  ):not(.is-input-active):not(.has-text):not(.is-expanded):not(
+    .is-model-menu-open
+  ) {
   opacity: 0.5;
   filter: saturate(0.78);
 }
 
-.composer-area.is-thread-scrolling:not(.is-control-hovered):not(.is-control-focused):not(.is-input-active):not(.has-text):not(.is-expanded):not(.is-model-menu-open)::before {
+.composer-area.is-thread-scrolling:not(.is-control-hovered):not(
+    .is-control-focused
+  ):not(.is-input-active):not(.has-text):not(.is-expanded):not(
+    .is-model-menu-open
+  )::before {
   opacity: 0.52;
 }
 
@@ -1461,16 +1476,17 @@ img {
 
 /* Small screen notice */
 
-@media (max-width: 1079px) {
+@media (max-width: 1079px),
+  (min-width: 1080px) and (max-width: 1366px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
   html,
   body {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    height: 100svh;
     overflow: hidden;
   }
 
   body {
-    min-height: 100vh;
     padding: 24px;
     display: flex;
     align-items: center;
@@ -1484,6 +1500,7 @@ img {
   .small-screen-notice {
     width: min(100%, 560px);
     min-height: calc(100vh - 48px);
+    min-height: calc(100svh - 48px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1496,12 +1513,17 @@ img {
     border: 1px solid var(--panel-border);
     border-radius: var(--radius-lg);
     background:
-      linear-gradient(135deg, rgba(0, 208, 255, 0.1), rgba(255, 255, 255, 0.035)),
+      linear-gradient(
+        135deg,
+        rgba(0, 208, 255, 0.1),
+        rgba(255, 255, 255, 0.035)
+      ),
       var(--panel-bg);
     color: rgba(244, 244, 245, 0.84);
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.65;
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+    transform: translateY(-24px);
   }
 }

@@ -1,12 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jost:wght@100..900&family=Lexend:wght@300;700&family=Palanquin+Dark:wght@700&display=swap");
-
 :root {
   --color-white: #ffffff;
   --color-black: #000000;
   --color-footer-bg: #171717;
   --color-footer-text: #d1d1d1;
   --color-nav-active: #60acb4;
-  --color-nav-indicator: #C6FBBF;
+  --color-nav-indicator: #c6fbbf;
   --color-submenu-hover: #c3ecff;
   --color-footer-divider: rgba(255, 255, 255, 0.3);
   --color-footer-contact-hover: rgba(255, 255, 255, 0.17);
@@ -79,7 +77,6 @@ body::before {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
   opacity: var(--site-background-image-opacity);
   transform: scaleX(1);
   transform-origin: center;
@@ -251,19 +248,27 @@ main[tabindex="-1"]:focus {
 }
 
 .site-header__nav-link:not([aria-current="page"]):not(.is-active):hover::before,
-.site-header__nav-link:not([aria-current="page"]):not(.is-active):focus-visible::before {
+.site-header__nav-link:not([aria-current="page"]):not(
+    .is-active
+  ):focus-visible::before {
   opacity: 1;
 }
 
 @media (min-width: 961px) {
-  .site-header__nav-item:not(.site-header__nav-item--has-submenu) > .site-header__nav-link {
+  .site-header__nav-item:not(.site-header__nav-item--has-submenu)
+    > .site-header__nav-link {
     min-height: 40px;
     padding: 0 15px;
   }
 
-  .site-header__nav-item--has-submenu:hover > .site-header__nav-link:not([aria-current="page"]):not(.is-active)::before,
-  .site-header__nav-item--has-submenu:focus-within > .site-header__nav-link:not([aria-current="page"]):not(.is-active)::before,
-  .site-header__nav-item--has-submenu.is-submenu-open > .site-header__nav-link:not([aria-current="page"]):not(.is-active)::before {
+  .site-header__nav-item--has-submenu:hover
+    > .site-header__nav-link:not([aria-current="page"]):not(.is-active)::before,
+  .site-header__nav-item--has-submenu:focus-within
+    > .site-header__nav-link:not([aria-current="page"]):not(.is-active)::before,
+  .site-header__nav-item--has-submenu.is-submenu-open
+    > .site-header__nav-link:not([aria-current="page"]):not(
+      .is-active
+    )::before {
     opacity: 1;
   }
 }
@@ -294,11 +299,19 @@ main[tabindex="-1"]:focus {
 }
 
 .site-header__nav-link--submenu-trigger:hover .site-header__nav-link-icon,
-.site-header__nav-link--submenu-trigger:focus-visible .site-header__nav-link-icon,
-.site-header__nav-item--has-submenu:hover > .site-header__nav-link .site-header__nav-link-icon,
-.site-header__nav-item--has-submenu:focus-within > .site-header__nav-link .site-header__nav-link-icon,
-.site-header__nav-item--has-submenu.is-submenu-open > .site-header__nav-link .site-header__nav-link-icon,
-.site-header__nav-link--submenu-trigger[aria-expanded="true"] .site-header__nav-link-icon {
+.site-header__nav-link--submenu-trigger:focus-visible
+  .site-header__nav-link-icon,
+.site-header__nav-item--has-submenu:hover
+  > .site-header__nav-link
+  .site-header__nav-link-icon,
+.site-header__nav-item--has-submenu:focus-within
+  > .site-header__nav-link
+  .site-header__nav-link-icon,
+.site-header__nav-item--has-submenu.is-submenu-open
+  > .site-header__nav-link
+  .site-header__nav-link-icon,
+.site-header__nav-link--submenu-trigger[aria-expanded="true"]
+  .site-header__nav-link-icon {
   transform: rotate(0deg);
 }
 
@@ -333,7 +346,8 @@ main[tabindex="-1"]:focus {
 .site-header__nav-item--has-submenu:hover .site-header__submenu,
 .site-header__nav-item--has-submenu:focus-within .site-header__submenu,
 .site-header__nav-item--has-submenu.is-submenu-open .site-header__submenu,
-.site-header__nav-link--submenu-trigger[aria-expanded="true"] + .site-header__submenu,
+.site-header__nav-link--submenu-trigger[aria-expanded="true"]
+  + .site-header__submenu,
 .site-header__submenu:hover {
   opacity: 1;
   visibility: visible;
@@ -435,13 +449,15 @@ main[tabindex="-1"]:focus {
   body:not(.page-motion-exit-fade) > .site-header,
   body:not(.page-motion-exit-fade) > main,
   body:not(.page-motion-exit-fade) > .site-footer {
-    animation: pageFadeIn var(--page-transition-duration) var(--page-transition-easing) both;
+    animation: pageFadeIn var(--page-transition-duration)
+      var(--page-transition-easing) both;
   }
 
   body.page-motion-exit-fade > .site-header,
   body.page-motion-exit-fade > main,
   body.page-motion-exit-fade > .site-footer {
-    animation: pageFadeOut var(--page-transition-duration) var(--page-transition-easing) both;
+    animation: pageFadeOut var(--page-transition-duration)
+      var(--page-transition-easing) both;
   }
 
   body:not(.page-motion-exit-fade) > .site-header,
@@ -665,14 +681,14 @@ main[tabindex="-1"]:focus {
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 12px;
   color: var(--color-white);
-  background:
-    linear-gradient(
-      135deg,
-      rgba(23, 23, 23, 0.99) 0%,
-      rgba(0, 0, 0, 0.98) 100%
-    );
+  background: linear-gradient(
+    135deg,
+    rgba(23, 23, 23, 0.99) 0%,
+    rgba(0, 0, 0, 0.98) 100%
+  );
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
-  transform: translateY(calc(var(--email-modal-optical-offset) + 8px)) scale(0.98);
+  transform: translateY(calc(var(--email-modal-optical-offset) + 8px))
+    scale(0.98);
   transition: transform var(--transition-fast);
 }
 
@@ -807,7 +823,16 @@ main[tabindex="-1"]:focus {
    Sitewide responsive
    ========================================================================== */
 
-@media (max-width: 960px) {
+@media (max-width: 960px),
+  (min-width: 961px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  body::before,
+  body::after {
+    bottom: auto;
+    width: 100%;
+    height: 100vh;
+    height: 100lvh;
+  }
+
   .site-header {
     width: 100%;
     height: var(--header-height);
@@ -967,13 +992,21 @@ main[tabindex="-1"]:focus {
     transform: none;
   }
 
-  .site-header__nav-link:not([aria-current="page"]):not(.is-active):hover::before {
+  .site-header__nav-link:not([aria-current="page"]):not(
+      .is-active
+    ):hover::before {
     opacity: 0;
   }
 
-  .site-header__nav-link:not([aria-current="page"]):not(.is-active):active::before,
-  .site-header__nav-link:not([aria-current="page"]):not(.is-active):focus-visible::before,
-  .site-header__nav-link--submenu-trigger:not([aria-current="page"]):not(.is-active)[aria-expanded="true"]::before {
+  .site-header__nav-link:not([aria-current="page"]):not(
+      .is-active
+    ):active::before,
+  .site-header__nav-link:not([aria-current="page"]):not(
+      .is-active
+    ):focus-visible::before,
+  .site-header__nav-link--submenu-trigger:not([aria-current="page"]):not(
+      .is-active
+    )[aria-expanded="true"]::before {
     opacity: 1;
   }
 
@@ -1010,7 +1043,8 @@ main[tabindex="-1"]:focus {
   }
 
   .site-header__nav-item--has-submenu.is-submenu-open .site-header__submenu,
-  .site-header__nav-link--submenu-trigger[aria-expanded="true"] + .site-header__submenu {
+  .site-header__nav-link--submenu-trigger[aria-expanded="true"]
+    + .site-header__submenu {
     max-height: 260px;
     margin-top: 10px;
     opacity: 1;
@@ -1060,12 +1094,18 @@ main[tabindex="-1"]:focus {
     background-color: var(--color-submenu-hover);
   }
 
-  .site-header__submenu-link:not([aria-current="page"]):not(.is-active):hover::before {
+  .site-header__submenu-link:not([aria-current="page"]):not(
+      .is-active
+    ):hover::before {
     opacity: 0;
   }
 
-  .site-header__submenu-link:not([aria-current="page"]):not(.is-active):active::before,
-  .site-header__submenu-link:not([aria-current="page"]):not(.is-active):focus-visible::before {
+  .site-header__submenu-link:not([aria-current="page"]):not(
+      .is-active
+    ):active::before,
+  .site-header__submenu-link:not([aria-current="page"]):not(
+      .is-active
+    ):focus-visible::before {
     opacity: 1;
   }
 
@@ -1094,13 +1134,24 @@ main[tabindex="-1"]:focus {
 
 @media (max-width: 960px) and (hover: hover) and (pointer: fine) {
   .site-header__menu-toggle:hover::before,
-  .site-header__nav-link:not([aria-current="page"]):not(.is-active):hover::before,
-  .site-header__submenu-link:not([aria-current="page"]):not(.is-active):hover::before {
+  .site-header__nav-link:not([aria-current="page"]):not(
+      .is-active
+    ):hover::before,
+  .site-header__submenu-link:not([aria-current="page"]):not(
+      .is-active
+    ):hover::before {
     opacity: 1;
   }
 
   .site-header__submenu-link:not([aria-current="page"]):not(.is-active):hover {
     background-color: transparent;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .site-header__nav-item:not(.site-header__nav-item--has-submenu)
+    > .site-header__nav-link::before {
+    content: none;
   }
 }
 

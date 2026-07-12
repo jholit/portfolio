@@ -1,311 +1,421 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta
-    name="description"
-    content="A product design case study by Jaqweal Holit exploring HLM AI, an AI workspace concept focused on clearer navigation, prompting control, and conversational structure."
-  >
-  <meta name="author" content="Jaqweal Holit">
+    <meta
+      name="description"
+      content="A product design case study by Jaqweal Holit exploring HLM AI, an AI workspace concept focused on clearer navigation, prompting control, and conversational structure."
+    />
+    <meta name="author" content="Jaqweal Holit" />
 
-  <!-- Overall webpage styling -->
-  <link rel="stylesheet" href="../../css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Jost:wght@100..900&amp;family=Lexend:wght@300;700&amp;family=Palanquin+Dark:wght@700&amp;display=swap"
+    />
 
-  <!-- Webpage content styling -->
-  <link rel="stylesheet" href="../../css/page/project-content.css" data-page-stylesheet>
+    <!-- Overall webpage styling -->
+    <link rel="stylesheet" href="../../css/site.css" />
 
-  <link rel="icon" href="../../image/asset/favicon.png" type="image/png">
+    <!-- Webpage content styling -->
+    <link
+      rel="stylesheet"
+      href="../../css/page/project-content.css"
+      data-page-stylesheet
+    />
 
-  <title>JH | HLM AI Workspace Concept</title>
-</head>
+    <link rel="icon" href="../../image/asset/favicon.png" type="image/png" />
 
-<body>
-  <a class="skip-link" href="#main-content">
-    Skip to main content
-  </a>
+    <title>JH | HLM AI Project</title>
+  </head>
 
-  <header class="site-header">
-    <a
-      class="site-header__logo"
-      href="../../"
-      aria-label="Jaqweal Holit homepage"
-    >
-      JH
-    </a>
+  <body>
+    <a class="skip-link" href="#main-content"> Skip to main content </a>
 
-    <button
-      class="site-header__menu-toggle"
-      type="button"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-      aria-controls="primary-navigation"
-    >
-      <span class="site-header__menu-toggle-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" focusable="false">
-          <path class="site-header__menu-icon-line site-header__menu-icon-line--top" d="M4 7h16"/>
-          <path class="site-header__menu-icon-line site-header__menu-icon-line--middle" d="M4 12h16"/>
-          <path class="site-header__menu-icon-line site-header__menu-icon-line--bottom" d="M4 17h16"/>
-        </svg>
-      </span>
-    </button>
+    <header class="site-header">
+      <a
+        class="site-header__logo"
+        href="../../"
+        aria-label="Jaqweal Holit homepage"
+      >
+        JH
+      </a>
 
-    <nav class="site-header__nav" id="primary-navigation" aria-label="Primary navigation">
-      <ul class="site-header__nav-list">
-        <li class="site-header__nav-item">
-          <a class="site-header__nav-link" href="../../page/about/">
-            Who is Jaqweal Holit?
-          </a>
-        </li>
+      <button
+        class="site-header__menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+      >
+        <span class="site-header__menu-toggle-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path
+              class="site-header__menu-icon-line site-header__menu-icon-line--top"
+              d="M4 7h16"
+            />
+            <path
+              class="site-header__menu-icon-line site-header__menu-icon-line--middle"
+              d="M4 12h16"
+            />
+            <path
+              class="site-header__menu-icon-line site-header__menu-icon-line--bottom"
+              d="M4 17h16"
+            />
+          </svg>
+        </span>
+      </button>
 
-        <li class="site-header__nav-item">
-          <a class="site-header__nav-link" href="../../page/career/">
-            Education / Career Experience
-          </a>
-        </li>
+      <nav
+        class="site-header__nav"
+        id="primary-navigation"
+        aria-label="Primary navigation"
+      >
+        <ul class="site-header__nav-list">
+          <li class="site-header__nav-item">
+            <a class="site-header__nav-link" href="../../page/about/">
+              Who's Jack Holit?
+            </a>
+          </li>
 
-        <li class="site-header__nav-item site-header__nav-item--has-submenu">
-          <button
-            class="site-header__nav-link site-header__nav-link--submenu-trigger"
-            id="projects-submenu-trigger"
-            type="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-            aria-controls="projects-submenu"
-          >
-            <span>Projects &amp; Case Studies</span>
+          <li class="site-header__nav-item">
+            <a class="site-header__nav-link" href="../../page/career/">
+              Education &amp; Career
+            </a>
+          </li>
 
-            <span class="site-header__nav-link-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M6.2 8.8 12 14.6l5.8-5.8 1.4 1.4L12 17.4 4.8 10.2l1.4-1.4Z"/>
-              </svg>
-            </span>
-          </button>
+          <li class="site-header__nav-item site-header__nav-item--has-submenu">
+            <button
+              class="site-header__nav-link site-header__nav-link--submenu-trigger"
+              id="projects-submenu-trigger"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="projects-submenu"
+            >
+              <span>Projects / Case Studies</span>
 
-          <div
-            class="site-header__submenu"
-            id="projects-submenu"
-            role="group"
-            aria-labelledby="projects-submenu-trigger"
-          >
-            <ul class="site-header__submenu-list">
-              <li class="site-header__submenu-item">
-                <a
-                  class="site-header__submenu-link"
-                  href="../../page/hlm-project/"
-                  aria-current="page"
-                >
-                  <strong>HLM AI</strong>
-                  <span>An AI Workspace Concept</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </header>
+              <span class="site-header__nav-link-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M6.2 8.8 12 14.6l5.8-5.8 1.4 1.4L12 17.4 4.8 10.2l1.4-1.4Z"
+                  />
+                </svg>
+              </span>
+            </button>
 
-  <main class="project-page hlm-project" id="main-content">
-    <section class="hlm-project__intro" aria-labelledby="hlm-project-heading">
-      <h1 class="hlm-project__heading" id="hlm-project-heading">
-        <span class="hlm-project__heading-line">HLM AI</span>
-        <span class="hlm-project__heading-line">An AI Workspace Concept</span>
-      </h1>
+            <div
+              class="site-header__submenu"
+              id="projects-submenu"
+              role="group"
+              aria-labelledby="projects-submenu-trigger"
+            >
+              <ul class="site-header__submenu-list">
+                <li class="site-header__submenu-item">
+                  <a
+                    class="site-header__submenu-link"
+                    href="../../page/hlm-project/"
+                    aria-current="page"
+                  >
+                    <strong>HLM AI</strong>
+                    <span>An AI Workspace Concept</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-      <h2 class="hlm-project__subheading">
-        Summary
-      </h2>
+    <main class="project-page hlm-project" id="main-content">
+      <section class="hlm-project__intro" aria-labelledby="hlm-project-heading">
+        <h1 class="hlm-project__heading" id="hlm-project-heading">
+          <span class="hlm-project__heading-line">HLM AI</span>
+          <span class="hlm-project__heading-line">An AI Workspace Concept</span>
+        </h1>
 
-      <p class="hlm-project__paragraph">
-        HLM AI explores how product design can improve the experience of working with a large language model. While AI platforms can feel easy to start using, the experience can become harder to manage as more features, controls, and terminology are added around the core conversation.
+        <h2 class="hlm-project__subheading">Summary</h2>
 
-        <br><br>
+        <p class="hlm-project__paragraph">
+          HLM AI explores how product design can improve the experience of
+          working with a large language model. While AI platforms can feel easy
+          to start using, the experience can become harder to manage as more
+          features, controls, and terminology are added around the core
+          conversation.
 
-        This project focuses on the front-facing workspace experience: how people navigate, prompt, and follow a conversation with AI. Instead of asking people to adapt to the interface, HLM AI explores how the interface can better support what people are trying to do.
-      </p>
-    </section>
+          <br /><br />
 
-    <section class="hlm-project__section" aria-labelledby="examining-the-problem-heading">
-      <h2 class="hlm-project__subheading" id="examining-the-problem-heading">
-        Examining the Problem
-      </h2>
+          This project focuses on the front-facing workspace experience: how
+          people navigate, prompt, and follow a conversation with AI. Instead of
+          asking people to adapt to the interface, HLM AI explores how the
+          interface can better support what people are trying to do.
+        </p>
+      </section>
 
-      <p class="hlm-project__paragraph">
-        Large language models are powerful, but the product experience around them can still feel feature-led. Important actions may compete with secondary tools, terminology can assume technical knowledge, and controls that shape the interaction are not always placed where people naturally need them.
-      </p>
+      <section
+        class="hlm-project__section"
+        aria-labelledby="examining-the-problem-heading"
+      >
+        <h2 class="hlm-project__subheading" id="examining-the-problem-heading">
+          Examining the Problem
+        </h2>
 
-      <p class="hlm-project__paragraph">
-        The sidebar became one of the clearest areas to reconsider. Rather than treating it as a simple menu, I approached it as the operational center of the workspace: the place where people understand what the product can do, where their work lives, and how to move between conversations, tools, and projects.
-      </p>
-
-      <ul class="hlm-project__list">
-        <li class="hlm-project__list-item">
-          The workspace needed clearer separation between what the AI is capable of doing and what people are most likely trying to use it for.
-        </li>
-
-        <li class="hlm-project__list-item">
-          Primary actions, workspace tools, and supporting features needed stronger hierarchy so they did not compete for the same level of attention.
-        </li>
-
-        <li class="hlm-project__list-item">
-          Prompt controls needed to live closer to the moment of interaction, allowing people to adjust model behavior without leaving the flow of writing.
-        </li>
-
-        <li class="hlm-project__list-item">
-          The conversation area needed clearer speaker identity, timestamps, and message structure so people could follow and reference exchanges more easily.
-        </li>
-      </ul>
-
-      <p class="hlm-project__paragraph">
-        These issues shaped the direction of HLM AI. The goal was not to redesign every possible feature, but to focus on the parts of an AI workspace people interact with most: finding where to go, deciding what to ask, and understanding what comes back.
-      </p>
-    </section>
-
-    <section class="hlm-project__section" aria-labelledby="product-designed-solutions-heading">
-      <h2 class="hlm-project__subheading" id="product-designed-solutions-heading">
-        Product Design Solutions
-      </h2>
-
-      <p class="hlm-project__paragraph">
-        The solution was to redesign HLM AI around the everyday moments that define the workspace experience. I focused on the aside panel, the prompter, and the active chat area because those are the places where people navigate, control, and understand their interaction with AI.
-      </p>
-
-      <p class="hlm-project__paragraph">
-        The redesign supports this direction through the following decisions:
-      </p>
-
-      <ol class="hlm-project__ordered-list hlm-project__solutions-list">
-        <li class="hlm-project__ordered-list-item hlm-project__solutions-list-item">
-          I reorganized the sidebar so it works as an operational center instead of a crowded list of menu items, separating custom HLM tools, workspace areas, conversations, and supporting actions more clearly.
-        </li>
-
-        <li class="hlm-project__ordered-list-item hlm-project__solutions-list-item">
-          I used more direct terminology for key workspace areas so people can understand what each section is for without needing to decode product-specific or technical language first.
-        </li>
-
-        <li class="hlm-project__ordered-list-item hlm-project__solutions-list-item">
-          I moved model and capability controls closer to the prompt field so people can adjust how they want HLM AI to respond at the moment they are preparing to interact with it.
-        </li>
-
-        <li class="hlm-project__ordered-list-item hlm-project__solutions-list-item">
-          I reframed AI capability options around conversational intent, using labels such as Talkative, Contemplative, and Thinking to make response behavior easier to understand from a human perspective.
-        </li>
-
-        <li class="hlm-project__ordered-list-item hlm-project__solutions-list-item">
-          I redesigned the active chat area to feel more like a familiar conversation, using clearer speaker identity, message structure, and timestamps so people can follow who said what and reference past exchanges more easily.
-        </li>
-      </ol>
-    </section>
-
-    <section class="hlm-project__section" aria-labelledby="measurement-of-outcomes-heading">
-      <h2 class="hlm-project__subheading" id="measurement-of-outcomes-heading">
-        Measurement of Outcomes
-      </h2>
-
-      <p class="hlm-project__paragraph">
-        HLM AI demonstrates how the experience around a large language model can become easier to understand when core interactions are organized around people instead of feature exposure. The redesigned workspace gives clearer priority to navigation, prompting, and conversation flow without pretending the prototype needs to solve every possible AI use case.
-      </p>
-
-      <p class="hlm-project__paragraph">
-        The current version establishes a focused foundation for the project: a clearer aside panel, a more useful prompting control area, and a conversation layout that makes the exchange between person and AI easier to follow. Future updates can expand the prototype, but this version already communicates the main design direction.
-      </p>
-    </section>
-
-    <section class="hlm-project__section hlm-project__visuals" aria-labelledby="interactive-prototype-heading">
-      <h2 class="hlm-project__subheading" id="interactive-prototype-heading">
-        Interactive Prototype
-      </h2>
-
-      <p class="hlm-project__paragraph">
-        This section highlights the live HLM AI prototype. Use the demo to review the workspace structure, conversation layout, and prompting controls in context.
-      </p>
-
-      <div class="hlm-project__download">
-        <p class="hlm-project__download-text">
-          Check out the live demonstration:
+        <p class="hlm-project__paragraph">
+          Large language models are powerful, but the product experience around
+          them can still feel feature-led. Important actions may compete with
+          secondary tools, terminology can assume technical knowledge, and
+          controls that shape the interaction are not always placed where people
+          naturally need them.
         </p>
 
-        <a class="hlm-project__download-link" href="../../page/hlm-prototype/">
-          View prototype
-        </a>
-      </div>
-    </section>
-  </main>
+        <p class="hlm-project__paragraph">
+          The sidebar became one of the clearest areas to reconsider. Rather
+          than treating it as a simple menu, I approached it as the operational
+          center of the workspace: the place where people understand what the
+          product can do, where their work lives, and how to move between
+          conversations, tools, and projects.
+        </p>
 
-  <footer class="site-footer">
-    <div class="site-footer__legal">
-      <p class="site-footer__credit">
-        Designed by <strong>J. Holit</strong> | Developed with <strong>AI assistance</strong>
-      </p>
+        <ul class="hlm-project__list">
+          <li class="hlm-project__list-item">
+            The workspace needed clearer separation between what the AI is
+            capable of doing and what people are most likely trying to use it
+            for.
+          </li>
 
-      <p class="site-footer__copyright-notice">
-        All content, designs, and interactions on this site are the intellectual property of Jaqweal Holit unless otherwise stated.
-      </p>
+          <li class="hlm-project__list-item">
+            Primary actions, workspace tools, and supporting features needed
+            stronger hierarchy so they did not compete for the same level of
+            attention.
+          </li>
 
-      <p class="site-footer__usage-notice">
-        Unauthorized use, reproduction, or distribution is strictly prohibited except for professional review, employment consideration, or direct inquiries.
-      </p>
+          <li class="hlm-project__list-item">
+            Prompt controls needed to live closer to the moment of interaction,
+            allowing people to adjust model behavior without leaving the flow of
+            writing.
+          </li>
 
-      <p class="site-footer__copyright">
-        &copy; 2026 Jaqweal Holit | All rights reserved.
-      </p>
-    </div>
+          <li class="hlm-project__list-item">
+            The conversation area needed clearer speaker identity, timestamps,
+            and message structure so people could follow and reference exchanges
+            more easily.
+          </li>
+        </ul>
 
-    <nav class="site-footer__contact" aria-label="Contact and social accounts">
-      <h2 class="site-footer__contact-heading">
-        Contact / Socials
-      </h2>
+        <p class="hlm-project__paragraph">
+          These issues shaped the direction of HLM AI. The goal was not to
+          redesign every possible feature, but to focus on the parts of an AI
+          workspace people interact with most: finding where to go, deciding
+          what to ask, and understanding what comes back.
+        </p>
+      </section>
 
-      <ul class="site-footer__contact-list">
-        <li class="site-footer__contact-item">
-          <button
-            class="site-footer__contact-link site-footer__email-trigger"
-            type="button"
-            data-email-address="jholit@protonmail.com"
-            aria-label="Send an email to Jaqweal Holit"
-            aria-haspopup="dialog"
-            aria-controls="email-confirmation-modal"
+      <section
+        class="hlm-project__section"
+        aria-labelledby="product-designed-solutions-heading"
+      >
+        <h2
+          class="hlm-project__subheading"
+          id="product-designed-solutions-heading"
+        >
+          Product Design Solutions
+        </h2>
+
+        <p class="hlm-project__paragraph">
+          The solution was to redesign HLM AI around the everyday moments that
+          define the workspace experience. I focused on the aside panel, the
+          prompter, and the active chat area because those are the places where
+          people navigate, control, and understand their interaction with AI.
+        </p>
+
+        <p class="hlm-project__paragraph">
+          The redesign supports this direction through the following decisions:
+        </p>
+
+        <ol class="hlm-project__ordered-list hlm-project__solutions-list">
+          <li
+            class="hlm-project__ordered-list-item hlm-project__solutions-list-item"
           >
-            <span class="site-footer__contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M4 5h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2Zm0 3.2V17h16V8.2l-8 5.2-8-5.2Zm1.4-1.2 6.6 4.3L18.6 7H5.4Z"/>
-              </svg>
-            </span>
+            I reorganized the sidebar so it works as an operational center
+            instead of a crowded list of menu items, separating custom HLM
+            tools, workspace areas, conversations, and supporting actions more
+            clearly.
+          </li>
 
-            <span class="site-footer__contact-text">
-              Email
-            </span>
-          </button>
-        </li>
+          <li
+            class="hlm-project__ordered-list-item hlm-project__solutions-list-item"
+          >
+            I used more direct terminology for key workspace areas so people can
+            understand what each section is for without needing to decode
+            product-specific or technical language first.
+          </li>
 
-        <li class="site-footer__contact-item">
+          <li
+            class="hlm-project__ordered-list-item hlm-project__solutions-list-item"
+          >
+            I moved model and capability controls closer to the prompt field so
+            people can adjust how they want HLM AI to respond at the moment they
+            are preparing to interact with it.
+          </li>
+
+          <li
+            class="hlm-project__ordered-list-item hlm-project__solutions-list-item"
+          >
+            I reframed AI capability options around conversational intent, using
+            labels such as Talkative, Contemplative, and Thinking to make
+            response behavior easier to understand from a human perspective.
+          </li>
+
+          <li
+            class="hlm-project__ordered-list-item hlm-project__solutions-list-item"
+          >
+            I redesigned the active chat area to feel more like a familiar
+            conversation, using clearer speaker identity, message structure, and
+            timestamps so people can follow who said what and reference past
+            exchanges more easily.
+          </li>
+        </ol>
+      </section>
+
+      <section
+        class="hlm-project__section"
+        aria-labelledby="measurement-of-outcomes-heading"
+      >
+        <h2
+          class="hlm-project__subheading"
+          id="measurement-of-outcomes-heading"
+        >
+          Measurement of Outcomes
+        </h2>
+
+        <p class="hlm-project__paragraph">
+          HLM AI demonstrates how the experience around a large language model
+          can become easier to understand when core interactions are organized
+          around people instead of feature exposure. The redesigned workspace
+          gives clearer priority to navigation, prompting, and conversation flow
+          without pretending the prototype needs to solve every possible AI use
+          case.
+        </p>
+
+        <p class="hlm-project__paragraph">
+          The current version establishes a focused foundation for the project:
+          a clearer aside panel, a more useful prompting control area, and a
+          conversation layout that makes the exchange between person and AI
+          easier to follow. Future updates can expand the prototype, but this
+          version already communicates the main design direction.
+        </p>
+      </section>
+
+      <section
+        class="hlm-project__section hlm-project__visuals"
+        aria-labelledby="interactive-prototype-heading"
+      >
+        <h2 class="hlm-project__subheading" id="interactive-prototype-heading">
+          Interactive Prototype
+        </h2>
+
+        <p class="hlm-project__paragraph">
+          This section highlights the live HLM AI prototype. Use the demo to
+          review the workspace structure, conversation layout, and prompting
+          controls in context.
+        </p>
+
+        <div class="hlm-project__download">
+          <p class="hlm-project__download-text">
+            Check out the live demonstration:
+          </p>
+
           <a
-            class="site-footer__contact-link"
-            href="https://www.linkedin.com/in/jholit/"
-            target="_blank"
-            rel="me noopener noreferrer"
-            aria-label="Visit Jaqweal Holit's LinkedIn profile"
+            class="hlm-project__download-link"
+            href="../../page/hlm-prototype/"
           >
-            <span class="site-footer__contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M5.35 8.75h3.15V19H5.35V8.75Zm1.57-4.85c1 0 1.8.78 1.8 1.75s-.8 1.75-1.8 1.75-1.8-.78-1.8-1.75.8-1.75 1.8-1.75ZM10.4 8.75h3.02v1.4h.04c.42-.8 1.45-1.65 2.99-1.65 3.2 0 3.79 2.1 3.79 4.84V19h-3.15v-5c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.91 1.29-1.91 2.63V19H10.4V8.75Z"/>
-              </svg>
-            </span>
-
-            <span class="site-footer__contact-text">
-              LinkedIn
-            </span>
+            View prototype
           </a>
-        </li>
-      </ul>
-    </nav>
-  </footer>
+        </div>
+      </section>
+    </main>
 
-  <!-- Controls website logic -->
-  <script src="../../js/site.js" defer></script>
+    <footer class="site-footer">
+      <div class="site-footer__legal">
+        <p class="site-footer__credit">
+          Designed by <strong>J. Holit</strong> | Developed with
+          <strong>AI assistance</strong>
+        </p>
 
-  <!-- Controls webpage logic -->
-</body>
+        <p class="site-footer__copyright-notice">
+          All content, designs, and interactions on this site are the
+          intellectual property of Jaqweal Holit unless otherwise stated.
+        </p>
+
+        <p class="site-footer__usage-notice">
+          Unauthorized use, reproduction, or distribution is strictly prohibited
+          except for professional review, employment consideration, or direct
+          inquiries.
+        </p>
+
+        <p class="site-footer__copyright">
+          &copy; 2026 Jaqweal Holit | All rights reserved.
+        </p>
+      </div>
+
+      <nav
+        class="site-footer__contact"
+        aria-label="Contact and social accounts"
+      >
+        <h2 class="site-footer__contact-heading">Contact / Socials</h2>
+
+        <ul class="site-footer__contact-list">
+          <li class="site-footer__contact-item">
+            <button
+              class="site-footer__contact-link site-footer__email-trigger"
+              type="button"
+              data-email-address="jholit@protonmail.com"
+              aria-label="Send an email to Jaqweal Holit"
+              aria-haspopup="dialog"
+              aria-controls="email-confirmation-modal"
+            >
+              <span class="site-footer__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M4 5h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2Zm0 3.2V17h16V8.2l-8 5.2-8-5.2Zm1.4-1.2 6.6 4.3L18.6 7H5.4Z"
+                  />
+                </svg>
+              </span>
+
+              <span class="site-footer__contact-text"> Email </span>
+            </button>
+          </li>
+
+          <li class="site-footer__contact-item">
+            <a
+              class="site-footer__contact-link"
+              href="https://www.linkedin.com/in/jholit/"
+              target="_blank"
+              rel="me noopener noreferrer"
+              aria-label="Visit Jaqweal Holit's LinkedIn profile"
+            >
+              <span class="site-footer__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M5.35 8.75h3.15V19H5.35V8.75Zm1.57-4.85c1 0 1.8.78 1.8 1.75s-.8 1.75-1.8 1.75-1.8-.78-1.8-1.75.8-1.75 1.8-1.75ZM10.4 8.75h3.02v1.4h.04c.42-.8 1.45-1.65 2.99-1.65 3.2 0 3.79 2.1 3.79 4.84V19h-3.15v-5c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.91 1.29-1.91 2.63V19H10.4V8.75Z"
+                  />
+                </svg>
+              </span>
+
+              <span class="site-footer__contact-text"> LinkedIn </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+
+    <!-- Controls website logic -->
+    <script src="../../js/site.js" defer></script>
+
+    <!-- Controls webpage logic -->
+  </body>
 </html>
