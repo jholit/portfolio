@@ -73,7 +73,6 @@
       home: new URL(siteRootPath, origin),
       about: new URL(`${siteRootPath}page/about/`, origin),
       career: new URL(`${siteRootPath}page/career/`, origin),
-      "hlm-project": new URL(`${siteRootPath}page/hlm-project/`, origin),
     };
   };
 
@@ -94,7 +93,6 @@
       home: "css/page/home-content.css",
       about: "css/page/about-content.css",
       career: "css/page/career-content.css",
-      "hlm-project": "css/page/project-content.css",
     };
 
     const cssPath = pageCssByType[pageType];
