@@ -473,10 +473,6 @@
     text-align: center;
   }
 
-  .about-toolkit__grid {
-    justify-content: center;
-  }
-
   .about-glance__inner {
     width: 100%;
     max-width: var(--about-glance-width);
@@ -519,6 +515,7 @@
 
   .about-toolkit__grid {
     grid-template-columns: 1fr;
+    justify-content: center;
     justify-items: center;
   }
 

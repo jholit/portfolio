@@ -1,4 +1,6 @@
 :root {
+  color-scheme: dark;
+
   --color-white: #ffffff;
   --color-black: #000000;
   --color-footer-bg: #171717;
@@ -43,7 +45,7 @@
 
 html {
   min-height: 100%;
-  scrollbar-gutter: stable;
+  scrollbar-gutter: auto;
 }
 
 body {
@@ -74,6 +76,10 @@ body::after {
 body::before {
   z-index: -2;
   background-image: url("../image/asset/bg.jpg");
+  background-image: image-set(
+    url("../image/asset/bg.webp") type("image/webp"),
+    url("../image/asset/bg.jpg") type("image/jpeg")
+  );
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

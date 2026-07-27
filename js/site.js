@@ -240,6 +240,7 @@
     `;
 
     body.append(emailModal);
+    emailModal.toggleAttribute("inert", true);
     return emailModal;
   };
 
@@ -313,6 +314,7 @@
     body.classList.add("has-email-modal-open");
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
+    modal.toggleAttribute("inert", false);
 
     window.requestAnimationFrame(() => {
       modal.querySelector(".email-modal__option")?.focus();
@@ -326,6 +328,7 @@
 
     emailModal.classList.remove("is-open");
     emailModal.setAttribute("aria-hidden", "true");
+    emailModal.toggleAttribute("inert", true);
     body.classList.remove("has-email-modal-open");
     pendingEmailAddress = null;
     resetEmailCopyFeedback();
@@ -491,30 +494,6 @@
     if (cssUrl) {
       appendPrefetchLink(cssUrl, "style");
     }
-  };
-
-  const prefetchPortfolioPages = () => {
-    const currentPageType = getPortfolioPageType(new URL(window.location.href));
-    const mainPageUrls = getMainPageUrls();
-
-    Object.entries(mainPageUrls).forEach(([pageType, pageUrl]) => {
-      if (pageType !== currentPageType) {
-        prefetchPortfolioPage(pageUrl);
-      }
-    });
-  };
-
-  const schedulePortfolioPrefetch = () => {
-    if (isMobileNavigation()) {
-      return;
-    }
-
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(prefetchPortfolioPages, { timeout: 1200 });
-      return;
-    }
-
-    window.setTimeout(prefetchPortfolioPages, 350);
   };
 
   const isModifiedNavigationClick = (event) => {
@@ -868,8 +847,8 @@
 
     return Boolean(
       activePageType &&
-        destinationPageType &&
-        activePageType !== destinationPageType,
+      destinationPageType &&
+      activePageType !== destinationPageType,
     );
   };
 
@@ -1132,7 +1111,8 @@
   };
 
   emailTriggers.forEach((emailTrigger) => {
-    emailTrigger.addEventListener("click", () => {
+    emailTrigger.addEventListener("click", (event) => {
+      event.preventDefault();
       openEmailModal(emailTrigger);
     });
   });
@@ -1276,5 +1256,4 @@
   initializeNavigationHistory();
   createEmailModal();
   resetNavigationState();
-  schedulePortfolioPrefetch();
 })();

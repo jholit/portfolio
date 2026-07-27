@@ -9,6 +9,7 @@
       content="Education, career experience, and product design skillset details for Jaqweal Holit."
     />
     <meta name="author" content="Jaqweal Holit" />
+    <meta name="theme-color" content="#000000" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,8 +27,25 @@
       href="../../css/page/career-content.css"
       data-page-stylesheet
     />
+    <link
+      rel="preload"
+      href="../../image/asset/bg.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high"
+    />
 
-    <link rel="icon" href="../../image/asset/favicon.png" type="image/png" />
+    <link
+      rel="icon"
+      href="../../image/asset/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../../image/asset/favicon.png"
+      sizes="192x192"
+    />
 
     <title>JH | Education &amp; Career</title>
   </head>
@@ -425,9 +443,9 @@
 
         <ul class="site-footer__contact-list">
           <li class="site-footer__contact-item">
-            <button
+            <a
               class="site-footer__contact-link site-footer__email-trigger"
-              type="button"
+              href="mailto:jholit@protonmail.com"
               data-email-address="jholit@protonmail.com"
               aria-label="Send an email to Jaqweal Holit"
               aria-haspopup="dialog"
@@ -442,7 +460,7 @@
               </span>
 
               <span class="site-footer__contact-text"> Email </span>
-            </button>
+            </a>
           </li>
 
           <li class="site-footer__contact-item">
