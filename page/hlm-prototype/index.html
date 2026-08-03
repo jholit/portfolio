@@ -28,7 +28,85 @@
   </head>
 
   <body>
-    <div class="prototype-shell">
+    <section
+      class="concept-modal is-open"
+      id="concept-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="false"
+      aria-labelledby="concept-modal-title"
+      aria-describedby="concept-modal-description"
+    >
+      <div class="concept-modal__overlay" data-concept-modal-close></div>
+
+      <div class="concept-modal__dialog" role="document">
+        <button
+          class="concept-modal__close"
+          type="button"
+          aria-label="Close HLM AI concept overview"
+          data-concept-modal-close
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M6 6L18 18M18 6L6 18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+
+        <h1 class="concept-modal__title" id="concept-modal-title">
+          HLM AI: Product Design Concept
+        </h1>
+
+        <p class="concept-modal__text" id="concept-modal-description">
+          A functional AI workspace built around structured navigation, focused
+          prompt controls, and a familiar conversational interface.
+        </p>
+
+        <p class="concept-modal__list-label">
+          What does this product demonstrate?
+        </p>
+
+        <ul class="concept-modal__list">
+          <li class="concept-modal__item">
+            <strong>Implemented product decisions</strong>
+            <span>
+              The menu organizes navigation and tools. The prompter centralizes
+              AI controls. The chat makes conversations easier to follow.
+            </span>
+          </li>
+          <li class="concept-modal__item">
+            <strong>Working controls</strong>
+            <span>
+              Navigation, prompt tools, menus, and chat controls are
+              interactive.
+            </span>
+          </li>
+          <li class="concept-modal__item">
+            <strong>Key interaction states</strong>
+            <span>
+              Hover, focus, selected, open, and active states are represented.
+            </span>
+          </li>
+          <li class="concept-modal__item">
+            <strong>Responsive behavior</strong>
+            <span>The interface adapts across supported large-screen layouts.</span>
+          </li>
+          <li class="concept-modal__item">
+            <strong>Prototype scope</strong>
+            <span>
+              The interface and core interactions are functional. Connection to
+              a live AI model is outside the scope of this prototype.
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="prototype-shell" inert>
       <aside
         id="workspaceSidebar"
         class="sidebar-panel"
@@ -612,8 +690,8 @@
               <div class="message-content">
                 <p class="message-author">Leonardo Debruz</p>
                 <p class="user-text">
-                  I’m reviewing this for a design role. What is HLM AI—the quick
-                  version?
+                  I’m reviewing this for a product design role. What exactly is
+                  HLM AI?
                 </p>
                 <p class="message-timestamp">7/05/2026 - 10:42 AM</p>
               </div>
@@ -625,18 +703,29 @@
 
                 <div class="message-bubble hlm-response">
                   <p>
-                    Glad you asked! I began as a redesign shaped by Jaqweal
-                    Holit’s firsthand experience with ChatGPT, then grew into a
-                    distinct, minimalist AI product concept focused on making
-                    advanced technology feel more human, approachable, and
-                    organized.
+                    HLM AI is a functional product design concept for an
+                    organized, approachable AI workspace.
                   </p>
 
                   <p>
-                    The project also demonstrates Jaqweal’s end-to-end product
-                    thinking: identifying friction, working within constraints,
-                    and carrying one cohesive direction from strategy and UX
-                    through interface design and front-end implementation.
+                    It began as a response to problems Jaqweal Holit experienced
+                    while using ChatGPT, including scattered controls, unclear
+                    navigation, and an interface that could become difficult to
+                    manage as more features were added.
+                  </p>
+
+                  <p>
+                    The project developed into its own product direction focused
+                    on three goals: making AI controls easier to understand,
+                    keeping important tools close to the user’s input, and making
+                    conversations clearer to read and revisit.
+                  </p>
+
+                  <p>
+                    It also demonstrates Jaqweal’s end-to-end product design
+                    process, from identifying usability problems and defining the
+                    product structure to designing the interface, representing
+                    interaction states, and implementing the working front end.
                   </p>
 
                   <p class="message-timestamp">7/05/2026 - 10:43 AM</p>
@@ -657,7 +746,7 @@
               <div class="message-content">
                 <p class="message-author">Leonardo Debruz</p>
                 <p class="user-text">
-                  Nice. What are the main design decisions I should notice?
+                  What are the main product decisions I should pay attention to?
                 </p>
                 <p class="message-timestamp">7/05/2026 - 10:44 AM</p>
               </div>
@@ -669,17 +758,35 @@
 
                 <div class="message-bubble hlm-response">
                   <p>
-                    Three areas do the heavy lifting: a simplified menu panel, a
-                    centralized prompting control area, and a chat workspace
-                    built around familiar messaging patterns.
+                    The experience is built around three connected areas: the
+                    menu panel, the prompter control area, and the chat.
                   </p>
 
                   <p>
-                    The menu makes frequent actions easier to recognize, the
-                    prompter keeps models and capabilities in one clear hub, and
-                    the conversation uses natural language and familiar
-                    structure to feel easier to understand and engage with.
-                    Cleaner, friendlier, and much easier to scan.
+                    The menu panel acts as the workspace’s organizational center.
+                    It gives conversations, tools, and important actions a clear
+                    structure instead of allowing features to accumulate without
+                    hierarchy.
+                  </p>
+
+                  <p>
+                    The prompter control area places AI input, model options,
+                    capabilities, and supporting tools close together. This
+                    reduces unnecessary movement across the interface and allows
+                    users to adjust how they interact with the AI while composing
+                    a prompt.
+                  </p>
+
+                  <p>
+                    The chat uses familiar communication patterns, including
+                    clear speaker identities, portraits, names, and timestamps.
+                    These details make longer conversations easier to scan,
+                    understand, and reference later.
+                  </p>
+
+                  <p>
+                    Together, these decisions create an AI workspace that can
+                    expand while remaining familiar and organized.
                   </p>
 
                   <p class="message-timestamp">7/05/2026 - 10:45 AM</p>
@@ -700,7 +807,7 @@
               <div class="message-content">
                 <p class="message-author">Leonardo Debruz</p>
                 <p class="user-text">
-                  And what does this working prototype prove?
+                  What does the working prototype actually prove?
                 </p>
                 <p class="message-timestamp">7/05/2026 - 10:47 AM</p>
               </div>
@@ -712,17 +819,29 @@
 
                 <div class="message-bubble hlm-response">
                   <p>
-                    It lets you experience the idea instead of only reading
-                    about it. Even in a limited state, the structure, language,
-                    hierarchy, and key interactions can be understood, tested,
-                    and meaningfully evaluated.
+                    It proves that the design exists beyond static presentation
+                    screens.
                   </p>
 
                   <p>
-                    More importantly, it shows Jaqweal’s complete design
-                    process: finding product friction, simplifying the right
-                    areas, and bringing product strategy, UX, interface design,
-                    and implementation together as one human-first direction.
+                    The navigation, menus, prompt tools, and chat controls are
+                    interactive. The interface adapts across supported
+                    large-screen layouts, and its major hover, focus, selected,
+                    open, and active states are represented.
+                  </p>
+
+                  <p>
+                    It also demonstrates how the product’s structure supports
+                    future growth. New tools and capabilities can be added
+                    through the menu and prompter systems without requiring users
+                    to relearn the entire workspace.
+                  </p>
+
+                  <p>
+                    The product interface and its core interactions are
+                    implemented. Only connection to a live AI model is simulated
+                    because AI infrastructure and model development are outside
+                    the scope of this product design prototype.
                   </p>
 
                   <p class="message-timestamp">7/05/2026 - 10:48 AM</p>

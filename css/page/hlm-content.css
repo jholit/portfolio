@@ -149,6 +149,150 @@ h2 {
   display: none;
 }
 
+/* HLM concept overview modal */
+
+.concept-modal {
+  --concept-modal-optical-offset: -24px;
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--transition-fast),
+    visibility var(--transition-fast);
+}
+
+.concept-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.concept-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.76);
+  backdrop-filter: blur(8px);
+}
+
+.concept-modal__dialog {
+  width: min(100%, 560px);
+  max-height: calc(100dvh - 48px);
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+  overflow-y: auto;
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(23, 23, 23, 0.99) 0%,
+    rgba(0, 0, 0, 0.98) 100%
+  );
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+  transform: translateY(calc(var(--concept-modal-optical-offset) + 8px))
+    scale(0.98);
+  transition: transform var(--transition-fast);
+}
+
+.concept-modal.is-open .concept-modal__dialog {
+  transform: translateY(var(--concept-modal-optical-offset)) scale(1);
+}
+
+.concept-modal__close {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(244, 244, 245, 0.72);
+  background: transparent;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.concept-modal__close:hover,
+.concept-modal__close:focus-visible {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.17);
+}
+
+.concept-modal__close:focus-visible {
+  outline: 3px solid rgba(0, 208, 255, 0.34);
+  outline-offset: 3px;
+}
+
+.concept-modal__close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.concept-modal__title {
+  max-width: calc(100% - 44px);
+  margin: 0 0 14px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.concept-modal__text {
+  color: rgba(244, 244, 245, 0.72);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.concept-modal__list-label {
+  margin: 22px 0 10px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.concept-modal__list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: none;
+}
+
+.concept-modal__item {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: rgba(244, 244, 245, 0.72);
+  background-color: rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.concept-modal__item strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
 /* Permanent compact aside panel */
 
 .sidebar-panel {
@@ -1424,6 +1568,10 @@ h2 {
   }
 
   .prototype-shell {
+    display: none;
+  }
+
+  .concept-modal {
     display: none;
   }
 

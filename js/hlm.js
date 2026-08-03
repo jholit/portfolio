@@ -1,6 +1,10 @@
 // hlm.js
 
 (() => {
+  const conceptModal = document.querySelector("#concept-modal");
+  const conceptModalCloseButtons = [
+    ...document.querySelectorAll("[data-concept-modal-close]"),
+  ];
   const composerArea = document.querySelector(".composer-area");
   const composerDock = document.querySelector(".composer-dock");
   const chatComposer = document.querySelector(".chat-composer");
@@ -35,6 +39,61 @@
     ),
   ];
   const hoverMediaQuery = window.matchMedia("(hover: hover)");
+
+  const isConceptModalOpen = () =>
+    conceptModal?.classList.contains("is-open") ?? false;
+
+  const getConceptModalFocusableElements = () => {
+    if (!conceptModal) return [];
+
+    return [
+      ...conceptModal.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ];
+  };
+
+  const closeConceptModal = () => {
+    if (!conceptModal) return;
+
+    conceptModal.classList.remove("is-open");
+    conceptModal.setAttribute("aria-hidden", "true");
+    conceptModal.toggleAttribute("inert", true);
+    prototypeShell?.toggleAttribute("inert", false);
+    searchTrigger?.focus();
+  };
+
+  const handleConceptModalKeydown = (event) => {
+    if (!isConceptModalOpen()) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeConceptModal();
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+
+    const focusableElements = getConceptModalFocusableElements();
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (!firstElement || !lastElement) {
+      event.preventDefault();
+      return;
+    }
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+      return;
+    }
+
+    if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  };
 
   const isChatAtPresent = () => {
     if (!chatThread) return true;
@@ -172,6 +231,12 @@
   };
 
   chatInput?.addEventListener("input", updateComposerTextState);
+
+  conceptModalCloseButtons.forEach((closeButton) => {
+    closeButton.addEventListener("click", closeConceptModal);
+  });
+
+  document.addEventListener("keydown", handleConceptModalKeydown);
 
   chatInput?.addEventListener("focus", () => {
     composerArea?.classList.add("is-input-active");
@@ -447,5 +512,10 @@
   updateComposerTextState();
   setComposerSelectionState(false);
   updateSearchResults();
+  if (isConceptModalOpen()) {
+    window.requestAnimationFrame(() => {
+      conceptModal?.querySelector(".concept-modal__close")?.focus();
+    });
+  }
   window.requestAnimationFrame(scrollChatToPresent);
 })();

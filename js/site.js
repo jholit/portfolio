@@ -25,7 +25,9 @@
     document.querySelectorAll(".site-header__submenu-link"),
   );
   const emailTriggers = Array.from(
-    document.querySelectorAll(".site-footer__email-trigger"),
+    document.querySelectorAll(
+      ".site-footer__email-trigger, .site-header__email-trigger",
+    ),
   );
   const mobileMediaQuery = window.matchMedia(MOBILE_NAV_QUERY);
   const reducedMotionMediaQuery = window.matchMedia(REDUCED_MOTION_QUERY);
