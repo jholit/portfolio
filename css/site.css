@@ -535,6 +535,10 @@ main[tabindex="-1"]:focus {
   color: var(--color-footer-text);
 }
 
+.site-footer__contact--desktop-only {
+  display: none;
+}
+
 .site-footer__contact-heading {
   margin: 0;
   font-family: var(--font-primary);
@@ -626,6 +630,55 @@ main[tabindex="-1"]:focus {
   height: 100%;
   display: block;
   fill: currentColor;
+}
+
+@media (min-width: 1367px),
+  (min-width: 961px) and (hover: hover) and (pointer: fine) {
+  :root {
+    --header-height: 110px;
+    --footer-height: 350px;
+  }
+
+  .site-header {
+    width: min(800px, 100%);
+  }
+
+  .site-footer {
+    padding-right: var(--site-gutter-inline);
+    padding-left: var(--site-gutter-inline);
+  }
+
+  body > main:is(.homepage, .about-page, .career-page) {
+    height: 900px;
+    min-height: 900px;
+    overflow: visible;
+  }
+
+  .site-footer__contact--desktop-only {
+    display: flex;
+  }
+
+  .site-footer__contact-list {
+    gap: 12px;
+  }
+
+  .site-footer__contact-link {
+    width: 48px;
+    min-height: 48px;
+    padding: 10px;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .site-footer__contact-icon {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+
+  .site-footer__contact-link::before {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 }
 
 /* ==========================================================================

@@ -114,6 +114,22 @@
   background-color: var(--color-white);
 }
 
+@media (min-width: 1367px),
+  (min-width: 961px) and (hover: hover) and (pointer: fine) {
+  .homepage-hero__side--left {
+    flex-basis: 280px;
+    justify-content: flex-end;
+  }
+
+  .homepage-hero__name {
+    width: 280px;
+    height: 144px;
+    min-height: 144px;
+    font-size: 50px;
+    text-align: right;
+  }
+}
+
 /* ==========================================================================
    Homepage responsive
    ========================================================================== */

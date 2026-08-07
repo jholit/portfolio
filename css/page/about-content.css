@@ -58,6 +58,16 @@
   }
 }
 
+/* Keep the desktop composition optically centred in the visible viewport. */
+
+@media (min-width: 961px) and (hover: hover) and (pointer: fine) {
+  body > main.about-page {
+    height: calc(100vh - (var(--header-height) * 2));
+    height: calc(100svh - (var(--header-height) * 2));
+    min-height: 520px;
+  }
+}
+
 /* Intro / portrait section */
 
 .about-intro {
