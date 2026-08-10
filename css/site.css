@@ -266,7 +266,7 @@ main[tabindex="-1"]:focus {
 @media (min-width: 961px) {
   .site-header__nav-item:not(.site-header__nav-item--has-submenu)
     > .site-header__nav-link {
-    min-height: 40px;
+    min-height: 50px;
     padding: 0 15px;
   }
 
@@ -300,11 +300,14 @@ main[tabindex="-1"]:focus {
   transition: transform var(--transition-fast);
 }
 
-.site-header__nav-link-icon svg {
+.site-header__nav-link-icon .ti {
   width: 100%;
   height: 100%;
-  display: block;
-  fill: currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
 }
 
 .site-header__nav-link--submenu-trigger:hover .site-header__nav-link-icon,
@@ -625,18 +628,26 @@ main[tabindex="-1"]:focus {
   color: currentColor;
 }
 
-.site-footer__contact-icon svg {
+.site-footer__contact-icon .ti {
   width: 100%;
   height: 100%;
-  display: block;
-  fill: currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
 }
 
 @media (min-width: 1367px),
   (min-width: 961px) and (hover: hover) and (pointer: fine) {
   :root {
     --header-height: 110px;
-    --footer-height: 350px;
+    --footer-height: 280px;
+    --portfolio-page-height: 1300px;
+  }
+
+  body {
+    min-height: var(--portfolio-page-height);
   }
 
   .site-header {
@@ -648,9 +659,20 @@ main[tabindex="-1"]:focus {
     padding-left: var(--site-gutter-inline);
   }
 
+  .site-footer__credit,
+  .site-footer__copyright-notice,
+  .site-footer__usage-notice,
+  .site-footer__copyright {
+    font-size: 10px;
+  }
+
   body > main:is(.homepage, .about-page, .career-page) {
-    height: 900px;
-    min-height: 900px;
+    height: calc(
+      var(--portfolio-page-height) - var(--header-height) - var(--footer-height)
+    );
+    min-height: calc(
+      var(--portfolio-page-height) - var(--header-height) - var(--footer-height)
+    );
     overflow: visible;
   }
 
@@ -767,11 +789,14 @@ main[tabindex="-1"]:focus {
   background-color: var(--color-footer-contact-hover);
 }
 
-.email-modal__close svg {
+.email-modal__close .ti {
   width: 18px;
   height: 18px;
-  display: block;
-  fill: currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .email-modal__title {
@@ -850,8 +875,11 @@ main[tabindex="-1"]:focus {
   width: 18px;
   height: 18px;
   flex: 0 0 18px;
-  display: block;
-  fill: currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .email-modal__status {
@@ -927,38 +955,41 @@ main[tabindex="-1"]:focus {
   .site-header__menu-toggle-icon {
     width: 24px;
     height: 24px;
+    position: relative;
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: currentColor;
   }
 
-  .site-header__menu-toggle-icon svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  .site-header__menu-icon-line {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    transform-box: fill-box;
-    transform-origin: center;
+  .site-header__menu-icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    inset: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 1;
     transition:
       opacity var(--transition-fast),
       transform var(--transition-fast);
   }
 
-  .site-header.is-menu-open .site-header__menu-icon-line--top {
-    transform: translateY(5px) rotate(45deg);
-  }
-
-  .site-header.is-menu-open .site-header__menu-icon-line--middle {
+  .site-header__menu-icon--close {
     opacity: 0;
+    transform: rotate(-90deg) scale(0.85);
   }
 
-  .site-header.is-menu-open .site-header__menu-icon-line--bottom {
-    transform: translateY(-5px) rotate(-45deg);
+  .site-header.is-menu-open .site-header__menu-icon--open {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.85);
+  }
+
+  .site-header.is-menu-open .site-header__menu-icon--close {
+    opacity: 1;
+    transform: rotate(0) scale(1);
   }
 
   .site-header__nav {

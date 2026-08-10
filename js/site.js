@@ -178,9 +178,7 @@
           data-email-modal-close
           aria-label="Close email options"
         >
-          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-            <path d="m6.4 5 12.6 12.6-1.4 1.4L5 6.4 6.4 5Zm12.6 1.4L6.4 19 5 17.6 17.6 5 19 6.4Z"/>
-          </svg>
+          <i class="ti ti-x" aria-hidden="true"></i>
         </button>
 
         <h2 class="email-modal__title" id="email-modal-title">
@@ -204,9 +202,7 @@
             data-email-service="gmail"
             aria-label="Compose an email in Gmail"
           >
-            <svg class="email-modal__option-icon" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-              <path d="M20 18h-2V8.25L12 12 6 8.25V18H4V6h1.2l6.8 4.5L18.8 6H20v12Z"/>
-            </svg>
+            <i class="ti ti-brand-gmail email-modal__option-icon" aria-hidden="true"></i>
             <span>Gmail</span>
           </a>
 
@@ -218,9 +214,7 @@
             data-email-service="outlook"
             aria-label="Compose an email in Outlook"
           >
-            <svg class="email-modal__option-icon" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-              <path d="M3 3h10v4h8v12h-8v2H3V3Zm10 6v8h6V9h-6Zm-5 7c2 0 3.5-1.7 3.5-4S10 8 8 8s-3.5 1.7-3.5 4S6 16 8 16Zm0-2c-.8 0-1.5-.9-1.5-2S7.2 10 8 10s1.5.9 1.5 2S8.8 14 8 14Z"/>
-            </svg>
+            <i class="ti ti-brand-office email-modal__option-icon" aria-hidden="true"></i>
             <span>Outlook</span>
           </a>
 
@@ -230,9 +224,7 @@
             data-email-copy
             aria-label="Copy Jaqweal Holit's email address"
           >
-            <svg class="email-modal__option-icon" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-              <path d="M16.5 6.5V17a4.5 4.5 0 0 1-9 0V5.5a3 3 0 0 1 6 0V16a1.5 1.5 0 0 1-3 0V6.5H12V16a.5.5 0 0 0 1 0V5.5a2 2 0 0 0-4 0V17a3.5 3.5 0 0 0 7 0V6.5h1.5Z"/>
-            </svg>
+            <i class="ti ti-copy email-modal__option-icon" aria-hidden="true"></i>
             <span data-email-copy-label>Copy Email</span>
           </button>
         </div>
