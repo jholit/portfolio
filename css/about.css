@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200..900&display=swap");
+
+/* --------------------------------------------------------------------------
+   About page foundations
+   -------------------------------------------------------------------------- */
+
+:root {
+  --font-family-about-display:
+    "Source Sans 3", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  --font-weight-about-display-bold: 700;
+  --font-weight-about-description-light: 300;
+
+  --color-about-text: #fff;
+  --color-about-accent: #d3f6f2;
+  --color-about-portrait-border: rgb(255 255 255 / 35%);
+  --color-about-portrait-shadow: rgb(255 255 255 / 9%);
+
+  --about-page-section-gap: 20px;
+  --about-page-padding-block-start: 40px;
+  --about-page-padding-block-end: 80px;
+
+  --about-intro-gap: 56px;
+  --about-intro-copy-gap: 10px;
+  --about-intro-copy-width: 560px;
+  --about-intro-portrait-width: 277px;
+
+  --about-glance-width: 1010px;
+  --about-glance-title-gap: 20px;
+  --about-glance-card-stack-gap: 30px;
+  --about-glance-card-min-height: 110px;
+  --about-glance-radius: 5px;
+  --about-glance-card-item-gap: 40px;
+  --about-glance-detail-gap: 5px;
+  --about-glance-padding-inline: 20px;
+  --about-glance-gradient-opacity: 0.5;
+
+  --about-tools-height: 110px;
+  --about-tools-gap: 30px;
+  --about-tool-content-gap: 10px;
+  --color-about-tool-card: rgb(66 66 66 / 50%);
+}
+
+/* --------------------------------------------------------------------------
+   About page layout
+   -------------------------------------------------------------------------- */
+
+#main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--about-page-section-gap);
+  padding-block: var(--about-page-padding-block-start)
+    var(--about-page-padding-block-end);
+}
+
+/* --------------------------------------------------------------------------
+   About intro
+   -------------------------------------------------------------------------- */
+
+.about-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--about-intro-gap);
+  padding-inline: 40px;
+  color: var(--color-about-text);
+}
+
+.about-intro__copy {
+  display: flex;
+  flex: 0 1 var(--about-intro-copy-width);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--about-intro-copy-gap);
+  min-inline-size: 0;
+}
+
+.about-intro__title {
+  margin: 0;
+  font-family: var(--font-family-about-display);
+  font-size: 35px;
+  font-weight: var(--font-weight-about-display-bold);
+  line-height: 1.2;
+  color: var(--color-about-text);
+  text-align: left;
+}
+
+.about-intro__description {
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-size: 15px;
+  font-weight: var(--font-weight-about-description-light);
+  line-height: 1.75;
+  color: var(--color-about-text);
+  text-align: left;
+}
+
+.about-intro__description span {
+  font-weight: var(--font-weight-bold);
+}
+
+.about-intro__portrait {
+  flex: 0 0 auto;
+  inline-size: var(--about-intro-portrait-width);
+  max-inline-size: 100%;
+  padding: 6px;
+  border: 1px solid var(--color-about-portrait-border);
+  border-radius: 28px 8px;
+  background-color: rgb(255 255 255 / 3%);
+  box-shadow: 14px 14px 0 var(--color-about-portrait-shadow);
+}
+
+/* --------------------------------------------------------------------------
+   At a glance
+   -------------------------------------------------------------------------- */
+
+.about-glance {
+  display: flex;
+  flex-direction: column;
+  gap: var(--about-glance-title-gap);
+  inline-size: min(
+    var(--about-glance-width),
+    calc(100% - (var(--about-glance-padding-inline) * 2))
+  );
+  margin-inline: auto;
+}
+
+.about-glance__title {
+  margin: 0;
+  font-family: var(--font-family-about-display);
+  font-size: 25px;
+  font-weight: var(--font-weight-about-display-bold);
+  line-height: 1.2;
+  color: var(--color-about-accent);
+  text-align: left;
+  text-transform: uppercase;
+}
+
+/* The two glance cards stay grouped with a consistent vertical gap. */
+.about-glance__cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--about-glance-card-stack-gap);
+  inline-size: 100%;
+}
+
+/* The primary card is one four-item row: two details followed by two traits. */
+.about-glance__card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--about-glance-card-item-gap);
+  min-block-size: var(--about-glance-card-min-height);
+  margin: 0;
+  padding: 0 var(--about-glance-padding-inline);
+  border-radius: var(--about-glance-radius);
+  font-family: var(--font-family-body);
+  font-size: 15px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-about-text);
+  list-style: none;
+}
+
+.about-glance__card::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+  background-image: linear-gradient(
+    to right,
+    rgb(114 229 255 / 40%) 0%,
+    rgb(0 208 255 / 40%) 100%
+  );
+  opacity: var(--about-glance-gradient-opacity);
+}
+
+.about-glance__card-item {
+  flex: 0 0 auto;
+  min-inline-size: 0;
+}
+
+.about-glance__card-item--detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--about-glance-detail-gap);
+}
+
+.about-glance__card-label,
+.about-glance__card-item--trait span,
+.about-glance__tool-label {
+  font-weight: var(--font-weight-bold);
+}
+
+.about-glance__card-value {
+  font-weight: var(--font-weight-light);
+}
+
+/* --------------------------------------------------------------------------
+   At a glance: tools card
+   -------------------------------------------------------------------------- */
+
+.about-glance__tools {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+/*
+ * The tools row keeps the same 1010 × 110 desktop footprint as the primary
+ * glance card. Four equal-width cards share the available width after the
+ * three 30px gaps are accounted for.
+ */
+.about-glance__tools-list {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  gap: var(--about-tools-gap);
+  inline-size: 100%;
+  block-size: var(--about-tools-height);
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-body);
+  font-size: 15px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-about-text);
+  list-style: none;
+}
+
+.about-glance__tool {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--about-tool-content-gap);
+  min-inline-size: 0;
+  block-size: 100%;
+  border-radius: var(--about-glance-radius);
+  background-color: var(--color-about-tool-card);
+  text-align: center;
+}
+
+.about-glance__tool-icon {
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility
+   -------------------------------------------------------------------------- */
+
+@media (forced-colors: active) {
+  .about-intro__portrait {
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+}

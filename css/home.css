@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+/* --------------------------------------------------------------------------
+   Homepage foundations
+   -------------------------------------------------------------------------- */
+
+:root {
+  --font-family-home: "Jost", var(--font-family-body);
+  --font-weight-home-light: 300;
+
+  --color-home-text: #fff;
+  --color-home-emphasis: #cdecff;
+  --color-home-separator: rgb(255 255 255 / 50%);
+
+  --home-intro-gap: 30px;
+  --home-intro-copy-gap: 20px;
+  --home-intro-name-width: 280px;
+  --home-intro-name-height: 150px;
+  --home-intro-summary-width: 220px;
+  --home-intro-summary-height: 200px;
+  --home-intro-separator-length: 250px;
+  --home-intro-padding-inline-end: 100px;
+}
+
+/* --------------------------------------------------------------------------
+   Homepage intro
+   -------------------------------------------------------------------------- */
+
+.home-intro {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--home-intro-gap);
+  min-block-size: calc(100vh - var(--header-min-height));
+  min-block-size: calc(100dvh - var(--header-min-height));
+  padding-block: 40px;
+  padding-inline: 40px var(--home-intro-padding-inline-end);
+  color: var(--color-home-text);
+}
+
+.home-intro__name {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  inline-size: var(--home-intro-name-width);
+  block-size: var(--home-intro-name-height);
+  min-inline-size: 0;
+  margin: 0;
+  font-family: var(--font-family-home);
+  font-size: 50px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.home-intro__separator {
+  flex: 0 0 auto;
+  inline-size: 1px;
+  block-size: var(--home-intro-separator-length);
+  margin: 0;
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--color-home-separator);
+}
+
+.home-intro__summary {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--home-intro-copy-gap);
+  inline-size: var(--home-intro-summary-width);
+  block-size: var(--home-intro-summary-height);
+  min-inline-size: 0;
+  text-align: left;
+}
+
+.home-intro__summary p {
+  margin: 0;
+  font-weight: var(--font-weight-regular);
+}
+
+.home-intro__statement {
+  font-family: var(--font-family-body);
+}
+
+.home-intro__summary .home-intro__role {
+  font-family: var(--font-family-home);
+  font-size: 20px;
+  font-weight: var(--font-weight-home-light);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.home-intro__role-emphasis {
+  font-weight: var(--font-weight-bold);
+}
+
+.home-intro__role-suffix {
+  display: block;
+}
+
+.home-intro__statement-emphasis {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-home-emphasis);
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility
+   -------------------------------------------------------------------------- */
+
+@media (forced-colors: active) {
+  .home-intro__separator {
+    background-color: CanvasText;
+  }
+}
