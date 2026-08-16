@@ -4,18 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Jack Holit | Product Designer</title>
+    <title>Home | Jaqweal Holit</title>
     <meta
       name="description"
-      content="The product design portfolio of Jack Holit, featuring accessible digital experiences and HOLIX Ai: A Workspace Concept."
+      content="The product design portfolio of Jaqweal Holit, featuring accessible digital experiences and HOLIX Ai: A Workspace Concept."
     >
     <meta name="author" content="Jaqweal Holit">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Jack Holit | Product Designer">
+    <meta property="og:title" content="Jaqweal Holit | Product Designer">
     <meta
       property="og:description"
-      content="Explore the product design work of Jack Holit, including HOLIX Ai: A Workspace Concept."
+      content="Explore the product design work of Jaqweal Holit, including HOLIX Ai: A Workspace Concept."
     >
 
     <link rel="icon" href="image/favicon.png" type="image/png" sizes="192x192">
@@ -32,17 +32,88 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="site-logo" href="./" aria-label="Jack Holit, home">JH</a>
+      <a class="site-logo" href="./" aria-label="Jaqweal Holit, home">JH</a>
 
-      <nav class="site-navigation" aria-label="Primary navigation">
+      <button
+        class="site-menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="site-navigation"
+        aria-expanded="false"
+        data-site-menu-toggle
+      >
+        <span
+          class="site-menu-toggle__icon site-menu-toggle__icon--menu"
+          aria-hidden="true"
+        ></span>
+        <span
+          class="site-menu-toggle__icon site-menu-toggle__icon--close"
+          aria-hidden="true"
+        ></span>
+      </button>
+
+      <nav
+        class="site-navigation"
+        id="site-navigation"
+        aria-label="Primary navigation"
+        data-site-navigation
+      >
         <ul class="site-navigation__list">
           <li class="site-navigation__item">
-            <a href="page/jholit/" data-nav-active>Who's Jack Holit</a>
+            <a href="page/jholit/" data-nav-active>Who's Jack Holit?</a>
           </li>
           <li class="site-navigation__item">
             <a href="page/holix-ai/">
               <span class="site-navigation__emphasis">HOLIX Ai:</span>&nbsp;A Workspace Concept
             </a>
+          </li>
+          <li class="site-navigation__item site-navigation__contact">
+            <button
+              class="site-navigation__contact-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="site-contact-menu"
+              data-contact-menu-toggle
+            >
+              <span>Contact Me</span>
+              <span class="site-navigation__contact-chevron" aria-hidden="true"></span>
+            </button>
+            <ul
+              class="site-navigation__contact-list"
+              id="site-contact-menu"
+              data-contact-menu
+              hidden
+            >
+              <li>
+                <button
+                  class="site-navigation__contact-action"
+                  type="button"
+                  aria-haspopup="dialog"
+                  aria-controls="email-modal"
+                  data-email-modal-open
+                >
+                  <span
+                    class="site-navigation__contact-icon site-navigation__contact-icon--mail"
+                    aria-hidden="true"
+                  ></span>
+                  <span>Email</span>
+                </button>
+              </li>
+              <li>
+                <a
+                  class="site-navigation__contact-action"
+                  href="https://www.linkedin.com/in/jholit/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span
+                    class="site-navigation__contact-icon site-navigation__contact-icon--linkedin"
+                    aria-hidden="true"
+                  ></span>
+                  <span>LinkedIn</span>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
@@ -78,12 +149,12 @@
         </h2>
 
         <p>
-          Designed by <strong>Jack Holit</strong> | Developed with
+          Designed by <strong>Jaqweal Holit</strong> | Developed with
           <strong>AI-Assistance</strong>
         </p>
         <p>
           All content, designs, and interactions on this website are the
-          intellectual property of <strong>Jack Holit</strong> unless otherwise
+          intellectual property of <strong>Jaqweal Holit</strong> unless otherwise
           stated
         </p>
         <p>
@@ -100,7 +171,7 @@
             <button
               class="site-footer__contact-link site-footer__contact-button"
               type="button"
-              aria-label="Email Jack Holit"
+              aria-label="Email Jaqweal Holit"
               aria-haspopup="dialog"
               aria-controls="email-modal"
               data-email-modal-open
@@ -115,7 +186,7 @@
             <a
               class="site-footer__contact-link"
               href="https://www.linkedin.com/in/jholit/"
-              aria-label="Jack Holit on LinkedIn"
+              aria-label="Jaqweal Holit on LinkedIn"
             >
               <span
                 class="site-footer__contact-icon site-footer__contact-icon--linkedin"

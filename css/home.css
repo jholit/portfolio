@@ -109,6 +109,65 @@
 }
 
 /* --------------------------------------------------------------------------
+   Shared tablet and smartphone composition
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 74.999rem), (hover: none) and (pointer: coarse) {
+  .home-intro {
+    inline-size: 100%;
+    min-block-size: calc(100vh - var(--header-min-height));
+    min-block-size: calc(100dvh - var(--header-min-height));
+    margin: 0;
+    padding: clamp(48px, 9vw, 88px) var(--compact-page-gutter) clamp(64px, 12vw, 112px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(26px, 5vw, 42px);
+  }
+
+  .home-intro__name {
+    inline-size: min(100%, 340px);
+    margin-inline: auto;
+  }
+
+  .home-intro__summary {
+    inline-size: min(100%, 520px);
+    margin-inline: auto;
+  }
+
+  .home-intro__name {
+    justify-content: center;
+    block-size: auto;
+    font-size: clamp(42px, 10vw, 68px);
+    line-height: 1.05;
+    text-align: center;
+  }
+
+  .home-intro__separator {
+    inline-size: min(46vw, 180px);
+    block-size: 1px;
+    margin-inline: auto;
+  }
+
+  .home-intro__summary {
+    align-items: center;
+    block-size: auto;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .home-intro__summary .home-intro__role {
+    font-size: clamp(20px, 4vw, 25px);
+  }
+
+  .home-intro__statement {
+    max-inline-size: 42ch;
+    font-size: clamp(15px, 2.4vw, 17px);
+    line-height: 1.7;
+  }
+}
+
+/* --------------------------------------------------------------------------
    Accessibility
    -------------------------------------------------------------------------- */
 

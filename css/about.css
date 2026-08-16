@@ -252,6 +252,109 @@
 }
 
 /* --------------------------------------------------------------------------
+   Shared tablet and smartphone composition
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 74.999rem), (hover: none) and (pointer: coarse) {
+  #main-content {
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: clamp(48px, 8vw, 72px);
+    padding: clamp(48px, 8vw, 72px) var(--compact-page-gutter) clamp(72px, 12vw, 112px);
+  }
+
+  .about-intro {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(30px, 6vw, 48px);
+    inline-size: min(100%, 760px);
+    margin-inline: auto;
+    padding-inline: 0;
+    text-align: center;
+  }
+
+  .about-intro__copy {
+    align-items: center;
+    flex: 0 0 auto;
+    inline-size: 100%;
+  }
+
+  .about-intro__title {
+    font-size: clamp(32px, 6vw, 44px);
+    text-align: center;
+  }
+
+  .about-intro__description {
+    font-size: clamp(15px, 2.3vw, 17px);
+    line-height: 1.75;
+    text-align: center;
+  }
+
+  .about-intro__portrait {
+    order: -1;
+    align-self: center;
+    inline-size: clamp(200px, 45vw, 300px);
+  }
+
+  .about-glance {
+    gap: 22px;
+    inline-size: min(100%, 760px);
+    margin-inline: auto;
+  }
+
+  .about-glance__title {
+    font-size: clamp(24px, 4.5vw, 30px);
+    text-align: center;
+  }
+
+  .about-glance__card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    min-block-size: 0;
+    padding: 8px 20px;
+    font-size: clamp(15px, 2.3vw, 17px);
+  }
+
+  .about-glance__card-item {
+    inline-size: 100%;
+    padding-block: 18px;
+    text-align: center;
+  }
+
+  .about-glance__card-item + .about-glance__card-item {
+    border-block-start: 1px solid rgb(255 255 255 / 16%);
+  }
+
+  .about-glance__card-item--detail {
+    align-items: center;
+  }
+
+  .about-glance__card-item--trait {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 62px;
+  }
+
+  .about-glance__tools-list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    block-size: auto;
+    font-size: clamp(15px, 2.3vw, 17px);
+  }
+
+  .about-glance__tool {
+    flex: 0 0 auto;
+    inline-size: 100%;
+    min-block-size: 76px;
+    padding: 18px 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
    Accessibility
    -------------------------------------------------------------------------- */
 
