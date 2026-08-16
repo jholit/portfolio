@@ -1,6 +1,6 @@
 (() => {
   const motionQuery = window.matchMedia(
-    "(min-width: 75rem) and (prefers-reduced-motion: no-preference)",
+    "(min-width: 75rem) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
   );
   const rootStyles = window.getComputedStyle(document.documentElement);
 

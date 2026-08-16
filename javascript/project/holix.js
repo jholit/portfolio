@@ -17,7 +17,7 @@
   const chatInput = document.querySelector("#chatInput");
   const modelSettings = document.querySelector(".composer-model-settings");
   const modelModeToggle = document.querySelector(".model-mode-toggle");
-  const modelModeOptions = [...document.querySelectorAll(".model-mode-input")];
+  const modelModeSlider = document.querySelector(".model-mode-slider");
   const modelSelect = document.querySelector(".model-select");
   const modelSelectTrigger = document.querySelector(".model-select-trigger");
   const modelMenu = document.querySelector(".model-menu");
@@ -39,7 +39,7 @@
   ];
   const composerControls = [
     ...document.querySelectorAll(
-      ".composer-icon-btn, .model-select-trigger, .model-mode-option, .model-mode-input",
+      ".composer-icon-btn, .model-select-trigger, .model-mode-slider",
     ),
   ];
   const hoverMediaQuery = window.matchMedia("(hover: hover)");
@@ -283,14 +283,6 @@
     setComposerSelectionState(true);
   });
 
-  composerArea?.addEventListener("focusout", (event) => {
-    const nextTarget = event.relatedTarget;
-
-    if (!(nextTarget instanceof Node) || !composerArea.contains(nextTarget)) {
-      setComposerSelectionState(false);
-    }
-  });
-
   chatInput?.addEventListener("keydown", (event) => {
     if (event.key !== "Enter" || (!event.ctrlKey && !event.metaKey)) return;
 
@@ -495,21 +487,38 @@
     });
   });
 
-  modelModeOptions.forEach((option) => {
-    option.addEventListener("change", () => {
-      const selectedMode = option.value;
-      if (!selectedMode || !modelModeToggle) return;
+  const modelModes = [
+    { value: "talkative", label: "Talkative" },
+    { value: "contemplative", label: "Contemplative" },
+    { value: "thinking", label: "Thinking" },
+  ];
 
-      modelModeToggle.dataset.active = selectedMode;
-    });
-  });
+  const updateModelMode = () => {
+    if (!modelModeSlider || !modelModeToggle) return;
+
+    const modeIndex = Number.parseInt(modelModeSlider.value, 10);
+    const selectedMode = modelModes[modeIndex] ?? modelModes[0];
+
+    modelModeToggle.dataset.active = selectedMode.value;
+    modelModeSlider.setAttribute("aria-valuetext", selectedMode.label);
+  };
+
+  modelModeSlider?.addEventListener("input", updateModelMode);
+
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (!(event.target instanceof Node)) return;
+
+      if (!composerArea?.contains(event.target)) {
+        setComposerSelectionState(false);
+      }
+    },
+    true,
+  );
 
   document.addEventListener("click", (event) => {
     if (!(event.target instanceof Node)) return;
-
-    if (!composerArea?.contains(event.target)) {
-      setComposerSelectionState(false);
-    }
 
     if (!modelSelect?.contains(event.target)) closeModelMenu();
     if (!searchAnchor?.contains(event.target)) closeSearch();
@@ -539,6 +548,7 @@
   });
 
   updateComposerTextState();
+  updateModelMode();
   setComposerSelectionState(false);
   updateSearchResults();
   if (isConceptModalOpen()) {

@@ -401,10 +401,7 @@ video {
    Email modal
    -------------------------------------------------------------------------- */
 
-body.has-open-modal {
-  overflow: hidden;
-}
-
+body.has-open-modal,
 body.has-open-menu {
   overflow: hidden;
 }

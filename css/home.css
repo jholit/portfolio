@@ -126,18 +126,10 @@
   }
 
   .home-intro__name {
-    inline-size: min(100%, 340px);
-    margin-inline: auto;
-  }
-
-  .home-intro__summary {
-    inline-size: min(100%, 520px);
-    margin-inline: auto;
-  }
-
-  .home-intro__name {
     justify-content: center;
+    inline-size: min(100%, 340px);
     block-size: auto;
+    margin-inline: auto;
     font-size: clamp(42px, 10vw, 68px);
     line-height: 1.05;
     text-align: center;
@@ -151,8 +143,10 @@
 
   .home-intro__summary {
     align-items: center;
-    block-size: auto;
     gap: 24px;
+    inline-size: min(100%, 520px);
+    block-size: auto;
+    margin-inline: auto;
     text-align: center;
   }
 
