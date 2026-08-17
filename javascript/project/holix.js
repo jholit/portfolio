@@ -43,6 +43,7 @@
     ),
   ];
   const hoverMediaQuery = window.matchMedia("(hover: hover)");
+  let shouldRestoreConceptModalTriggerFocus = false;
 
   const isConceptModalOpen = () =>
     conceptModal?.classList.contains("is-open") ?? false;
@@ -66,13 +67,17 @@
     conceptModalTrigger?.setAttribute("aria-expanded", "false");
     prototypeShell?.toggleAttribute("inert", false);
 
-    const focusTarget = conceptModalTrigger ?? searchTrigger;
-    window.requestAnimationFrame(() => focusTarget?.focus());
+    if (shouldRestoreConceptModalTriggerFocus) {
+      window.requestAnimationFrame(() => conceptModalTrigger?.focus());
+    }
+
+    shouldRestoreConceptModalTriggerFocus = false;
   };
 
   const openConceptModal = () => {
     if (!conceptModal) return;
 
+    shouldRestoreConceptModalTriggerFocus = true;
     closeModelMenu();
     closeSearch();
     closeSidebarPopups();
@@ -544,7 +549,6 @@
     if (!openPopupAnchor) return;
 
     setSidebarPopupState(openPopupAnchor, false);
-    openPopupAnchor.querySelector(".sidebar-popup-trigger")?.focus();
   });
 
   updateComposerTextState();

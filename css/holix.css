@@ -255,6 +255,10 @@ h2 {
   line-height: 1.65;
 }
 
+.concept-modal__list + .concept-modal__text {
+  padding-top: 14px;
+}
+
 .concept-modal__list-label {
   margin: 22px 0 10px;
   color: #fff;

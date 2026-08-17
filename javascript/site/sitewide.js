@@ -356,6 +356,9 @@
   });
 
   emailModal.addEventListener("close", () => {
+    const returnFocusTarget = emailModalReturnFocus;
+    emailModalReturnFocus = null;
+
     window.clearTimeout(emailModalCloseTimer);
     emailModal.classList.remove("is-visible", "is-closing");
     document.body.classList.remove("has-open-modal");
@@ -365,6 +368,6 @@
       emailCopyStatus.textContent = "";
     }
 
-    emailModalReturnFocus?.focus();
+    returnFocusTarget?.focus();
   });
 })();
