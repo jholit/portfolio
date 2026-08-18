@@ -253,6 +253,7 @@ h2 {
   font-size: 14px;
   font-weight: 400;
   line-height: 1.65;
+  padding-bottom: 14px;
 }
 
 .concept-modal__list + .concept-modal__text {
