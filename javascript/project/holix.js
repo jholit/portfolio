@@ -9,6 +9,16 @@
     ".concept-modal__dialog",
   );
   const conceptModalTrigger = document.querySelector("#concept-modal-trigger");
+  const hubModal = document.querySelector("#hub-modal");
+  const hubModalCloseButtons = [
+    ...document.querySelectorAll("[data-hub-modal-close]"),
+  ];
+  const hubModalDialog = hubModal?.querySelector(".hub-modal__dialog");
+  const hubModalTrigger = document.querySelector("#hub-modal-trigger");
+  const hubFilter = document.querySelector(".hub-filter");
+  const hubFilterTrigger = document.querySelector("#hub-filter-trigger");
+  const hubFilterMenu = document.querySelector("#hub-filter-menu");
+  const hubFilterItems = [...document.querySelectorAll(".hub-filter__item")];
   const composerArea = document.querySelector(".composer-area");
   const composerDock = document.querySelector(".composer-dock");
   const chatComposer = document.querySelector(".chat-composer");
@@ -34,6 +44,13 @@
     ...document.querySelectorAll(".search-result-item"),
   ];
   const searchStatus = document.querySelector(".search-status");
+  const chatPanelAnchor = document.querySelector(".chat-panel-anchor");
+  const chatPanelTrigger = document.querySelector(".chat-panel-trigger");
+  const chatListPanel = document.querySelector("#chatListPanel");
+  const chatList = document.querySelector("#chatList");
+  const chatPanelNewChat = document.querySelector("#chatPanelNewChat");
+  const chatPanelStatus = document.querySelector(".chat-list-panel__status");
+  const newChatButton = document.querySelector(".new-chat-btn");
   const sidebarPopupAnchors = [
     ...document.querySelectorAll(".sidebar-popup-anchor"),
   ];
@@ -44,6 +61,8 @@
   ];
   const hoverMediaQuery = window.matchMedia("(hover: hover)");
   let shouldRestoreConceptModalTriggerFocus = false;
+  let shouldRestoreHubModalTriggerFocus = false;
+  let newChatCount = 0;
 
   const isConceptModalOpen = () =>
     conceptModal?.classList.contains("is-open") ?? false;
@@ -80,6 +99,7 @@
     shouldRestoreConceptModalTriggerFocus = true;
     closeModelMenu();
     closeSearch();
+    closeChatPanel();
     closeSidebarPopups();
     conceptModal.classList.add("is-open");
     conceptModal.setAttribute("aria-hidden", "false");
@@ -111,6 +131,108 @@
     }
 
     if (document.activeElement === conceptModalDialog) {
+      event.preventDefault();
+      (event.shiftKey ? lastElement : firstElement).focus();
+      return;
+    }
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+      return;
+    }
+
+    if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  };
+
+  const isHubModalOpen = () =>
+    hubModal?.classList.contains("is-open") ?? false;
+
+  const getHubModalFocusableElements = () => {
+    if (!hubModal) return [];
+
+    return [
+      ...hubModal.querySelectorAll(
+        'input:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ].filter((element) => !element.closest("[inert]"));
+  };
+
+  const setHubFilterState = (isOpen) => {
+    if (!hubFilter || !hubFilterTrigger || !hubFilterMenu) return;
+
+    hubFilter.classList.toggle("is-open", isOpen);
+    hubFilterTrigger.setAttribute("aria-expanded", String(isOpen));
+    hubFilterMenu.setAttribute("aria-hidden", String(!isOpen));
+    hubFilterMenu.toggleAttribute("inert", !isOpen);
+  };
+
+  const closeHubFilter = () => setHubFilterState(false);
+
+  const closeHubModal = () => {
+    if (!hubModal) return;
+
+    closeHubFilter();
+    hubModal.classList.remove("is-open");
+    hubModal.setAttribute("aria-hidden", "true");
+    hubModal.toggleAttribute("inert", true);
+    hubModalTrigger?.setAttribute("aria-expanded", "false");
+    prototypeShell?.toggleAttribute("inert", false);
+
+    if (shouldRestoreHubModalTriggerFocus) {
+      window.requestAnimationFrame(() => hubModalTrigger?.focus());
+    }
+
+    shouldRestoreHubModalTriggerFocus = false;
+  };
+
+  const openHubModal = () => {
+    if (!hubModal) return;
+
+    shouldRestoreHubModalTriggerFocus = true;
+    closeModelMenu();
+    closeSearch();
+    closeChatPanel();
+    closeSidebarPopups();
+    hubModal.classList.add("is-open");
+    hubModal.setAttribute("aria-hidden", "false");
+    hubModal.toggleAttribute("inert", false);
+    hubModalTrigger?.setAttribute("aria-expanded", "true");
+    prototypeShell?.toggleAttribute("inert", true);
+
+    window.requestAnimationFrame(() => hubModalDialog?.focus());
+  };
+
+  const handleHubModalKeydown = (event) => {
+    if (!isHubModalOpen()) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      if (hubFilter?.classList.contains("is-open")) {
+        closeHubFilter();
+        hubFilterTrigger?.focus();
+        return;
+      }
+
+      closeHubModal();
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+
+    const focusableElements = getHubModalFocusableElements();
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (!firstElement || !lastElement) {
+      event.preventDefault();
+      return;
+    }
+
+    if (document.activeElement === hubModalDialog) {
       event.preventDefault();
       (event.shiftKey ? lastElement : firstElement).focus();
       return;
@@ -191,6 +313,160 @@
     modelMenuItems[index]?.focus();
   };
 
+  const setChatPanelState = (isOpen, shouldReturnFocus = false) => {
+    if (!chatPanelAnchor || !chatPanelTrigger || !chatListPanel) return;
+
+    chatPanelAnchor.classList.toggle("is-open", isOpen);
+    chatPanelTrigger.setAttribute("aria-expanded", String(isOpen));
+    chatListPanel.setAttribute("aria-hidden", String(!isOpen));
+    chatListPanel.toggleAttribute("inert", !isOpen);
+
+    if (isOpen) {
+      closeSearch();
+      closeModelMenu();
+      closeSidebarPopups();
+      if (chatList) chatList.scrollTop = 0;
+      return;
+    }
+
+    if (shouldReturnFocus) chatPanelTrigger.focus();
+  };
+
+  const closeChatPanel = (shouldReturnFocus = false) =>
+    setChatPanelState(false, shouldReturnFocus);
+
+  const setChatPanelStatus = (message) => {
+    if (chatPanelStatus) chatPanelStatus.textContent = message;
+  };
+
+  const updateChatListOverflow = () => {
+    if (!chatList) return;
+
+    const shouldScroll = chatList.children.length > 5;
+    chatList.classList.toggle("is-scrollable", shouldScroll);
+
+    if (!shouldScroll) chatList.scrollTop = 0;
+  };
+
+  const startChatRename = (nameButton) => {
+    if (!(nameButton instanceof HTMLButtonElement)) return;
+
+    const item = nameButton.closest(".chat-list-panel__item");
+    const label = nameButton.querySelector("span");
+    if (!item || !label || item.querySelector(".chat-list-panel__rename")) {
+      return;
+    }
+
+    const originalName = label.textContent.trim() || "New chat";
+    const input = document.createElement("input");
+    input.className = "chat-list-panel__rename";
+    input.type = "text";
+    input.value = originalName;
+    input.maxLength = 80;
+    input.setAttribute("aria-label", `Rename chat: ${originalName}`);
+
+    nameButton.replaceWith(input);
+
+    let isFinished = false;
+
+    const finishRename = (shouldSave, shouldRestoreFocus = true) => {
+      if (isFinished) return;
+      isFinished = true;
+
+      const nextName = shouldSave ? input.value.trim() : originalName;
+      const finalName = nextName || originalName;
+
+      label.textContent = finalName;
+      nameButton.setAttribute("aria-label", `Rename chat: ${finalName}`);
+      item
+        .querySelector(".chat-list-panel__remove")
+        ?.setAttribute("aria-label", `Remove chat: ${finalName}`);
+      input.replaceWith(nameButton);
+
+      if (shouldSave && finalName !== originalName) {
+        setChatPanelStatus(`Chat renamed to ${finalName}.`);
+      }
+
+      if (shouldRestoreFocus) nameButton.focus();
+    };
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        finishRename(true);
+        return;
+      }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        finishRename(false);
+      }
+    });
+
+    input.addEventListener("blur", () => finishRename(true, false), { once: true });
+
+    window.requestAnimationFrame(() => {
+      input.focus();
+      input.select();
+    });
+  };
+
+  const removeChat = (removeButton) => {
+    if (!(removeButton instanceof HTMLButtonElement)) return;
+
+    const item = removeButton.closest(".chat-list-panel__item");
+    if (!item || item.classList.contains("chat-list-panel__item--fixed")) return;
+
+    const chatName =
+      item.querySelector(".chat-list-panel__name span")?.textContent.trim() ||
+      "Chat";
+
+    item.remove();
+    updateChatListOverflow();
+    setChatPanelStatus(`${chatName} removed.`);
+  };
+
+  const createNewChat = () => {
+    if (!chatList) return;
+
+    newChatCount += 1;
+    const item = document.createElement("li");
+    item.className = "chat-list-panel__item";
+
+    const nameButton = document.createElement("button");
+    nameButton.className = "chat-list-panel__name";
+    nameButton.type = "button";
+    nameButton.setAttribute("aria-label", "Rename chat: New chat");
+
+    const label = document.createElement("span");
+    label.textContent = "New chat";
+    nameButton.append(label);
+
+    const removeButton = document.createElement("button");
+    removeButton.className = "chat-list-panel__remove";
+    removeButton.type = "button";
+    removeButton.setAttribute("aria-label", "Remove chat: New chat");
+    removeButton.textContent = "−";
+
+    item.append(nameButton, removeButton);
+    chatList.append(item);
+    updateChatListOverflow();
+    setChatPanelState(true);
+
+    if (chatInput) {
+      chatInput.value = "";
+      updateComposerTextState();
+    }
+
+    setChatPanelStatus(`New chat ${newChatCount} created.`);
+
+    window.requestAnimationFrame(() => {
+      chatList.scrollTop = chatList.scrollHeight;
+      startChatRename(nameButton);
+    });
+  };
+
   const setSidebarPopupState = (anchor, isOpen) => {
     if (!anchor) return;
 
@@ -241,6 +517,7 @@
     prototypeShell?.classList.toggle("is-searching", isOpen);
 
     if (isOpen) {
+      closeChatPanel();
       closeSidebarPopups();
       closeModelMenu();
       window.requestAnimationFrame(() => searchInput?.focus());
@@ -270,7 +547,32 @@
 
   conceptModalTrigger?.addEventListener("click", openConceptModal);
 
+  hubModalCloseButtons.forEach((closeButton) => {
+    closeButton.addEventListener("click", closeHubModal);
+  });
+
+  hubModalTrigger?.addEventListener("click", openHubModal);
+
+  hubFilterTrigger?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setHubFilterState(!hubFilter?.classList.contains("is-open"));
+  });
+
+  hubFilterItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      hubFilterItems.forEach((filterItem) => {
+        const isSelected = filterItem === item;
+        filterItem.classList.toggle("is-selected", isSelected);
+        filterItem.setAttribute("aria-checked", String(isSelected));
+      });
+
+      closeHubFilter();
+      hubFilterTrigger?.focus();
+    });
+  });
+
   document.addEventListener("keydown", handleConceptModalKeydown);
+  document.addEventListener("keydown", handleHubModalKeydown);
 
   chatInput?.addEventListener("focus", () => {
     composerArea?.classList.add("is-input-active");
@@ -403,6 +705,29 @@
     if (targetIndex >= 0) focusModelMenuItem(targetIndex);
   });
 
+  chatPanelTrigger?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = chatPanelAnchor?.classList.contains("is-open") ?? false;
+    setChatPanelState(!isOpen);
+  });
+
+  chatPanelNewChat?.addEventListener("click", createNewChat);
+  newChatButton?.addEventListener("click", createNewChat);
+
+  chatList?.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+
+    const removeButton = event.target.closest(".chat-list-panel__remove");
+    if (removeButton) {
+      event.stopPropagation();
+      removeChat(removeButton);
+      return;
+    }
+
+    const nameButton = event.target.closest("button.chat-list-panel__name");
+    if (nameButton) startChatRename(nameButton);
+  });
+
   sidebarPopupAnchors.forEach((anchor) => {
     const trigger = anchor.querySelector(".sidebar-popup-trigger");
 
@@ -410,6 +735,7 @@
       if (!hoverMediaQuery.matches) return;
 
       closeSearch();
+      closeChatPanel();
       closeSidebarPopups(anchor);
       setSidebarPopupState(anchor, true);
     });
@@ -421,7 +747,10 @@
     });
 
     trigger?.addEventListener("focus", () => {
+      if (!trigger.matches(":focus-visible")) return;
+
       closeSearch();
+      closeChatPanel();
       closeSidebarPopups(anchor);
       setSidebarPopupState(anchor, true);
     });
@@ -527,6 +856,8 @@
 
     if (!modelSelect?.contains(event.target)) closeModelMenu();
     if (!searchAnchor?.contains(event.target)) closeSearch();
+    if (!chatPanelAnchor?.contains(event.target)) closeChatPanel();
+    if (!hubFilter?.contains(event.target)) closeHubFilter();
     if (!sidebarPopupAnchors.some((anchor) => anchor.contains(event.target))) {
       closeSidebarPopups();
     }
@@ -539,6 +870,11 @@
 
     if (searchAnchor?.classList.contains("is-open")) {
       closeSearch(true);
+      return;
+    }
+
+    if (chatPanelAnchor?.classList.contains("is-open")) {
+      closeChatPanel(true);
       return;
     }
 
@@ -555,6 +891,7 @@
   updateModelMode();
   setComposerSelectionState(false);
   updateSearchResults();
+  updateChatListOverflow();
   if (isConceptModalOpen()) {
     window.requestAnimationFrame(() => {
       conceptModalTrigger?.setAttribute("aria-expanded", "true");

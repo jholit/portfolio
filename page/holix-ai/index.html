@@ -36,7 +36,7 @@
       aria-modal="true"
       aria-hidden="false"
       aria-labelledby="concept-modal-title"
-      aria-describedby="concept-modal-description"
+      aria-describedby="concept-modal-description concept-modal-growth"
     >
       <div class="concept-modal__overlay" data-concept-modal-close></div>
 
@@ -63,7 +63,7 @@
         </h1>
 
         <p class="concept-modal__text" id="concept-modal-description">
-          HOLIX Ai explores how an AI product can stay useful, easy to understand, and focused on people as it grows, without every new feature making the product harder to use.
+          HOLIX Ai explores how an AI product can stay useful, easy to understand, and focused on people while maintaining constraints in product management, design, and depth control.
         </p>
 
         <ul class="concept-modal__list">
@@ -76,21 +76,150 @@
           <li class="concept-modal__item">
             <strong>Design decisions</strong>
             <span>
-              Working navigation, prompting controls, menus, controls, and active states show how clear structure can  make Ai easier to understand and use.
+              Working navigation, prompting controls, menus, the AI Tools hub, active chat management, and interactive states with clear, contextual, and hierarchial structure.
             </span>
           </li>
           <li class="concept-modal__item">
             <strong>Scope</strong>
             <span>
-              The main product interactions are function. A live AI model is not included because the prototype focuses on product experience rather than the AI technology itself.
+              The main product interactions are functional. A live AI model is not included because the prototype focuses on product experience rather than the AI technology itself.
             </span>
           </li>
         </ul>
 
-        <p class="concept-modal__text" id="concept-modal-description">
-          HOLIX shows how AI can remain useful as a product grows by adding features with purpose and keeping the overall experience clear and manageable.
+        <p class="concept-modal__text" id="concept-modal-growth">
+          As this product grows, adding features with purpose while inline with expansion and scale keep the overall experience consistent and manageable.
         </p>
 
+      </div>
+    </section>
+
+
+    <section
+      class="concept-modal hub-modal"
+      id="hub-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="hub-modal-title"
+      aria-describedby="hub-modal-description"
+      inert
+    >
+      <div class="concept-modal__overlay" data-hub-modal-close></div>
+
+      <div class="concept-modal__dialog hub-modal__dialog" tabindex="-1">
+        <div class="hub-modal__layout">
+          <nav class="hub-tools-nav" aria-label="AI Tools">
+            <ul class="hub-tools-nav__list">
+              <li class="hub-tools-nav__group">
+                <div class="hub-tools-nav__item is-selected" aria-current="page">
+                  <svg class="hub-tools-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="2.25" fill="none" stroke="currentColor" stroke-width="2" />
+                    <circle cx="5" cy="5" r="2" fill="none" stroke="currentColor" stroke-width="2" />
+                    <circle cx="19" cy="5" r="2" fill="none" stroke="currentColor" stroke-width="2" />
+                    <circle cx="5" cy="19" r="2" fill="none" stroke="currentColor" stroke-width="2" />
+                    <circle cx="19" cy="19" r="2" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M7 7L10.4 10.4M17 7L13.6 10.4M7 17L10.4 13.6M17 17L13.6 13.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  <span>HOLIX HUB</span>
+                </div>
+
+                <div class="hub-tools-nav__subitem">Data Controls</div>
+              </li>
+
+              <li>
+                <div class="hub-tools-nav__item">
+                  <svg class="hub-tools-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="10.5" cy="13" r="6.5" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M10.5 9.5V13L13 14.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M18.5 3.2L19.05 4.45L20.3 5L19.05 5.55L18.5 6.8L17.95 5.55L16.7 5L17.95 4.45L18.5 3.2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                  </svg>
+                  <span>Task Assistant</span>
+                </div>
+              </li>
+
+              <li>
+                <div class="hub-tools-nav__item">
+                  <svg class="hub-tools-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="4.5" width="18" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M8 9.5L5.5 12L8 14.5M16 9.5L18.5 12L16 14.5M13.5 8.5L10.5 15.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <span>Code &amp; Design</span>
+                </div>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="hub-modal__frame">
+            <div class="hub-modal__controls">
+              <label class="hub-select-all" for="hub-select-all">
+                <input
+                  id="hub-select-all"
+                  class="hub-select-all__input"
+                  type="checkbox"
+                />
+                <span class="hub-select-all__label">Select all</span>
+              </label>
+
+              <label class="hub-search">
+                <span class="visually-hidden">Search connected applications</span>
+                <svg class="hub-search__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+                  <path d="M16.5 16.5L21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <input
+                  id="hub-search-input"
+                  class="hub-search__input"
+                  type="search"
+                  placeholder="Search applications"
+                  autocomplete="off"
+                />
+              </label>
+
+              <div class="hub-filter">
+                <button
+                  id="hub-filter-trigger"
+                  class="hub-filter__trigger"
+                  type="button"
+                  aria-label="Filter applications"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="hub-filter-menu"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 6H20M7 12H17M10 18H14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </button>
+
+                <div
+                  id="hub-filter-menu"
+                  class="hub-filter__menu"
+                  role="menu"
+                  aria-hidden="true"
+                  inert
+                >
+                  <button class="hub-filter__item is-selected" type="button" role="menuitemradio" aria-checked="true" data-hub-filter="all">All apps</button>
+                  <button class="hub-filter__item" type="button" role="menuitemradio" aria-checked="false" data-hub-filter="connected">Connected</button>
+                  <button class="hub-filter__item" type="button" role="menuitemradio" aria-checked="false" data-hub-filter="available">Available</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="hub-modal__intro">
+              <svg class="hub-modal__apps-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="4" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
+                <rect x="14" y="4" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
+                <rect x="4" y="14" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
+                <rect x="14" y="14" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+
+              <h1 class="hub-modal__title" id="hub-modal-title">HOLIX HUB</h1>
+              <p class="hub-modal__description" id="hub-modal-description">
+                Connect different applications to HOLIX Ai and control how much it has access to.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -233,17 +362,17 @@
           </div>
         </div>
 
-        <hr class="sidebar-divider" />
-
-        <section class="sidebar-section" aria-label="Your creative space">
+        <section class="sidebar-section" aria-label="AI Tools">
           <ul class="section-list">
-            <li class="sidebar-popup-anchor">
+            <li class="sidebar-tools-anchor">
               <button
-                class="section-item sidebar-popup-trigger projects-trigger"
+                id="hub-modal-trigger"
+                class="section-item hub-modal-trigger"
                 type="button"
-                aria-label="My Projects"
+                aria-label="AI Tools"
+                aria-haspopup="dialog"
+                aria-controls="hub-modal"
                 aria-expanded="false"
-                aria-controls="projectsPopup"
               >
                 <svg
                   class="section-item-icon"
@@ -251,18 +380,17 @@
                   aria-hidden="true"
                 >
                   <path
-                    d="M3 6.5C3 5.67157 3.67157 5 4.5 5H9L11 7H19.5C20.3284 7 21 7.67157 21 8.5V17.5C21 18.3284 20.3284 19 19.5 19H4.5C3.67157 19 3 18.3284 3 17.5V6.5Z"
-                    fill="currentColor"
+                    d="M14.7 6.3A1 1 0 0 0 14.7 7.7L16.3 9.3A1 1 0 0 0 17.7 9.3L21.5 5.5A6 6 0 0 1 13.5 13.5L6.6 20.4A2.12 2.12 0 0 1 3.6 17.4L10.5 10.5A6 6 0 0 1 18.5 2.5L14.7 6.3Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
                 </svg>
               </button>
 
-              <div
-                id="projectsPopup"
-                class="sidebar-popup"
-                role="tooltip"
-                aria-hidden="true"
-              >
+              <div class="sidebar-popup tools-sidebar-popup" aria-hidden="true">
                 <svg
                   class="sidebar-popup-shape"
                   viewBox="0 0 148 92"
@@ -271,7 +399,7 @@
                 >
                   <defs>
                     <linearGradient
-                      id="projectsPopupFill"
+                      id="aiToolsPopupFill"
                       x1="0"
                       y1="0"
                       x2="148"
@@ -283,18 +411,22 @@
                       <stop offset="1" stop-color="#121418" />
                     </linearGradient>
                   </defs>
-
                   <path
                     class="sidebar-popup-surface"
-                    fill="url(#projectsPopupFill)"
+                    fill="url(#aiToolsPopupFill)"
                     d="M 5.5 0.5 H 142.5 Q 147.5 0.5 147.5 5.5 V 50.5 Q 147.5 55.5 142.5 55.5 H 61 Q 60 55.5 59 56.2 L 1.5 89.8 Q 0.8 90.2 0.5 89.5 Q 0.3 89 0.8 88.4 L 29.1 56.8 Q 30 55.5 28.4 55.5 H 5.5 Q 0.5 55.5 0.5 50.5 V 5.5 Q 0.5 0.5 5.5 0.5 Z"
                   />
                 </svg>
-
-                <p class="sidebar-popup-title">My Projects</p>
+                <p class="sidebar-popup-title">AI Tools</p>
               </div>
             </li>
+          </ul>
+        </section>
 
+        <hr class="sidebar-divider" />
+
+        <section class="sidebar-section" aria-label="Your creative space">
+          <ul class="section-list">
             <li class="sidebar-popup-anchor">
               <button
                 class="section-item sidebar-popup-trigger"
@@ -362,20 +494,14 @@
                 <p class="sidebar-popup-title">File Library</p>
               </div>
             </li>
-          </ul>
-        </section>
 
-        <hr class="sidebar-divider" />
-
-        <section class="sidebar-section" aria-label="AI work assistance">
-          <ul class="section-list">
             <li class="sidebar-popup-anchor">
               <button
-                class="section-item sidebar-popup-trigger"
+                class="section-item sidebar-popup-trigger projects-trigger"
                 type="button"
-                aria-label="Work Projects"
+                aria-label="My Projects"
                 aria-expanded="false"
-                aria-controls="workProjectsPopup"
+                aria-controls="projectsPopup"
               >
                 <svg
                   class="section-item-icon"
@@ -383,33 +509,14 @@
                   aria-hidden="true"
                 >
                   <path
-                    d="M8.5 7V5.75C8.5 4.7835 9.2835 4 10.25 4H13.75C14.7165 4 15.5 4.7835 15.5 5.75V7"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M4.75 7H19.25C20.2165 7 21 7.7835 21 8.75V17.25C21 18.2165 20.2165 19 19.25 19H4.75C3.7835 19 3 18.2165 3 17.25V8.75C3 7.7835 3.7835 7 4.75 7Z"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M3.5 11.5H9.5M14.5 11.5H20.5M9.5 10.5H14.5V13.5H9.5V10.5Z"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    d="M3 6.5C3 5.67157 3.67157 5 4.5 5H9L11 7H19.5C20.3284 7 21 7.67157 21 8.5V17.5C21 18.3284 20.3284 19 19.5 19H4.5C3.67157 19 3 18.3284 3 17.5V6.5Z"
+                    fill="currentColor"
                   />
                 </svg>
               </button>
 
               <div
-                id="workProjectsPopup"
+                id="projectsPopup"
                 class="sidebar-popup"
                 role="tooltip"
                 aria-hidden="true"
@@ -422,7 +529,7 @@
                 >
                   <defs>
                     <linearGradient
-                      id="workProjectsPopupFill"
+                      id="projectsPopupFill"
                       x1="0"
                       y1="0"
                       x2="148"
@@ -437,177 +544,23 @@
 
                   <path
                     class="sidebar-popup-surface"
-                    fill="url(#workProjectsPopupFill)"
+                    fill="url(#projectsPopupFill)"
                     d="M 5.5 0.5 H 142.5 Q 147.5 0.5 147.5 5.5 V 50.5 Q 147.5 55.5 142.5 55.5 H 61 Q 60 55.5 59 56.2 L 1.5 89.8 Q 0.8 90.2 0.5 89.5 Q 0.3 89 0.8 88.4 L 29.1 56.8 Q 30 55.5 28.4 55.5 H 5.5 Q 0.5 55.5 0.5 50.5 V 5.5 Q 0.5 0.5 5.5 0.5 Z"
                   />
                 </svg>
 
-                <p class="sidebar-popup-title">Work Projects</p>
+                <p class="sidebar-popup-title">My Projects</p>
               </div>
             </li>
 
-            <li class="sidebar-popup-anchor">
-              <button
-                class="section-item sidebar-popup-trigger"
-                type="button"
-                aria-label="Task Assistant"
-                aria-expanded="false"
-                aria-controls="taskAssistantPopup"
-              >
-                <svg
-                  class="section-item-icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <circle
-                    cx="10.5"
-                    cy="13"
-                    r="6.5"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  />
-                  <path
-                    d="M10.5 9.5V13L13 14.5"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M18.5 3.2L19.05 4.45L20.3 5L19.05 5.55L18.5 6.8L17.95 5.55L16.7 5L17.95 4.45L18.5 3.2Z"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-
-              <div
-                id="taskAssistantPopup"
-                class="sidebar-popup"
-                role="tooltip"
-                aria-hidden="true"
-              >
-                <svg
-                  class="sidebar-popup-shape"
-                  viewBox="0 0 148 92"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <defs>
-                    <linearGradient
-                      id="taskAssistantPopupFill"
-                      x1="0"
-                      y1="0"
-                      x2="148"
-                      y2="92"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop offset="0" stop-color="#20242a" />
-                      <stop offset="0.48" stop-color="#191c21" />
-                      <stop offset="1" stop-color="#121418" />
-                    </linearGradient>
-                  </defs>
-
-                  <path
-                    class="sidebar-popup-surface"
-                    fill="url(#taskAssistantPopupFill)"
-                    d="M 5.5 0.5 H 142.5 Q 147.5 0.5 147.5 5.5 V 50.5 Q 147.5 55.5 142.5 55.5 H 61 Q 60 55.5 59 56.2 L 1.5 89.8 Q 0.8 90.2 0.5 89.5 Q 0.3 89 0.8 88.4 L 29.1 56.8 Q 30 55.5 28.4 55.5 H 5.5 Q 0.5 55.5 0.5 50.5 V 5.5 Q 0.5 0.5 5.5 0.5 Z"
-                  />
-                </svg>
-
-                <p class="sidebar-popup-title">Task Assistant</p>
-              </div>
-            </li>
-
-            <li class="sidebar-popup-anchor">
-              <button
-                class="section-item sidebar-popup-trigger"
-                type="button"
-                aria-label="Code and Design"
-                aria-expanded="false"
-                aria-controls="codeDesignPopup"
-              >
-                <svg
-                  class="section-item-icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <rect
-                    x="3"
-                    y="4.5"
-                    width="18"
-                    height="15"
-                    rx="2"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  />
-                  <path
-                    d="M8 9.5L5.5 12L8 14.5M16 9.5L18.5 12L16 14.5M13.5 8.5L10.5 15.5"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-
-              <div
-                id="codeDesignPopup"
-                class="sidebar-popup"
-                role="tooltip"
-                aria-hidden="true"
-              >
-                <svg
-                  class="sidebar-popup-shape"
-                  viewBox="0 0 148 92"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <defs>
-                    <linearGradient
-                      id="codeDesignPopupFill"
-                      x1="0"
-                      y1="0"
-                      x2="148"
-                      y2="92"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop offset="0" stop-color="#20242a" />
-                      <stop offset="0.48" stop-color="#191c21" />
-                      <stop offset="1" stop-color="#121418" />
-                    </linearGradient>
-                  </defs>
-
-                  <path
-                    class="sidebar-popup-surface"
-                    fill="url(#codeDesignPopupFill)"
-                    d="M 5.5 0.5 H 142.5 Q 147.5 0.5 147.5 5.5 V 50.5 Q 147.5 55.5 142.5 55.5 H 61 Q 60 55.5 59 56.2 L 1.5 89.8 Q 0.8 90.2 0.5 89.5 Q 0.3 89 0.8 88.4 L 29.1 56.8 Q 30 55.5 28.4 55.5 H 5.5 Q 0.5 55.5 0.5 50.5 V 5.5 Q 0.5 0.5 5.5 0.5 Z"
-                  />
-                </svg>
-
-                <p class="sidebar-popup-title">Code &amp; Design</p>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <hr class="sidebar-divider" />
-
-        <section class="sidebar-section" aria-label="Chats and generations">
-          <ul class="section-list">
-            <li>
+            <li class="chat-panel-anchor">
               <button
                 id="generalChatButton"
-                class="section-item is-active"
+                class="section-item chat-panel-trigger is-active"
                 type="button"
-                aria-label="What is HOLIX Ai?"
-                aria-pressed="true"
+                aria-label="Active Chats"
+                aria-controls="chatListPanel"
+                aria-expanded="false"
               >
                 <svg
                   class="section-item-icon"
@@ -616,13 +569,56 @@
                 >
                   <path
                     d="M5 6.5C5 5.67157 5.67157 5 6.5 5H17.5C18.3284 5 19 5.67157 19 6.5V14.5C19 15.3284 18.3284 16 17.5 16H10L6 19V16H6.5C5.67157 16 5 15.3284 5 14.5V6.5Z"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linejoin="round"
+                    fill="currentColor"
                   />
                 </svg>
               </button>
+
+              <div
+                id="chatListPanel"
+                class="chat-list-panel"
+                role="region"
+                aria-label="Active chats"
+                aria-hidden="true"
+                inert
+              >
+                <div class="chat-list-panel__header">
+                  <h2 class="chat-list-panel__title">Active Chats</h2>
+                  <button
+                    id="chatPanelNewChat"
+                    class="chat-list-panel__new"
+                    type="button"
+                    aria-label="Create a new chat"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M12 5V19M5 12H19"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <ul
+                  id="chatList"
+                  class="chat-list-panel__list"
+                  aria-label="Active chats"
+                >
+                  <li class="chat-list-panel__item chat-list-panel__item--fixed">
+                    <div class="chat-list-panel__name chat-list-panel__name--fixed">
+                      <span>Explaining HOLIX Ai</span>
+                    </div>
+                  </li>
+                </ul>
+
+                <p
+                  class="chat-list-panel__status visually-hidden"
+                  aria-live="polite"
+                ></p>
+              </div>
             </li>
           </ul>
         </section>
