@@ -348,7 +348,7 @@
     if (!shouldScroll) chatList.scrollTop = 0;
   };
 
-  const startChatRename = (nameButton) => {
+  const startChatRename = (nameButton, shouldClear = false, removeIfEmpty = false) => {
     if (!(nameButton instanceof HTMLButtonElement)) return;
 
     const item = nameButton.closest(".chat-list-panel__item");
@@ -361,7 +361,7 @@
     const input = document.createElement("input");
     input.className = "chat-list-panel__rename";
     input.type = "text";
-    input.value = originalName;
+    input.value = shouldClear ? "" : originalName;
     input.maxLength = 80;
     input.setAttribute("aria-label", `Rename chat: ${originalName}`);
 
@@ -373,7 +373,15 @@
       if (isFinished) return;
       isFinished = true;
 
-      const nextName = shouldSave ? input.value.trim() : originalName;
+      const nextName = shouldSave ? input.value.trim() : "";
+
+      if (removeIfEmpty && (!shouldSave || !nextName)) {
+        item.remove();
+        updateChatListOverflow();
+        setChatPanelStatus("New chat cancelled.");
+        return;
+      }
+
       const finalName = nextName || originalName;
 
       label.textContent = finalName;
@@ -463,7 +471,7 @@
 
     window.requestAnimationFrame(() => {
       chatList.scrollTop = chatList.scrollHeight;
-      startChatRename(nameButton);
+      startChatRename(nameButton, true, true);
     });
   };
 
@@ -711,8 +719,13 @@
     setChatPanelState(!isOpen);
   });
 
-  chatPanelNewChat?.addEventListener("click", createNewChat);
-  newChatButton?.addEventListener("click", createNewChat);
+  const handleNewChatClick = (event) => {
+    event.stopPropagation();
+    createNewChat();
+  };
+
+  chatPanelNewChat?.addEventListener("click", handleNewChatClick);
+  newChatButton?.addEventListener("click", handleNewChatClick);
 
   chatList?.addEventListener("click", (event) => {
     if (!(event.target instanceof Element)) return;

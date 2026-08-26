@@ -260,6 +260,14 @@ h2 {
   padding-top: 14px;
 }
 
+.concept-modal__list-label {
+  margin: 22px 0 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
 .concept-modal__list {
   margin: 0;
   padding: 0;
@@ -587,6 +595,18 @@ h2 {
   color: rgba(244, 244, 245, 0.52);
   font-size: 0.9rem;
   line-height: 1.65;
+}
+
+.visually-hidden {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Permanent compact aside panel */
