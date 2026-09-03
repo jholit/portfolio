@@ -60,6 +60,8 @@
     ),
   ];
   const hoverMediaQuery = window.matchMedia("(hover: hover)");
+  const conceptModalAutoOpenDelay = 3500;
+  let conceptModalAutoOpenTimer = null;
   let shouldRestoreConceptModalTriggerFocus = false;
   let shouldRestoreHubModalTriggerFocus = false;
   let newChatCount = 0;
@@ -93,10 +95,15 @@
     shouldRestoreConceptModalTriggerFocus = false;
   };
 
-  const openConceptModal = () => {
+  const openConceptModal = (shouldRestoreTriggerFocus = true) => {
     if (!conceptModal) return;
 
-    shouldRestoreConceptModalTriggerFocus = true;
+    if (conceptModalAutoOpenTimer !== null) {
+      window.clearTimeout(conceptModalAutoOpenTimer);
+      conceptModalAutoOpenTimer = null;
+    }
+
+    shouldRestoreConceptModalTriggerFocus = shouldRestoreTriggerFocus;
     closeModelMenu();
     closeSearch();
     closeChatPanel();
@@ -553,7 +560,7 @@
     closeButton.addEventListener("click", closeConceptModal);
   });
 
-  conceptModalTrigger?.addEventListener("click", openConceptModal);
+  conceptModalTrigger?.addEventListener("click", () => openConceptModal());
 
   hubModalCloseButtons.forEach((closeButton) => {
     closeButton.addEventListener("click", closeHubModal);
@@ -905,11 +912,11 @@
   setComposerSelectionState(false);
   updateSearchResults();
   updateChatListOverflow();
-  if (isConceptModalOpen()) {
-    window.requestAnimationFrame(() => {
-      conceptModalTrigger?.setAttribute("aria-expanded", "true");
-      conceptModalDialog?.focus();
-    });
+  if (conceptModal) {
+    conceptModalAutoOpenTimer = window.setTimeout(() => {
+      conceptModalAutoOpenTimer = null;
+      openConceptModal(false);
+    }, conceptModalAutoOpenDelay);
   }
   window.requestAnimationFrame(scrollChatToPresent);
 })();
