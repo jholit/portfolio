@@ -29,6 +29,7 @@
   </head>
 
   <body>
+    <!-- Walkthrough: Introduction -->
     <section
       class="concept-modal"
       id="concept-modal"
@@ -36,195 +37,46 @@
       aria-modal="true"
       aria-hidden="true"
       aria-labelledby="concept-modal-title"
-      aria-describedby="concept-modal-description"
+      aria-describedby="concept-modal-description concept-modal-details"
       inert
     >
-      <div class="concept-modal__overlay" data-concept-modal-close></div>
+      <div class="concept-modal__overlay"></div>
 
       <div class="concept-modal__dialog" tabindex="-1">
-        <button
-          class="concept-modal__close"
-          type="button"
-          aria-label="Close HOLIX Ai concept overview"
-          data-concept-modal-close
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M6 6L18 18M18 6L6 18"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-        </button>
-
         <h1 class="concept-modal__title" id="concept-modal-title">
           HOLIX Ai: Product Design Concept
         </h1>
 
         <p class="concept-modal__text" id="concept-modal-description">
-          HOLIX Ai is a live product design showcase of how I turn strategy into scalable, usable experiences. It demonstrates how I apply product strategy, interaction design, and systems thinking to evolving an AI workspace through deliberate constraints, clear structure, and considered iteration across its:
+          HOLIX Ai started with a simple frustration: AI products can become more capable while the experience around them becomes harder to understand. I wanted to explore whether that growth had to come at the cost of clarity, and how product strategy, UX/UI design, and systems thinking could decide when new capability genuinely earns its place.
         </p>
 
-        <ul class="concept-modal__list">
-          <li class="concept-modal__item">
-            <strong>Concept</strong>
-            <span>
-              A working AI workspace built around familiar workflows and scalable product structure, so new capabilities—most recently HOLIX Hub—can be introduced without disrupting the experience.
-            </span>
-          </li>
-          <li class="concept-modal__item">
-            <strong>Design approach</strong>
-            <span>
-              Navigation, prompting, AI controls, active chats, and integrations use clear hierarchy and contextual interaction so growing capability remains understandable, manageable, and under meaningful user control.
-            </span>
-          </li>
-          <li class="concept-modal__item">
-            <strong>Scope</strong>
-            <span>
-              Demonstrates product design and AI-assisted iteration across user experience, workflows, interaction behavior, and product systems—focusing on how AI fits into a product rather than building the underlying model.
-            </span>
-          </li>
-        </ul>
-
-        <p class="concept-modal__text" id="concept-modal-description">
-         So, what’s the goal? Powerful technology creates opportunities for new features, but capability alone does not justify implementation. HOLIX Ai demonstrates how product management, prioritization, and design coherence can guide new functionality so a product can expand without sacrificing usability, creating unnecessary complexity, or losing its direction.
+        <p class="concept-modal__text" id="concept-modal-details">
+          The live interface lets me test how navigation, controls, conversation, and future growth affect one another as the product evolves. The walkthrough highlights a few of those decisions and the thinking behind them, while still leaving room to explore the experience on your own or return to it later from the book icon.
         </p>
 
-      </div>
-    </section>
-
-
-    <section
-      class="concept-modal hub-modal"
-      id="hub-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-hidden="true"
-      aria-labelledby="hub-modal-title"
-      aria-describedby="hub-modal-description"
-      inert
-    >
-      <div class="concept-modal__overlay" data-hub-modal-close></div>
-
-      <div class="concept-modal__dialog hub-modal__dialog" tabindex="-1">
-        <div class="hub-modal__layout">
-          <nav class="hub-tools-nav" aria-label="AI Tools">
-            <ul class="hub-tools-nav__list">
-              <li class="hub-tools-nav__group">
-                <div class="hub-tools-nav__item is-selected" aria-current="page">
-                  <svg class="hub-tools-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="12" r="2.25" fill="none" stroke="currentColor" stroke-width="2" />
-                    <circle cx="5" cy="5" r="2" fill="none" stroke="currentColor" stroke-width="2" />
-                    <circle cx="19" cy="5" r="2" fill="none" stroke="currentColor" stroke-width="2" />
-                    <circle cx="5" cy="19" r="2" fill="none" stroke="currentColor" stroke-width="2" />
-                    <circle cx="19" cy="19" r="2" fill="none" stroke="currentColor" stroke-width="2" />
-                    <path d="M7 7L10.4 10.4M17 7L13.6 10.4M7 17L10.4 13.6M17 17L13.6 13.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                  </svg>
-                  <span>HOLIX HUB</span>
-                </div>
-
-                <div class="hub-tools-nav__subitem">Data Controls</div>
-              </li>
-
-              <li>
-                <div class="hub-tools-nav__item">
-                  <svg class="hub-tools-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="10.5" cy="13" r="6.5" fill="none" stroke="currentColor" stroke-width="2" />
-                    <path d="M10.5 9.5V13L13 14.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M18.5 3.2L19.05 4.45L20.3 5L19.05 5.55L18.5 6.8L17.95 5.55L16.7 5L17.95 4.45L18.5 3.2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-                  </svg>
-                  <span>Task Assistant</span>
-                </div>
-              </li>
-
-              <li>
-                <div class="hub-tools-nav__item">
-                  <svg class="hub-tools-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="3" y="4.5" width="18" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
-                    <path d="M8 9.5L5.5 12L8 14.5M16 9.5L18.5 12L16 14.5M13.5 8.5L10.5 15.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                  <span>Code &amp; Design</span>
-                </div>
-              </li>
-            </ul>
-          </nav>
-
-          <div class="hub-modal__frame">
-            <div class="hub-modal__controls">
-              <label class="hub-select-all" for="hub-select-all">
-                <input
-                  id="hub-select-all"
-                  class="hub-select-all__input"
-                  type="checkbox"
-                />
-                <span class="hub-select-all__label">Select all</span>
-              </label>
-
-              <label class="hub-search">
-                <span class="visually-hidden">Search connected applications</span>
-                <svg class="hub-search__icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
-                  <path d="M16.5 16.5L21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-                <input
-                  id="hub-search-input"
-                  class="hub-search__input"
-                  type="search"
-                  placeholder="Search applications"
-                  autocomplete="off"
-                />
-              </label>
-
-              <div class="hub-filter">
-                <button
-                  id="hub-filter-trigger"
-                  class="hub-filter__trigger"
-                  type="button"
-                  aria-label="Filter applications"
-                  aria-haspopup="menu"
-                  aria-expanded="false"
-                  aria-controls="hub-filter-menu"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4 6H20M7 12H17M10 18H14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                  </svg>
-                </button>
-
-                <div
-                  id="hub-filter-menu"
-                  class="hub-filter__menu"
-                  role="menu"
-                  aria-hidden="true"
-                  inert
-                >
-                  <button class="hub-filter__item is-selected" type="button" role="menuitemradio" aria-checked="true" data-hub-filter="all">All apps</button>
-                  <button class="hub-filter__item" type="button" role="menuitemradio" aria-checked="false" data-hub-filter="connected">Connected</button>
-                  <button class="hub-filter__item" type="button" role="menuitemradio" aria-checked="false" data-hub-filter="available">Available</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="hub-modal__intro">
-              <svg class="hub-modal__apps-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="4" y="4" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
-                <rect x="14" y="4" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
-                <rect x="4" y="14" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
-                <rect x="14" y="14" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
-              </svg>
-
-              <h1 class="hub-modal__title" id="hub-modal-title">HOLIX HUB</h1>
-              <p class="hub-modal__description" id="hub-modal-description">
-                Connect different applications to HOLIX Ai and control how much it has access to.
-              </p>
-            </div>
-          </div>
+        <div class="concept-modal__actions">
+          <button
+            class="concept-modal__skip"
+            type="button"
+            data-concept-modal-skip
+          >
+            Skip
+          </button>
+          <button
+            class="concept-modal__start"
+            type="button"
+            data-concept-modal-start
+          >
+            Start Walkthrough
+          </button>
         </div>
       </div>
     </section>
 
+    <!-- HOLIX Ai interactive prototype -->
     <div class="prototype-shell" inert>
+      <!-- Prototype: Workspace sidebar -->
       <aside
         id="workspaceSidebar"
         class="sidebar-panel"
@@ -629,23 +481,26 @@
             class="section-item sidebar-help-action concept-modal-trigger"
             id="concept-modal-trigger"
             type="button"
-            aria-label="Open HOLIX Ai product concept overview"
+            aria-label="Open HOLIX Ai walkthrough overview"
             aria-controls="concept-modal"
             aria-haspopup="dialog"
             aria-expanded="false"
           >
-            <svg class="sidebar-help-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M8 8A4 4 0 1 1 12 12V13M12 17H12.01"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+            <svg
+              class="sidebar-help-icon icon-tabler-book-2"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M19 4v16H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h12Z" />
+              <path d="M19 16H7a3 3 0 0 0-3 3" />
             </svg>
             <span class="sidebar-action-tooltip" aria-hidden="true"
-              >About HOLIX Ai</span
+              >Walkthrough</span
             >
           </button>
 
@@ -678,10 +533,50 @@
             >
           </a>
         </div>
+
+        <!-- Walkthrough: Step 1 of 3 — Workspace Panel -->
+        <section
+          class="walkthrough-card walkthrough-card--panel"
+          data-walkthrough-card="panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="walkthrough-panel-title"
+          aria-describedby="walkthrough-panel-description"
+          aria-hidden="true"
+          inert
+        >
+          <div class="walkthrough-card__header">
+            <h2 class="walkthrough-card__title" id="walkthrough-panel-title">
+              Workspace Panel
+            </h2>
+            <span class="walkthrough-card__step" aria-label="Step 1 of 3">
+              1/3
+            </span>
+          </div>
+
+          <p
+            class="walkthrough-card__text"
+            id="walkthrough-panel-description"
+          >
+            That story starts with the workspace, because growth needs somewhere to go. Clear information architecture separates navigation, tools, and conversation so new capabilities can be introduced without making users constantly reorient themselves. The panel becomes a product guardrail: complexity still exists, but the interface decides when and where users have to deal with it.
+          </p>
+
+          <div class="walkthrough-card__actions">
+            <button
+              class="walkthrough-card__next"
+              type="button"
+              data-walkthrough-next
+            >
+              Next
+            </button>
+          </div>
+        </section>
       </aside>
 
+      <!-- Prototype: Chat workspace -->
       <main class="workspace-stage" aria-label="HOLIX Ai interactive prototype">
         <section class="chat-workspace" aria-label="Chat workspace">
+          <!-- Prototype: Example conversation -->
           <div
             class="chat-thread"
             role="log"
@@ -757,7 +652,7 @@
 
                 <div class="message-bubble holix-response">
                   <p>
-                   The workspace is organized around connected systems for navigation, conversation management, prompting, AI controls, and external tools rather than treating each new capability as an isolated feature.
+                    The workspace is organized around connected systems for navigation, conversation management, prompting, AI controls, and external tools rather than treating each new capability as an isolated feature.
                   </p>
 
                   <p>
@@ -823,6 +718,7 @@
             </article>
           </div>
 
+          <!-- Prototype: Prompt composer -->
           <div class="composer-dock">
             <button
               class="new-chat-btn"
@@ -845,19 +741,6 @@
                 <button class="visually-hidden" type="submit">
                   Send message
                 </button>
-
-                <span class="composer-expand-btn" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      d="M7 14L12 9L17 14"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
 
                 <label for="chatInput" class="visually-hidden"
                   >Type a message</label
@@ -893,6 +776,54 @@
                       />
                     </svg>
                   </button>
+
+                  <!-- Walkthrough: Step 2 of 3 — Prompt Controls -->
+                  <section
+                    class="walkthrough-card walkthrough-card--prompt"
+                    data-walkthrough-card="prompt"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="walkthrough-prompt-title"
+                    aria-describedby="walkthrough-prompt-description"
+                    aria-hidden="true"
+                    inert
+                  >
+                    <div class="walkthrough-card__header">
+                      <h2
+                        class="walkthrough-card__title"
+                        id="walkthrough-prompt-title"
+                      >
+                        Prompt Controls
+                      </h2>
+                      <span class="walkthrough-card__step" aria-label="Step 2 of 3">
+                        2/3
+                      </span>
+                    </div>
+
+                    <p
+                      class="walkthrough-card__text"
+                      id="walkthrough-prompt-description"
+                    >
+                      Once the structure is stable, the next risk is changing the interaction people use most. The prompt keeps a familiar core while model and capability controls stay layered around it, using progressive disclosure to surface choices when they are relevant instead of all at once. That protects learned behaviour, reduces cognitive load, and gives the product room to evolve without turning every update into a new workflow.
+                    </p>
+
+                    <div class="walkthrough-card__actions">
+                      <button
+                        class="walkthrough-card__back"
+                        type="button"
+                        data-walkthrough-back
+                      >
+                        Back
+                      </button>
+                      <button
+                        class="walkthrough-card__next"
+                        type="button"
+                        data-walkthrough-next
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </section>
                 </div>
               </form>
 
@@ -1004,10 +935,226 @@
               </div>
             </div>
           </div>
+          <!-- Walkthrough: Step 3 of 3 — Chat Familiarity -->
+          <section
+            class="walkthrough-card walkthrough-card--chat"
+            data-walkthrough-card="chat"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="walkthrough-chat-title"
+            aria-describedby="walkthrough-chat-description"
+            aria-hidden="true"
+            inert
+          >
+            <div class="walkthrough-card__header">
+              <h2 class="walkthrough-card__title" id="walkthrough-chat-title">
+                Chat Familiarity
+              </h2>
+              <span class="walkthrough-card__step" aria-label="Step 3 of 3">
+                3/3
+              </span>
+            </div>
+
+            <p
+              class="walkthrough-card__text"
+              id="walkthrough-chat-description"
+            >
+              From there, the same principle carries into the conversation itself. AI may be technically complex, but reading a response, understanding its hierarchy, and continuing the conversation should not feel like learning a new kind of interface. Familiar messaging patterns, spacing, and visual hierarchy keep the experience legible so new capability feels integrated rather than bolted on.
+            </p>
+
+            <div class="walkthrough-card__actions">
+              <button
+                class="walkthrough-card__back"
+                type="button"
+                data-walkthrough-back
+              >
+                Back
+              </button>
+              <button
+                class="walkthrough-card__next"
+                type="button"
+                data-walkthrough-next
+              >
+                Next
+              </button>
+            </div>
+          </section>
+
         </section>
       </main>
     </div>
 
+    <!-- Walkthrough: Conclusion -->
+    <section
+      class="concept-modal walkthrough-conclusion-modal"
+      id="walkthrough-conclusion-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="walkthrough-conclusion-title"
+      aria-describedby="walkthrough-conclusion-description walkthrough-conclusion-details"
+      inert
+    >
+      <div class="concept-modal__overlay"></div>
+
+      <div class="concept-modal__dialog" tabindex="-1">
+        <h1 class="concept-modal__title" id="walkthrough-conclusion-title">
+          Whats The Point Of This?
+        </h1>
+
+        <p
+          class="concept-modal__text"
+          id="walkthrough-conclusion-description"
+        >
+          Powerful technology creates opportunities, but capability alone does not make something worth building. Product strategy, prioritization, and design coherence decide what belongs, how it fits, and whether it strengthens the experience as a whole. Product designers should be willing to question that value directly: are we serving the user, or serving the product?
+        </p>
+
+        <p class="concept-modal__text" id="walkthrough-conclusion-details">
+          This project grew from an idea turned into a system without starting from a finished design file, formal design system, or prototype to follow. From just a working mental model, this the visible result; the tradeoffs, rejected directions, and decisions overall across UX/UI, interaction states, information architecture, and front-end implementation. Should you wish to interact with it lightly, click finish.
+        </p>
+
+        <div class="concept-modal__actions">
+          <button
+            class="concept-modal__finish"
+            type="button"
+            data-walkthrough-conclusion-finish
+          >
+            Finish
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supporting modal: HOLIX Hub -->
+    <section
+      class="concept-modal hub-modal"
+      id="hub-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="hub-modal-title"
+      aria-describedby="hub-modal-description"
+      inert
+    >
+      <div class="concept-modal__overlay" data-hub-modal-close></div>
+
+      <div class="concept-modal__dialog hub-modal__dialog" tabindex="-1">
+        <div class="hub-modal__layout">
+          <nav class="hub-tools-nav" aria-label="AI Tools">
+            <ul class="hub-tools-nav__list">
+              <li class="hub-tools-nav__group">
+                <div class="hub-tools-nav__item is-selected" aria-current="page">
+                  <svg class="hub-tools-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="2.25" fill="none" stroke="currentColor" stroke-width="2" />
+                    <circle cx="5" cy="5" r="2" fill="none" stroke="currentColor" stroke-width="2" />
+                    <circle cx="19" cy="5" r="2" fill="none" stroke="currentColor" stroke-width="2" />
+                    <circle cx="5" cy="19" r="2" fill="none" stroke="currentColor" stroke-width="2" />
+                    <circle cx="19" cy="19" r="2" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M7 7L10.4 10.4M17 7L13.6 10.4M7 17L10.4 13.6M17 17L13.6 13.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  <span>HOLIX HUB</span>
+                </div>
+
+                <div class="hub-tools-nav__subitem">Data Controls</div>
+              </li>
+
+              <li>
+                <div class="hub-tools-nav__item">
+                  <svg class="hub-tools-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="10.5" cy="13" r="6.5" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M10.5 9.5V13L13 14.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M18.5 3.2L19.05 4.45L20.3 5L19.05 5.55L18.5 6.8L17.95 5.55L16.7 5L17.95 4.45L18.5 3.2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                  </svg>
+                  <span>Task Assistant</span>
+                </div>
+              </li>
+
+              <li>
+                <div class="hub-tools-nav__item">
+                  <svg class="hub-tools-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="4.5" width="18" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M8 9.5L5.5 12L8 14.5M16 9.5L18.5 12L16 14.5M13.5 8.5L10.5 15.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <span>Code &amp; Design</span>
+                </div>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="hub-modal__frame">
+            <div class="hub-modal__controls">
+              <label class="hub-select-all" for="hub-select-all">
+                <input
+                  id="hub-select-all"
+                  class="hub-select-all__input"
+                  type="checkbox"
+                />
+                <span class="hub-select-all__label">Select all</span>
+              </label>
+
+              <label class="hub-search">
+                <span class="visually-hidden">Search connected applications</span>
+                <svg class="hub-search__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+                  <path d="M16.5 16.5L21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <input
+                  id="hub-search-input"
+                  class="hub-search__input"
+                  type="search"
+                  placeholder="Search applications"
+                  autocomplete="off"
+                />
+              </label>
+
+              <div class="hub-filter">
+                <button
+                  id="hub-filter-trigger"
+                  class="hub-filter__trigger"
+                  type="button"
+                  aria-label="Filter applications"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="hub-filter-menu"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 6H20M7 12H17M10 18H14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </button>
+
+                <div
+                  id="hub-filter-menu"
+                  class="hub-filter__menu"
+                  role="menu"
+                  aria-hidden="true"
+                  inert
+                >
+                  <button class="hub-filter__item is-selected" type="button" role="menuitemradio" aria-checked="true" data-hub-filter="all">All apps</button>
+                  <button class="hub-filter__item" type="button" role="menuitemradio" aria-checked="false" data-hub-filter="connected">Connected</button>
+                  <button class="hub-filter__item" type="button" role="menuitemradio" aria-checked="false" data-hub-filter="available">Available</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="hub-modal__intro">
+              <svg class="hub-modal__apps-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="4" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
+                <rect x="14" y="4" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
+                <rect x="4" y="14" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
+                <rect x="14" y="14" width="6" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+
+              <h1 class="hub-modal__title" id="hub-modal-title">HOLIX HUB</h1>
+              <p class="hub-modal__description" id="hub-modal-description">
+                Connect different applications to HOLIX Ai and control how much it has access to.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Small-screen notice -->
     <section class="small-screen-notice" aria-label="Small screen notice">
       <p>
         Please view this project on 1080p screens or larger. Small device support is currently in design and active development. Check back for further updates. Thank you!

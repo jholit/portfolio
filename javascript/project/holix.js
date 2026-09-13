@@ -1,14 +1,27 @@
 // holix.js
 
 (() => {
+  // DOM references
   const conceptModal = document.querySelector("#concept-modal");
-  const conceptModalCloseButtons = [
-    ...document.querySelectorAll("[data-concept-modal-close]"),
-  ];
   const conceptModalDialog = conceptModal?.querySelector(
     ".concept-modal__dialog",
   );
   const conceptModalTrigger = document.querySelector("#concept-modal-trigger");
+  const conceptModalSkipButton = document.querySelector(
+    "[data-concept-modal-skip]",
+  );
+  const conceptModalStartButton = document.querySelector(
+    "[data-concept-modal-start]",
+  );
+  const walkthroughConclusionModal = document.querySelector(
+    "#walkthrough-conclusion-modal",
+  );
+  const walkthroughConclusionDialog = walkthroughConclusionModal?.querySelector(
+    ".concept-modal__dialog",
+  );
+  const walkthroughConclusionFinishButton = document.querySelector(
+    "[data-walkthrough-conclusion-finish]",
+  );
   const hubModal = document.querySelector("#hub-modal");
   const hubModalCloseButtons = [
     ...document.querySelectorAll("[data-hub-modal-close]"),
@@ -25,6 +38,7 @@
   const chatThread = document.querySelector(".chat-thread");
   const chatWorkspace = document.querySelector(".chat-workspace");
   const chatInput = document.querySelector("#chatInput");
+  const composerMicButton = document.querySelector(".composer-mic-btn");
   const modelSettings = document.querySelector(".composer-model-settings");
   const modelModeToggle = document.querySelector(".model-mode-toggle");
   const modelModeSlider = document.querySelector(".model-mode-slider");
@@ -60,11 +74,26 @@
     ),
   ];
   const hoverMediaQuery = window.matchMedia("(hover: hover)");
-  const conceptModalAutoOpenDelay = 3500;
+  const conceptModalAutoOpenDelay = 1000;
+  const walkthroughCards = [
+    ...document.querySelectorAll("[data-walkthrough-card]"),
+  ];
+  const walkthroughSteps = ["panel", "prompt", "chat"].filter((step) =>
+    walkthroughCards.some((card) => card.dataset.walkthroughCard === step),
+  );
+  const walkthroughNextButtons = [
+    ...document.querySelectorAll("[data-walkthrough-next]"),
+  ];
+  const walkthroughBackButtons = [
+    ...document.querySelectorAll("[data-walkthrough-back]"),
+  ];
+  const maxUserCreatedChats = 1;
   let conceptModalAutoOpenTimer = null;
   let shouldRestoreConceptModalTriggerFocus = false;
   let shouldRestoreHubModalTriggerFocus = false;
-  let newChatCount = 0;
+  let walkthroughStepIndex = -1;
+
+  // Walkthrough overview modal
 
   const isConceptModalOpen = () =>
     conceptModal?.classList.contains("is-open") ?? false;
@@ -79,20 +108,26 @@
     ];
   };
 
-  const closeConceptModal = () => {
+  const closeConceptModal = (fallbackFocusTarget = null) => {
     if (!conceptModal) return;
+
+    const shouldRestoreTrigger = shouldRestoreConceptModalTriggerFocus;
 
     conceptModal.classList.remove("is-open");
     conceptModal.setAttribute("aria-hidden", "true");
     conceptModal.toggleAttribute("inert", true);
     conceptModalTrigger?.setAttribute("aria-expanded", "false");
     prototypeShell?.toggleAttribute("inert", false);
-
-    if (shouldRestoreConceptModalTriggerFocus) {
-      window.requestAnimationFrame(() => conceptModalTrigger?.focus());
-    }
-
     shouldRestoreConceptModalTriggerFocus = false;
+
+    window.requestAnimationFrame(() => {
+      if (shouldRestoreTrigger) {
+        conceptModalTrigger?.focus();
+        return;
+      }
+
+      fallbackFocusTarget?.focus({ preventScroll: true });
+    });
   };
 
   const openConceptModal = (shouldRestoreTriggerFocus = true) => {
@@ -122,7 +157,7 @@
 
     if (event.key === "Escape") {
       event.preventDefault();
-      closeConceptModal();
+      event.stopImmediatePropagation();
       return;
     }
 
@@ -154,6 +189,87 @@
       firstElement.focus();
     }
   };
+
+  // Walkthrough conclusion modal
+
+  const isWalkthroughConclusionOpen = () =>
+    walkthroughConclusionModal?.classList.contains("is-open") ?? false;
+
+  const getWalkthroughConclusionFocusableElements = () => {
+    if (!walkthroughConclusionModal) return [];
+
+    return [
+      ...walkthroughConclusionModal.querySelectorAll(
+        'button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ];
+  };
+
+  const closeWalkthroughConclusion = () => {
+    if (!walkthroughConclusionModal) return;
+
+    walkthroughConclusionModal.classList.remove("is-open");
+    walkthroughConclusionModal.setAttribute("aria-hidden", "true");
+    walkthroughConclusionModal.toggleAttribute("inert", true);
+    prototypeShell?.toggleAttribute("inert", false);
+  };
+
+  const openWalkthroughConclusion = () => {
+    if (!walkthroughConclusionModal || !isWalkthroughActive()) return;
+
+    closeModelMenu();
+    closeSearch();
+    closeChatPanel();
+    closeSidebarPopups();
+    prototypeShell.dataset.walkthroughStep = "conclusion";
+    syncWalkthroughCardState();
+    walkthroughConclusionModal.classList.add("is-open");
+    walkthroughConclusionModal.setAttribute("aria-hidden", "false");
+    walkthroughConclusionModal.toggleAttribute("inert", false);
+    prototypeShell?.toggleAttribute("inert", true);
+
+    window.requestAnimationFrame(() => walkthroughConclusionDialog?.focus());
+  };
+
+  const handleWalkthroughConclusionKeydown = (event) => {
+    if (!isWalkthroughConclusionOpen()) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+
+    const focusableElements = getWalkthroughConclusionFocusableElements();
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (!firstElement || !lastElement) {
+      event.preventDefault();
+      return;
+    }
+
+    if (document.activeElement === walkthroughConclusionDialog) {
+      event.preventDefault();
+      (event.shiftKey ? lastElement : firstElement).focus();
+      return;
+    }
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+      return;
+    }
+
+    if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  };
+
+  // HOLIX Hub modal
 
   const isHubModalOpen = () =>
     hubModal?.classList.contains("is-open") ?? false;
@@ -257,6 +373,8 @@
     }
   };
 
+  // Chat, composer, and model controls
+
   const isChatAtPresent = () => {
     if (!chatThread) return true;
 
@@ -346,6 +464,30 @@
     if (chatPanelStatus) chatPanelStatus.textContent = message;
   };
 
+  const getUserCreatedChatCount = () => {
+    if (!chatList) return 0;
+
+    return chatList.querySelectorAll(
+      ".chat-list-panel__item:not(.chat-list-panel__item--fixed)",
+    ).length;
+  };
+
+  const updateNewChatAvailability = () => {
+    const isAtLimit = getUserCreatedChatCount() >= maxUserCreatedChats;
+
+    [chatPanelNewChat, newChatButton].forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+
+      button.disabled = isAtLimit;
+
+      if (isAtLimit) {
+        button.title = "This demo supports one user-created chat at a time.";
+      } else {
+        button.removeAttribute("title");
+      }
+    });
+  };
+
   const updateChatListOverflow = () => {
     if (!chatList) return;
 
@@ -355,7 +497,11 @@
     if (!shouldScroll) chatList.scrollTop = 0;
   };
 
-  const startChatRename = (nameButton, shouldClear = false, removeIfEmpty = false) => {
+  const startChatRename = (
+    nameButton,
+    shouldClear = false,
+    removeIfEmpty = false,
+  ) => {
     if (!(nameButton instanceof HTMLButtonElement)) return;
 
     const item = nameButton.closest(".chat-list-panel__item");
@@ -385,6 +531,7 @@
       if (removeIfEmpty && (!shouldSave || !nextName)) {
         item.remove();
         updateChatListOverflow();
+        updateNewChatAvailability();
         setChatPanelStatus("New chat cancelled.");
         return;
       }
@@ -439,13 +586,20 @@
 
     item.remove();
     updateChatListOverflow();
+    updateNewChatAvailability();
     setChatPanelStatus(`${chatName} removed.`);
   };
 
   const createNewChat = () => {
     if (!chatList) return;
 
-    newChatCount += 1;
+    if (getUserCreatedChatCount() >= maxUserCreatedChats) {
+      setChatPanelState(true);
+      setChatPanelStatus("This demo supports one user-created chat at a time.");
+      updateNewChatAvailability();
+      return;
+    }
+
     const item = document.createElement("li");
     item.className = "chat-list-panel__item";
 
@@ -467,6 +621,7 @@
     item.append(nameButton, removeButton);
     chatList.append(item);
     updateChatListOverflow();
+    updateNewChatAvailability();
     setChatPanelState(true);
 
     if (chatInput) {
@@ -474,13 +629,15 @@
       updateComposerTextState();
     }
 
-    setChatPanelStatus(`New chat ${newChatCount} created.`);
+    setChatPanelStatus("New chat created.");
 
     window.requestAnimationFrame(() => {
       chatList.scrollTop = chatList.scrollHeight;
       startChatRename(nameButton, true, true);
     });
   };
+
+  // Workspace search and sidebar popups
 
   const setSidebarPopupState = (anchor, isOpen) => {
     if (!anchor) return;
@@ -546,6 +703,96 @@
   const closeSearch = (shouldReturnFocus = false) =>
     setSearchState(false, shouldReturnFocus);
 
+  // Interactive walkthrough
+
+  const isWalkthroughActive = () =>
+    Boolean(
+      prototypeShell?.hasAttribute("data-walkthrough-step") &&
+        walkthroughStepIndex >= 0 &&
+        walkthroughStepIndex < walkthroughSteps.length,
+    );
+
+  const getActiveWalkthroughCard = () => {
+    if (!isWalkthroughActive()) return null;
+
+    const activeStep = walkthroughSteps[walkthroughStepIndex];
+    return (
+      walkthroughCards.find(
+        (card) => card.dataset.walkthroughCard === activeStep,
+      ) ?? null
+    );
+  };
+
+  const syncWalkthroughCardState = (activeStep = null) => {
+    walkthroughCards.forEach((card) => {
+      const isActive = card.dataset.walkthroughCard === activeStep;
+      card.setAttribute("aria-hidden", String(!isActive));
+      card.toggleAttribute("inert", !isActive);
+    });
+  };
+
+  const focusWalkthroughAction = () => {
+    if (!isWalkthroughActive()) return;
+
+    const activeCard = getActiveWalkthroughCard();
+    const preferredAction =
+      activeCard?.querySelector("[data-walkthrough-next]") ??
+      activeCard?.querySelector("[data-walkthrough-back]");
+
+    preferredAction?.focus({ preventScroll: true });
+  };
+
+  const setWalkthroughStep = (stepIndex) => {
+    if (!prototypeShell) return;
+
+    if (stepIndex < 0 || stepIndex >= walkthroughSteps.length) {
+      walkthroughStepIndex = walkthroughSteps.length;
+      prototypeShell.removeAttribute("data-walkthrough-step");
+      syncWalkthroughCardState();
+      closeSidebarPopups();
+      closeChatPanel();
+      closeSearch();
+      return;
+    }
+
+    const currentStep = walkthroughSteps[stepIndex];
+
+    walkthroughStepIndex = stepIndex;
+    prototypeShell.dataset.walkthroughStep = currentStep;
+    syncWalkthroughCardState(currentStep);
+
+    closeSidebarPopups();
+    closeChatPanel();
+    closeSearch();
+
+    window.requestAnimationFrame(focusWalkthroughAction);
+  };
+
+  const startWalkthrough = () => {
+    if (isWalkthroughActive() || !walkthroughSteps.length) {
+      return;
+    }
+
+    setWalkthroughStep(0);
+  };
+
+  const isWalkthroughActionTarget = (target) => {
+    if (!(target instanceof Element)) return false;
+
+    const action = target.closest(
+      "[data-walkthrough-next], [data-walkthrough-back]",
+    );
+    return Boolean(action && getActiveWalkthroughCard()?.contains(action));
+  };
+
+  const blockWalkthroughPointerInteraction = (event) => {
+    if (!isWalkthroughActive() || isWalkthroughConclusionOpen()) return;
+    if (isWalkthroughActionTarget(event.target)) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  };
+
   const submitComposer = () => {
     if (!chatInput) return;
 
@@ -554,13 +801,113 @@
     chatInput.focus();
   };
 
+  // Event bindings
+
   chatInput?.addEventListener("input", updateComposerTextState);
 
-  conceptModalCloseButtons.forEach((closeButton) => {
-    closeButton.addEventListener("click", closeConceptModal);
+  walkthroughNextButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!isWalkthroughActive()) return;
+
+      button.blur();
+
+      if (walkthroughStepIndex === walkthroughSteps.length - 1) {
+        openWalkthroughConclusion();
+        return;
+      }
+
+      setWalkthroughStep(walkthroughStepIndex + 1);
+    });
+  });
+
+  walkthroughBackButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (walkthroughStepIndex <= 0) return;
+
+      button.blur();
+      setWalkthroughStep(walkthroughStepIndex - 1);
+    });
+  });
+
+  document.addEventListener(
+    "pointerdown",
+    blockWalkthroughPointerInteraction,
+    true,
+  );
+  document.addEventListener("click", blockWalkthroughPointerInteraction, true);
+
+  document.addEventListener(
+    "focusin",
+    (event) => {
+      if (!isWalkthroughActive() || isWalkthroughConclusionOpen()) return;
+
+      const activeCard = getActiveWalkthroughCard();
+      if (activeCard?.contains(event.target)) return;
+
+      focusWalkthroughAction();
+    },
+    true,
+  );
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+      if (!isWalkthroughActive() || isWalkthroughConclusionOpen()) return;
+
+      const activeCard = getActiveWalkthroughCard();
+      if (!activeCard) return;
+
+      if (event.key === "Tab") {
+        const actions = [
+          ...activeCard.querySelectorAll(
+            "[data-walkthrough-back], [data-walkthrough-next]",
+          ),
+        ];
+
+        if (!actions.length) {
+          event.preventDefault();
+          return;
+        }
+
+        const currentIndex = actions.indexOf(document.activeElement);
+        const direction = event.shiftKey ? -1 : 1;
+        const nextIndex =
+          currentIndex === -1
+            ? event.shiftKey
+              ? actions.length - 1
+              : 0
+            : (currentIndex + direction + actions.length) % actions.length;
+
+        event.preventDefault();
+        actions[nextIndex].focus();
+        return;
+      }
+
+      if (!activeCard.contains(event.target)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    },
+    true,
+  );
+
+  conceptModalSkipButton?.addEventListener("click", () => {
+    closeConceptModal(chatInput);
+  });
+
+  conceptModalStartButton?.addEventListener("click", () => {
+    closeConceptModal();
+    startWalkthrough();
   });
 
   conceptModalTrigger?.addEventListener("click", () => openConceptModal());
+
+  walkthroughConclusionFinishButton?.addEventListener("click", () => {
+    walkthroughConclusionFinishButton.blur();
+    closeWalkthroughConclusion();
+    setWalkthroughStep(walkthroughSteps.length);
+    window.requestAnimationFrame(() => chatInput?.focus({ preventScroll: true }));
+  });
 
   hubModalCloseButtons.forEach((closeButton) => {
     closeButton.addEventListener("click", closeHubModal);
@@ -587,6 +934,7 @@
   });
 
   document.addEventListener("keydown", handleConceptModalKeydown);
+  document.addEventListener("keydown", handleWalkthroughConclusionKeydown);
   document.addEventListener("keydown", handleHubModalKeydown);
 
   chatInput?.addEventListener("focus", () => {
@@ -597,12 +945,32 @@
     composerArea?.classList.remove("is-input-active");
   });
 
-  composerArea?.addEventListener("focusin", () => {
+  composerArea?.addEventListener("focusin", (event) => {
+    if (
+      event.target instanceof Element &&
+      event.target.closest(".composer-mic-btn")
+    ) {
+      setComposerSelectionState(false);
+      return;
+    }
+
     setComposerSelectionState(true);
   });
 
-  composerArea?.addEventListener("pointerdown", () => {
+  composerArea?.addEventListener("pointerdown", (event) => {
+    if (
+      event.target instanceof Element &&
+      event.target.closest(".composer-mic-btn")
+    ) {
+      setComposerSelectionState(false);
+      return;
+    }
+
     setComposerSelectionState(true);
+  });
+
+  composerMicButton?.addEventListener("click", () => {
+    setComposerSelectionState(false);
   });
 
   chatInput?.addEventListener("keydown", (event) => {
@@ -731,6 +1099,8 @@
     createNewChat();
   };
 
+  updateNewChatAvailability();
+
   chatPanelNewChat?.addEventListener("click", handleNewChatClick);
   newChatButton?.addEventListener("click", handleNewChatClick);
 
@@ -745,7 +1115,10 @@
     }
 
     const nameButton = event.target.closest("button.chat-list-panel__name");
-    if (nameButton) startChatRename(nameButton);
+    if (nameButton) {
+      event.stopPropagation();
+      startChatRename(nameButton);
+    }
   });
 
   sidebarPopupAnchors.forEach((anchor) => {
@@ -906,6 +1279,8 @@
 
     setSidebarPopupState(openPopupAnchor, false);
   });
+
+  // Initial state
 
   updateComposerTextState();
   updateModelMode();
