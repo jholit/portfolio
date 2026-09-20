@@ -82,7 +82,7 @@
     transition.className = "project-transition";
     transition.setAttribute("role", "status");
     transition.setAttribute("aria-live", "polite");
-    transition.setAttribute("aria-label", "Opening HOLIX Ai: Product Design Concept");
+    transition.setAttribute("aria-label", "Opening HOLIX Ai: Independent Product Design Project");
 
     const content = document.createElement("div");
     content.className = "project-transition__content";
@@ -100,7 +100,7 @@
 
     const subtitle = document.createElement("p");
     subtitle.className = "project-transition__subtitle";
-    subtitle.textContent = "Product Design Concept";
+    subtitle.textContent = "Independent Product Design Project";
 
     copy.append(title, subtitle);
     content.append(loader, copy);
