@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@import url("motion.css");
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Palanquin+Dark:wght@400;500;600;700&display=swap");
 
 /* --------------------------------------------------------------------------
@@ -22,6 +20,9 @@
   --color-header-text: #fff;
   --color-navigation-hover: rgb(163 220 242 / 65%);
   --color-navigation-active: rgb(35 115 145 / 65%);
+  --color-navigation-paper: #f4f0e8;
+  --color-navigation-paper-text: #171717;
+  --color-navigation-paper-muted: #5e5b54;
   --color-footer-background: #171717;
   --color-footer-text: #fff;
   --color-focus: #005fcc;
@@ -249,9 +250,14 @@ video {
   transition: background-color 160ms ease-out;
 }
 
-.site-navigation__emphasis,
 .site-navigation__project-name {
   font-weight: var(--font-weight-bold);
+}
+
+.site-navigation__project-name {
+  color: #000;
+  font-family: var(--font-family-display);
+  font-weight: 300;
 }
 
 .site-navigation__projects {
@@ -289,11 +295,11 @@ video {
   inline-size: 330px;
   margin: 0;
   padding: 8px;
-  border: 1px solid rgb(255 255 255 / 16%);
+  border: 1px solid rgb(23 23 23 / 14%);
   border-radius: 8px;
   list-style: none;
-  background-color: rgb(23 23 23 / 96%);
-  box-shadow: 0 14px 34px rgb(0 0 0 / 28%);
+  background-color: var(--color-navigation-paper);
+  box-shadow: 0 16px 34px rgb(0 0 0 / 24%);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -335,12 +341,29 @@ video {
   block-size: auto;
   min-block-size: 62px;
   padding: 10px 12px;
+  border-radius: 4px;
+  color: var(--color-navigation-paper-text);
+  font-family: var(--font-family-display);
+  font-size: 15px;
+  line-height: 1.25;
 }
 
 .site-navigation__project-description {
+  color: var(--color-navigation-paper-muted);
+  font-family: var(--font-family-body);
   font-size: 12px;
   line-height: 1.35;
-  opacity: 0.78;
+}
+
+.site-navigation__projects-list a:hover,
+.site-navigation__projects-list a:focus-visible {
+  color: var(--color-navigation-paper-text);
+  background-color: rgb(23 23 23 / 8%);
+  text-decoration: none;
+}
+
+.site-navigation__projects-list a:visited {
+  color: var(--color-navigation-paper-text);
 }
 
 .site-logo:hover,
@@ -917,8 +940,8 @@ body.has-open-menu {
     padding: calc(var(--header-min-height) + 28px) var(--compact-page-gutter) 40px;
     overflow-y: auto;
     overscroll-behavior: contain;
-    color: #fff;
-    background-color: rgb(23 23 23 / 80%);
+    color: var(--color-navigation-paper-text);
+    background-color: var(--color-navigation-paper);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -964,7 +987,7 @@ body.has-open-menu {
     padding: 15px 18px;
     border: 0;
     border-radius: 5px;
-    color: #fff;
+    color: var(--color-navigation-paper-text);
     background-color: transparent;
     font-family: var(--font-family-body);
     font-size: 16px;
@@ -974,6 +997,15 @@ body.has-open-menu {
     text-decoration: none;
     white-space: normal;
     transition: background-color 120ms ease-out;
+  }
+
+  .site-navigation__item a,
+  .site-navigation__projects-toggle,
+  .site-navigation__contact-toggle {
+    font-family: var(--font-family-display);
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.01em;
   }
 
   .site-navigation__projects {
@@ -1035,9 +1067,14 @@ body.has-open-menu {
   .site-navigation__projects-list a {
     min-block-size: 62px;
     padding: 10px 18px;
+    color: var(--color-navigation-paper-text);
+    font-family: var(--font-family-display);
+    font-size: 16px;
   }
 
   .site-navigation__project-description {
+    color: var(--color-navigation-paper-muted);
+    font-family: var(--font-family-body);
     font-size: 13px;
   }
 
@@ -1092,6 +1129,24 @@ body.has-open-menu {
     min-block-size: 52px;
     padding-inline: 18px;
     font-size: 15px;
+  }
+
+  .site-navigation__item a:hover,
+  .site-navigation__item a:focus-visible,
+  .site-navigation__projects-toggle:hover,
+  .site-navigation__projects-toggle:focus-visible,
+  .site-navigation__contact-toggle:hover,
+  .site-navigation__contact-toggle:focus-visible,
+  .site-navigation__contact-action:hover,
+  .site-navigation__contact-action:focus-visible {
+    color: var(--color-navigation-paper-text);
+    background-color: rgb(23 23 23 / 8%);
+    text-decoration: none;
+  }
+
+  .site-navigation__item a[aria-current="page"] {
+    color: var(--color-navigation-paper-text);
+    background-color: rgb(23 23 23 / 10%);
   }
 
   .site-navigation__contact-icon {

@@ -521,6 +521,229 @@
     event.currentTarget.reset();
   });
 
+  // Portfolio case study guide.
+  // Content order mirrors the walkthrough exactly so it stays easy to edit and review.
+  const caseStudySteps = [
+    {
+      label: 'Overview',
+      title: 'A homepage with one clear job',
+      target: null,
+      copy: [
+        'Gamers Ultra Plus is a retail-focused redesign inspired by Renegade Game Studios. I rebuilt the homepage around one responsibility: helping shoppers discover, compare, and buy games without unrelated company content competing for attention.'
+      ]
+    },
+    {
+      label: 'Discovery',
+      title: 'Reduce the work of finding a game',
+      target: '.search',
+      copy: [
+        'Search gives shoppers a direct route into the catalogue, while collection filters support browsing by intent. Together, they turn discovery into a focused retail task instead of another competing navigation path.'
+      ]
+    },
+    {
+      label: 'Retail priority',
+      title: 'Make the primary action obvious',
+      target: '.hero',
+      copy: [
+        'The hero gives one product and one purchase path clear priority. That immediately defines the homepage as a retail experience, while secondary messages stay out of the way.'
+      ]
+    },
+    {
+      label: 'Comparison',
+      title: 'Keep product decisions scannable',
+      target: '#product-grid',
+      copy: [
+        'Product cards expose only what matters for comparison: artwork, category, title, price, and availability. Deeper details appear on demand, keeping the catalogue quick to scan without removing useful information.'
+      ]
+    },
+    {
+      label: 'Information architecture',
+      title: 'Give secondary content a proper home',
+      target: '.site-footer',
+      copy: [
+        'Support, company information, policies, and newsletter content remain available in the footer. The functionality stays; the competition for attention does not. Placement becomes part of the product hierarchy.'
+      ]
+    },
+    {
+      label: 'Outcome',
+      title: 'Less competition, clearer responsibility',
+      target: null,
+      copy: [
+        'The result is a clearer retail experience with stronger hierarchy, faster discovery, and cleaner comparison. It reflects how I work: find the source of complexity, set priorities, then make the product easier to understand.'
+      ]
+    }
+  ];
+
+  // Case study elements and state.
+  const caseStudyGuide = $('#case-study-guide');
+  const caseStudyLauncher = $('#case-study-launcher');
+  const caseStudyClose = $('#case-study-close');
+  const caseStudyPrevious = $('#case-study-previous');
+  const caseStudyNext = $('#case-study-next');
+  const caseStudyMessage = $('#case-study-message');
+  const caseStudyFocusFrame = $('#case-study-focus-frame');
+  let caseStudyIndex = 0;
+  let caseStudyFocusedTarget = null;
+  let caseStudyFocusFrameUpdate = 0;
+  let caseStudyFocusPulseTimer = 0;
+
+  // Context focus: targeted steps receive a restrained frame with one short entrance pulse.
+  function updateCaseStudyFocusFrame() {
+    cancelAnimationFrame(caseStudyFocusFrameUpdate);
+    caseStudyFocusFrameUpdate = requestAnimationFrame(() => {
+      if (!caseStudyFocusedTarget || caseStudyFocusFrame.hidden) {
+        return;
+      }
+
+      const targetRect = caseStudyFocusedTarget.getBoundingClientRect();
+      const horizontalInset = 10;
+      const verticalInset = 10;
+      const width = Math.max(0, targetRect.width + (horizontalInset * 2));
+      const height = Math.max(0, targetRect.height + (verticalInset * 2));
+      const targetRadius = getComputedStyle(caseStudyFocusedTarget).borderRadius;
+
+      caseStudyFocusFrame.style.left = `${Math.round(targetRect.left - horizontalInset)}px`;
+      caseStudyFocusFrame.style.top = `${Math.round(targetRect.top - verticalInset)}px`;
+      caseStudyFocusFrame.style.width = `${Math.round(width)}px`;
+      caseStudyFocusFrame.style.height = `${Math.round(height)}px`;
+      caseStudyFocusFrame.style.borderRadius = targetRadius === '0px' ? '6px' : targetRadius;
+    });
+  }
+
+  function pulseCaseStudyFocusFrame() {
+    const shouldPulse = caseStudyIndex !== 4;
+    if (!shouldPulse) {
+      caseStudyFocusFrame.classList.remove('is-pulsing');
+      return;
+    }
+
+    const pulseDuration = caseStudyIndex >= 1 && caseStudyIndex <= 3 ? '1.0s' : '.72s';
+    caseStudyFocusFrame.style.setProperty('--focus-pulse-duration', pulseDuration);
+    caseStudyFocusFrame.classList.remove('is-pulsing');
+    void caseStudyFocusFrame.offsetWidth;
+    caseStudyFocusFrame.classList.add('is-pulsing');
+  }
+
+  function clearCaseStudyTarget() {
+    clearTimeout(caseStudyFocusPulseTimer);
+    caseStudyFocusPulseTimer = 0;
+    caseStudyFocusedTarget = null;
+    caseStudyFocusFrame.hidden = true;
+    caseStudyFocusFrame.classList.remove('is-pulsing');
+    caseStudyFocusFrame.removeAttribute('style');
+  }
+
+  function showCaseStudyTarget(selector) {
+    const target = $(selector);
+    if (!target) {
+      clearCaseStudyTarget();
+      return;
+    }
+
+    caseStudyFocusedTarget = target;
+    caseStudyFocusFrame.hidden = false;
+    target.scrollIntoView({
+      behavior: motionQuery.matches ? 'auto' : 'smooth',
+      block: 'start'
+    });
+    updateCaseStudyFocusFrame();
+
+    if (!motionQuery.matches && caseStudyIndex !== 4) {
+      caseStudyFocusPulseTimer = window.setTimeout(() => {
+        if (caseStudyFocusedTarget !== target || caseStudyFocusFrame.hidden) {
+          return;
+        }
+
+        updateCaseStudyFocusFrame();
+        pulseCaseStudyFocusFrame();
+      }, 420);
+    }
+  }
+
+  // Rendering and navigation stay together so control states always match the current step.
+  function renderCaseStudyStep({ moveToTarget = true } = {}) {
+    const step = caseStudySteps[caseStudyIndex];
+    const isFirstStep = caseStudyIndex === 0;
+    const isLastStep = caseStudyIndex === caseStudySteps.length - 1;
+
+    $('#case-study-step-label').textContent = `${String(caseStudyIndex + 1).padStart(2, '0')} — ${step.label}`;
+    $('#case-study-step-title').textContent = step.title;
+    $('#case-study-copy').replaceChildren(...step.copy.map(text => {
+      const paragraph = document.createElement('p');
+      paragraph.textContent = text;
+      return paragraph;
+    }));
+    $('#case-study-progress').textContent = `${caseStudyIndex + 1} of ${caseStudySteps.length}`;
+
+    caseStudyPrevious.hidden = isFirstStep;
+    caseStudyNext.classList.toggle('is-finish', isLastStep);
+    caseStudyNext.setAttribute('aria-label', isLastStep ? 'Finish case study' : 'Next case study step');
+    caseStudyMessage.scrollTop = 0;
+
+    clearCaseStudyTarget();
+    if (moveToTarget && step.target) {
+      showCaseStudyTarget(step.target);
+    }
+  }
+
+  function openCaseStudyGuide() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    caseStudyGuide.inert = false;
+    caseStudyGuide.setAttribute('aria-hidden', 'false');
+    caseStudyGuide.classList.add('is-open');
+    caseStudyLauncher.setAttribute('aria-expanded', 'true');
+    renderCaseStudyStep();
+    caseStudyClose.focus({ preventScroll: true });
+  }
+
+  function closeCaseStudyGuide({ reset = false } = {}) {
+    clearCaseStudyTarget();
+    caseStudyGuide.classList.remove('is-open');
+    caseStudyGuide.setAttribute('aria-hidden', 'true');
+    caseStudyGuide.inert = true;
+    caseStudyLauncher.setAttribute('aria-expanded', 'false');
+    caseStudyLauncher.focus({ preventScroll: true });
+
+    if (reset) {
+      caseStudyIndex = 0;
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
+  }
+
+  function goToPreviousCaseStudyStep() {
+    if (caseStudyIndex === 0) {
+      return;
+    }
+
+    caseStudyIndex -= 1;
+    renderCaseStudyStep();
+  }
+
+  function goToNextCaseStudyStep() {
+    const isLastStep = caseStudyIndex === caseStudySteps.length - 1;
+    if (isLastStep) {
+      closeCaseStudyGuide({ reset: true });
+      return;
+    }
+
+    caseStudyIndex += 1;
+    renderCaseStudyStep();
+  }
+
+  // Case study events.
+  caseStudyLauncher.addEventListener('click', openCaseStudyGuide);
+  caseStudyClose.addEventListener('click', () => closeCaseStudyGuide());
+  caseStudyPrevious.addEventListener('click', goToPreviousCaseStudyStep);
+  caseStudyNext.addEventListener('click', goToNextCaseStudyStep);
+  window.addEventListener('scroll', updateCaseStudyFocusFrame, { passive: true });
+  window.addEventListener('resize', updateCaseStudyFocusFrame);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && caseStudyGuide.classList.contains('is-open') && !$('dialog[open]')) {
+      closeCaseStudyGuide();
+    }
+  });
+  renderCaseStudyStep({ moveToTarget: false });
+
   $('#year').textContent = String(new Date().getFullYear());
   updateCartCount();
   moveFilterIndicator(false);

@@ -29,6 +29,10 @@
       linear forwards;
   }
 
+  html:has(body.is-page-leaving) {
+    background-color: #171717;
+  }
+
   .email-modal {
     opacity: 0;
     transform:
