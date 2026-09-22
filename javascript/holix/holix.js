@@ -2,26 +2,6 @@
 
 (() => {
   // DOM references
-  const conceptModal = document.querySelector("#concept-modal");
-  const conceptModalDialog = conceptModal?.querySelector(
-    ".concept-modal__dialog",
-  );
-  const conceptModalTrigger = document.querySelector("#concept-modal-trigger");
-  const conceptModalSkipButton = document.querySelector(
-    "[data-concept-modal-skip]",
-  );
-  const conceptModalStartButton = document.querySelector(
-    "[data-concept-modal-start]",
-  );
-  const walkthroughConclusionModal = document.querySelector(
-    "#walkthrough-conclusion-modal",
-  );
-  const walkthroughConclusionDialog = walkthroughConclusionModal?.querySelector(
-    ".concept-modal__dialog",
-  );
-  const walkthroughConclusionFinishButton = document.querySelector(
-    "[data-walkthrough-conclusion-finish]",
-  );
   const hubModal = document.querySelector("#hub-modal");
   const hubModalCloseButtons = [
     ...document.querySelectorAll("[data-hub-modal-close]"),
@@ -32,6 +12,14 @@
   const hubFilterTrigger = document.querySelector("#hub-filter-trigger");
   const hubFilterMenu = document.querySelector("#hub-filter-menu");
   const hubFilterItems = [...document.querySelectorAll(".hub-filter__item")];
+  const hubSearchInput = document.querySelector("#hub-search-input");
+  const hubSelectAll = document.querySelector("#hub-select-all");
+  const hubSourceRows = [...document.querySelectorAll("[data-hub-source]")];
+  const hubSourceActiveInputs = [
+    ...document.querySelectorAll("[data-hub-source-active]"),
+  ];
+  const hubSourceCount = document.querySelector("#hub-source-count");
+  const hubSourceEmpty = document.querySelector("#hub-source-empty");
   const composerArea = document.querySelector(".composer-area");
   const composerDock = document.querySelector(".composer-dock");
   const chatComposer = document.querySelector(".chat-composer");
@@ -74,200 +62,13 @@
     ),
   ];
   const hoverMediaQuery = window.matchMedia("(hover: hover)");
-  const conceptModalAutoOpenDelay = 1000;
-  const walkthroughCards = [
-    ...document.querySelectorAll("[data-walkthrough-card]"),
-  ];
-  const walkthroughSteps = ["panel", "prompt", "chat"].filter((step) =>
-    walkthroughCards.some((card) => card.dataset.walkthroughCard === step),
-  );
-  const walkthroughNextButtons = [
-    ...document.querySelectorAll("[data-walkthrough-next]"),
-  ];
-  const walkthroughBackButtons = [
-    ...document.querySelectorAll("[data-walkthrough-back]"),
-  ];
+  const storyFocusButtons = [...document.querySelectorAll("[data-story-focus]")];
+  const storyFocusStatus = document.querySelector(".story-focus-status");
+  const storyFocusDuration = 4000;
   const maxUserCreatedChats = 1;
-  let conceptModalAutoOpenTimer = null;
-  let shouldRestoreConceptModalTriggerFocus = false;
+  let storyFocusTimer = null;
   let shouldRestoreHubModalTriggerFocus = false;
-  let walkthroughStepIndex = -1;
-
-  // Walkthrough overview modal
-
-  const isConceptModalOpen = () =>
-    conceptModal?.classList.contains("is-open") ?? false;
-
-  const getConceptModalFocusableElements = () => {
-    if (!conceptModal) return [];
-
-    return [
-      ...conceptModal.querySelectorAll(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-      ),
-    ];
-  };
-
-  const closeConceptModal = (fallbackFocusTarget = null) => {
-    if (!conceptModal) return;
-
-    const shouldRestoreTrigger = shouldRestoreConceptModalTriggerFocus;
-
-    conceptModal.classList.remove("is-open");
-    conceptModal.setAttribute("aria-hidden", "true");
-    conceptModal.toggleAttribute("inert", true);
-    conceptModalTrigger?.setAttribute("aria-expanded", "false");
-    prototypeShell?.toggleAttribute("inert", false);
-    shouldRestoreConceptModalTriggerFocus = false;
-
-    window.requestAnimationFrame(() => {
-      if (shouldRestoreTrigger) {
-        conceptModalTrigger?.focus();
-        return;
-      }
-
-      fallbackFocusTarget?.focus({ preventScroll: true });
-    });
-  };
-
-  const openConceptModal = (shouldRestoreTriggerFocus = true) => {
-    if (!conceptModal) return;
-
-    if (conceptModalAutoOpenTimer !== null) {
-      window.clearTimeout(conceptModalAutoOpenTimer);
-      conceptModalAutoOpenTimer = null;
-    }
-
-    shouldRestoreConceptModalTriggerFocus = shouldRestoreTriggerFocus;
-    closeModelMenu();
-    closeSearch();
-    closeChatPanel();
-    closeSidebarPopups();
-    conceptModal.classList.add("is-open");
-    conceptModal.setAttribute("aria-hidden", "false");
-    conceptModal.toggleAttribute("inert", false);
-    conceptModalTrigger?.setAttribute("aria-expanded", "true");
-    prototypeShell?.toggleAttribute("inert", true);
-
-    window.requestAnimationFrame(() => conceptModalDialog?.focus());
-  };
-
-  const handleConceptModalKeydown = (event) => {
-    if (!isConceptModalOpen()) return;
-
-    if (event.key === "Escape") {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      return;
-    }
-
-    if (event.key !== "Tab") return;
-
-    const focusableElements = getConceptModalFocusableElements();
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-
-    if (!firstElement || !lastElement) {
-      event.preventDefault();
-      return;
-    }
-
-    if (document.activeElement === conceptModalDialog) {
-      event.preventDefault();
-      (event.shiftKey ? lastElement : firstElement).focus();
-      return;
-    }
-
-    if (event.shiftKey && document.activeElement === firstElement) {
-      event.preventDefault();
-      lastElement.focus();
-      return;
-    }
-
-    if (!event.shiftKey && document.activeElement === lastElement) {
-      event.preventDefault();
-      firstElement.focus();
-    }
-  };
-
-  // Walkthrough conclusion modal
-
-  const isWalkthroughConclusionOpen = () =>
-    walkthroughConclusionModal?.classList.contains("is-open") ?? false;
-
-  const getWalkthroughConclusionFocusableElements = () => {
-    if (!walkthroughConclusionModal) return [];
-
-    return [
-      ...walkthroughConclusionModal.querySelectorAll(
-        'button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-      ),
-    ];
-  };
-
-  const closeWalkthroughConclusion = () => {
-    if (!walkthroughConclusionModal) return;
-
-    walkthroughConclusionModal.classList.remove("is-open");
-    walkthroughConclusionModal.setAttribute("aria-hidden", "true");
-    walkthroughConclusionModal.toggleAttribute("inert", true);
-    prototypeShell?.toggleAttribute("inert", false);
-  };
-
-  const openWalkthroughConclusion = () => {
-    if (!walkthroughConclusionModal || !isWalkthroughActive()) return;
-
-    closeModelMenu();
-    closeSearch();
-    closeChatPanel();
-    closeSidebarPopups();
-    prototypeShell.dataset.walkthroughStep = "conclusion";
-    syncWalkthroughCardState();
-    walkthroughConclusionModal.classList.add("is-open");
-    walkthroughConclusionModal.setAttribute("aria-hidden", "false");
-    walkthroughConclusionModal.toggleAttribute("inert", false);
-    prototypeShell?.toggleAttribute("inert", true);
-
-    window.requestAnimationFrame(() => walkthroughConclusionDialog?.focus());
-  };
-
-  const handleWalkthroughConclusionKeydown = (event) => {
-    if (!isWalkthroughConclusionOpen()) return;
-
-    if (event.key === "Escape") {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      return;
-    }
-
-    if (event.key !== "Tab") return;
-
-    const focusableElements = getWalkthroughConclusionFocusableElements();
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-
-    if (!firstElement || !lastElement) {
-      event.preventDefault();
-      return;
-    }
-
-    if (document.activeElement === walkthroughConclusionDialog) {
-      event.preventDefault();
-      (event.shiftKey ? lastElement : firstElement).focus();
-      return;
-    }
-
-    if (event.shiftKey && document.activeElement === firstElement) {
-      event.preventDefault();
-      lastElement.focus();
-      return;
-    }
-
-    if (!event.shiftKey && document.activeElement === lastElement) {
-      event.preventDefault();
-      firstElement.focus();
-    }
-  };
+  let hubActiveFilter = "all";
 
   // HOLIX Hub modal
 
@@ -294,6 +95,67 @@
   };
 
   const closeHubFilter = () => setHubFilterState(false);
+
+  const getVisibleHubSourceRows = () =>
+    hubSourceRows.filter((row) => !row.hidden);
+
+  const syncHubSelectAllState = () => {
+    if (!hubSelectAll) return;
+
+    const visibleActiveInputs = getVisibleHubSourceRows()
+      .map((row) => row.querySelector("[data-hub-source-active]"))
+      .filter(Boolean);
+
+    const checkedCount = visibleActiveInputs.filter((input) => input.checked).length;
+
+    hubSelectAll.disabled = visibleActiveInputs.length === 0;
+    hubSelectAll.checked =
+      visibleActiveInputs.length > 0 && checkedCount === visibleActiveInputs.length;
+    hubSelectAll.indeterminate =
+      checkedCount > 0 && checkedCount < visibleActiveInputs.length;
+  };
+
+  const syncHubSourceActiveState = (input) => {
+    const row = input.closest("[data-hub-source]");
+    const stateText = row?.querySelector("[data-hub-source-active-text]");
+
+    row?.classList.toggle("is-active", input.checked);
+
+    if (stateText) {
+      stateText.textContent = input.checked
+        ? "Active for this conversation"
+        : "Not active in this conversation";
+    }
+  };
+
+  const updateHubSourceVisibility = () => {
+    const query = hubSearchInput?.value.trim().toLowerCase() ?? "";
+    let visibleCount = 0;
+
+    hubSourceRows.forEach((row) => {
+      const status = row.dataset.hubStatus ?? "available";
+      const searchableText = `${row.dataset.hubSearch ?? ""} ${row.textContent ?? ""}`.toLowerCase();
+      const matchesFilter =
+        hubActiveFilter === "all" || status === hubActiveFilter;
+      const matchesSearch = !query || searchableText.includes(query);
+      const isVisible = matchesFilter && matchesSearch;
+
+      row.hidden = !isVisible;
+      if (isVisible) visibleCount += 1;
+    });
+
+    if (hubSourceCount) {
+      hubSourceCount.textContent = `${visibleCount} ${
+        visibleCount === 1 ? "application" : "applications"
+      }`;
+    }
+
+    if (hubSourceEmpty) {
+      hubSourceEmpty.hidden = visibleCount !== 0;
+    }
+
+    syncHubSelectAllState();
+  };
 
   const closeHubModal = () => {
     if (!hubModal) return;
@@ -325,6 +187,7 @@
     hubModal.toggleAttribute("inert", false);
     hubModalTrigger?.setAttribute("aria-expanded", "true");
     prototypeShell?.toggleAttribute("inert", true);
+    updateHubSourceVisibility();
 
     window.requestAnimationFrame(() => hubModalDialog?.focus());
   };
@@ -399,6 +262,13 @@
     if (!chatThread) return;
 
     chatThread.scrollTop = chatThread.scrollHeight;
+    updateComposerScrollState();
+  };
+
+  const scrollChatToStoryStart = () => {
+    if (!chatThread) return;
+
+    chatThread.scrollTop = 0;
     updateComposerScrollState();
   };
 
@@ -703,94 +573,56 @@
   const closeSearch = (shouldReturnFocus = false) =>
     setSearchState(false, shouldReturnFocus);
 
-  // Interactive walkthrough
+  // In-product product-design story focus
 
-  const isWalkthroughActive = () =>
-    Boolean(
-      prototypeShell?.hasAttribute("data-walkthrough-step") &&
-        walkthroughStepIndex >= 0 &&
-        walkthroughStepIndex < walkthroughSteps.length,
-    );
-
-  const getActiveWalkthroughCard = () => {
-    if (!isWalkthroughActive()) return null;
-
-    const activeStep = walkthroughSteps[walkthroughStepIndex];
-    return (
-      walkthroughCards.find(
-        (card) => card.dataset.walkthroughCard === activeStep,
-      ) ?? null
-    );
+  const storyFocusLabels = {
+    panel: "Workspace navigation",
+    prompt: "Prompt controls",
+    chat: "Conversation design",
   };
 
-  const syncWalkthroughCardState = (activeStep = null) => {
-    walkthroughCards.forEach((card) => {
-      const isActive = card.dataset.walkthroughCard === activeStep;
-      card.setAttribute("aria-hidden", String(!isActive));
-      card.toggleAttribute("inert", !isActive);
+  const clearStoryFocus = (announce = false) => {
+    if (storyFocusTimer !== null) {
+      window.clearTimeout(storyFocusTimer);
+      storyFocusTimer = null;
+    }
+
+    const previousFocus = prototypeShell?.dataset.storyFocus;
+    prototypeShell?.removeAttribute("data-story-focus");
+
+    storyFocusButtons.forEach((button) => {
+      button.classList.remove("is-active");
+      button.setAttribute("aria-pressed", "false");
     });
-  };
 
-  const focusWalkthroughAction = () => {
-    if (!isWalkthroughActive()) return;
-
-    const activeCard = getActiveWalkthroughCard();
-    const preferredAction =
-      activeCard?.querySelector("[data-walkthrough-next]") ??
-      activeCard?.querySelector("[data-walkthrough-back]");
-
-    preferredAction?.focus({ preventScroll: true });
-  };
-
-  const setWalkthroughStep = (stepIndex) => {
-    if (!prototypeShell) return;
-
-    if (stepIndex < 0 || stepIndex >= walkthroughSteps.length) {
-      walkthroughStepIndex = walkthroughSteps.length;
-      prototypeShell.removeAttribute("data-walkthrough-step");
-      syncWalkthroughCardState();
-      closeSidebarPopups();
-      closeChatPanel();
-      closeSearch();
-      return;
+    if (announce && storyFocusStatus && previousFocus) {
+      storyFocusStatus.textContent = `${storyFocusLabels[previousFocus] ?? "Area"} focus ended.`;
     }
+  };
 
-    const currentStep = walkthroughSteps[stepIndex];
+  const showStoryFocus = (focusKey, trigger) => {
+    if (!prototypeShell || !(focusKey in storyFocusLabels)) return;
 
-    walkthroughStepIndex = stepIndex;
-    prototypeShell.dataset.walkthroughStep = currentStep;
-    syncWalkthroughCardState(currentStep);
-
-    closeSidebarPopups();
-    closeChatPanel();
+    clearStoryFocus();
+    closeModelMenu();
     closeSearch();
+    closeChatPanel();
+    closeSidebarPopups();
 
-    window.requestAnimationFrame(focusWalkthroughAction);
-  };
+    prototypeShell.dataset.storyFocus = focusKey;
+    storyFocusButtons.forEach((button) => {
+      const isActive = button === trigger;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
 
-  const startWalkthrough = () => {
-    if (isWalkthroughActive() || !walkthroughSteps.length) {
-      return;
+    if (storyFocusStatus) {
+      storyFocusStatus.textContent = `${storyFocusLabels[focusKey]} focused for four seconds.`;
     }
 
-    setWalkthroughStep(0);
-  };
-
-  const isWalkthroughActionTarget = (target) => {
-    if (!(target instanceof Element)) return false;
-
-    const action = target.closest(
-      "[data-walkthrough-next], [data-walkthrough-back]",
-    );
-    return Boolean(action && getActiveWalkthroughCard()?.contains(action));
-  };
-
-  const blockWalkthroughPointerInteraction = (event) => {
-    if (!isWalkthroughActive() || isWalkthroughConclusionOpen()) return;
-    if (isWalkthroughActionTarget(event.target)) return;
-
-    event.preventDefault();
-    event.stopImmediatePropagation();
+    storyFocusTimer = window.setTimeout(() => {
+      clearStoryFocus(true);
+    }, storyFocusDuration);
   };
 
   const submitComposer = () => {
@@ -805,108 +637,10 @@
 
   chatInput?.addEventListener("input", updateComposerTextState);
 
-  walkthroughNextButtons.forEach((button) => {
+  storyFocusButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      if (!isWalkthroughActive()) return;
-
-      button.blur();
-
-      if (walkthroughStepIndex === walkthroughSteps.length - 1) {
-        openWalkthroughConclusion();
-        return;
-      }
-
-      setWalkthroughStep(walkthroughStepIndex + 1);
+      showStoryFocus(button.dataset.storyFocus ?? "", button);
     });
-  });
-
-  walkthroughBackButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (walkthroughStepIndex <= 0) return;
-
-      button.blur();
-      setWalkthroughStep(walkthroughStepIndex - 1);
-    });
-  });
-
-  document.addEventListener(
-    "pointerdown",
-    blockWalkthroughPointerInteraction,
-    true,
-  );
-  document.addEventListener("click", blockWalkthroughPointerInteraction, true);
-
-  document.addEventListener(
-    "focusin",
-    (event) => {
-      if (!isWalkthroughActive() || isWalkthroughConclusionOpen()) return;
-
-      const activeCard = getActiveWalkthroughCard();
-      if (activeCard?.contains(event.target)) return;
-
-      focusWalkthroughAction();
-    },
-    true,
-  );
-
-  document.addEventListener(
-    "keydown",
-    (event) => {
-      if (!isWalkthroughActive() || isWalkthroughConclusionOpen()) return;
-
-      const activeCard = getActiveWalkthroughCard();
-      if (!activeCard) return;
-
-      if (event.key === "Tab") {
-        const actions = [
-          ...activeCard.querySelectorAll(
-            "[data-walkthrough-back], [data-walkthrough-next]",
-          ),
-        ];
-
-        if (!actions.length) {
-          event.preventDefault();
-          return;
-        }
-
-        const currentIndex = actions.indexOf(document.activeElement);
-        const direction = event.shiftKey ? -1 : 1;
-        const nextIndex =
-          currentIndex === -1
-            ? event.shiftKey
-              ? actions.length - 1
-              : 0
-            : (currentIndex + direction + actions.length) % actions.length;
-
-        event.preventDefault();
-        actions[nextIndex].focus();
-        return;
-      }
-
-      if (!activeCard.contains(event.target)) {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-      }
-    },
-    true,
-  );
-
-  conceptModalSkipButton?.addEventListener("click", () => {
-    closeConceptModal(chatInput);
-  });
-
-  conceptModalStartButton?.addEventListener("click", () => {
-    closeConceptModal();
-    startWalkthrough();
-  });
-
-  conceptModalTrigger?.addEventListener("click", () => openConceptModal());
-
-  walkthroughConclusionFinishButton?.addEventListener("click", () => {
-    walkthroughConclusionFinishButton.blur();
-    closeWalkthroughConclusion();
-    setWalkthroughStep(walkthroughSteps.length);
-    window.requestAnimationFrame(() => chatInput?.focus({ preventScroll: true }));
   });
 
   hubModalCloseButtons.forEach((closeButton) => {
@@ -920,6 +654,39 @@
     setHubFilterState(!hubFilter?.classList.contains("is-open"));
   });
 
+  hubFilterTrigger?.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+
+    event.preventDefault();
+    setHubFilterState(true);
+
+    const targetItem =
+      event.key === "ArrowUp"
+        ? hubFilterItems[hubFilterItems.length - 1]
+        : hubFilterItems[0];
+    targetItem?.focus();
+  });
+
+  hubFilterMenu?.addEventListener("keydown", (event) => {
+    if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+
+    const currentIndex = hubFilterItems.indexOf(document.activeElement);
+    let nextIndex = currentIndex;
+
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = hubFilterItems.length - 1;
+    if (event.key === "ArrowDown") {
+      nextIndex = (currentIndex + 1 + hubFilterItems.length) % hubFilterItems.length;
+    }
+    if (event.key === "ArrowUp") {
+      nextIndex =
+        (currentIndex - 1 + hubFilterItems.length) % hubFilterItems.length;
+    }
+
+    event.preventDefault();
+    hubFilterItems[nextIndex]?.focus();
+  });
+
   hubFilterItems.forEach((item) => {
     item.addEventListener("click", () => {
       hubFilterItems.forEach((filterItem) => {
@@ -928,13 +695,34 @@
         filterItem.setAttribute("aria-checked", String(isSelected));
       });
 
+      hubActiveFilter = item.dataset.hubFilter ?? "all";
+      updateHubSourceVisibility();
       closeHubFilter();
       hubFilterTrigger?.focus();
     });
   });
 
-  document.addEventListener("keydown", handleConceptModalKeydown);
-  document.addEventListener("keydown", handleWalkthroughConclusionKeydown);
+  hubSearchInput?.addEventListener("input", updateHubSourceVisibility);
+
+  hubSelectAll?.addEventListener("change", () => {
+    getVisibleHubSourceRows().forEach((row) => {
+      const input = row.querySelector("[data-hub-source-active]");
+      if (!input) return;
+
+      input.checked = hubSelectAll.checked;
+      syncHubSourceActiveState(input);
+    });
+
+    syncHubSelectAllState();
+  });
+
+  hubSourceActiveInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      syncHubSourceActiveState(input);
+      syncHubSelectAllState();
+    });
+  });
+
   document.addEventListener("keydown", handleHubModalKeydown);
 
   chatInput?.addEventListener("focus", () => {
@@ -1282,16 +1070,12 @@
 
   // Initial state
 
+  hubSourceActiveInputs.forEach(syncHubSourceActiveState);
+  updateHubSourceVisibility();
   updateComposerTextState();
   updateModelMode();
   setComposerSelectionState(false);
   updateSearchResults();
   updateChatListOverflow();
-  if (conceptModal) {
-    conceptModalAutoOpenTimer = window.setTimeout(() => {
-      conceptModalAutoOpenTimer = null;
-      openConceptModal(false);
-    }, conceptModalAutoOpenDelay);
-  }
-  window.requestAnimationFrame(scrollChatToPresent);
+  window.requestAnimationFrame(scrollChatToStoryStart);
 })();
