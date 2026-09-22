@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17181B">
+  <meta name="description" content="Find your next tabletop favourite at Gamers Ultra Plus. Discover a considered collection of board games for a great night around the table.">
+  <title>Gamers Ultra Plus — Good games. Great company.</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2317181B'/%3E%3Cpath d='M14 6h4v8h8v4h-8v8h-4v-8H6v-4h8z' fill='%23F05A28'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/gup.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Reusable interface icons. Product artwork lives in assets/images. -->
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z"/><path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0"/><path d="M16.5 7.5v.01"/></symbol>
+    <symbol id="i-discord" viewBox="0 0 24 24"><path d="M8 12a1 1 0 1 0 2 0 1 1 0 0 0-2 0M14 12a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/><path d="M7.5 7.5c3.5-1 5.5-1 9 0M7 16.5c3.5 1 6.5 1 10 0"/><path d="M15.5 17c0 1 1.5 3 2 3 1.5 0 2.833-1.667 3.5-5 .667-3.333.5-6.167-.5-8.5-.5-1-2.5-1.5-4-1.5l-1 2.5M8.5 17c0 1-1.5 3-2 3-1.5 0-2.833-1.667-3.5-5C2.333 11.667 2.5 8.833 3.5 6.5c.5-1 2.5-1.5 4-1.5l1 2.5"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="header-main page-width">
+      <div class="brand-navigation">
+        <a class="wordmark" href="#" aria-label="Gamers Ultra Plus home">
+          <span>GAMERS</span>
+          <span>ULTRA<span class="brand-plus">+</span></span>
+        </a>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a href="#collection" data-nav-filter="all">Browse</a>
+          <a href="#collection" data-nav-filter="new">New Arrivals</a>
+          <a href="#collection" data-nav-filter="popular">Popular Games</a>
+          <a href="#collection" data-nav-filter="featured">Recommendations</a>
+        </nav>
+      </div>
+      <div class="header-actions">
+        <button class="header-action" type="button" data-info="account">
+          <svg class="icon" aria-hidden="true"><use href="#i-person"/></svg>
+          <span>Account</span>
+        </button>
+        <button class="header-action" id="open-cart" type="button" aria-haspopup="dialog">
+          <svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg>
+          <span>Cart</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+    <div class="search-row page-width">
+      <form class="search" id="search-form" role="search">
+        <label class="sr-only" for="search-input">Search games by title, theme, or play style</label>
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <input id="search-input" type="search" placeholder="Search the store" autocomplete="off" maxlength="100" aria-controls="product-grid">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero page-width" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="small-rule"></span> A new adventure awaits</p>
+        <h1 id="hero-title">WILD ATLAS</h1>
+        <p class="hero-description">A little exploration. A little friendly rivalry.<br class="desktop-break"> Discover Wild Atlas, your next reason to<br class="desktop-break"> bring everyone to the table.</p>
+        <button class="button button-primary" type="button" data-product="wild-atlas">
+          Order now
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </button>
+      </div>
+      <figure class="hero-visual">
+        <img src="../../image/wild-atlas.webp" alt="Wild Atlas: an illustrated wilderness board game with a forest-green box, map board, and wooden playing pieces." width="1200" height="800" fetchpriority="high">
+      </figure>
+    </section>
+
+    <section class="collection page-width" id="collection" aria-labelledby="collection-title">
+      <div class="section-heading">
+        <p class="eyebrow">Find your next game with:</p>
+        <h2 id="collection-title">GAMERS ULTRA PLUS</h2>
+      </div>
+      <div class="collection-controls">
+        <div class="filters" role="group" aria-label="Filter games">
+          <button class="filter active" type="button" data-filter="all" aria-pressed="true">All games</button>
+          <button class="filter" type="button" data-filter="new" aria-pressed="false">New</button>
+          <button class="filter" type="button" data-filter="featured" aria-pressed="false">Featured</button>
+          <button class="filter" type="button" data-filter="popular" aria-pressed="false">Popular</button>
+          <span class="filter-indicator" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="product-grid" id="product-grid">
+        <!-- script.js reads product records from these cards, keeping content in one place. -->
+        <article class="product-card" data-id="wild-atlas" data-name="Wild Atlas" data-price="48" data-collection="new featured" data-keywords="strategy exploration adventure map wilderness family" data-players="2–4" data-time="45–60" data-age="10+" data-stock="in" data-description="Chart a path through an untamed landscape. Gather resources, connect distant landmarks, and build the most rewarding expedition. An approachable strategy game with a different journey every time you play.">
+          <button class="product-image" type="button" data-product="wild-atlas" aria-label="View Wild Atlas">
+            <span class="badge">New arrival</span>
+            <img src="../../image/wild-atlas.webp" alt="Wild Atlas game box and components" width="1200" height="800" loading="lazy">
+          </button>
+          <p class="product-type">Strategy · Exploration</p>
+          <div class="product-title-row">
+            <h3><button type="button" data-product="wild-atlas">Wild Atlas</button></h3>
+            <span class="price">$48.00</span>
+          </div>
+          <div class="product-bottom">
+            <span class="availability">In stock</span>
+          </div>
+        </article>
+        <article class="product-card" data-id="sunroom" data-name="Sunroom" data-price="36" data-collection="new featured" data-keywords="family nature plants garden tile laying relaxed" data-players="2–4" data-time="25–35" data-age="8+" data-stock="in" data-description="Make a little room for something green. Arrange plants, catch the best light, and grow a greenhouse full of character. A relaxed tile-laying game with quick turns and plenty of satisfying little decisions.">
+          <button class="product-image" type="button" data-product="sunroom" aria-label="View Sunroom">
+            <span class="badge">New arrival</span>
+            <img src="../../image/sunroom.webp" alt="Sunroom game box with a warm illustrated greenhouse and foliage" width="900" height="900" loading="lazy">
+          </button>
+          <p class="product-type">Family · Tile laying</p>
+          <div class="product-title-row">
+            <h3><button type="button" data-product="sunroom">Sunroom</button></h3>
+            <span class="price">$36.00</span>
+          </div>
+          <div class="product-bottom">
+            <span class="availability">In stock</span>
+          </div>
+        </article>
+        <article class="product-card" data-id="orbital" data-name="Orbital" data-price="54" data-collection="featured popular" data-keywords="strategy space science planets engine building" data-players="1–4" data-time="60–90" data-age="12+" data-stock="in" data-description="Build a network at the edge of the solar system. Balance precious resources, develop your space station, and time your next launch. A thoughtful engine-building game for solo explorers and competitive crews alike.">
+          <button class="product-image" type="button" data-product="orbital" aria-label="View Orbital">
+            <span class="badge">Popular</span>
+            <img src="../../image/orbital.webp" alt="Orbital game box with illustrated celestial rings on a navy cover" width="900" height="900" loading="lazy">
+          </button>
+          <p class="product-type">Strategy · Engine building</p>
+          <div class="product-title-row">
+            <h3><button type="button" data-product="orbital">Orbital</button></h3>
+            <span class="price">$54.00</span>
+          </div>
+          <div class="product-bottom">
+            <span class="availability">In stock</span>
+          </div>
+        </article>
+        <article class="product-card" data-id="after-hours" data-name="After Hours" data-price="28" data-collection="popular" data-keywords="party social cards music jazz city friends" data-players="3–8" data-time="20–30" data-age="14+" data-stock="out" data-description="The lights are low, the music is good, and everyone has a story. Read the room, trade clues, and find your people in a quick-playing social card game made for evenings that run a little longer.">
+          <button class="product-image" type="button" data-product="after-hours" aria-label="View After Hours">
+            <img src="../../image/after-hours.webp" alt="After Hours game box with an illustrated burgundy and gold jazz bar" width="900" height="900" loading="lazy">
+          </button>
+          <p class="product-type">Party · Social</p>
+          <div class="product-title-row">
+            <h3><button type="button" data-product="after-hours">After Hours</button></h3>
+            <span class="price">$28.00</span>
+          </div>
+          <div class="product-bottom">
+            <span class="availability unavailable">Out of stock</span>
+          </div>
+        </article>
+      </div>
+      <div class="empty-state" id="empty-state" hidden>
+        <h3>No games found.</h3>
+        <p>Try another title or theme, or clear your filters.</p>
+        <button class="button button-secondary" id="reset-search" type="button">Show all games</button>
+      </div>
+      <noscript><p class="noscript-note">Enable JavaScript to search games, view details, or try the demonstration cart.</p></noscript>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-dark" id="support">
+      <div class="footer-main page-width">
+        <div class="newsletter">
+          <h2>GOOD THINGS. IN YOUR INBOX.</h2>
+          <p>Subscribe to get tailored news about your favorite games</p>
+          <form id="newsletter-form">
+            <label class="sr-only" for="newsletter-email">Your email address</label>
+            <div class="newsletter-field">
+              <input id="newsletter-email" name="email" type="email" placeholder="Your email address" required maxlength="254" autocomplete="off" aria-describedby="newsletter-status">
+              <button type="submit" aria-label="Subscribe to the newsletter">
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </button>
+            </div>
+            <p class="newsletter-note" id="newsletter-status" role="status"></p>
+          </form>
+        </div>
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <a href="#collection" data-nav-filter="all">All games</a>
+          <a href="#collection" data-nav-filter="new">New arrivals</a>
+          <a href="#collection" data-nav-filter="popular">Popular Games</a>
+          <a href="#collection" data-nav-filter="featured">Our picks</a>
+        </div>
+        <div class="footer-column">
+          <h3>Here to help</h3>
+          <button type="button" data-info="orders">Order support</button>
+          <button type="button" data-info="shipping">Shipping &amp; delivery</button>
+          <button type="button" data-info="returns">Returns &amp; exchanges</button>
+          <button type="button" data-info="support">Customer service</button>
+        </div>
+        <div class="footer-column">
+          <h3>Gamers Ultra Plus</h3>
+          <button type="button" data-info="community">Community</button>
+          <button type="button" data-info="accessibility">Accessibility</button>
+          <div class="social-links">
+            <button type="button" data-info="instagram" aria-label="Instagram">
+              <svg class="icon social-icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+            </button>
+            <button type="button" data-info="discord" aria-label="Discord">
+              <svg class="icon social-icon" aria-hidden="true"><use href="#i-discord"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom page-width">
+        <div>
+          <a class="footer-wordmark" href="#" aria-label="Gamers Ultra Plus home">GAMERS ULTRA<span>+</span></a>
+          <p>© <span id="year">2026</span> Gamers Ultra Plus</p>
+        </div>
+        <p class="footer-credit">Designed by <b>Jaqweal Holit</b> | Developed with <b>AI-Assistance</b></p>
+        <div class="footer-legal">
+          <div>
+            <button type="button" data-info="privacy">Privacy</button>
+            <button type="button" data-info="terms">Notices & Policies</button>
+            <button type="button" data-info="cookies">Cookies</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Native dialogs keep all demonstration flows within this one homepage. -->
+  <dialog class="product-dialog" id="product-dialog" aria-labelledby="detail-title">
+    <button class="close-button" type="button" data-close aria-label="Close product details">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+    <div class="detail-layout">
+      <img id="detail-image" alt="" width="600" height="600">
+      <div class="detail-copy">
+        <p class="eyebrow" id="detail-type"></p>
+        <h2 id="detail-title"></h2>
+        <p class="detail-price" id="detail-price"></p>
+        <p id="detail-description"></p>
+        <dl class="detail-meta">
+          <div><dt>Players</dt><dd id="detail-players"></dd></div>
+          <div><dt>Playtime</dt><dd id="detail-time"></dd></div>
+          <div><dt>Ages</dt><dd id="detail-age"></dd></div>
+        </dl>
+        <p id="detail-stock"></p>
+        <button class="button button-primary" id="detail-add" type="button">Add to cart</button>
+        <p class="detail-feedback" id="detail-feedback" role="status"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="cart-dialog" id="cart-dialog" aria-labelledby="cart-title">
+    <div class="cart-heading">
+      <h2 id="cart-title">YOUR CART</h2>
+      <button class="close-button" type="button" data-close aria-label="Close cart">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-summary" id="cart-summary">
+      <p><span>Subtotal</span><strong id="cart-subtotal">$0.00</strong></p>
+      <p class="cart-note">Shipping and taxes are not included.</p>
+      <p class="demo-note">This is a portfolio demo. Checkout and payments are not enabled.</p>
+      <button class="button button-primary" type="button" data-close>
+        Continue browsing
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </button>
+    </div>
+  </dialog>
+
+  <dialog class="info-dialog" id="info-dialog" aria-labelledby="info-title">
+    <button class="close-button" type="button" data-close aria-label="Close information">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+    <p class="eyebrow">Gamers Ultra Plus</p>
+    <h2 id="info-title"></h2>
+    <div id="info-content"></div>
+    <button class="button button-secondary" type="button" data-close>Back to browsing</button>
+  </dialog>
+  <script src="../../javascript/gup/gup.js"></script>
+</body>
+</html>

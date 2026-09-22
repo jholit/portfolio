@@ -35,12 +35,27 @@
     url.search === window.location.search &&
     Boolean(url.hash);
 
-  const isHolixProjectUrl = (url) =>
-    normalisePath(url.pathname).endsWith("/page/holix-ai/");
+  const projectTransitions = [
+    {
+      path: "/page/holix-ai/",
+      title: "HOLIX Ai",
+      subtitle: "Independent Product Design Project",
+    },
+    {
+      path: "/page/gup/",
+      title: "Gamers Ultra Plus",
+      subtitle: "E-commerce Product Design Project",
+    },
+  ];
 
-  const isEnteringHolixProject = (url) =>
-    isHolixProjectUrl(url) &&
-    !isHolixProjectUrl(new URL(window.location.href));
+  const getProjectTransition = (url) =>
+    projectTransitions.find(({ path }) =>
+      normalisePath(url.pathname).endsWith(path),
+    ) || null;
+
+  const isEnteringProject = (url, project) =>
+    Boolean(project) &&
+    !normalisePath(window.location.pathname).endsWith(project.path);
 
   const shouldTransitionLink = (link, event) => {
     if (
@@ -77,12 +92,15 @@
     return !isSameDocumentHashLink(url);
   };
 
-  const createProjectTransition = () => {
+  const createProjectTransition = (project) => {
     const transition = document.createElement("div");
     transition.className = "project-transition";
     transition.setAttribute("role", "status");
     transition.setAttribute("aria-live", "polite");
-    transition.setAttribute("aria-label", "Opening HOLIX Ai: Independent Product Design Project");
+    transition.setAttribute(
+      "aria-label",
+      `Opening ${project.title}: ${project.subtitle}`,
+    );
 
     const content = document.createElement("div");
     content.className = "project-transition__content";
@@ -96,11 +114,11 @@
 
     const title = document.createElement("p");
     title.className = "project-transition__title";
-    title.textContent = "HOLIX Ai";
+    title.textContent = project.title;
 
     const subtitle = document.createElement("p");
     subtitle.className = "project-transition__subtitle";
-    subtitle.textContent = "Independent Product Design Project";
+    subtitle.textContent = project.subtitle;
 
     copy.append(title, subtitle);
     content.append(loader, copy);
@@ -110,9 +128,9 @@
     return transition;
   };
 
-  const enterHolixProject = (url) => {
+  const enterProject = (url, project) => {
     isTransitioning = true;
-    const transition = createProjectTransition();
+    const transition = createProjectTransition(project);
 
     window.requestAnimationFrame(() => {
       transition.classList.add("is-visible");
@@ -150,8 +168,10 @@
     const url = new URL(link.href, window.location.href);
     event.preventDefault();
 
-    if (isEnteringHolixProject(url)) {
-      enterHolixProject(url);
+    const project = getProjectTransition(url);
+
+    if (isEnteringProject(url, project)) {
+      enterProject(url, project);
       return;
     }
 

@@ -21,8 +21,6 @@
     <link rel="icon" href="../../image/favicon.png" type="image/png" sizes="192x192">
     <link rel="stylesheet" href="../../css/sitewide.css">
     <link rel="stylesheet" href="../../css/about.css">
-    <script src="../../javascript/site/motion.js" defer></script>
-    <script src="../../javascript/site/sitewide.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -56,10 +54,39 @@
           <li class="site-navigation__item">
             <a href="./" data-nav-active aria-current="page">Who's Jack Holit?</a>
           </li>
-          <li class="site-navigation__item">
-            <a href="../holix-ai/">
-              <span class="site-navigation__emphasis">HOLIX Ai:</span>&nbsp;Independent Product Design Project
-            </a>
+          <li
+            class="site-navigation__item site-navigation__projects"
+            data-project-menu-root
+          >
+            <button
+              class="site-navigation__projects-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="site-project-menu"
+              data-project-menu-toggle
+            >
+              <span>Projects</span>
+              <span class="site-navigation__projects-chevron" aria-hidden="true"></span>
+            </button>
+            <ul
+              class="site-navigation__projects-list"
+              id="site-project-menu"
+              aria-label="Portfolio projects"
+              data-project-menu
+            >
+              <li>
+                <a href="../holix-ai/">
+                  <span class="site-navigation__project-name">HOLIX Ai</span>
+                  <span class="site-navigation__project-description">Independent Product Design Project</span>
+                </a>
+              </li>
+              <li>
+                <a href="../gup/">
+                  <span class="site-navigation__project-name">Gamers Ultra Plus</span>
+                  <span class="site-navigation__project-description">E-commerce Product Design Project</span>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="site-navigation__item site-navigation__contact">
             <button
@@ -352,5 +379,7 @@
       </div>
     </dialog>
 
+    <script src="../../javascript/site/motion.js"></script>
+    <script src="../../javascript/site/sitewide.js"></script>
   </body>
 </html>

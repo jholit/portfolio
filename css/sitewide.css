@@ -38,6 +38,8 @@
   --header-min-height: 120px;
   --header-padding-inline: 40px;
   --header-item-gap: 30px;
+  --navigation-menu-duration: 220ms;
+  --navigation-menu-easing: cubic-bezier(0.2, 0.75, 0.25, 1);
 
   --footer-min-height: 280px;
   --footer-content-gap: 25px;
@@ -228,11 +230,13 @@ video {
   min-inline-size: 0;
 }
 
-.site-navigation__item a {
+.site-navigation__item a,
+.site-navigation__projects-toggle {
   display: inline-flex;
   align-items: center;
   block-size: 50px;
   padding-inline: 20px;
+  border: 0;
   border-radius: 5px;
   color: inherit;
   background-color: transparent;
@@ -245,8 +249,98 @@ video {
   transition: background-color 160ms ease-out;
 }
 
-.site-navigation__emphasis {
+.site-navigation__emphasis,
+.site-navigation__project-name {
   font-weight: var(--font-weight-bold);
+}
+
+.site-navigation__projects {
+  position: relative;
+}
+
+.site-navigation__projects-toggle {
+  gap: 9px;
+}
+
+.site-navigation__projects-chevron {
+  inline-size: 17px;
+  block-size: 17px;
+  background-color: currentColor;
+  -webkit-mask: url("../asset/icons/chevron-down.svg") center / contain no-repeat;
+  mask: url("../asset/icons/chevron-down.svg") center / contain no-repeat;
+  transform: translateY(1px) rotate(0deg);
+  transform-origin: center;
+  transition: transform var(--navigation-menu-duration) var(--navigation-menu-easing);
+}
+
+.site-navigation__projects-toggle[aria-expanded="true"]
+  .site-navigation__projects-chevron {
+  transform: translateY(1px) rotate(180deg);
+}
+
+.site-navigation__projects-list {
+  position: absolute;
+  z-index: 110;
+  inset-block-start: calc(100% + 8px);
+  inset-inline-start: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  inline-size: 330px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 8px;
+  list-style: none;
+  background-color: rgb(23 23 23 / 96%);
+  box-shadow: 0 14px 34px rgb(0 0 0 / 28%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+    opacity var(--navigation-menu-duration) var(--navigation-menu-easing),
+    transform var(--navigation-menu-duration) var(--navigation-menu-easing),
+    visibility 0s linear var(--navigation-menu-duration);
+}
+
+.site-navigation__projects::after {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 8px;
+  content: "";
+}
+
+.site-navigation__projects.is-open .site-navigation__projects-list {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.site-navigation__projects-list li {
+  inline-size: 100%;
+}
+
+.site-navigation__projects-list a {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  inline-size: 100%;
+  block-size: auto;
+  min-block-size: 62px;
+  padding: 10px 12px;
+}
+
+.site-navigation__project-description {
+  font-size: 12px;
+  line-height: 1.35;
+  opacity: 0.78;
 }
 
 .site-logo:hover,
@@ -267,6 +361,12 @@ video {
 .site-navigation__item a:not([aria-current="page"]):hover,
 .site-navigation__item a:not([aria-current="page"]):focus-visible {
   background-color: var(--color-navigation-hover);
+  text-decoration: none;
+}
+
+.site-navigation__projects-toggle:hover,
+.site-navigation__projects-toggle:focus-visible {
+  background-color: transparent;
   text-decoration: none;
 }
 
@@ -854,6 +954,7 @@ body.has-open-menu {
   }
 
   .site-navigation__item a,
+  .site-navigation__projects-toggle,
   .site-navigation__contact-toggle,
   .site-navigation__contact-action {
     display: flex;
@@ -873,6 +974,71 @@ body.has-open-menu {
     text-decoration: none;
     white-space: normal;
     transition: background-color 120ms ease-out;
+  }
+
+  .site-navigation__projects {
+    display: flex;
+    flex-direction: column;
+    inline-size: 100%;
+  }
+
+  .site-navigation__projects-toggle {
+    justify-content: space-between;
+    inline-size: 100%;
+  }
+
+  .site-navigation__projects-chevron {
+    flex: 0 0 auto;
+    inline-size: 20px;
+    block-size: 20px;
+    margin-inline: 18px 2px;
+  }
+
+  .site-navigation__projects-list {
+    position: static;
+    z-index: auto;
+    display: flex;
+    inline-size: 100%;
+    max-block-size: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition:
+      max-block-size var(--navigation-menu-duration) var(--navigation-menu-easing),
+      opacity var(--navigation-menu-duration) var(--navigation-menu-easing),
+      transform var(--navigation-menu-duration) var(--navigation-menu-easing),
+      visibility 0s linear var(--navigation-menu-duration),
+      padding-block var(--navigation-menu-duration) var(--navigation-menu-easing);
+  }
+
+  .site-navigation__projects::after {
+    display: none;
+  }
+
+  .site-navigation__projects.is-open .site-navigation__projects-list {
+    max-block-size: 160px;
+    padding-block: 4px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+
+  .site-navigation__projects-list a {
+    min-block-size: 62px;
+    padding: 10px 18px;
+  }
+
+  .site-navigation__project-description {
+    font-size: 13px;
   }
 
   .site-navigation__contact {
@@ -953,9 +1119,11 @@ body.has-open-menu {
   }
 
   .site-navigation .site-navigation__item a:active,
+  .site-navigation__projects-toggle:active,
   .site-navigation__contact-toggle:active,
   .site-navigation__contact-action:active,
   .site-navigation .site-navigation__item a.is-touch-active,
+  .site-navigation__projects-toggle.is-touch-active,
   .site-navigation__contact-toggle.is-touch-active,
   .site-navigation__contact-action.is-touch-active,
   .site-menu-toggle:active,
